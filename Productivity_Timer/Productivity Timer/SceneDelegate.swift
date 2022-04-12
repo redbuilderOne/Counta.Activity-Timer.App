@@ -22,12 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return UINavigationController(rootViewController: timerViewController)
     }
 
-    func createPresetsNavigationController() -> UINavigationController {
-        let presetsViewController = PresetsViewController()
-        presetsViewController.title = "Presets"
-        presetsViewController.tabBarItem.image = UIImage(systemName:   "gearshape.circle")
-        presetsViewController.tabBarItem.selectedImage = UIImage(systemName:  "gearshape.circle.fill")
-        return UINavigationController(rootViewController: presetsViewController)
+    func createActivitiesNavigationController() -> UINavigationController {
+        let activitiesViewController = ActivitiesViewController()
+        activitiesViewController.title = "Activities"
+        activitiesViewController.tabBarItem.image = UIImage(systemName:   "gearshape.circle")
+        activitiesViewController.tabBarItem.selectedImage = UIImage(systemName:  "gearshape.circle.fill")
+        return UINavigationController(rootViewController: activitiesViewController)
     }
 
     func createTabBar() -> UITabBarController {
@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().tintColor = pinkyWhiteColor
         UITabBar.appearance().unselectedItemTintColor = darkMoonColor
         UITabBar.appearance().backgroundColor = sandyYellowColor
-        tabBar.viewControllers = [createTimerNavigationController(), createPresetsNavigationController()]
+        tabBar.viewControllers = [createTimerNavigationController(), createActivitiesNavigationController()]
 
         return tabBar
     }
