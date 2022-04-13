@@ -7,7 +7,7 @@ class TimerViewController: UIViewController {
         let elipseView = UIImageView()
         elipseView.image = UIImage(named: "Elipse")
         elipseView.contentMode = .scaleAspectFit
-//        elipseView.backgroundColor = .systemGray6
+        //        elipseView.backgroundColor = .systemGray6
         elipseView.translatesAutoresizingMaskIntoConstraints = false
         return elipseView
     }()
@@ -17,7 +17,7 @@ class TimerViewController: UIViewController {
         timerLabel.text = "00:00"
         timerLabel.textAlignment = .center
         timerLabel.textColor = pinkyWhiteColor
-//      timerLabel.backgroundColor = .systemGray6
+        //      timerLabel.backgroundColor = .systemGray6
         timerLabel.font = .systemFont(ofSize: 32)
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         return timerLabel
@@ -69,11 +69,11 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         view.backgroundColor = darkMoonColor
-        view.addSubview(timerLabel)
         view.addSubview(startButton)
         view.addSubview(stopButton)
         view.addSubview(setButton)
         view.addSubview(elipseView)
+        elipseView.addSubview(timerLabel)
         placeButtons()
         placeTimerLabel()
     }
@@ -81,13 +81,11 @@ class TimerViewController: UIViewController {
     private func placeTimerLabel() {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            timerLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            timerLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             timerLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
             timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
             elipseView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            elipseView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            elipseView.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            elipseView.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+            elipseView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             elipseView.heightAnchor.constraint(equalToConstant: 300),
             elipseView.widthAnchor.constraint(equalToConstant: 300)
         ])
@@ -98,7 +96,7 @@ class TimerViewController: UIViewController {
         stopButton.anchor(width: 117, height: 50)
         setButton.anchor(width: 117, height: 50)
         NSLayoutConstraint.activate([
-            startButton.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 16),
+            startButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor, constant: 16),
             startButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             stopButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 16),
             stopButton.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
@@ -126,7 +124,7 @@ class TimerViewController: UIViewController {
 
     @objc func pauseTimer() {
         timer?.invalidate()
-//        isTimerActivated = false
+        //        isTimerActivated = false
     }
 
     @objc func stopButtonPressed() {
