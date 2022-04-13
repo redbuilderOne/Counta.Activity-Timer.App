@@ -32,9 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        UITabBar.appearance().tintColor = pinkyWhiteColor
-        UITabBar.appearance().unselectedItemTintColor = darkMoonColor
-        UITabBar.appearance().backgroundColor = sandyYellowColor
+        UITabBar.appearance().tintColor = sandyYellowColor
+        UITabBar.appearance().unselectedItemTintColor = pinkyWhiteColor
         tabBar.viewControllers = [createTimerNavigationController(), createActivitiesNavigationController()]
 
         return tabBar

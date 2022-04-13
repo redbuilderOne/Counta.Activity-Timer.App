@@ -189,6 +189,7 @@ class TimerViewController: UIViewController {
     // MARK: - start, pause, stop Timer
     private func startTimer() {
         print("timer starts")
+
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
 
         startRoundAnimation()
@@ -205,8 +206,9 @@ class TimerViewController: UIViewController {
         let seconds = minsec % 60
         print(String(format: "%02d:%02d:%02d", hours, minutes, seconds))
         countdown += 1
+
         timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
-        if hours == 1 {
+        if hours >= 1 {
             timerLabel.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
         }
     }
@@ -214,7 +216,7 @@ class TimerViewController: UIViewController {
     @objc func pauseTimer() {
         timer.invalidate()
         resetRoundAnimation()
-        //        isTimerActivated = false
+        isTimerActivated = false
     }
 
     @objc func stopButtonPressed() {
@@ -250,15 +252,15 @@ class TimerViewController: UIViewController {
     //MARK: TODO TIMER LOGIC IF/ELSE + SWITCH
     @objc func startButtonPressed() {
         print("startButton is pressed")
-        isTimerActivated = true
+
         switch isTimerActivated {
-        case true:
+        case false:
             startTimer()
-            isTimerActivated = false
+            isTimerActivated = true
             setStopImg()
             print("isTimerActivated switched to \(isTimerActivated)")
-        case false:
-            isTimerActivated = true
+        case true:
+            isTimerActivated = false
             setPlayImg()
             print("isTimerActivated switched to \(isTimerActivated)")
         }
