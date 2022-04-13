@@ -3,15 +3,23 @@ import UIKit
 
 class TimerViewController: UIViewController {
 
+    let elipseView: UIImageView = {
+        let elipseView = UIImageView()
+        elipseView.image = UIImage(named: "Elipse")
+        elipseView.contentMode = .scaleAspectFit
+//        elipseView.backgroundColor = .systemGray6
+        elipseView.translatesAutoresizingMaskIntoConstraints = false
+        return elipseView
+    }()
+
     var timerLabel: UILabel = {
         let timerLabel = UILabel()
         timerLabel.text = "00:00"
         timerLabel.textAlignment = .center
         timerLabel.textColor = pinkyWhiteColor
-        timerLabel.backgroundColor = .systemGray6
+//      timerLabel.backgroundColor = .systemGray6
         timerLabel.font = .systemFont(ofSize: 32)
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
-        timerLabel.clipsToBounds = true
         return timerLabel
     }()
 
@@ -65,6 +73,7 @@ class TimerViewController: UIViewController {
         view.addSubview(startButton)
         view.addSubview(stopButton)
         view.addSubview(setButton)
+        view.addSubview(elipseView)
         placeButtons()
         placeTimerLabel()
     }
@@ -74,7 +83,13 @@ class TimerViewController: UIViewController {
             timerLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             timerLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             timerLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
+            timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+            elipseView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            elipseView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            elipseView.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
+            elipseView.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+            elipseView.heightAnchor.constraint(equalToConstant: 300),
+            elipseView.widthAnchor.constraint(equalToConstant: 300)
         ])
     }
 
@@ -95,28 +110,29 @@ class TimerViewController: UIViewController {
     //MARK: TODO TIMER LOGIC IF/ELSE + SWITCH
     @objc func startButtonPressed() {
         print("startButton is pressed")
+        isTimerActivated = true
         switch isTimerActivated {
         case true:
             startTimer()
             isTimerActivated = false
+            setStopImg()
             print("isTimerActivated switched to \(isTimerActivated)")
         case false:
             isTimerActivated = true
+            setPlayImg()
             print("isTimerActivated switched to \(isTimerActivated)")
-            startButton.setTitle("Pause", for: .normal)
-            startButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            startButton.addTarget(self, action: #selector(pauseTimer), for: .touchUpInside)
         }
     }
 
     @objc func pauseTimer() {
         timer?.invalidate()
-        isTimerActivated = false
+//        isTimerActivated = false
     }
 
     @objc func stopButtonPressed() {
         pauseTimer()
         timerLabel.text = "00:00"
+        setPlayImg()
     }
 
     // MARK: - Timer
@@ -125,15 +141,8 @@ class TimerViewController: UIViewController {
     var isTimerActivated = false
 
     private func startTimer() {
-        if isTimerActivated == true {
-            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-        } else {
-
-            startButton.setTitle("Start", for: .normal)
-            startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            isTimerActivated = false
-            print("isTimerActivated switched to \(isTimerActivated)")
-        }
+        print("timer starts")
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
 
     @objc func fireTimer() {
@@ -147,5 +156,14 @@ class TimerViewController: UIViewController {
         //        }
     }
 
-}
+    private func setPlayImg() {
+        startButton.setTitle("Start", for: .normal)
+        startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+    }
 
+    private func setStopImg() {
+        startButton.setTitle("Pause", for: .normal)
+        startButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        startButton.addTarget(self, action: #selector(pauseTimer), for: .touchUpInside)
+    }
+}
