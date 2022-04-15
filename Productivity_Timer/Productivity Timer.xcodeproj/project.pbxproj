@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF2D557B2806CD03007C3350 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557A2806CD03007C3350 /* Alerts.swift */; };
 		FF2D557E2806ED7F007C3350 /* ElipseImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* ElipseImages.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
@@ -39,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FF2D557A2806CD03007C3350 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		FF2D557D2806ED7F007C3350 /* ElipseImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElipseImages.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,12 +80,112 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF2D557C2806ED73007C3350 /* Data */ = {
+		FF06E8882809A27900907F1B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF06E8892809A28700907F1B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FF06E88A2809A28E00907F1B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF71FB452805A1CF00F2F455 /* AppDelegate.swift */,
+				FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FF06E88B2809A2A900907F1B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				FF06E8882809A27900907F1B /* Model */,
+				FF06E8892809A28700907F1B /* View */,
+				FF06E88A2809A28E00907F1B /* Controller */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		FF06E88D2809A30900907F1B /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				FF06E88E2809A31400907F1B /* Model */,
+				FF06E88F2809A31B00907F1B /* View */,
+				FF06E8902809A32000907F1B /* Controller */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		FF06E88E2809A31400907F1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FF2D557D2806ED7F007C3350 /* ElipseImages.swift */,
+				FF71FB7D2805A56D00F2F455 /* ColorSets.swift */,
 			);
-			path = Data;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF06E88F2809A31B00907F1B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FF06E8902809A32000907F1B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF71FB752805A3D200F2F455 /* TimerViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FF06E8912809A36500907F1B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FF71FB532805A1D000F2F455 /* Info.plist */,
+				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF06E8922809A8D600907F1B /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				FF06E8952809A8EF00907F1B /* Model */,
+				FF06E8942809A8EB00907F1B /* View */,
+				FF06E8932809A8DE00907F1B /* Controller */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		FF06E8932809A8DE00907F1B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF71FB792805A40C00F2F455 /* PresetsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FF06E8942809A8EB00907F1B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FF06E8952809A8EF00907F1B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FF71FB392805A1CF00F2F455 = {
@@ -113,16 +211,11 @@
 		FF71FB442805A1CF00F2F455 /* Productivity Timer */ = {
 			isa = PBXGroup;
 			children = (
-				FF2D557C2806ED73007C3350 /* Data */,
+				FF06E88B2809A2A900907F1B /* Application */,
+				FF06E88D2809A30900907F1B /* Timer */,
+				FF06E8922809A8D600907F1B /* Activities */,
 				FF71FB832805B26000F2F455 /* Extensions */,
-				FF71FB7C2805A55B00F2F455 /* ColorSets */,
-				FF71FB772805A3DB00F2F455 /* TimerPage_#1 */,
-				FF71FB782805A3F200F2F455 /* PresetsPage_#2 */,
-				FF71FB452805A1CF00F2F455 /* AppDelegate.swift */,
-				FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */,
-				FF2D557A2806CD03007C3350 /* Alerts.swift */,
-				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
-				FF71FB532805A1D000F2F455 /* Info.plist */,
+				FF06E8912809A36500907F1B /* Supporting Files */,
 			);
 			path = "Productivity Timer";
 			sourceTree = "<group>";
@@ -142,30 +235,6 @@
 				FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */,
 			);
 			path = "Productivity TimerUITests";
-			sourceTree = "<group>";
-		};
-		FF71FB772805A3DB00F2F455 /* TimerPage_#1 */ = {
-			isa = PBXGroup;
-			children = (
-				FF71FB752805A3D200F2F455 /* TimerViewController.swift */,
-			);
-			path = "TimerPage_#1";
-			sourceTree = "<group>";
-		};
-		FF71FB782805A3F200F2F455 /* PresetsPage_#2 */ = {
-			isa = PBXGroup;
-			children = (
-				FF71FB792805A40C00F2F455 /* PresetsViewController.swift */,
-			);
-			path = "PresetsPage_#2";
-			sourceTree = "<group>";
-		};
-		FF71FB7C2805A55B00F2F455 /* ColorSets */ = {
-			isa = PBXGroup;
-			children = (
-				FF71FB7D2805A56D00F2F455 /* ColorSets.swift */,
-			);
-			path = ColorSets;
 			sourceTree = "<group>";
 		};
 		FF71FB832805B26000F2F455 /* Extensions */ = {
@@ -309,7 +378,6 @@
 				FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */,
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
-				FF2D557B2806CD03007C3350 /* Alerts.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* ElipseImages.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* ColorSets.swift in Sources */,
 				FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */,
@@ -474,7 +542,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Productivity Timer/Info.plist";
+				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -502,7 +570,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Productivity Timer/Info.plist";
+				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

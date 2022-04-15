@@ -111,7 +111,7 @@ class TimerViewController: UIViewController {
     }
 
     // MARK: - constraints
-    private func placeVerticalLineViewAtPosition1() {
+    final private func placeVerticalLineViewAtPosition1() {
         NSLayoutConstraint.activate([
             verticalLineView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             verticalLineView.centerYAnchor.constraint(equalTo: elipseView.safeAreaLayoutGuide.centerYAnchor, constant: -150),
@@ -120,7 +120,7 @@ class TimerViewController: UIViewController {
         ])
     }
 
-    private func placeVerticalLineViewAtPosition2() {
+    final private func placeVerticalLineViewAtPosition2() {
         NSLayoutConstraint.activate([
             verticalLineView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor, constant: 150),
             verticalLineView.centerYAnchor.constraint(equalTo: elipseView.safeAreaLayoutGuide.centerYAnchor),
@@ -129,7 +129,7 @@ class TimerViewController: UIViewController {
         ])
     }
 
-    private func placeTimerLabel() {
+    final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             timerLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -75),
@@ -142,7 +142,7 @@ class TimerViewController: UIViewController {
         ])
     }
 
-    private func placeButtons() {
+    final private func placeButtons() {
         startButton.anchor(width: 250, height: 50)
         stopButton.anchor(width: 117, height: 50)
         setButton.anchor(width: 117, height: 50)
