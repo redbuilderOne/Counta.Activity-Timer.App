@@ -4,46 +4,9 @@ import UIKit
 class TimerViewController: UIViewController {
 
     //MARK: - Buttons
-    let startButton: UIButton = {
-        let startButton = UIButton()
-        startButton.setTitle("Start", for: .normal)
-        startButton.titleColor(for: .normal)
-        startButton.tintColor = darkMoonColor
-        startButton.backgroundColor = pinkyWhiteColor
-        startButton.setTitleColor(darkMoonColor, for: .normal)
-        startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        startButton.layer.cornerRadius = 12
-        startButton.clipsToBounds = true
-        startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
-        return startButton
-    }()
-
-    let stopButton: UIButton = {
-        let stopButton = UIButton()
-        stopButton.setTitle("Stop", for: .normal)
-        stopButton.titleColor(for: .normal)
-        stopButton.tintColor = darkMoonColor
-        stopButton.backgroundColor = pinkyWhiteColor
-        stopButton.setTitleColor(darkMoonColor, for: .normal)
-        stopButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
-        stopButton.layer.cornerRadius = 12
-        stopButton.clipsToBounds = true
-        stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-        return stopButton
-    }()
-
-    let setButton: UIButton = {
-        let setButton = UIButton()
-        setButton.setTitle("Set", for: .normal)
-        setButton.titleColor(for: .normal)
-        setButton.tintColor = darkMoonColor
-        setButton.backgroundColor = pinkyWhiteColor
-        setButton.setTitleColor(darkMoonColor, for: .normal)
-        setButton.setImage(UIImage(systemName: "clock.arrow.2.circlepath"), for: .normal)
-        setButton.layer.cornerRadius = 12
-        setButton.clipsToBounds = true
-        return setButton
-    }()
+    lazy var startButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play.fill")
+    lazy var stopButton = TimerControlButton(title: "Stop", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "stop.fill")
+    lazy var setButton = TimerControlButton(title: "Set", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "clock.arrow.2.circlepath")
 
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -78,6 +41,7 @@ class TimerViewController: UIViewController {
             }
         }
     }
+
     // MARK: - viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -128,6 +92,8 @@ class TimerViewController: UIViewController {
             setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 16),
             setButton.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
         ])
+        startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
+        stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
     }
 
     // MARK: - Animation Circular
