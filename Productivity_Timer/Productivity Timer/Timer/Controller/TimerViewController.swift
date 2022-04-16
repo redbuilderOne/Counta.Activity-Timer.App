@@ -3,32 +3,6 @@ import UIKit
 
 class TimerViewController: UIViewController {
 
-    let verticalLineView: UIImageView = {
-        let verticalLineView = UIImageView()
-        verticalLineView.image = veticalLine1
-        verticalLineView.backgroundColor = .systemRed
-        verticalLineView.translatesAutoresizingMaskIntoConstraints = false
-        return verticalLineView
-    }()
-
-    let elipseView: UIImageView = {
-        let elipseView = UIImageView()
-        elipseView.image = elipseSandyYellowColor
-        elipseView.contentMode = .scaleAspectFit
-        elipseView.translatesAutoresizingMaskIntoConstraints = false
-        return elipseView
-    }()
-
-    var timerLabel: UILabel = {
-        let timerLabel = UILabel()
-        timerLabel.text = "00:00:00"
-        timerLabel.textAlignment = .center
-        timerLabel.textColor = pinkyWhiteColor
-        timerLabel.font = .systemFont(ofSize: 45)
-        timerLabel.translatesAutoresizingMaskIntoConstraints = false
-        return timerLabel
-    }()
-
     //MARK: - Buttons
     let startButton: UIButton = {
         let startButton = UIButton()
@@ -232,7 +206,7 @@ class TimerViewController: UIViewController {
         stopTimer()
         resetRoundAnimation()
         UIView.animate(withDuration: 1.0, delay: 1.0) {
-            self.verticalLineView.layer.opacity = 0.0
+            verticalLineView.layer.opacity = 0.0
         }
     }
 
@@ -263,7 +237,7 @@ class TimerViewController: UIViewController {
         setPauseImg()
         startRoundAnimation()
         UIView.animate(withDuration: 1.0) {
-            self.verticalLineView.layer.opacity = 1.0
+            verticalLineView.layer.opacity = 1.0
         }
     }
 
