@@ -8,6 +8,7 @@ class TimerViewController: UIViewController {
     lazy var stopButton = TimerControlButton(title: "Stop", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "stop.fill")
     lazy var setButton = TimerControlButton(title: "Set", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "clock.arrow.2.circlepath")
 
+
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +46,10 @@ class TimerViewController: UIViewController {
     // MARK: - viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.animationCircular()
+        CircularAnimator.animateCircular()
     }
 
-    // MARK: - constraints
+    // MARK: - Constraints
     final private func placeVerticalLineViewAtPosition1() {
         NSLayoutConstraint.activate([
             verticalLineView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -92,24 +93,10 @@ class TimerViewController: UIViewController {
             setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 16),
             setButton.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
         ])
+
+        // MARK: - timerButton's actions
         startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
         stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-    }
-
-    // MARK: - Animation Circular
-    private func animationCircular() {
-        let center = CGPoint(x: elipseView.frame.width / 2, y: elipseView.frame.height / 2)
-        let endAngle = (-CGFloat.pi / 2)
-        let startAngle = 2 * CGFloat.pi + endAngle
-        let circularPath = UIBezierPath(arcCenter: center, radius: 150, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-        shapeLayer.opacity = 1
-        shapeLayer.path = circularPath.cgPath
-        shapeLayer.lineWidth = 1
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeEnd = 1
-        shapeLayer.lineCap = CAShapeLayerLineCap.round
-        shapeLayer.strokeColor = sandyYellowColor.cgColor
-        elipseView.layer.addSublayer(shapeLayer)
     }
 
     // MARK: - Round Animation
@@ -132,23 +119,9 @@ class TimerViewController: UIViewController {
         roundAnimation.repeatCount = 1
         shapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
-
-    // MARK: - Variables & Constants
-    var timer = Timer()
-    var runCount = 0
-    var durationCounter = 0
-    var countdown = 0
-    let shapeLayer = CAShapeLayer()
-    var isTimerActivated = false
-    var startTime: Date?
-    var stopTime: Date?
-    let userDefaults = UserDefaults.standard
-    let START_TIME_KEY = "startTime"
-    let STOP_TIME_KEY = "stopTime"
-    let COUNTING_KEY = "countingKey"
-    var scheduledTimer: Timer!
-
-    // MARK: - setTimers
+    
+    // MARK: - Start, Pause, Stop Timers
+    
     private func setStartTime(date: Date?) {
         startTime = date
         userDefaults.set(startTime, forKey: START_TIME_KEY)
@@ -164,11 +137,10 @@ class TimerViewController: UIViewController {
         userDefaults.set(isTimerActivated, forKey: COUNTING_KEY)
     }
 
-    // MARK: - Start, Pause, Stop Timers
     @objc func stopButtonPressed() {
         setStopTime(date: nil)
         setStartTime(date: nil)
-        timerLabel.text = timeToString(hour: 0, min: 0, sec: 0)
+        timerLabel.text = TimerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
         stopTimer()
         resetRoundAnimation()
         UIView.animate(withDuration: 1.0, delay: 1.0) {
@@ -226,26 +198,9 @@ class TimerViewController: UIViewController {
     }
 
     private func setTimeLabel(_ val: Int) {
-        let time = setSecondsToHoursMinutesToHours(val)
-        let timeString = timeToString(hour: time.0, min: time.1, sec: time.2)
+        let time = TimerFormat.setSecondsToHoursMinutesToHours(val)
+        let timeString = TimerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerLabel.text = timeString
-    }
-
-    private func setSecondsToHoursMinutesToHours(_ miliseconds: Int) -> (Int, Int, Int) {
-        let hour = miliseconds / 3600
-        let min = (miliseconds % 3600) / 60
-        let sec = (miliseconds % 3600) % 60
-        return (hour, min, sec)
-    }
-
-    private func timeToString(hour: Int, min: Int, sec: Int) -> String {
-        var timeString = ""
-        timeString += String(format: "%02d", hour)
-        timeString += ":"
-        timeString += String(format: "%02d", min)
-        timeString += ":"
-        timeString += String(format: "%02d", sec)
-        return timeString
     }
 
     @objc func pauseTimer() {
@@ -258,11 +213,6 @@ class TimerViewController: UIViewController {
         durationCounter = Int(setTimer) ?? 0
     }
 
-    //FOR SETTING THE TIMER
-    //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-    //            print("Timer fired!")
-    //        }
-
     @objc func reverseTimer() {
         durationCounter -= 1
 
@@ -270,6 +220,7 @@ class TimerViewController: UIViewController {
             timer.invalidate()
         }
     }
+
     // MARK: - Set Buttons Images
     private func setPlayImg() {
         startButton.setTitle("Start", for: .normal)
