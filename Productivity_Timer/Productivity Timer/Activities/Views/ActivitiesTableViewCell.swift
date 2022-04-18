@@ -7,6 +7,7 @@ class ActivitiesTableViewCell: UITableViewCell {
         let nameLabel = UILabel()
         return nameLabel
     }()
+
     lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
         return descriptionLabel
@@ -22,11 +23,10 @@ class ActivitiesTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
     }
 
     func set(object: Activity) {
-        self.nameLabel.text = object.name
+        self.nameLabel.text = object.title
         self.descriptionLabel.text = object.description
     }
 }

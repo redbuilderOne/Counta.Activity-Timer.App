@@ -1,8 +1,8 @@
 
 import UIKit
 
-class ElipseView: UIImageView {
-    
+class ActivityTextField: UITextField {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -11,11 +11,13 @@ class ElipseView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(image: String) {
+    init(textColor: UIColor, placeholder: String? = nil) {
         super.init(frame: .zero)
-
-        //        UIImage(systemName: image)
-        contentMode = .scaleAspectFit
+        text = ""
+        self.textColor = textColor
+        font = .systemFont(ofSize: 24)
+        backgroundColor = sandyYellowColor
+        self.placeholder = placeholder
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

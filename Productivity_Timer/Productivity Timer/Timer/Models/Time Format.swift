@@ -2,7 +2,6 @@
 import UIKit
 
 class TimerFormat {
-
     static func setSecondsToHoursMinutesToHours(_ miliseconds: Int) -> (Int, Int, Int) {
         let hour = miliseconds / 3600
         let min = (miliseconds % 3600) / 60
@@ -19,6 +18,5 @@ class TimerFormat {
         timeString += String(format: "%02d", sec)
         return timeString
     }
-
 }
 

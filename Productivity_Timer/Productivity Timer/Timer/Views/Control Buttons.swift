@@ -13,7 +13,7 @@ class TimerControlButton: UIButton {
 
     init(title: String, titleColor: UIColor? = nil, tintColor: UIColor? = nil, backgroundColor: UIColor, systemImageName: String? = nil) {
         super.init(frame: .zero)
-
+        
         setTitle(title, for: .normal)
         self.tintColor = tintColor
         self.backgroundColor = backgroundColor
