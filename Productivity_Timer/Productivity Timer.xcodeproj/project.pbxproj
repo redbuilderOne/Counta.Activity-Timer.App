@@ -19,8 +19,6 @@
 		FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7D2805A56D00F2F455 /* Color Sets.swift */; };
 		FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */; };
 		FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1CF280B548C0046CE83 /* TimerView.swift */; };
-		FFD4B1D9280B5DA00046CE83 /* Vertical Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1D8280B5DA00046CE83 /* Vertical Line.swift */; };
-		FFD4B1DB280B5FD90046CE83 /* TimerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1DA280B5FD90046CE83 /* TimerLabel.swift */; };
 		FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1DC280B61250046CE83 /* Control Buttons.swift */; };
 		FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */; };
 		FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E5280BF8120046CE83 /* Time Format.swift */; };
@@ -71,8 +69,6 @@
 		FF71FB7D2805A56D00F2F455 /* Color Sets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Sets.swift"; sourceTree = "<group>"; };
 		FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView Extension.swift"; sourceTree = "<group>"; };
 		FFD4B1CF280B548C0046CE83 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		FFD4B1D8280B5DA00046CE83 /* Vertical Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vertical Line.swift"; sourceTree = "<group>"; };
-		FFD4B1DA280B5FD90046CE83 /* TimerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLabel.swift; sourceTree = "<group>"; };
 		FFD4B1DC280B61250046CE83 /* Control Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Control Buttons.swift"; sourceTree = "<group>"; };
 		FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer Vars & Lets.swift"; sourceTree = "<group>"; };
 		FFD4B1E5280BF8120046CE83 /* Time Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time Format.swift"; sourceTree = "<group>"; };
@@ -222,8 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				FFD4B1CF280B548C0046CE83 /* TimerView.swift */,
-				FFD4B1D8280B5DA00046CE83 /* Vertical Line.swift */,
-				FFD4B1DA280B5FD90046CE83 /* TimerLabel.swift */,
 				FFD4B1DC280B61250046CE83 /* Control Buttons.swift */,
 			);
 			path = Views;
@@ -422,13 +416,11 @@
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
 				FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */,
-				FFD4B1D9280B5DA00046CE83 /* Vertical Line.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
 				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
 				FFD4B201280C74970046CE83 /* textField.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */,
 				FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */,
-				FFD4B1DB280B5FD90046CE83 /* TimerLabel.swift in Sources */,
 				FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */,
 				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
 				FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */,

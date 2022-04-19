@@ -36,7 +36,6 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     // MARK: - viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         timerView.animateCircular()
     }
 
@@ -68,6 +67,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         } else {
             startTimer()
         }
+
         if let stop = stopTime {
             let restartTime = countRestartTime(start: startTime!, stop: stop)
             setStopTime(date: nil)
@@ -80,14 +80,10 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     func stopActionDidPressed() {
         setStopTime(date: nil)
         setStartTime(date: nil)
-        timerLabel.text = TimerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
         stopTimer()
         resetRoundAnimationDidPressed()
-        UIView.animate(withDuration: 1.0, delay: 1.0) {
-            verticalLineView.layer.opacity = 0.0
-        }
     }
-    
+
     // MARK: - Start, Pause, Stop Timers
     private func setStartTime(date: Date?) {
         startTime = date
@@ -109,14 +105,14 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         return Date().addingTimeInterval(difference)
     }
 
-    private func startTimer() {
+    func startTimer() {
         scheduledTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refreshValue), userInfo: nil, repeats: true)
         setTimerCounting(true)
-        //        setPauseImg()
+//                setPauseImg()
         startRoundAnimationDidPressed()
-        UIView.animate(withDuration: 1.0) {
-            verticalLineView.layer.opacity = 1.0
-        }
+//        UIView.animate(withDuration: 1.0) {
+//            verticalLineView.layer.opacity = 1.0
+//        }
     }
 
     @objc func refreshValue() {
@@ -137,10 +133,10 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         //        setPlayImg()
     }
 
-    private func setTimeLabel(_ val: Int) {
+    func setTimeLabel(_ val: Int) {
         let time = TimerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = TimerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
-        timerLabel.text = timeString
+        TimerView.timerLabel.text = timeString
     }
 
     @objc func pauseTimer() {
@@ -160,9 +156,4 @@ class TimerViewController: UIViewController, TimerViewDelegate {
 //            timer.invalidate()
 //        }
 //    }
-}
-
-protocol SettingPlayPauseImages {
-    func setPlayImg()
-    func setPauseImg()
 }

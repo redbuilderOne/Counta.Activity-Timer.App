@@ -28,7 +28,7 @@ class TimerView: UIView {
         return verticalLineView
     }()
 
-    var timerLabel: UILabel = {
+    static var timerLabel: UILabel = {
         let timerLabel = UILabel()
         timerLabel.text = "Hello"
         timerLabel.textAlignment = .center
@@ -65,7 +65,7 @@ class TimerView: UIView {
         self.addSubview(stopButton)
         self.addSubview(setButton)
         self.addSubview(elipseView)
-        elipseView.addSubview(timerLabel)
+        elipseView.addSubview(TimerView.timerLabel)
         elipseView.addSubview(verticalLineView)
         verticalLineView.layer.opacity = 0.0
         placeButtons()
@@ -77,15 +77,27 @@ class TimerView: UIView {
     // MARK: - Start/Pause Actions
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
+        startButton.setTitle("Pause", for: .normal)
+        startButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
+        TimerView.timerLabel.text = TimerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
+        UIView.animate(withDuration: 1.0, delay: 1.0) {
+            self.verticalLineView.layer.opacity = 0.0
+        }
+        startButton.setTitle("Start", for: .normal)
+        startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
     }
 
     func startRoundAnimation() {
         delegate?.startRoundAnimationDidPressed()
+        UIView.animate(withDuration: 1.0) {
+            self.verticalLineView.layer.opacity = 1.0
+        }
     }
+
     func resetRoundAnimation() {
         delegate?.resetRoundAnimationDidPressed()
     }
@@ -111,10 +123,10 @@ class TimerView: UIView {
 
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
-            timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
-            timerLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+            TimerView.timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            TimerView.timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
+            TimerView.timerLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
+            TimerView.timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
             elipseView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             elipseView.heightAnchor.constraint(equalToConstant: 300),
