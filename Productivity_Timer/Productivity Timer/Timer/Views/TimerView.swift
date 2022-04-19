@@ -20,7 +20,7 @@ class TimerView: UIView {
         return elipseView
     }()
 
-    var verticalLineView: UIImageView = {
+    lazy var verticalLineView: UIImageView = {
         let verticalLineView = UIImageView()
         verticalLineView.image = veticalLine1
         verticalLineView.backgroundColor = .systemRed
@@ -75,6 +75,8 @@ class TimerView: UIView {
     }
 
     // MARK: - Start/Pause Actions
+    let timerFormat = TimerFormat()
+
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
         startButton.setTitle("Pause", for: .normal)
@@ -83,7 +85,7 @@ class TimerView: UIView {
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
-        TimerView.timerLabel.text = TimerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
+        TimerView.timerLabel.text = timerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
         UIView.animate(withDuration: 1.0, delay: 1.0) {
             self.verticalLineView.layer.opacity = 0.0
         }
