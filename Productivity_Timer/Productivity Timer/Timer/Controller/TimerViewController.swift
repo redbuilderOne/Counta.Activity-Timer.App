@@ -39,6 +39,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         timerView.animateCircular()
+        timerView.verticalLineView.layer.opacity = 0.0
     }
 
     // MARK: - Round Animation
@@ -50,7 +51,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         roundAnimation.fillMode = CAMediaTimingFillMode.forwards
         roundAnimation.isRemovedOnCompletion = false
         roundAnimation.repeatCount = 999
-        TimerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
+        timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
 
     func resetRoundAnimationDidPressed() {
@@ -59,24 +60,30 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         roundAnimation.fillMode = CAMediaTimingFillMode.forwards
         roundAnimation.isRemovedOnCompletion = false
         roundAnimation.repeatCount = 1
-        TimerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
+        timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
 
     func startActionDidPressed() {
         if constants.isTimerActivated {
             setStopTime(date: Date())
             stopTimer()
+            setPlayImg()
         } else {
+            if let stop = constants.stopTime {
+                let restartTime = countRestartTime(start: constants.startTime!, stop: stop)
+                setStopTime(date: nil)
+                setStartTime(date: restartTime)
+            } else {
+                setStartTime(date: Date())
+            }
             startTimer()
+            setPauseImg()
         }
+    }
 
-        if let stop = constants.stopTime {
-            let restartTime = countRestartTime(start: constants.startTime!, stop: stop)
-            setStopTime(date: nil)
-            setStartTime(date: restartTime)
-        } else {
-            setStartTime(date: Date())
-        }
+    private func countRestartTime(start: Date, stop: Date) -> Date {
+        let difference = start.timeIntervalSince(stop)
+        return Date().addingTimeInterval(difference)
     }
 
     func stopActionDidPressed() {
@@ -84,6 +91,10 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         setStartTime(date: nil)
         stopTimer()
         resetRoundAnimationDidPressed()
+        timerView.timerLabel.text = timerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
+        UIView.animate(withDuration: 1.0, delay: 1.0) {
+            self.timerView.verticalLineView.layer.opacity = 0.0
+        }
     }
 
     // MARK: - Start, Pause, Stop Timers
@@ -95,6 +106,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     private func setStopTime(date: Date?) {
         constants.stopTime = date
         constants.userDefaults.set(constants.stopTime, forKey: constants.STOP_TIME_KEY)
+        setPlayImg()
     }
 
     private func setTimerCounting(_ val: Bool) {
@@ -102,12 +114,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         constants.userDefaults.set(constants.isTimerActivated, forKey: constants.COUNTING_KEY)
     }
 
-    private func countRestartTime(start: Date, stop: Date) -> Date {
-        let difference = start.timeIntervalSince(stop)
-        return Date().addingTimeInterval(difference)
-    }
-
-    func startTimer() {
+    private func startTimer() {
         constants.scheduledTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refreshValue), userInfo: nil, repeats: true)
         setTimerCounting(true)
         startRoundAnimationDidPressed()
@@ -131,15 +138,25 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         resetRoundAnimationDidPressed()
     }
 
-    func setTimeLabel(_ val: Int) {
+    private func setTimeLabel(_ val: Int) {
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
-        TimerView.timerLabel.text = timeString
+        timerView.timerLabel.text = timeString
     }
 
     @objc func pauseTimer() {
         constants.timer.invalidate()
         resetRoundAnimationDidPressed()
+    }
+
+    final private func setPlayImg() {
+        timerView.startButton.setTitle("Play", for: .normal)
+        timerView.startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+    }
+
+    final private func setPauseImg() {
+        timerView.startButton.setTitle("Pause", for: .normal)
+        timerView.startButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
 //    //MARK: - Обратный таймер
 //    private func setDurationTimer(setTimer: String) {

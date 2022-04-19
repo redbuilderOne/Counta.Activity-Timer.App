@@ -12,7 +12,7 @@ class TimerView: UIView {
 
     weak var delegate: TimerViewDelegate?
 
-    let elipseView: UIImageView = {
+    lazy var elipseView: UIImageView = {
         let elipseView = UIImageView()
         elipseView.image = elipseSandyYellowColor
         elipseView.contentMode = .scaleAspectFit
@@ -28,7 +28,7 @@ class TimerView: UIView {
         return verticalLineView
     }()
 
-    static var timerLabel: UILabel = {
+    lazy var timerLabel: UILabel = {
         let timerLabel = UILabel()
         timerLabel.text = "Hello"
         timerLabel.textAlignment = .center
@@ -37,7 +37,6 @@ class TimerView: UIView {
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         return timerLabel
     }()
-
 
     //MARK: - Buttons
     lazy var startButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play.fill")
@@ -65,9 +64,8 @@ class TimerView: UIView {
         self.addSubview(stopButton)
         self.addSubview(setButton)
         self.addSubview(elipseView)
-        elipseView.addSubview(TimerView.timerLabel)
+        elipseView.addSubview(timerLabel)
         elipseView.addSubview(verticalLineView)
-        verticalLineView.layer.opacity = 0.0
         placeButtons()
         placeTimerLabel()
         placeVerticalLineViewAtPosition1()
@@ -75,33 +73,38 @@ class TimerView: UIView {
     }
 
     // MARK: - Start/Pause Actions
-    let timerFormat = TimerFormat()
-
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
-        startButton.setTitle("Pause", for: .normal)
-        startButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
-        TimerView.timerLabel.text = timerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
-        UIView.animate(withDuration: 1.0, delay: 1.0) {
-            self.verticalLineView.layer.opacity = 0.0
-        }
-        startButton.setTitle("Start", for: .normal)
-        startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
     }
 
     func startRoundAnimation() {
         delegate?.startRoundAnimationDidPressed()
-        UIView.animate(withDuration: 1.0) {
-            self.verticalLineView.layer.opacity = 1.0
-        }
     }
 
     func resetRoundAnimation() {
         delegate?.resetRoundAnimationDidPressed()
+    }
+
+    //MARK: - Circular ANIMATION
+    let shapeLayer = CAShapeLayer()
+
+    func animateCircular() {
+        let center = CGPoint(x: elipseView.frame.width / 2, y: elipseView.frame.height / 2)
+        let endAngle = (-CGFloat.pi / 2)
+        let startAngle = 2 * CGFloat.pi + endAngle
+        let circularPath = UIBezierPath(arcCenter: center, radius: 150, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        shapeLayer.opacity = 1
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.lineWidth = 1
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeEnd = 1
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        shapeLayer.strokeColor = sandyYellowColor.cgColor
+        elipseView.layer.addSublayer(shapeLayer)
     }
 
     // MARK: - Constraints
@@ -125,10 +128,10 @@ class TimerView: UIView {
 
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
-            TimerView.timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            TimerView.timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
-            TimerView.timerLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            TimerView.timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+            timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
+            timerLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
+            timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
             elipseView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             elipseView.heightAnchor.constraint(equalToConstant: 300),
@@ -148,23 +151,5 @@ class TimerView: UIView {
             setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 16),
             setButton.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
         ])
-    }
-
-    //MARK: - Circular ANIMATION
-    static let shapeLayer = CAShapeLayer()
-
-    func animateCircular() {
-        let center = CGPoint(x: elipseView.frame.width / 2, y: elipseView.frame.height / 2)
-        let endAngle = (-CGFloat.pi / 2)
-        let startAngle = 2 * CGFloat.pi + endAngle
-        let circularPath = UIBezierPath(arcCenter: center, radius: 150, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-        TimerView.shapeLayer.opacity = 1
-        TimerView.shapeLayer.path = circularPath.cgPath
-        TimerView.shapeLayer.lineWidth = 1
-        TimerView.shapeLayer.fillColor = UIColor.clear.cgColor
-        TimerView.shapeLayer.strokeEnd = 1
-        TimerView.shapeLayer.lineCap = CAShapeLayerLineCap.round
-        TimerView.shapeLayer.strokeColor = sandyYellowColor.cgColor
-        elipseView.layer.addSublayer(TimerView.shapeLayer)
     }
 }
