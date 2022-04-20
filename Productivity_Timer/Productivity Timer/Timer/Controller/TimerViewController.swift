@@ -63,7 +63,9 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
 
+    //MARK: - startActionDidPressed
     func startActionDidPressed() {
+        timerView.timerLabel.isHidden = false
         if constants.isTimerActivated {
             setStopTime(date: Date())
             stopTimer()
@@ -86,15 +88,27 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         return Date().addingTimeInterval(difference)
     }
 
+    //MARK: - stopActionDidPressed
     func stopActionDidPressed() {
         setStopTime(date: nil)
         setStartTime(date: nil)
         stopTimer()
         resetRoundAnimationDidPressed()
-        timerView.timerLabel.text = timerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
-        UIView.animate(withDuration: 1.0, delay: 1.0) {
+        timerView.timerLabel.text = "Stop"
+        timerView.timerLabel.isHidden = false
+        timerView.timePickerTextField.isHidden = true
+//        timerView.timerLabel.text = timerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
+        UIView.animate(withDuration: 3.0, delay: 2.0) {
             self.timerView.verticalLineView.layer.opacity = 0.0
         }
+    }
+
+    //MARK: - setActionDidPressed
+    func setActionDidPressed() {
+        print("setActionDidPressed")
+        setStartTime(date: nil)
+        timerView.timerLabel.isHidden = true
+        timerView.timePickerTextField.isHidden = false
     }
 
     // MARK: - Start, Pause, Stop Timers
@@ -158,16 +172,17 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.startButton.setTitle("Pause", for: .normal)
         timerView.startButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
-//    //MARK: - Обратный таймер
-//    private func setDurationTimer(setTimer: String) {
-//        durationCounter = Int(setTimer) ?? 0
-//    }
-//
-//    @objc func reverseTimer() {
-//        durationCounter -= 1
-//
-//        if durationCounter == 0 {
-//            timer.invalidate()
-//        }
-//    }
+    //    //MARK: - Обратный таймер
+    //    private func setDurationTimer(setTimer: String) {
+    //        durationCounter = Int(setTimer) ?? 0
+    //    }
+    //
+    //    @objc func reverseTimer() {
+    //        durationCounter -= 1
+    //
+    //        if durationCounter == 0 {
+    //            timer.invalidate()
+    //        }
+    //    }
 }
+

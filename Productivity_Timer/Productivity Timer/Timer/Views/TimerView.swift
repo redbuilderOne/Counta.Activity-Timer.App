@@ -4,6 +4,7 @@ import UIKit
 protocol TimerViewDelegate: AnyObject {
     func startActionDidPressed()
     func stopActionDidPressed()
+    func setActionDidPressed()
     func startRoundAnimationDidPressed()
     func resetRoundAnimationDidPressed()
 }
@@ -38,6 +39,27 @@ class TimerView: UIView {
         return timerLabel
     }()
 
+    lazy var timePickerTextField: UITextField = {
+        let timePickerTextField = UITextField()
+        timePickerTextField.placeholder = "enter timer value"
+        timePickerTextField.font = .systemFont(ofSize: 32)
+        timePickerTextField.textColor = pinkyWhiteColor
+        timePickerTextField.textAlignment = .center
+        timePickerTextField.translatesAutoresizingMaskIntoConstraints = false
+        timePickerTextField.delegate = self
+
+        let timePicker = UIDatePicker()
+        timePickerTextField.inputView = timePicker
+        timePicker.datePickerMode = .time
+        timePickerTextField.addTarget(self, action: #selector(timerValueChanged), for: .valueChanged)
+
+        return timePickerTextField
+    }()
+
+    @objc func timerValueChanged(sender: UIDatePicker) {
+        print("textField touched")
+    }
+
     //MARK: - Buttons
     lazy var startButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play.fill")
     lazy var stopButton = TimerControlButton(title: "Stop", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "stop.fill")
@@ -54,7 +76,7 @@ class TimerView: UIView {
     private func configureButtonsAction() {
         startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
         stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-        setButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
+        setButton.addTarget(self, action: #selector(setButtonPressed), for: .touchUpInside)
     }
 
     override func layoutSubviews() {
@@ -66,19 +88,25 @@ class TimerView: UIView {
         self.addSubview(elipseView)
         elipseView.addSubview(timerLabel)
         elipseView.addSubview(verticalLineView)
+        elipseView.addSubview(timePickerTextField)
+        timePickerTextField.isHidden = true
         placeButtons()
         placeTimerLabel()
         placeVerticalLineViewAtPosition1()
         configureButtonsAction()
     }
 
-    // MARK: - Start/Pause Actions
+    // MARK: - protocol TimerViewDelegate
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
     }
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
+    }
+
+    @objc func setButtonPressed() {
+        delegate?.setActionDidPressed()
     }
 
     func startRoundAnimation() {
@@ -135,7 +163,11 @@ class TimerView: UIView {
             elipseView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             elipseView.heightAnchor.constraint(equalToConstant: 300),
-            elipseView.widthAnchor.constraint(equalToConstant: 300)
+            elipseView.widthAnchor.constraint(equalToConstant: 300),
+            timePickerTextField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            timePickerTextField.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
+            timePickerTextField.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
+            timePickerTextField.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
         ])
     }
 
@@ -151,5 +183,12 @@ class TimerView: UIView {
             setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 16),
             setButton.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
         ])
+    }
+}
+
+extension TimerView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        timePickerTextField.resignFirstResponder()
+        return true
     }
 }

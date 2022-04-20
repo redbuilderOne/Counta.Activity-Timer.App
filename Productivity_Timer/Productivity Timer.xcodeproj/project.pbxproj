@@ -10,7 +10,6 @@
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
-		FF71FB4F2805A1D000F2F455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
 		FF71FB5D2805A1D000F2F455 /* Productivity_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */; };
 		FF71FB672805A1D100F2F455 /* Productivity_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB662805A1D100F2F455 /* Productivity_TimerUITests.swift */; };
 		FF71FB692805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */; };
@@ -33,6 +32,7 @@
 		FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */; };
 		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
 		FFD4B201280C74970046CE83 /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B200280C74970046CE83 /* textField.swift */; };
+		FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +201,7 @@
 		FF71FB832805B26000F2F455 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FF71FB7D2805A56D00F2F455 /* Color Sets.swift */,
 				FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */,
 			);
 			path = Extensions;
@@ -227,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
-				FF71FB7D2805A56D00F2F455 /* Color Sets.swift */,
 				FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */,
 				FFD4B1E5280BF8120046CE83 /* Time Format.swift */,
 			);
@@ -378,7 +378,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF71FB4F2805A1D000F2F455 /* Assets.xcassets in Resources */,
+				FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
