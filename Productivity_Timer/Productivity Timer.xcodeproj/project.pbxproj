@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF2D557B2806CD03007C3350 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557A2806CD03007C3350 /* Alerts.swift */; };
-		FF2D557E2806ED7F007C3350 /* ElipseImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* ElipseImages.swift */; };
+		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB4F2805A1D000F2F455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
@@ -16,9 +15,24 @@
 		FF71FB672805A1D100F2F455 /* Productivity_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB662805A1D100F2F455 /* Productivity_TimerUITests.swift */; };
 		FF71FB692805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */; };
 		FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB752805A3D200F2F455 /* TimerViewController.swift */; };
-		FF71FB7A2805A40C00F2F455 /* PresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB792805A40C00F2F455 /* PresetsViewController.swift */; };
-		FF71FB7E2805A56D00F2F455 /* ColorSets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7D2805A56D00F2F455 /* ColorSets.swift */; };
+		FF71FB7A2805A40C00F2F455 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB792805A40C00F2F455 /* ActivitiesViewController.swift */; };
+		FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7D2805A56D00F2F455 /* Color Sets.swift */; };
 		FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */; };
+		FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1CF280B548C0046CE83 /* TimerView.swift */; };
+		FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1DC280B61250046CE83 /* Control Buttons.swift */; };
+		FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */; };
+		FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E5280BF8120046CE83 /* Time Format.swift */; };
+		FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */; };
+		FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */; };
+		FFD4B1EE280C19CA0046CE83 /* NewActivityCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */; };
+		FFD4B1F0280C1B740046CE83 /* NewActivityCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */; };
+		FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */; };
+		FFD4B1F5280C1D510046CE83 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F4280C1D510046CE83 /* TextFields.swift */; };
+		FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F6280C1F360046CE83 /* AddButton.swift */; };
+		FFD4B1F9280C33440046CE83 /* TableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F8280C33440046CE83 /* TableCells.swift */; };
+		FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */; };
+		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
+		FFD4B201280C74970046CE83 /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B200280C74970046CE83 /* textField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FF2D557A2806CD03007C3350 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
-		FF2D557D2806ED7F007C3350 /* ElipseImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElipseImages.swift; sourceTree = "<group>"; };
+		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,9 +65,24 @@
 		FF71FB662805A1D100F2F455 /* Productivity_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerUITests.swift; sourceTree = "<group>"; };
 		FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF71FB752805A3D200F2F455 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		FF71FB792805A40C00F2F455 /* PresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsViewController.swift; sourceTree = "<group>"; };
-		FF71FB7D2805A56D00F2F455 /* ColorSets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSets.swift; sourceTree = "<group>"; };
+		FF71FB792805A40C00F2F455 /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
+		FF71FB7D2805A56D00F2F455 /* Color Sets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Sets.swift"; sourceTree = "<group>"; };
 		FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView Extension.swift"; sourceTree = "<group>"; };
+		FFD4B1CF280B548C0046CE83 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		FFD4B1DC280B61250046CE83 /* Control Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Control Buttons.swift"; sourceTree = "<group>"; };
+		FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer Vars & Lets.swift"; sourceTree = "<group>"; };
+		FFD4B1E5280BF8120046CE83 /* Time Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time Format.swift"; sourceTree = "<group>"; };
+		FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
+		FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityCreation.swift; sourceTree = "<group>"; };
+		FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityCreationView.swift; sourceTree = "<group>"; };
+		FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewActivityCreationView Exstension.swift"; sourceTree = "<group>"; };
+		FFD4B1F4280C1D510046CE83 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
+		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		FFD4B1F8280C33440046CE83 /* TableCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCells.swift; sourceTree = "<group>"; };
+		FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		FFD4B200280C74970046CE83 /* textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,12 +110,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF2D557C2806ED73007C3350 /* Data */ = {
+		FF06E88B2809A2A900907F1B /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				FF2D557D2806ED7F007C3350 /* ElipseImages.swift */,
+				FF71FB452805A1CF00F2F455 /* AppDelegate.swift */,
+				FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */,
 			);
-			path = Data;
+			path = Application;
+			sourceTree = "<group>";
+		};
+		FF06E88D2809A30900907F1B /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				FFD4B1D3280B5B650046CE83 /* Models */,
+				FFD4B1D2280B5B5A0046CE83 /* Views */,
+				FFD4B1D1280B5B410046CE83 /* Controller */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		FF06E8912809A36500907F1B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FF71FB532805A1D000F2F455 /* Info.plist */,
+				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF06E8922809A8D600907F1B /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				FFD4B1F1280C1CB90046CE83 /* Extensions */,
+				FFD4B1E0280BF14D0046CE83 /* Models */,
+				FFD4B1DF280BF1480046CE83 /* Views */,
+				FFD4B1DE280BF13E0046CE83 /* Controller */,
+			);
+			path = Activities;
 			sourceTree = "<group>";
 		};
 		FF71FB392805A1CF00F2F455 = {
@@ -113,16 +172,11 @@
 		FF71FB442805A1CF00F2F455 /* Productivity Timer */ = {
 			isa = PBXGroup;
 			children = (
-				FF2D557C2806ED73007C3350 /* Data */,
+				FF06E88B2809A2A900907F1B /* Application */,
+				FF06E88D2809A30900907F1B /* Timer */,
+				FF06E8922809A8D600907F1B /* Activities */,
 				FF71FB832805B26000F2F455 /* Extensions */,
-				FF71FB7C2805A55B00F2F455 /* ColorSets */,
-				FF71FB772805A3DB00F2F455 /* TimerPage_#1 */,
-				FF71FB782805A3F200F2F455 /* PresetsPage_#2 */,
-				FF71FB452805A1CF00F2F455 /* AppDelegate.swift */,
-				FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */,
-				FF2D557A2806CD03007C3350 /* Alerts.swift */,
-				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
-				FF71FB532805A1D000F2F455 /* Info.plist */,
+				FF06E8912809A36500907F1B /* Supporting Files */,
 			);
 			path = "Productivity Timer";
 			sourceTree = "<group>";
@@ -144,34 +198,78 @@
 			path = "Productivity TimerUITests";
 			sourceTree = "<group>";
 		};
-		FF71FB772805A3DB00F2F455 /* TimerPage_#1 */ = {
-			isa = PBXGroup;
-			children = (
-				FF71FB752805A3D200F2F455 /* TimerViewController.swift */,
-			);
-			path = "TimerPage_#1";
-			sourceTree = "<group>";
-		};
-		FF71FB782805A3F200F2F455 /* PresetsPage_#2 */ = {
-			isa = PBXGroup;
-			children = (
-				FF71FB792805A40C00F2F455 /* PresetsViewController.swift */,
-			);
-			path = "PresetsPage_#2";
-			sourceTree = "<group>";
-		};
-		FF71FB7C2805A55B00F2F455 /* ColorSets */ = {
-			isa = PBXGroup;
-			children = (
-				FF71FB7D2805A56D00F2F455 /* ColorSets.swift */,
-			);
-			path = ColorSets;
-			sourceTree = "<group>";
-		};
 		FF71FB832805B26000F2F455 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FFD4B1D1280B5B410046CE83 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF71FB752805A3D200F2F455 /* TimerViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FFD4B1D2280B5B5A0046CE83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FFD4B1CF280B548C0046CE83 /* TimerView.swift */,
+				FFD4B1DC280B61250046CE83 /* Control Buttons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FFD4B1D3280B5B650046CE83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
+				FF71FB7D2805A56D00F2F455 /* Color Sets.swift */,
+				FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */,
+				FFD4B1E5280BF8120046CE83 /* Time Format.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FFD4B1DE280BF13E0046CE83 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF71FB792805A40C00F2F455 /* ActivitiesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FFD4B1DF280BF1480046CE83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */,
+				FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */,
+				FFD4B1F4280C1D510046CE83 /* TextFields.swift */,
+				FFD4B1F6280C1F360046CE83 /* AddButton.swift */,
+				FFD4B200280C74970046CE83 /* textField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FFD4B1E0280BF14D0046CE83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */,
+				FFD4B1F8280C33440046CE83 /* TableCells.swift */,
+				FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FFD4B1F1280C1CB90046CE83 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */,
+				FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */,
+				FFD4B1FE280C74150046CE83 /* Keyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,13 +403,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF71FB7A2805A40C00F2F455 /* PresetsViewController.swift in Sources */,
+				FFD4B1F5280C1D510046CE83 /* TextFields.swift in Sources */,
+				FFD4B1EE280C19CA0046CE83 /* NewActivityCreation.swift in Sources */,
+				FF71FB7A2805A40C00F2F455 /* ActivitiesViewController.swift in Sources */,
+				FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */,
 				FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */,
+				FFD4B1F0280C1B740046CE83 /* NewActivityCreationView.swift in Sources */,
+				FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */,
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
+				FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */,
+				FFD4B1F9280C33440046CE83 /* TableCells.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
-				FF2D557B2806CD03007C3350 /* Alerts.swift in Sources */,
-				FF2D557E2806ED7F007C3350 /* ElipseImages.swift in Sources */,
-				FF71FB7E2805A56D00F2F455 /* ColorSets.swift in Sources */,
+				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
+				FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */,
+				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
+				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
+				FFD4B201280C74970046CE83 /* textField.swift in Sources */,
+				FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */,
+				FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */,
+				FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */,
+				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
+				FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */,
 				FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,7 +586,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Productivity Timer/Info.plist";
+				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -502,7 +614,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Productivity Timer/Info.plist";
+				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
