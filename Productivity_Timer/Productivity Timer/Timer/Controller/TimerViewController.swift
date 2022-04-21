@@ -42,6 +42,11 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.verticalLineView.layer.opacity = 0.0
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        setTimerChanged()
+    }
+
     // MARK: - Round Animation
     let roundAnimation = CABasicAnimation(keyPath: "strokeEnd")
 
@@ -97,18 +102,9 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timerLabel.text = "Stop"
         timerView.timerLabel.isHidden = false
         timerView.timePickerTextField.isHidden = true
-//        timerView.timerLabel.text = timerFormat.convertTimeToString(hour: 0, min: 0, sec: 0)
         UIView.animate(withDuration: 3.0, delay: 2.0) {
             self.timerView.verticalLineView.layer.opacity = 0.0
         }
-    }
-
-    //MARK: - setActionDidPressed
-    func setActionDidPressed() {
-        print("setActionDidPressed")
-        setStartTime(date: nil)
-        timerView.timerLabel.isHidden = true
-        timerView.timePickerTextField.isHidden = false
     }
 
     // MARK: - Start, Pause, Stop Timers
@@ -163,16 +159,47 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         resetRoundAnimationDidPressed()
     }
 
-    final private func setPlayImg() {
+    private func setPlayImg() {
         timerView.startButton.setTitle("Play", for: .normal)
         timerView.startButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
     }
 
-    final private func setPauseImg() {
+    private func setPauseImg() {
         timerView.startButton.setTitle("Pause", for: .normal)
         timerView.startButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
-    //    //MARK: - Обратный таймер
+    //MARK: - Обратный таймер
+    func setActionDidPressed() {
+        stopTimer()
+        print("setActionDidPressed")
+        timerView.timerLabel.isHidden = true
+        timerView.timePickerTextField.isHidden = false
+    }
+
+    func setTimerChanged() {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "HH:mm:ss"
+        timerView.timerLabel.text = dateFormat.string(from: timerView.timePicker.date)
+        timerView.timerLabel.isHidden = false
+
+        constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDownBegan), userInfo: nil, repeats: false)
+
+        let setTimer = Date().timeIntervalSince(dateFormat)
+//        let time =  timerFormat.setSecondsToHoursMinutesToHours(dateFormat)
+//        let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
+//        timerView.timerLabel.text = timeString
+
+        constants.countdown = timerFormat.setSecondsToHoursMinutesToHours(dateFormat)
+        
+//        constants.startTime = dateFormat
+//        setStartTime(date: Date?)
+    }
+
+    @objc func countDownBegan() {
+        constants.countdown -= 1
+
+    }
+
     //    private func setDurationTimer(setTimer: String) {
     //        durationCounter = Int(setTimer) ?? 0
     //    }
@@ -184,5 +211,27 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     //            timer.invalidate()
     //        }
     //    }
+//
+//    {
+//
+//        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+//    }
+//
+//
+//
+//    @objc func updateCounter() {
+//        //example functionality
+//        if counter > 0 {
+//            print("\(counter) seconds to the end of the world")
+//            counter -= 1
+//        }
+//    }
+
 }
 
+//extension TimerViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        timerView.timePickerTextField.resignFirstResponder()
+//        return true
+//    }
+//}

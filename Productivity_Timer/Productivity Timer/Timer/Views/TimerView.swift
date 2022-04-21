@@ -7,6 +7,7 @@ protocol TimerViewDelegate: AnyObject {
     func setActionDidPressed()
     func startRoundAnimationDidPressed()
     func resetRoundAnimationDidPressed()
+    func setTimerChanged()
 }
 
 class TimerView: UIView {
@@ -39,6 +40,23 @@ class TimerView: UIView {
         return timerLabel
     }()
 
+    lazy var timePicker: UIDatePicker = {
+        let timePicker = UIDatePicker()
+        timePicker.datePickerMode = .countDownTimer
+
+//        let toolbar = UIToolbar()
+//        toolbar.sizeToFit()
+//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endTimePickerEditing))
+//        let addSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//        toolbar.setItems([addSpace, doneButton], anima ted: true)
+
+        return timePicker
+    }()
+
+    @objc func endTimePickerEditing() {
+        self.endEditing(true)
+    }
+
     lazy var timePickerTextField: UITextField = {
         let timePickerTextField = UITextField()
         timePickerTextField.placeholder = "enter timer value"
@@ -46,19 +64,11 @@ class TimerView: UIView {
         timePickerTextField.textColor = pinkyWhiteColor
         timePickerTextField.textAlignment = .center
         timePickerTextField.translatesAutoresizingMaskIntoConstraints = false
-        timePickerTextField.delegate = self
-
-        let timePicker = UIDatePicker()
         timePickerTextField.inputView = timePicker
-        timePicker.datePickerMode = .time
         timePickerTextField.addTarget(self, action: #selector(timerValueChanged), for: .valueChanged)
-
+//        timePickerTextField.delegate = delegate as? UITextFieldDelegate
         return timePickerTextField
     }()
-
-    @objc func timerValueChanged(sender: UIDatePicker) {
-        print("textField touched")
-    }
 
     //MARK: - Buttons
     lazy var startButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play.fill")
@@ -86,9 +96,9 @@ class TimerView: UIView {
         self.addSubview(stopButton)
         self.addSubview(setButton)
         self.addSubview(elipseView)
+        self.addSubview(timePickerTextField)
         elipseView.addSubview(timerLabel)
         elipseView.addSubview(verticalLineView)
-        elipseView.addSubview(timePickerTextField)
         timePickerTextField.isHidden = true
         placeButtons()
         placeTimerLabel()
@@ -115,6 +125,10 @@ class TimerView: UIView {
 
     func resetRoundAnimation() {
         delegate?.resetRoundAnimationDidPressed()
+    }
+
+    @objc func timerValueChanged() {
+        delegate?.setTimerChanged()
     }
 
     //MARK: - Circular ANIMATION
@@ -183,12 +197,5 @@ class TimerView: UIView {
             setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 16),
             setButton.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
         ])
-    }
-}
-
-extension TimerView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        timePickerTextField.resignFirstResponder()
-        return true
     }
 }
