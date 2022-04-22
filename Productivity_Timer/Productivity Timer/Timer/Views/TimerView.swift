@@ -40,18 +40,27 @@ class TimerView: UIView {
         return timerLabel
     }()
 
-    lazy var timePicker: UIDatePicker = {
-        let timePicker = UIDatePicker()
-        timePicker.datePickerMode = .countDownTimer
-
-//        let toolbar = UIToolbar()
-//        toolbar.sizeToFit()
-//        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endTimePickerEditing))
-//        let addSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-//        toolbar.setItems([addSpace, doneButton], anima ted: true)
-
-        return timePicker
+    lazy var timePickerView: UIPickerView = {
+        let timePickerView = UIPickerView()
+        timePickerView.translatesAutoresizingMaskIntoConstraints = false
+        timePickerView.dataSource = delegate as? UIPickerViewDataSource
+        timePickerView.delegate = delegate as? UIPickerViewDelegate
+        return timePickerView
     }()
+
+
+//    lazy var timePicker: UIDatePicker = {
+//        let timePicker = UIDatePicker()
+//        timePicker.datePickerMode = .countDownTimer
+//
+//        //        let toolbar = UIToolbar()
+//        //        toolbar.sizeToFit()
+//        //        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endTimePickerEditing))
+//        //        let addSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//        //        toolbar.setItems([addSpace, doneButton], anima ted: true)
+//
+//        return timePicker
+//    }()
 
     @objc func endTimePickerEditing() {
         self.endEditing(true)
@@ -59,14 +68,14 @@ class TimerView: UIView {
 
     lazy var timePickerTextField: UITextField = {
         let timePickerTextField = UITextField()
-        timePickerTextField.placeholder = "enter timer value"
+        timePickerTextField.placeholder = ""
         timePickerTextField.font = .systemFont(ofSize: 32)
         timePickerTextField.textColor = pinkyWhiteColor
         timePickerTextField.textAlignment = .center
         timePickerTextField.translatesAutoresizingMaskIntoConstraints = false
-        timePickerTextField.inputView = timePicker
+        timePickerTextField.inputView = timePickerView
         timePickerTextField.addTarget(self, action: #selector(timerValueChanged), for: .valueChanged)
-//        timePickerTextField.delegate = delegate as? UITextFieldDelegate
+        //        timePickerTextField.delegate = delegate as? UITextFieldDelegate
         return timePickerTextField
     }()
 
@@ -97,9 +106,11 @@ class TimerView: UIView {
         self.addSubview(setButton)
         self.addSubview(elipseView)
         self.addSubview(timePickerTextField)
+        self.addSubview(timePickerView)
         elipseView.addSubview(timerLabel)
         elipseView.addSubview(verticalLineView)
         timePickerTextField.isHidden = true
+        timePickerView.isHidden = true
         placeButtons()
         placeTimerLabel()
         placeVerticalLineViewAtPosition1()
@@ -159,15 +170,6 @@ class TimerView: UIView {
         ])
     }
 
-    final private func placeVerticalLineViewAtPosition2() {
-        NSLayoutConstraint.activate([
-            verticalLineView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor, constant: 150),
-            verticalLineView.centerYAnchor.constraint(equalTo: elipseView.safeAreaLayoutGuide.centerYAnchor),
-            verticalLineView.heightAnchor.constraint(equalToConstant: 15),
-            verticalLineView.widthAnchor.constraint(equalToConstant: 2)
-        ])
-    }
-
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
@@ -181,7 +183,11 @@ class TimerView: UIView {
             timePickerTextField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             timePickerTextField.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             timePickerTextField.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            timePickerTextField.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
+            timePickerTextField.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+            timePickerView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            timePickerView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
+            timePickerView.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
+            timePickerView.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
         ])
     }
 

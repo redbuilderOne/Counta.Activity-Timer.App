@@ -33,6 +33,7 @@
 		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
 		FFD4B201280C74970046CE83 /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B200280C74970046CE83 /* textField.swift */; };
 		FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
+		FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B209281300A10046CE83 /* Picker Format.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		FFD4B200280C74970046CE83 /* textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textField.swift; sourceTree = "<group>"; };
+		FFD4B209281300A10046CE83 /* Picker Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Format.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
 				FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */,
 				FFD4B1E5280BF8120046CE83 /* Time Format.swift */,
+				FFD4B209281300A10046CE83 /* Picker Format.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
 				FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */,
 				FFD4B1F9280C33440046CE83 /* TableCells.swift in Sources */,
+				FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
 				FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */,

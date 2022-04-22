@@ -44,7 +44,6 @@ class TimerViewController: UIViewController, TimerViewDelegate {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        setTimerChanged()
     }
 
     // MARK: - Round Animation
@@ -168,28 +167,29 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.startButton.setTitle("Pause", for: .normal)
         timerView.startButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
+
     //MARK: - Обратный таймер
     func setActionDidPressed() {
         stopTimer()
         print("setActionDidPressed")
         timerView.timerLabel.isHidden = true
         timerView.timePickerTextField.isHidden = false
+        timerView.timePickerView.isHidden = false
     }
 
     func setTimerChanged() {
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "HH:mm:ss"
-        timerView.timerLabel.text = dateFormat.string(from: timerView.timePicker.date)
+
+//        timerView.timerLabel.text = timerView.timePickerTextField.text
         timerView.timerLabel.isHidden = false
+//        timerView.timerLabel.text =
 
-        constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDownBegan), userInfo: nil, repeats: false)
-
-        let setTimer = Date().timeIntervalSince(dateFormat)
-//        let time =  timerFormat.setSecondsToHoursMinutesToHours(dateFormat)
+//        let time =  timerFormat.setSecondsToHoursMinutesToHours()
 //        let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
 //        timerView.timerLabel.text = timeString
 
-        constants.countdown = timerFormat.setSecondsToHoursMinutesToHours(dateFormat)
+//        constants.countdown = timerFormat.setSecondsToHoursMinutesToHours(dateFormat)
         
 //        constants.startTime = dateFormat
 //        setStartTime(date: Date?)
@@ -235,3 +235,37 @@ class TimerViewController: UIViewController, TimerViewDelegate {
 //        return true
 //    }
 //}
+
+//MARK: - Extensions
+extension TimerViewController: UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerFormatArray.count
+    }
+}
+
+extension TimerViewController: UIPickerViewDelegate {
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(pickerFormatArray[row])
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        timerView.timerLabel.isHidden = false
+
+        if pickerFormatArray[row] != pickerFormatArray[11] {
+            timerView.timerLabel.text = "00:\(pickerFormatArray[row]):00"
+        } else {
+            timerView.timerLabel.text = "01:00:00"
+        }
+
+        let time = timerFormat.setSecondsToHoursMinutesToHours(pickerFormatArray[row])
+        let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
+        timerView.timerLabel.text = timeString
+    }
+}
+
