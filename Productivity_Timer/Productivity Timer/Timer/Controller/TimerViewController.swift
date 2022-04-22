@@ -100,6 +100,8 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         resetRoundAnimationDidPressed()
         timerView.timerLabel.text = "Stop"
         timerView.timerLabel.isHidden = false
+        timerView.startButton.isHidden = false
+        timerView.startSetTimerButton.isHidden = true
         timerView.timePickerTextField.isHidden = true
         UIView.animate(withDuration: 3.0, delay: 2.0) {
             self.timerView.verticalLineView.layer.opacity = 0.0
@@ -195,6 +197,10 @@ class TimerViewController: UIViewController, TimerViewDelegate {
 //        setStartTime(date: Date?)
     }
 
+    func startSetTimerDidPressed() {
+        
+    }
+
     @objc func countDownBegan() {
         constants.countdown -= 1
 
@@ -256,6 +262,8 @@ extension TimerViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         timerView.timerLabel.isHidden = false
+        timerView.startButton.isHidden = true
+        timerView.startSetTimerButton.isHidden = false
 
         if pickerFormatArray[row] != pickerFormatArray[11] {
             timerView.timerLabel.text = "00:\(pickerFormatArray[row]):00"
