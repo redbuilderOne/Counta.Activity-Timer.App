@@ -19,9 +19,14 @@ extension TimerViewController: UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        constants.isTimerSet = true
         print("isTimerSet = \(constants.isTimerSet)")
+        startTimer(action: #selector(beginCountDown))
         timerView.timerLabel.isHidden = false
+        timerView.startButton.isEnabled = false
+        constants.countdown = pickerFormatArray[row]
+        
+
+     
 //        constants.countDownTime = 
 //        setStartTime(date: )
 //        setCountDownTimer(date: )
@@ -43,8 +48,6 @@ extension TimerViewController: UIPickerViewDelegate {
         timerView.timerLabel.text = String(pickerFormatArray[row])
 
         constants.userDefaults.set(constants.startTime, forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue)
-
-        constants.countdown = pickerFormatArray[row]
 
 //        let timeString = timerFormat.convertTimeToString(min: time.2)
     }

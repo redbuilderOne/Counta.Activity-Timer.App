@@ -40,6 +40,16 @@ class TimerView: UIView {
         return timerLabel
     }()
 
+    lazy var setTimerLabel: UILabel = {
+        let setTimerLabel = UILabel()
+        setTimerLabel.text = ""
+        setTimerLabel.textAlignment = .center
+        setTimerLabel.textColor = pinkyWhiteColor
+        setTimerLabel.font = .systemFont(ofSize: 64)
+        setTimerLabel.translatesAutoresizingMaskIntoConstraints = false
+        return setTimerLabel
+    }()
+
     lazy var timePickerView: UIPickerView = {
         let timePickerView = UIPickerView()
         timePickerView.translatesAutoresizingMaskIntoConstraints = false

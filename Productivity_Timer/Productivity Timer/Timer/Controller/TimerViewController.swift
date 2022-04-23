@@ -23,7 +23,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
         if constants.isTimerActivated {
-            startTimer()
+            startTimer(action: #selector(refreshValue))
         } else {
             stopTimer()
             if let start = constants.startTime {
@@ -83,7 +83,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
             } else {
                 setStartTime(date: Date())
             }
-            startTimer()
+            startTimer(action: #selector(refreshValue))
             setButtonImg(title: "Pause", img: "pause")
         }
     }
@@ -103,6 +103,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timerLabel.isHidden = false
         timerView.startButton.isHidden = false
         timerView.startSetTimerButton.isHidden = true
+        timerView.startButton.isEnabled = true
         UIView.animate(withDuration: 3.0, delay: 2.0) {
             self.timerView.verticalLineView.layer.opacity = 0.0
         }
@@ -120,18 +121,13 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         setButtonImg(title: "Play", img: "play")
     }
 
-    private func setCountDownTimer(date: Date?) {
-        constants.countDownTime = date
-        constants.userDefaults.set(constants.countDownTime, forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue)
-    }
-
     private func setTimerCounting(_ val: Bool) {
         constants.isTimerActivated = val
         constants.userDefaults.set(constants.isTimerActivated, forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
     }
 
-    private func startTimer() {
-        constants.scheduledTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(refreshValue), userInfo: nil, repeats: true)
+    func startTimer(action: Selector) {
+        constants.scheduledTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: action, userInfo: nil, repeats: true)
         setTimerCounting(true)
         startRoundAnimationDidPressed()
     }
@@ -146,7 +142,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    private func stopTimer() {
+     func stopTimer() {
         if constants.scheduledTimer != nil {
             constants.scheduledTimer.invalidate()
         }
@@ -165,7 +161,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         resetRoundAnimationDidPressed()
     }
 
-    private func setButtonImg(title: String, img: String) {
+    func setButtonImg(title: String, img: String) {
         timerView.startButton.setTitle(title, for: .normal)
         timerView.startButton.setImage(UIImage(systemName: img), for: .normal)
     }
@@ -183,14 +179,21 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     }
 
     @objc func beginCountDown() {
-
         timerView.timerLabel.text = String(constants.countdown)
-        startRoundAnimationDidPressed()
+
+        setStopTime(date: nil)
+        setStartTime(date: nil)
 
         if constants.countdown != 0 {
+            setButtonImg(title: "Countdown", img: "")
+            startRoundAnimationDidPressed()
             constants.countdown -= 1
         } else {
+            resetRoundAnimationDidPressed()
+            timerView.startButton.isEnabled = true
             timerView.timerLabel.text = "TIME'S UP"
+            stopTimer()
+            
         }
 //
 //        constants.scheduledTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(refreshValue), userInfo: nil, repeats: true)
