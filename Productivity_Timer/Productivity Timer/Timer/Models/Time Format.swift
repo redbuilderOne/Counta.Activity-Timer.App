@@ -9,13 +9,21 @@ class TimerFormat {
         return (hour, min, sec)
     }
 
-    func convertTimeToString(hour: Int, min: Int, sec: Int) -> String {
+    func convertTimeToString(hour: Int? = nil, min: Int? = nil, sec: Int? = nil) -> String {
+
         var timeString = ""
-        timeString += String(format: "%02d", hour)
+        if let hour = hour {
+            timeString += String(format: "%02d", hour)
+        }
         timeString += ":"
+        if let min = min {
         timeString += String(format: "%02d", min)
+        }
         timeString += ":"
-        timeString += String(format: "%02d", sec)
+        if let sec = sec {
+            timeString += String(format: "%02d", sec)
+        }
+
         return timeString
     }
 }

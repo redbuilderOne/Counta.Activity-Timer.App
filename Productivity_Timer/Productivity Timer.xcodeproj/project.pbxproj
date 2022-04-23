@@ -34,6 +34,8 @@
 		FFD4B201280C74970046CE83 /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B200280C74970046CE83 /* textField.swift */; };
 		FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
 		FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B209281300A10046CE83 /* Picker Format.swift */; };
+		FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B20B28130FB20046CE83 /* Picker Extension.swift */; };
+		FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		FFD4B200280C74970046CE83 /* textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textField.swift; sourceTree = "<group>"; };
 		FFD4B209281300A10046CE83 /* Picker Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Format.swift"; sourceTree = "<group>"; };
+		FFD4B20B28130FB20046CE83 /* Picker Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Extension.swift"; sourceTree = "<group>"; };
+		FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "setTimer Defaults.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				FF71FB752805A3D200F2F455 /* TimerViewController.swift */,
+				FFD4B20B28130FB20046CE83 /* Picker Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */,
 				FFD4B1E5280BF8120046CE83 /* Time Format.swift */,
 				FFD4B209281300A10046CE83 /* Picker Format.swift */,
+				FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -416,11 +422,13 @@
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
 				FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */,
 				FFD4B1F9280C33440046CE83 /* TableCells.swift in Sources */,
+				FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */,
 				FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
 				FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
+				FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */,
 				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
 				FFD4B201280C74970046CE83 /* textField.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */,
