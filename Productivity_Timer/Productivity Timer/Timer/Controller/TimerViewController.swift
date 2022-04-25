@@ -23,7 +23,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
         if constants.isTimerActivated {
-            startTimer(action: #selector(refreshValue))
+            startTimer(timeInterval: 0.1, action: #selector(refreshValue))
         } else {
             stopTimer()
             if let start = constants.startTime {
@@ -74,7 +74,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
             } else {
                 setStartTime(date: Date())
             }
-            startTimer(action: #selector(refreshValue))
+            startTimer(timeInterval: 0.1, action: #selector(refreshValue))
             setButtonImg(title: "Pause", img: "pause")
         }
     }
@@ -116,8 +116,8 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         constants.userDefaults.set(constants.isTimerActivated, forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
     }
 
-    func startTimer(action: Selector) {
-        constants.scheduledTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: action, userInfo: nil, repeats: true)
+    func startTimer(timeInterval: TimeInterval, action: Selector) {
+        constants.scheduledTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: action, userInfo: nil, repeats: true)
         setTimerCounting(true)
         startStopAnimation(toValue: 0, repeatCount: 999)
     }
@@ -140,7 +140,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         startStopAnimation(toValue: 1, repeatCount: 1)
     }
 
-    private func setTimeLabel(_ val: Int) {
+    func setTimeLabel(_ val: Int) {
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
@@ -163,23 +163,18 @@ class TimerViewController: UIViewController, TimerViewDelegate {
 
     func setActionDidPressed() {
         stopTimer()
-        print("setActionDidPressed")
         timerView.timerLabel.isHidden = true
         timerView.timePickerView.isHidden = false
     }
 
     @objc func beginCountDown() {
 
-
-        timerView.timerLabel.text = String(constants.countdown)
-
+//        timerView.timerLabel.text = String(constants.countdown)
 
         if constants.countdown > 0 {
             setButtonImg(title: "Countdown", img: "")
-            startStopAnimation(toValue: 0, repeatCount: 999)
-            constants.countdown -= 0.1
+            constants.countdown -= 1
         } else {
-            startStopAnimation(toValue: 1, repeatCount: 1)
             constants.timer.invalidate()
             timerView.startButton.isEnabled = true
             timerView.timerLabel.text = "TIME'S UP"
