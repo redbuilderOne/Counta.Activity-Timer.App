@@ -50,24 +50,15 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     // MARK: - Round Animation
     let roundAnimation = CABasicAnimation(keyPath: "strokeEnd")
 
-    func startRoundAnimation() {
-        roundAnimation.toValue = 0
+    func startStopAnimation(toValue: Int, repeatCount: Float) {
+        roundAnimation.toValue = toValue
         roundAnimation.duration = CFTimeInterval(60)
         roundAnimation.fillMode = CAMediaTimingFillMode.forwards
         roundAnimation.isRemovedOnCompletion = false
-        roundAnimation.repeatCount = 999
+        roundAnimation.repeatCount = repeatCount
         timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
 
-    func resetRoundAnimation() {
-        roundAnimation.toValue = roundAnimation.fromValue
-        roundAnimation.duration = CFTimeInterval(60)
-        roundAnimation.fillMode = CAMediaTimingFillMode.forwards
-        roundAnimation.isRemovedOnCompletion = false
-        roundAnimation.repeatCount = 1
-        timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
-    }
-    
     //MARK: - startActionDidPressed
     func startActionDidPressed() {
         timerView.timerLabel.isHidden = false
@@ -98,7 +89,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         setStopTime(date: nil)
         setStartTime(date: nil)
         stopTimer()
-        resetRoundAnimation()
+        startStopAnimation(toValue: 1, repeatCount: 1)
         timerView.timerLabel.text = "Stop"
         timerView.timerLabel.isHidden = false
         timerView.startButton.isHidden = false
@@ -128,7 +119,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     func startTimer(action: Selector) {
         constants.scheduledTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: action, userInfo: nil, repeats: true)
         setTimerCounting(true)
-        startRoundAnimation()
+        startStopAnimation(toValue: 0, repeatCount: 999)
     }
 
     @objc func refreshValue() {
@@ -146,7 +137,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
             constants.scheduledTimer.invalidate()
         }
         setTimerCounting(false)
-        resetRoundAnimation()
+        startStopAnimation(toValue: 1, repeatCount: 1)
     }
 
     private func setTimeLabel(_ val: Int) {
@@ -157,7 +148,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
 
     @objc func pauseTimer() {
         constants.timer.invalidate()
-        resetRoundAnimation()
+        startStopAnimation(toValue: 1, repeatCount: 1)
     }
 
     func setButtonImg(title: String, img: String) {
@@ -178,19 +169,21 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     }
 
     @objc func beginCountDown() {
+
+
         timerView.timerLabel.text = String(constants.countdown)
 
-        setStopTime(date: nil)
-        setStartTime(date: nil)
 
-        if constants.countdown != 0.0 {
+        if constants.countdown > 0 {
             setButtonImg(title: "Countdown", img: "")
-            startRoundAnimation()
+            startStopAnimation(toValue: 0, repeatCount: 999)
             constants.countdown -= 0.1
         } else {
-            resetRoundAnimation()
+            startStopAnimation(toValue: 1, repeatCount: 1)
+            constants.timer.invalidate()
             timerView.startButton.isEnabled = true
             timerView.timerLabel.text = "TIME'S UP"
+            setButtonImg(title: "Play", img: "play")
             stopTimer()
         }
     }
