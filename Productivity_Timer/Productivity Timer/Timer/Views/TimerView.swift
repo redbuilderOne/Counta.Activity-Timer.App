@@ -6,8 +6,6 @@ protocol TimerViewDelegate: AnyObject {
     func stopActionDidPressed()
     func setActionDidPressed()
     func startSetTimerButtonDidPressed()
-    func startRoundAnimationDidPressed()
-    func resetRoundAnimationDidPressed()
 }
 
 class TimerView: UIView {
@@ -66,7 +64,6 @@ class TimerView: UIView {
     lazy var startButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play")
     lazy var stopButton = TimerControlButton(title: "Stop", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "stop")
     lazy var setButton = TimerControlButton(title: "Set", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "clock.arrow.2.circlepath")
-    lazy var startSetTimerButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play.fill")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -110,14 +107,6 @@ class TimerView: UIView {
 
     @objc func setButtonPressed() {
         delegate?.setActionDidPressed()
-    }
-
-    func startRoundAnimation() {
-        delegate?.startRoundAnimationDidPressed()
-    }
-
-    func resetRoundAnimation() {
-        delegate?.resetRoundAnimationDidPressed()
     }
 
     @objc func startSetTimerButtonPressed() {

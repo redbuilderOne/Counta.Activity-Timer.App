@@ -12,14 +12,19 @@ class TimerFormat {
     func convertTimeToString(hour: Int? = nil, min: Int? = nil, sec: Int? = nil) -> String {
 
         var timeString = ""
+
         if let hour = hour {
             timeString += String(format: "%02d", hour)
         }
+
         timeString += ":"
+
         if let min = min {
-        timeString += String(format: "%02d", min)
+            timeString += String(format: "%02d", min)
         }
+
         timeString += ":"
+
         if let sec = sec {
             timeString += String(format: "%02d", sec)
         }

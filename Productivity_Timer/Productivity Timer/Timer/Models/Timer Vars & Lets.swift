@@ -1,5 +1,6 @@
 
 import Foundation
+import UIKit
 
 // MARK: - Variables & Constants
 
@@ -10,14 +11,12 @@ struct LetsAndVarsForTimer {
         case STOP_TIME_KEY = "stopTime"
         case COUNTING_KEY = "countingKey"
         case SET_TIME_KEY = "setTime"
+        case ROUND_ANIMATOR_KEY = "roundAnimatorKey"
     }
     
     var timer = Timer()
-    var runCount = 0
-    var durationCounter = 0
-    var countdown = 0
+    var countdown = Float()
     var isTimerActivated = false
-    var isTimerSet = false
     var startTime: Date?
     var stopTime: Date?
     var countDownTime: Date?

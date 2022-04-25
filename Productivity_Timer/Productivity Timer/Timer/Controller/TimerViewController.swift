@@ -50,7 +50,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     // MARK: - Round Animation
     let roundAnimation = CABasicAnimation(keyPath: "strokeEnd")
 
-    func startRoundAnimationDidPressed() {
+    func startRoundAnimation() {
         roundAnimation.toValue = 0
         roundAnimation.duration = CFTimeInterval(60)
         roundAnimation.fillMode = CAMediaTimingFillMode.forwards
@@ -59,15 +59,15 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
 
-    func resetRoundAnimationDidPressed() {
+    func resetRoundAnimation() {
         roundAnimation.toValue = roundAnimation.fromValue
-        roundAnimation.duration = CFTimeInterval(0.5)
+        roundAnimation.duration = CFTimeInterval(60)
         roundAnimation.fillMode = CAMediaTimingFillMode.forwards
         roundAnimation.isRemovedOnCompletion = false
         roundAnimation.repeatCount = 1
         timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
-
+    
     //MARK: - startActionDidPressed
     func startActionDidPressed() {
         timerView.timerLabel.isHidden = false
@@ -98,11 +98,10 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         setStopTime(date: nil)
         setStartTime(date: nil)
         stopTimer()
-        resetRoundAnimationDidPressed()
+        resetRoundAnimation()
         timerView.timerLabel.text = "Stop"
         timerView.timerLabel.isHidden = false
         timerView.startButton.isHidden = false
-        timerView.startSetTimerButton.isHidden = true
         timerView.startButton.isEnabled = true
         UIView.animate(withDuration: 3.0, delay: 2.0) {
             self.timerView.verticalLineView.layer.opacity = 0.0
@@ -129,7 +128,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
     func startTimer(action: Selector) {
         constants.scheduledTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: action, userInfo: nil, repeats: true)
         setTimerCounting(true)
-        startRoundAnimationDidPressed()
+        startRoundAnimation()
     }
 
     @objc func refreshValue() {
@@ -142,12 +141,12 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-     func stopTimer() {
+    func stopTimer() {
         if constants.scheduledTimer != nil {
             constants.scheduledTimer.invalidate()
         }
         setTimerCounting(false)
-        resetRoundAnimationDidPressed()
+        resetRoundAnimation()
     }
 
     private func setTimeLabel(_ val: Int) {
@@ -158,7 +157,7 @@ class TimerViewController: UIViewController, TimerViewDelegate {
 
     @objc func pauseTimer() {
         constants.timer.invalidate()
-        resetRoundAnimationDidPressed()
+        resetRoundAnimation()
     }
 
     func setButtonImg(title: String, img: String) {
@@ -184,36 +183,15 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         setStopTime(date: nil)
         setStartTime(date: nil)
 
-        if constants.countdown != 0 {
+        if constants.countdown != 0.0 {
             setButtonImg(title: "Countdown", img: "")
-            startRoundAnimationDidPressed()
-            constants.countdown -= 1
+            startRoundAnimation()
+            constants.countdown -= 0.1
         } else {
-            resetRoundAnimationDidPressed()
+            resetRoundAnimation()
             timerView.startButton.isEnabled = true
             timerView.timerLabel.text = "TIME'S UP"
             stopTimer()
-            
         }
-//
-//        constants.scheduledTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(refreshValue), userInfo: nil, repeats: true)
-//        setTimerCounting(true)
-//        startRoundAnimationDidPressed()
-//
-//        if let start = constants.startTime {
-//            let differrence = Date().timeIntervalSince(start)
-//            setTimeLabel(Int(differrence))
-//        } else {
-//            stopTimer()
-//            setTimeLabel(0)
-//        }
     }
-//    @objc func updateCounter() {
-//        //example functionality
-//        if counter > 0 {
-//            print("\(counter) seconds to the end of the world")
-//            counter -= 1
-//        }
-//    }
-
 }
