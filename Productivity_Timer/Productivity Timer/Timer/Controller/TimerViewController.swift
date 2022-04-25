@@ -1,7 +1,7 @@
 
 import UIKit
 
-class TimerViewController: UIViewController, TimerViewDelegate {
+final class TimerViewController: UIViewController, TimerViewDelegate {
 
     var timerView = TimerView()
     let timerFormat = TimerFormat()
@@ -165,9 +165,33 @@ class TimerViewController: UIViewController, TimerViewDelegate {
         stopTimer()
         timerView.timerLabel.isHidden = true
         timerView.timePickerView.isHidden = false
+
+
+//???????
+        if let start = constants.countDownTime {
+            if let stop = constants.stopTime {
+                let time = countRestartTime(start: start, stop: stop)
+                let difference = Date().timeIntervalSince(time)
+                setTimeLabel(Int(difference))
+
+            }
+        }
     }
 
     @objc func beginCountDown() {
+
+        if constants.isTimerActivated {
+            startTimer(timeInterval: 0.1, action: #selector(refreshValue))
+        } else {
+            stopTimer()
+            if let start = constants.startTime {
+                if let stop = constants.stopTime {
+                    let time = countRestartTime(start: start, stop: stop)
+                    let difference = Date().timeIntervalSince(time)
+                    setTimeLabel(Int(difference))
+                }
+            }
+        }
 
 //        timerView.timerLabel.text = String(constants.countdown)
 

@@ -16,7 +16,6 @@ struct LetsAndVarsForTimer {
     
     var timer = Timer()
     var countdown = Float() // ?
-    var countDown2 = Date()
     var isTimerActivated = false
     var startTime: Date?
     var stopTime: Date?

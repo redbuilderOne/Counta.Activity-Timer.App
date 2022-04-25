@@ -16,7 +16,17 @@ struct PickerFormat {
     var row12 = 60
 }
 
+struct HoursPickerFormat {
+    var row1 = 1
+    var row2 = 2
+    var row3 = 3
+    var row4 = 4
+    var row5 = 5
+    var row6 = 6
+}
+
 let pickerFormat = PickerFormat()
+let hoursPickerFormat = HoursPickerFormat()
 
 let pickerFormatArray = [
     pickerFormat.row1,
@@ -31,4 +41,13 @@ let pickerFormatArray = [
     pickerFormat.row10,
     pickerFormat.row11,
     pickerFormat.row12
+]
+
+let hoursPickerFormatArray = [
+    hoursPickerFormat.row1,
+    hoursPickerFormat.row2,
+    hoursPickerFormat.row3,
+    hoursPickerFormat.row4,
+    hoursPickerFormat.row5,
+    hoursPickerFormat.row6
 ]
