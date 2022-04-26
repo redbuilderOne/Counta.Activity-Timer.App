@@ -4,14 +4,16 @@ import UIKit
 extension TimerViewController: UIPickerViewDataSource {
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 3
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component != 1 {
-        return pickerFormatArray.count
+        if component == 0 {
+            return hourFormat.hoursArray.count
+        } else if component == 1 {
+            return minFormat.minutesArray.count
         } else {
-            return hoursPickerFormatArray.count
+            return secFormat.secondsArray.count
         }
     }
 }
@@ -19,38 +21,37 @@ extension TimerViewController: UIPickerViewDataSource {
 extension TimerViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component != 1 {
-        return String(pickerFormatArray[row])
+        if component == 0 {
+            return String(hourFormat.hoursArray[row]) + " h"
+        } else if component == 1 {
+            return String(minFormat.minutesArray[row]) + " min"
         } else {
-            return String(hoursPickerFormatArray[row])
+            return String(secFormat.secondsArray[row]) + " s"
         }
+
+//        return String(minFormat.minutesArray[row]) + " min"
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
-        startTimer(timeInterval: 0.1, action: #selector(beginCountDown))
         timerView.timerLabel.isHidden = false
         timerView.startButton.isEnabled = false
-        constants.countdown = Float(pickerFormatArray[row])
+        constants.countdown = Int(minFormat.minutesArray[row])
+        print("\(constants.countdown)")
 
-
-        SetTimerSettings.setTimerValue = pickerFormatArray[row]
+        SetTimerSettings.setTimerValue = minFormat.minutesArray[row]
         print("\(String(describing: SetTimerSettings.setTimerValue))")
-        timerView.timerLabel.text = String(pickerFormatArray[row])
 
-        constants.userDefaults.set(constants.startTime, forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue)
+        timerView.timerLabel.text = "SET"
 
+//        let setCdTimer = timerFormat.setSecondsToHoursMinutesToHours(pickerFormatArray[row] * 60)
+//
+//        print("\(setCdTimer)")
+//
+//        constants.setCdTimerString = timerFormat.convertTimeToString(hour: setCdTimer.0, min: setCdTimer.1, sec: setCdTimer.2)
+//        timerView.timerLabel.text = constants.setCdTimerString
 
-//        timerFormat.convertTimeToString(hour: 0, min: pickerFormatArray[row], sec: 0)
-//        setSecondsToHoursMinutesToHours()
-
-        let setCdTimer = timerFormat.setSecondsToHoursMinutesToHours(pickerFormatArray[row] * 60)
-
-        print("\(setCdTimer)")
-
-        let setCdTimerString = timerFormat.convertTimeToString(hour: setCdTimer.0, min: setCdTimer.1, sec: setCdTimer.2)
-
-        timerView.timerLabel.text = setCdTimerString
+        startTimer(timeInterval: 0.1, action: #selector(beginCountDown))
         
     }
 }

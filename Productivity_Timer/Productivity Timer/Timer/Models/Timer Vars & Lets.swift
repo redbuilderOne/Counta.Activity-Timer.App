@@ -15,11 +15,12 @@ struct LetsAndVarsForTimer {
     }
     
     var timer = Timer()
-    var countdown = Float() // ?
+    var countdown = Int() // ?
     var isTimerActivated = false
     var startTime: Date?
     var stopTime: Date?
     var countDownTime: Date?
     let userDefaults = UserDefaults.standard
     var scheduledTimer: Timer!
+    var setCdTimerString = String()
 }

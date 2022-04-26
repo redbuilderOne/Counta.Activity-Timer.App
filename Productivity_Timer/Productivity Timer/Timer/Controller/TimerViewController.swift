@@ -7,6 +7,10 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
 
+    let secFormat = SecondsPickerFormat()
+    let minFormat = MinutesPickerFormat()
+    let hourFormat = HoursPickerFormat()
+
     override func loadView() {
         view = timerView
     }
@@ -90,7 +94,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         setStartTime(date: nil)
         stopTimer()
         startStopAnimation(toValue: 1, repeatCount: 1)
-        timerView.timerLabel.text = "Stop"
+        timerView.timerLabel.text = "STOP"
         timerView.timerLabel.isHidden = false
         timerView.startButton.isHidden = false
         timerView.startButton.isEnabled = true
@@ -165,35 +169,25 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         stopTimer()
         timerView.timerLabel.isHidden = true
         timerView.timePickerView.isHidden = false
+    }
 
-
-//???????
-        if let start = constants.countDownTime {
-            if let stop = constants.stopTime {
-                let time = countRestartTime(start: start, stop: stop)
-                let difference = Date().timeIntervalSince(time)
-                setTimeLabel(Int(difference))
-
-            }
-        }
+    private func setCountDownTime(date: Date?) {
+        constants.countDownTime = date
+        constants.userDefaults.set(constants.countDownTime, forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
     }
 
     @objc func beginCountDown() {
 
-        if constants.isTimerActivated {
-            startTimer(timeInterval: 0.1, action: #selector(refreshValue))
-        } else {
-            stopTimer()
-            if let start = constants.startTime {
-                if let stop = constants.stopTime {
-                    let time = countRestartTime(start: start, stop: stop)
-                    let difference = Date().timeIntervalSince(time)
-                    setTimeLabel(Int(difference))
-                }
-            }
-        }
+        let setSeconds = timerFormat.setSecondsToHoursMinutesToHours(constants.countdown)
+        let setMinutes = timerFormat.setSecondsToHoursMinutesToHours(constants.countdown * 60)
+        let setHours = timerFormat.setSecondsToHoursMinutesToHours(constants.countdown * 60)
 
-//        timerView.timerLabel.text = String(constants.countdown)
+        constants.setCdTimerString = timerFormat.convertTimeToString(hour: setHours.0, min: setMinutes.1, sec: setSeconds.1)
+        timerView.timerLabel.text = constants.setCdTimerString
+
+//        let hour = miliseconds / 3600
+//        let min = (miliseconds % 3600) / 60
+//        let sec = (miliseconds % 3600) % 60
 
         if constants.countdown > 0 {
             setButtonImg(title: "Countdown", img: "")
