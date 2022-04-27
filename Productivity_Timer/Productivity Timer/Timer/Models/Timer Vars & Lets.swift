@@ -1,19 +1,28 @@
 
-import Foundation
+import UIKit
 
 // MARK: - Variables & Constants
 
 struct LetsAndVarsForTimer {
+
+    enum Keys: String {
+        case START_TIME_KEY = "startTime"
+        case STOP_TIME_KEY = "stopTime"
+        case COUNTING_KEY = "countingKey"
+        case SET_TIME_KEY = "setTime"
+        case ROUND_ANIMATOR_KEY = "roundAnimatorKey"
+    }
+    
     var timer = Timer()
-    var runCount = 0
-    var durationCounter = 0
-    var countdown = 0
+    var countdown = Int()
+    var secCountdown = Int()
+    var minCountdown = Int()
+    var hoursCountdown = Int()
     var isTimerActivated = false
     var startTime: Date?
     var stopTime: Date?
+    var countDownTime: Date?
     let userDefaults = UserDefaults.standard
-    let START_TIME_KEY = "startTime"
-    let STOP_TIME_KEY = "stopTime"
-    let COUNTING_KEY = "countingKey"
     var scheduledTimer: Timer!
+    var setCdTimerString = String()
 }

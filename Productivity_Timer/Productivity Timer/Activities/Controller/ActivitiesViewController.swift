@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ActivitiesViewController: UIViewController {
+final class ActivitiesViewController: UIViewController {
 
     let identifier = "ActivitiesViewController"
 

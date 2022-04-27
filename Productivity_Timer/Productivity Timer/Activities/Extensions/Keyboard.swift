@@ -7,5 +7,4 @@ extension ActivitiesViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
 }

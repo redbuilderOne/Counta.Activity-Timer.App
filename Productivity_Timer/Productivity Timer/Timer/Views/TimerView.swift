@@ -4,8 +4,8 @@ import UIKit
 protocol TimerViewDelegate: AnyObject {
     func startActionDidPressed()
     func stopActionDidPressed()
-    func startRoundAnimationDidPressed()
-    func resetRoundAnimationDidPressed()
+    func setActionDidPressed()
+    func startSetTimerButtonDidPressed()
 }
 
 class TimerView: UIView {
@@ -38,9 +38,31 @@ class TimerView: UIView {
         return timerLabel
     }()
 
+    lazy var setTimerLabel: UILabel = {
+        let setTimerLabel = UILabel()
+        setTimerLabel.text = ""
+        setTimerLabel.textAlignment = .center
+        setTimerLabel.textColor = pinkyWhiteColor
+        setTimerLabel.font = .systemFont(ofSize: 64)
+        setTimerLabel.translatesAutoresizingMaskIntoConstraints = false
+        return setTimerLabel
+    }()
+
+    lazy var timePickerView: UIPickerView = {
+        let timePickerView = UIPickerView()
+        timePickerView.translatesAutoresizingMaskIntoConstraints = false
+        timePickerView.dataSource = delegate as? UIPickerViewDataSource
+        timePickerView.delegate = delegate as? UIPickerViewDelegate
+        return timePickerView
+    }()
+
+    @objc func endTimePickerEditing() {
+        self.endEditing(true)
+    }
+
     //MARK: - Buttons
-    lazy var startButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play.fill")
-    lazy var stopButton = TimerControlButton(title: "Stop", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "stop.fill")
+    lazy var startButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play")
+    lazy var stopButton = TimerControlButton(title: "Stop", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "stop")
     lazy var setButton = TimerControlButton(title: "Set", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "clock.arrow.2.circlepath")
 
     override init(frame: CGRect) {
@@ -54,7 +76,7 @@ class TimerView: UIView {
     private func configureButtonsAction() {
         startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
         stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-        setButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
+        setButton.addTarget(self, action: #selector(setButtonPressed), for: .touchUpInside)
     }
 
     override func layoutSubviews() {
@@ -64,15 +86,17 @@ class TimerView: UIView {
         self.addSubview(stopButton)
         self.addSubview(setButton)
         self.addSubview(elipseView)
+        self.addSubview(timePickerView)
         elipseView.addSubview(timerLabel)
         elipseView.addSubview(verticalLineView)
+        timePickerView.isHidden = true
         placeButtons()
         placeTimerLabel()
         placeVerticalLineViewAtPosition1()
         configureButtonsAction()
     }
 
-    // MARK: - Start/Pause Actions
+    // MARK: - protocol TimerViewDelegate
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
     }
@@ -81,12 +105,12 @@ class TimerView: UIView {
         delegate?.stopActionDidPressed()
     }
 
-    func startRoundAnimation() {
-        delegate?.startRoundAnimationDidPressed()
+    @objc func setButtonPressed() {
+        delegate?.setActionDidPressed()
     }
 
-    func resetRoundAnimation() {
-        delegate?.resetRoundAnimationDidPressed()
+    @objc func startSetTimerButtonPressed() {
+        delegate?.startSetTimerButtonDidPressed()
     }
 
     //MARK: - Circular ANIMATION
@@ -117,15 +141,6 @@ class TimerView: UIView {
         ])
     }
 
-    final private func placeVerticalLineViewAtPosition2() {
-        NSLayoutConstraint.activate([
-            verticalLineView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor, constant: 150),
-            verticalLineView.centerYAnchor.constraint(equalTo: elipseView.safeAreaLayoutGuide.centerYAnchor),
-            verticalLineView.heightAnchor.constraint(equalToConstant: 15),
-            verticalLineView.widthAnchor.constraint(equalToConstant: 2)
-        ])
-    }
-
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
@@ -135,7 +150,11 @@ class TimerView: UIView {
             elipseView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             elipseView.heightAnchor.constraint(equalToConstant: 300),
-            elipseView.widthAnchor.constraint(equalToConstant: 300)
+            elipseView.widthAnchor.constraint(equalToConstant: 300),
+            timePickerView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            timePickerView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
+            timePickerView.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
+            timePickerView.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
         ])
     }
 
