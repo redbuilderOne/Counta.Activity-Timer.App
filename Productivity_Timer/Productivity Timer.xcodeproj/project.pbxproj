@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FF2D557B2806CD03007C3350 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557A2806CD03007C3350 /* Alerts.swift */; };
-		FF2D557E2806ED7F007C3350 /* ElipseImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* ElipseImages.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB4F2805A1D000F2F455 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
@@ -40,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		FF2D557A2806CD03007C3350 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
-		FF2D557D2806ED7F007C3350 /* ElipseImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElipseImages.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,14 +80,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF2D557C2806ED73007C3350 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				FF2D557D2806ED7F007C3350 /* ElipseImages.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		FF71FB392805A1CF00F2F455 = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +103,6 @@
 		FF71FB442805A1CF00F2F455 /* Productivity Timer */ = {
 			isa = PBXGroup;
 			children = (
-				FF2D557C2806ED73007C3350 /* Data */,
 				FF71FB832805B26000F2F455 /* Extensions */,
 				FF71FB7C2805A55B00F2F455 /* ColorSets */,
 				FF71FB772805A3DB00F2F455 /* TimerPage_#1 */,
@@ -310,7 +299,6 @@
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
 				FF2D557B2806CD03007C3350 /* Alerts.swift in Sources */,
-				FF2D557E2806ED7F007C3350 /* ElipseImages.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* ColorSets.swift in Sources */,
 				FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */,
 			);
