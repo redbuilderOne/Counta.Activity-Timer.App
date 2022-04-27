@@ -1,5 +1,4 @@
 
-import Foundation
 import UIKit
 
 // MARK: - Variables & Constants
@@ -15,7 +14,10 @@ struct LetsAndVarsForTimer {
     }
     
     var timer = Timer()
-    var countdown = Int() // ?
+    var countdown = Int()
+    var secCountdown = Int()
+    var minCountdown = Int()
+    var hoursCountdown = Int()
     var isTimerActivated = false
     var startTime: Date?
     var stopTime: Date?

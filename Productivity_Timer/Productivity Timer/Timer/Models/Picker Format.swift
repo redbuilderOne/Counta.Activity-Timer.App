@@ -2,7 +2,7 @@
 import Foundation
 
 struct SecondsPickerFormat {
-    let secondsArray: [Int] = Array(1...60)
+    let secondsArray: [Int] = Array(1...120)
 }
 
 struct MinutesPickerFormat {

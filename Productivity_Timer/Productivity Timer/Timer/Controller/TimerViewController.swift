@@ -95,7 +95,9 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         stopTimer()
         startStopAnimation(toValue: 1, repeatCount: 1)
         timerView.timerLabel.text = "STOP"
+        timerView.timerLabel.textColor = .systemRed
         timerView.timerLabel.isHidden = false
+        timerView.timePickerView.isHidden = true
         timerView.startButton.isHidden = false
         timerView.startButton.isEnabled = true
         UIView.animate(withDuration: 3.0, delay: 2.0) {
@@ -107,6 +109,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     private func setStartTime(date: Date?) {
         constants.startTime = date
         constants.userDefaults.set(constants.startTime, forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue)
+        timerView.timerLabel.textColor = .white
     }
 
     private func setStopTime(date: Date?) {
@@ -178,16 +181,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
     @objc func beginCountDown() {
 
-        let setSeconds = timerFormat.setSecondsToHoursMinutesToHours(constants.countdown)
-        let setMinutes = timerFormat.setSecondsToHoursMinutesToHours(constants.countdown * 60)
-        let setHours = timerFormat.setSecondsToHoursMinutesToHours(constants.countdown * 60)
-
-        constants.setCdTimerString = timerFormat.convertTimeToString(hour: setHours.0, min: setMinutes.1, sec: setSeconds.1)
-        timerView.timerLabel.text = constants.setCdTimerString
-
-//        let hour = miliseconds / 3600
-//        let min = (miliseconds % 3600) / 60
-//        let sec = (miliseconds % 3600) % 60
+        timerView.timerLabel.text = String(constants.countdown)
+        timerView.timerLabel.textColor = .white
 
         if constants.countdown > 0 {
             setButtonImg(title: "Countdown", img: "")
@@ -196,6 +191,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             constants.timer.invalidate()
             timerView.startButton.isEnabled = true
             timerView.timerLabel.text = "TIME'S UP"
+            timerView.timerLabel.textColor = sandyYellowColor
             setButtonImg(title: "Play", img: "play")
             stopTimer()
         }
