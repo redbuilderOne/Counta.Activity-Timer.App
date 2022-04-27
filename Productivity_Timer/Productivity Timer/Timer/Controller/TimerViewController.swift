@@ -2,14 +2,11 @@
 import UIKit
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
-
+    
     var timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
-
     let secFormat = SecondsPickerFormat()
-    let minFormat = MinutesPickerFormat()
-    let hourFormat = HoursPickerFormat()
 
     override func loadView() {
         view = timerView
@@ -45,10 +42,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         super.viewDidLayoutSubviews()
         timerView.animateCircular()
         timerView.verticalLineView.layer.opacity = 0.0
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
 
     // MARK: - Round Animation
@@ -174,13 +167,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timePickerView.isHidden = false
     }
 
-    private func setCountDownTime(date: Date?) {
-        constants.countDownTime = date
-        constants.userDefaults.set(constants.countDownTime, forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
-    }
-
     @objc func beginCountDown() {
-
         timerView.timerLabel.text = String(constants.countdown)
         timerView.timerLabel.textColor = .white
 
@@ -191,7 +178,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             constants.timer.invalidate()
             timerView.startButton.isEnabled = true
             timerView.timerLabel.text = "TIME'S UP"
-            timerView.timerLabel.textColor = sandyYellowColor
+            timerView.timerLabel.textColor = .systemRed
             setButtonImg(title: "Play", img: "play")
             stopTimer()
         }
