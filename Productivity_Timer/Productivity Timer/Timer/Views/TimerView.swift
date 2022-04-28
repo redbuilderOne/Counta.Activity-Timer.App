@@ -9,7 +9,7 @@ protocol TimerViewDelegate: AnyObject {
 }
 
 class TimerView: UIView {
-
+    
     weak var delegate: TimerViewDelegate?
 
     lazy var elipseView: UIImageView = {
@@ -86,7 +86,7 @@ class TimerView: UIView {
         configureButtonsAction()
     }
 
-    // MARK: - protocol TimerViewDelegate
+    // MARK: - protocol delegate
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
     }
@@ -122,7 +122,6 @@ class TimerView: UIView {
     }
 
     // MARK: - Constraints
-
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),

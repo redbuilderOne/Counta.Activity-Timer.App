@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF229A8A281ADF5A0080B89B /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A89281ADF5A0080B89B /* ActivitiesView.swift */; };
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF229A89281ADF5A0080B89B /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
 		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		FFD4B1DF280BF1480046CE83 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF229A89281ADF5A0080B89B /* ActivitiesView.swift */,
 				FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */,
 				FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */,
 				FFD4B1F6280C1F360046CE83 /* AddButton.swift */,
@@ -404,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF71FB7A2805A40C00F2F455 /* ActivitiesViewController.swift in Sources */,
+				FF229A8A281ADF5A0080B89B /* ActivitiesView.swift in Sources */,
 				FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */,
 				FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */,
 				FFD4B1F0280C1B740046CE83 /* NewActivityCreationView.swift in Sources */,

@@ -7,6 +7,22 @@ class NewActivityCreationView: UIView {
     private var newActivityDescriptionText = String()
     lazy var addButton = AddButton(tintColor: sandyYellowColor, backgroundColor: pinkyWhiteColor, systemImageName: "plus.circle")
 
+    let nameTextField: UITextField = {
+        let nameTextField = UITextField()
+        nameTextField.translatesAutoresizingMaskIntoConstraints = false
+        return nameTextField
+    }()
+
+    lazy var viewForAddingNewActivity: UIView = {
+        let viewForAddingNewActivity = UIView()
+        viewForAddingNewActivity.backgroundColor = sandyYellowColor
+        viewForAddingNewActivity.frame = CGRect(x: 0, y: 100, width: self.frame.width, height: 70)
+        viewForAddingNewActivity.translatesAutoresizingMaskIntoConstraints = false
+        return viewForAddingNewActivity
+    }()
+
+    lazy var textFieldForNewActivity = ActivityTextField(textColor: pinkyWhiteColor, placeholder: "enter new activity title")
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -18,13 +34,10 @@ class NewActivityCreationView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         placeTextFields()
+        self.addSubview(viewForAddingNewActivity)
+        viewForAddingNewActivity.addSubview(textFieldForNewActivity)
+        textFieldForNewActivity.delegate = self
     }
-
-    let nameTextField: UITextField = {
-        let nameTextField = UITextField()
-        nameTextField.translatesAutoresizingMaskIntoConstraints = false
-        return nameTextField
-    }()
 
     private func placeTextFields() {
         NSLayoutConstraint.activate([
