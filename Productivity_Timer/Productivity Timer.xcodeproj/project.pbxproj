@@ -23,12 +23,9 @@
 		FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E5280BF8120046CE83 /* Time Format.swift */; };
 		FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */; };
 		FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */; };
-		FFD4B1EE280C19CA0046CE83 /* NewActivityCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */; };
 		FFD4B1F0280C1B740046CE83 /* NewActivityCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */; };
 		FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */; };
-		FFD4B1F5280C1D510046CE83 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F4280C1D510046CE83 /* TextFields.swift */; };
 		FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F6280C1F360046CE83 /* AddButton.swift */; };
-		FFD4B1F9280C33440046CE83 /* TableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F8280C33440046CE83 /* TableCells.swift */; };
 		FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */; };
 		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
 		FFD4B201280C74970046CE83 /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B200280C74970046CE83 /* textField.swift */; };
@@ -77,12 +74,9 @@
 		FFD4B1E5280BF8120046CE83 /* Time Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time Format.swift"; sourceTree = "<group>"; };
 		FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
-		FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityCreation.swift; sourceTree = "<group>"; };
 		FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityCreationView.swift; sourceTree = "<group>"; };
 		FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewActivityCreationView Exstension.swift"; sourceTree = "<group>"; };
-		FFD4B1F4280C1D510046CE83 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
-		FFD4B1F8280C33440046CE83 /* TableCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCells.swift; sourceTree = "<group>"; };
 		FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		FFD4B200280C74970046CE83 /* textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textField.swift; sourceTree = "<group>"; };
@@ -256,7 +250,6 @@
 			children = (
 				FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */,
 				FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */,
-				FFD4B1F4280C1D510046CE83 /* TextFields.swift */,
 				FFD4B1F6280C1F360046CE83 /* AddButton.swift */,
 				FFD4B200280C74970046CE83 /* textField.swift */,
 			);
@@ -267,8 +260,6 @@
 			isa = PBXGroup;
 			children = (
 				FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */,
-				FFD4B1F8280C33440046CE83 /* TableCells.swift */,
-				FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -412,8 +403,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD4B1F5280C1D510046CE83 /* TextFields.swift in Sources */,
-				FFD4B1EE280C19CA0046CE83 /* NewActivityCreation.swift in Sources */,
 				FF71FB7A2805A40C00F2F455 /* ActivitiesViewController.swift in Sources */,
 				FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */,
 				FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */,
@@ -421,7 +410,6 @@
 				FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */,
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
 				FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */,
-				FFD4B1F9280C33440046CE83 /* TableCells.swift in Sources */,
 				FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */,
 				FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,

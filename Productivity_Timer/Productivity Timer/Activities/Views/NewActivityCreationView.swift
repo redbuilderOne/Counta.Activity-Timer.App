@@ -20,6 +20,12 @@ class NewActivityCreationView: UIView {
         placeTextFields()
     }
 
+    let nameTextField: UITextField = {
+        let nameTextField = UITextField()
+        nameTextField.translatesAutoresizingMaskIntoConstraints = false
+        return nameTextField
+    }()
+
     private func placeTextFields() {
         NSLayoutConstraint.activate([
             nameTextField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),

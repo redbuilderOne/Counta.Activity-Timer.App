@@ -4,12 +4,9 @@ import UIKit
 final class ActivitiesViewController: UIViewController {
 
     let identifier = "ActivitiesViewController"
+    let ActivitiesTableViewCellID = "ActivitiesTableViewCell"
 
     lazy var newActivityCreationView = NewActivityCreationView()
-
-    var objects = [
-        Activity(img: nil, title: "Video Editing", description: "Edit video", isFavourite: false, timeSpent: "00:00:00")
-    ]
 
     lazy var viewForAddingNewActivity: UIView = {
         let viewForAddingNewActivity = UIView()
@@ -79,7 +76,7 @@ final class ActivitiesViewController: UIViewController {
         }
     }
 
-    internal lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self

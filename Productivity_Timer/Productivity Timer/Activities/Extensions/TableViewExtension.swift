@@ -13,8 +13,8 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ActivitiesTableViewCell", for: indexPath) as? ActivitiesTableViewCell else { fatalError("Unable to dequeReusableCell")}
-        let object = objects[indexPath.row]
-        cell.set(object: object)
+//        let object = objects[indexPath.row]
+//        cell.set(object: object)
         return cell
     }
 
@@ -24,7 +24,7 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+//            objects.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -34,8 +34,8 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedEmoji = objects.remove(at: sourceIndexPath.row)
-        objects.insert(movedEmoji, at: destinationIndexPath.row)
+//        let movedEmoji = objects.remove(at: sourceIndexPath.row)
+//        objects.insert(movedEmoji, at: destinationIndexPath.row)
         tableView.reloadData()
     }
 
@@ -47,7 +47,7 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func doneAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Done") { (action, view, completion) in
-            self.objects.remove(at: indexPath.row)
+//            self.objects.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
@@ -57,13 +57,13 @@ extension ActivitiesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func favouriteAction(at indexPath: IndexPath) -> UIContextualAction {
-        var object = objects[indexPath.row]
+//        var object = objects[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Favourite") { (action, view, completion) in
-            object.isFavourite = !(object.isFavourite ?? false)
-            self.objects[indexPath.row] = object
+//            object.isFavourite = !(object.isFavourite ?? false)
+//            self.objects[indexPath.row] = object
             completion(true)
         }
-        action.backgroundColor = object.isFavourite ?? false ? .systemPurple : .systemGray
+//        action.backgroundColor = object.isFavourite ?? false ? .systemPurple : .systemGray
         action.image = UIImage(systemName: "heart")
         return action
     }
