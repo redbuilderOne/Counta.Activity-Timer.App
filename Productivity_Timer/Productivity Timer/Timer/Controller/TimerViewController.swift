@@ -23,6 +23,16 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.isTimerActivated = constants.userDefaults.bool(forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
+        checkIfTimerActivated()
+    }
+
+    // MARK: - viewDidLayoutSubviews
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        timerView.animateCircular()
+    }
+
+    private func checkIfTimerActivated() {
         if constants.isTimerActivated {
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
         } else {
@@ -35,13 +45,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 }
             }
         }
-    }
-
-    // MARK: - viewDidLayoutSubviews
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        timerView.animateCircular()
-        timerView.verticalLineView.layer.opacity = 0.0
     }
 
     // MARK: - Round Animation
@@ -93,9 +96,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timePickerView.isHidden = true
         timerView.startButton.isHidden = false
         timerView.startButton.isEnabled = true
-        UIView.animate(withDuration: 3.0, delay: 2.0) {
-            self.timerView.verticalLineView.layer.opacity = 0.0
-        }
     }
 
     // MARK: - Start, Pause, Stop Timers

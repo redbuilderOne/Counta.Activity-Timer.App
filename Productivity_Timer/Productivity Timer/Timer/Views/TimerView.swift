@@ -20,14 +20,6 @@ class TimerView: UIView {
         return elipseView
     }()
 
-    lazy var verticalLineView: UIImageView = {
-        let verticalLineView = UIImageView()
-        verticalLineView.image = veticalLine1
-        verticalLineView.backgroundColor = .systemRed
-        verticalLineView.translatesAutoresizingMaskIntoConstraints = false
-        return verticalLineView
-    }()
-
     lazy var timerLabel: UILabel = {
         let timerLabel = UILabel()
         timerLabel.text = "Hello"
@@ -88,11 +80,9 @@ class TimerView: UIView {
         self.addSubview(elipseView)
         self.addSubview(timePickerView)
         elipseView.addSubview(timerLabel)
-        elipseView.addSubview(verticalLineView)
         timePickerView.isHidden = true
         placeButtons()
         placeTimerLabel()
-        placeVerticalLineViewAtPosition1()
         configureButtonsAction()
     }
 
@@ -132,14 +122,6 @@ class TimerView: UIView {
     }
 
     // MARK: - Constraints
-    final private func placeVerticalLineViewAtPosition1() {
-        NSLayoutConstraint.activate([
-            verticalLineView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            verticalLineView.centerYAnchor.constraint(equalTo: elipseView.safeAreaLayoutGuide.centerYAnchor, constant: -150),
-            verticalLineView.heightAnchor.constraint(equalToConstant: 15),
-            verticalLineView.widthAnchor.constraint(equalToConstant: 2)
-        ])
-    }
 
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
