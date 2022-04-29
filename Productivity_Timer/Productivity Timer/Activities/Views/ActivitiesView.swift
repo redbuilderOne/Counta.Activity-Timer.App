@@ -8,6 +8,7 @@ protocol ActivitiesViewDelegate: AnyObject {
 class ActivitiesView: UIView {
     
     weak var delegate: ActivitiesViewDelegate?
+    let cellID = CellsID()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,7 +27,7 @@ class ActivitiesView: UIView {
     }
 
     // MARK: - plusButton
-    lazy var plusButton: UIButton = {
+    private lazy var plusButton: UIButton = {
         let plusButton = UIButton()
         plusButton.setBackgroundImage(UIImage(systemName: "plus"), for: .normal)
         plusButton.tintColor = sandyYellowColor
@@ -34,8 +35,14 @@ class ActivitiesView: UIView {
         return plusButton
     }()
 
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: cellID.activityTableViewID)
         return tableView
     }()
 
@@ -43,7 +50,6 @@ class ActivitiesView: UIView {
     @objc func plusButtonDidPressed() {
         delegate?.plusButtonDidPressed()
     }
-
 
     // MARK: - Constraints
     final private func placePlusButton() {
@@ -54,8 +60,6 @@ class ActivitiesView: UIView {
         ])
     }
 
-
-
     // MARK: - protocol Actions
-    
+
 }

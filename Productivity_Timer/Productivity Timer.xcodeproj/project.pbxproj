@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		FF229A8A281ADF5A0080B89B /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A89281ADF5A0080B89B /* ActivitiesView.swift */; };
+		FF229A8C281BF7F80080B89B /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A8B281BF7F80080B89B /* NewActivityView.swift */; };
+		FF229A92281C76920080B89B /* ActivitiesTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A91281C76920080B89B /* ActivitiesTableViewExtension.swift */; };
+		FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A93281C78E70080B89B /* TableViewCellsID.swift */; };
+		FF229A96281C7B250080B89B /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A95281C7B250080B89B /* ActivityTableViewController.swift */; };
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
@@ -24,7 +28,7 @@
 		FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E5280BF8120046CE83 /* Time Format.swift */; };
 		FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */; };
 		FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */; };
-		FFD4B1F0280C1B740046CE83 /* NewActivityCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */; };
+		FFD4B1F0280C1B740046CE83 /* ? NewActivityCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EF280C1B740046CE83 /* ? NewActivityCreationView.swift */; };
 		FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */; };
 		FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F6280C1F360046CE83 /* AddButton.swift */; };
 		FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */; };
@@ -55,6 +59,10 @@
 
 /* Begin PBXFileReference section */
 		FF229A89281ADF5A0080B89B /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
+		FF229A8B281BF7F80080B89B /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
+		FF229A91281C76920080B89B /* ActivitiesTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewExtension.swift; sourceTree = "<group>"; };
+		FF229A93281C78E70080B89B /* TableViewCellsID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsID.swift; sourceTree = "<group>"; };
+		FF229A95281C7B250080B89B /* ActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +84,7 @@
 		FFD4B1E5280BF8120046CE83 /* Time Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time Format.swift"; sourceTree = "<group>"; };
 		FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
-		FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityCreationView.swift; sourceTree = "<group>"; };
+		FFD4B1EF280C1B740046CE83 /* ? NewActivityCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "? NewActivityCreationView.swift"; sourceTree = "<group>"; };
 		FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewActivityCreationView Exstension.swift"; sourceTree = "<group>"; };
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				FF71FB792805A40C00F2F455 /* ActivitiesViewController.swift */,
+				FF229A95281C7B250080B89B /* ActivityTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -252,9 +261,10 @@
 			children = (
 				FF229A89281ADF5A0080B89B /* ActivitiesView.swift */,
 				FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */,
-				FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */,
+				FFD4B1EF280C1B740046CE83 /* ? NewActivityCreationView.swift */,
 				FFD4B1F6280C1F360046CE83 /* AddButton.swift */,
 				FFD4B200280C74970046CE83 /* textField.swift */,
+				FF229A8B281BF7F80080B89B /* NewActivityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */,
+				FF229A93281C78E70080B89B /* TableViewCellsID.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +284,7 @@
 				FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */,
 				FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */,
 				FFD4B1FE280C74150046CE83 /* Keyboard.swift */,
+				FF229A91281C76920080B89B /* ActivitiesTableViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -410,13 +422,16 @@
 				FF229A8A281ADF5A0080B89B /* ActivitiesView.swift in Sources */,
 				FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */,
 				FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */,
-				FFD4B1F0280C1B740046CE83 /* NewActivityCreationView.swift in Sources */,
+				FFD4B1F0280C1B740046CE83 /* ? NewActivityCreationView.swift in Sources */,
+				FF229A96281C7B250080B89B /* ActivityTableViewController.swift in Sources */,
 				FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */,
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
 				FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */,
 				FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */,
 				FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */,
+				FF229A8C281BF7F80080B89B /* NewActivityView.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
+				FF229A92281C76920080B89B /* ActivitiesTableViewExtension.swift in Sources */,
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
 				FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
@@ -428,6 +443,7 @@
 				FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */,
 				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
 				FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */,
+				FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */,
 				FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

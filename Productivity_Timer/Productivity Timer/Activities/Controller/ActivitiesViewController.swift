@@ -4,6 +4,7 @@ import UIKit
 final class ActivitiesViewController: UIViewController, ActivitiesViewDelegate {
 
     var activitiesView = ActivitiesView()
+    let newActivityView = NewActivityView()
 
     override func loadView() {
         view = activitiesView
@@ -25,8 +26,9 @@ final class ActivitiesViewController: UIViewController, ActivitiesViewDelegate {
 
     // MARK: - Actions
     func plusButtonDidPressed() {
-        activitiesView.plusButton.isHidden = true
-        activitiesView.tableView.isHidden = false
+//      activitiesView.plusButton.isHidden = true
+//      activitiesView.tableView.isHidden = false
+        show(newActivityView, sender: self)
         print("plusButton is pressed")
     }
 }
