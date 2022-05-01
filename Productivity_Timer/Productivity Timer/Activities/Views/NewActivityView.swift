@@ -1,7 +1,14 @@
 
 import UIKit
 
+protocol NewActivityViewActions: AnyObject {
+    func clearButtonDidPressed()
+    func okButtonDidPressed()
+}
+
 class NewActivityView: UIView {
+
+    weak var delegate: NewActivityViewActions?
 
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -38,7 +45,9 @@ class NewActivityView: UIView {
         return descriptionTextView
     }()
 
-    lazy var clearButton = TimerControlButton(title: "clear", titleColor: .black, tintColor: .black, backgroundColor: pinkyWhiteColor, systemImageName: "xmark.square")
+    lazy var clearButton = TimerControlButton(title: "clear", titleColor: .systemRed, tintColor: .systemRed, backgroundColor: blueMoonlight, systemImageName: "xmark.square")
+
+    lazy var okButton = TimerControlButton(title: "ok", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: blueMoonlight, systemImageName: "checkmark")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,14 +64,29 @@ class NewActivityView: UIView {
         self.addSubview(textField)
         self.addSubview(descriptionTextView)
         self.addSubview(clearButton)
+        self.addSubview(okButton)
         configureUIElements()
+        configureButtonsActions()
+    }
+
+    private func configureButtonsActions() {
+        clearButton.addTarget(self, action: #selector(clearButtonAction), for: .touchUpInside)
+        okButton.addTarget(self, action: #selector(okButtonAction), for: .touchUpInside)
+    }
+
+    @objc func clearButtonAction() {
+        delegate?.clearButtonDidPressed()
+    }
+
+    @objc func okButtonAction() {
+        delegate?.okButtonDidPressed()
     }
 
     //MARK: - Constraints
     final private func configureUIElements() {
-        descriptionTextView.anchor(height: 356)
-        clearButton.anchor(height: 50)
-        
+        descriptionTextView.anchor(height: 128)
+        clearButton.anchor(width: 117, height: 50)
+        okButton.anchor(width: 117, height: 50)
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
@@ -85,8 +109,10 @@ class NewActivityView: UIView {
             descriptionTextView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
 
             clearButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
-            clearButton.trailingAnchor.constraint(equalTo: descriptionTextView.trailingAnchor),
             clearButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+
+            okButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
+            okButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
     }
 }

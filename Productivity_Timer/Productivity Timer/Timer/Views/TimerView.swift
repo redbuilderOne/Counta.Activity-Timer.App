@@ -53,9 +53,9 @@ class TimerView: UIView {
     }
 
     //MARK: - Buttons
-    lazy var startButton = TimerControlButton(title: "Start", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor,  systemImageName: "play")
-    lazy var stopButton = TimerControlButton(title: "Stop", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "stop")
-    lazy var setButton = TimerControlButton(title: "Set", titleColor: darkMoonColor, tintColor: darkMoonColor, backgroundColor: pinkyWhiteColor, systemImageName: "clock.arrow.2.circlepath")
+    lazy var startButton = TimerControlButton(title: "Start", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: blueMoonlight,  systemImageName: "play")
+    lazy var stopButton = TimerControlButton(title: "Stop", titleColor: .systemRed, tintColor: .systemRed, backgroundColor: blueMoonlight, systemImageName: "stop")
+    lazy var setButton = TimerControlButton(title: "Set", titleColor: .systemBlue, tintColor: .systemBlue, backgroundColor: blueMoonlight, systemImageName: "clock.arrow.2.circlepath")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
