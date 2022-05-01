@@ -1,7 +1,7 @@
 
 import UIKit
 
-class NewActivityView: UIViewController {
+class NewActivityView: UIView {
 
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -38,47 +38,55 @@ class NewActivityView: UIViewController {
         return descriptionTextView
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureView()
-        view.backgroundColor = darkMoonColor
-        view.addSubview(titleLabel)
-        view.addSubview(textField)
-        view.addSubview(descriptionLabel)
-        view.addSubview(descriptionTextView)
+    lazy var clearButton = TimerControlButton(title: "clear", titleColor: .black, tintColor: .black, backgroundColor: pinkyWhiteColor, systemImageName: "xmark.square")
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.addSubview(titleLabel)
+        self.addSubview(descriptionLabel)
+        self.addSubview(textField)
+        self.addSubview(descriptionTextView)
+        self.addSubview(clearButton)
         configureUIElements()
     }
 
-    final private func configureView() {
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.tintColor = sandyYellowColor
-        self.navigationItem.backBarButtonItem = UIBarButtonItem()
-        view.backgroundColor = darkMoonColor
-    }
-
     //MARK: - Constraints
-    private func configureUIElements() {
+    final private func configureUIElements() {
         descriptionTextView.anchor(height: 356)
+        clearButton.anchor(height: 50)
+        
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-            titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            titleLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
 
-            textField.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            textField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             textField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            textField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            textField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
 
-            descriptionLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            descriptionLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             descriptionLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 16),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            descriptionLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            descriptionLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
 
             descriptionTextView.centerXAnchor.constraint(equalTo: descriptionLabel.centerXAnchor),
             descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            descriptionTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            descriptionTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16)
+            descriptionTextView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            descriptionTextView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+
+            clearButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
+            clearButton.trailingAnchor.constraint(equalTo: descriptionTextView.trailingAnchor),
+            clearButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
         ])
     }
 }

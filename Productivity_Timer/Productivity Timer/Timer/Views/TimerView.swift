@@ -65,12 +65,6 @@ class TimerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func configureButtonsAction() {
-        startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
-        stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-        setButton.addTarget(self, action: #selector(setButtonPressed), for: .touchUpInside)
-    }
-
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundColor = darkMoonColor
@@ -137,6 +131,13 @@ class TimerView: UIView {
             timePickerView.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
             timePickerView.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
         ])
+    }
+
+    //MARK: - Buttons Configuration
+    private func configureButtonsAction() {
+        startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
+        stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
+        setButton.addTarget(self, action: #selector(setButtonPressed), for: .touchUpInside)
     }
 
     final private func placeButtons() {

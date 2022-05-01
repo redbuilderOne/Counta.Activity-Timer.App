@@ -8,3 +8,12 @@ extension ActivitiesViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension NewActivityViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        newActivityView.textField.resignFirstResponder()
+        newActivityView.descriptionTextView.resignFirstResponder()
+        return true
+    }
+}

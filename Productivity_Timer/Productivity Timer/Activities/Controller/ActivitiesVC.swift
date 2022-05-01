@@ -4,7 +4,7 @@ import UIKit
 final class ActivitiesViewController: UIViewController, ActivitiesViewDelegate {
 
     var activitiesView = ActivitiesView()
-    let newActivityView = NewActivityView()
+    let newActivityView = NewActivityViewController()
 
     override func loadView() {
         view = activitiesView
