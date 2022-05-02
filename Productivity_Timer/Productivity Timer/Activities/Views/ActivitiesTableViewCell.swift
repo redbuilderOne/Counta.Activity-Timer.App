@@ -33,10 +33,31 @@ class ActivitiesTableViewCell: UITableViewCell {
         super.layoutSubviews()
         contentView.addSubview(activityTitleLabel)
         contentView.addSubview(descriptionLabel)
+        setConstraints()
     }
 
     func set(object: Activity) {
         self.activityTitleLabel.text = object.title
-        self.descriptionLabel.text = object.description
+        self.descriptionLabel.text = object.desc
+    }
+
+    //MARK: Constraints
+    private func setConstraints() {
+        activityTitleLabel.anchor(top: contentView.topAnchor,
+                                  left: contentView.leftAnchor,
+                                  paddingTop: 16,
+                                  paddingLeft: 16,
+                                  paddingBottom: 12,
+                                  width: self.frame.width,
+                                  height: self.frame.height)
+
+        descriptionLabel.anchor(top: activityTitleLabel.bottomAnchor,
+                                left: contentView.leftAnchor,
+                                right: contentView.rightAnchor,
+                                paddingTop: 16,
+                                paddingLeft: 16,
+                                paddingRight: 0,
+                                width: self.frame.width,
+                                height: self.frame.height)
     }
 }

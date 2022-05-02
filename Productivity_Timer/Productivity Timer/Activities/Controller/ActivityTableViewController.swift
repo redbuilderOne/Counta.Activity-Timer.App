@@ -1,24 +1,23 @@
 
 import UIKit
 
-protocol NewActivityIsAdded {
-    func newActivityIsAdded()
-}
-
 class ActivityTableViewController: UITableViewController {
 
-    lazy var objects: [Activity] = []
-    lazy var identifier = CellsID()
+//    lazy var objects0: [ActivityModel] = []
+    static var objects: [Activity] = []
+    lazy var identifier = CellsID.activityTableViewID
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         self.title = "My Activities"
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.tableView.register(ActivityTableViewController.self, forCellReuseIdentifier: CellsID.activityTableViewID)
     }
 
-    func appendNewActivity() {
-//        newActivityIsAdded()
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -26,12 +25,12 @@ class ActivityTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return ActivityTableViewController.objects.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier.activityTableViewID, for: indexPath) as? ActivitiesTableViewCell else { fatalError() }
-        let object = objects[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellsID.activityTableViewID, for: indexPath) as? ActivitiesTableViewCell else { fatalError() }
+        let object = ActivityTableViewController.objects[indexPath.row]
         cell.set(object: object)
         return cell
     }
@@ -42,7 +41,7 @@ class ActivityTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            ActivityTableViewController.objects.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -52,8 +51,8 @@ class ActivityTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedEmoji = objects.remove(at: sourceIndexPath.row)
-        objects.insert(movedEmoji, at: destinationIndexPath.row)
+        let movedEmoji = ActivityTableViewController.objects.remove(at: sourceIndexPath.row)
+        ActivityTableViewController.objects.insert(movedEmoji, at: destinationIndexPath.row)
         tableView.reloadData()
     }
 
@@ -65,7 +64,7 @@ class ActivityTableViewController: UITableViewController {
 
     func doneAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Done") { (action, view, completion) in
-            self.objects.remove(at: indexPath.row)
+            ActivityTableViewController.objects.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
@@ -75,13 +74,13 @@ class ActivityTableViewController: UITableViewController {
     }
 
     func favouriteAction(at indexPath: IndexPath) -> UIContextualAction {
-        var object = objects[indexPath.row]
+        let object = ActivityTableViewController.objects[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Favourite") { (action, view, completion) in
-            object.isFavourite = !object.isFavourite
-            self.objects[indexPath.row] = object
+            object.fav = !object.fav
+            ActivityTableViewController.objects[indexPath.row] = object
             completion(true)
         }
-        action.backgroundColor = object.isFavourite ? .systemPurple : .systemGray
+        action.backgroundColor = object.fav ? .systemPurple : .systemGray
         action.image = UIImage(systemName: "heart")
         return action
     }

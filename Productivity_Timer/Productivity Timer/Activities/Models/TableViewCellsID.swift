@@ -2,5 +2,5 @@
 import Foundation
 
 struct CellsID {
-    let activityTableViewID = "ActivitiesTableViewCell"
+    static let activityTableViewID = "ActivitiesTableViewCell"
 }

@@ -1,7 +1,8 @@
 
 import UIKit
+import CoreData
 
-class NewActivityViewController: UIViewController, NewActivityViewActions, RemovableTextWithAlert, NewActivityIsAdded {
+class NewActivityViewController: UIViewController, NewActivityViewActions, RemovableTextWithAlert {
 
     lazy var newActivityView = NewActivityView()
     lazy var conformAlert = Alert(delegate: self)
@@ -42,17 +43,22 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         newActivityView.descriptionTextView.text = ""
     }
 
-    func newActivityIsAdded() {
-        
-    }
-
     func okButtonDidPressed() {
-        newActivityView.textField.text = newActivityTitle
-        newActivityView.descriptionTextView.text = newActivityDescription
-        lazy var newActivity = Activity(title: newActivityTitle, description: newActivityDescription, isFavourite: false)
 
-
-
-        show(activityTableViewController, sender: self)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
+        let newActivity = Activity(entity: entity!, insertInto: context)
+        newActivity.id = ActivityTableViewController.objects.count as NSNumber
+        newActivity.title =  newActivityView.textField.text
+        newActivity.desc = newActivityView.descriptionTextView.text
+        newActivity.fav = false
+        do {
+            try context.save()
+            ActivityTableViewController.objects.append(newActivity)
+            show(activityTableViewController, sender: self)
+        } catch {
+            print("Can not save context")
+        }
     }
 }
