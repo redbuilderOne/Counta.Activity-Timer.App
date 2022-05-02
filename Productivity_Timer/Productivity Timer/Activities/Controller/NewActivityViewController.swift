@@ -1,10 +1,10 @@
 
 import UIKit
 
-class NewActivityViewController: UIViewController, NewActivityViewActions {
+class NewActivityViewController: UIViewController, NewActivityViewActions, RemovableTextWithAlert {
 
     lazy var newActivityView = NewActivityView()
-    lazy var conformAlert = Alert()
+    lazy var conformAlert = Alert(delegate: self)
 
     override func loadView() {
         view = newActivityView
@@ -23,14 +23,14 @@ class NewActivityViewController: UIViewController, NewActivityViewActions {
         view.backgroundColor = darkMoonColor
     }
 
+    //MARK: - Buttons actions
     func clearButtonDidPressed() {
         conformAlert.textClearAlert(on: self, with: "Are you sure?", message: "This will delete all the text")
+    }
 
-
-//        newActivityView.textField.text = ""
-//        newActivityView.descriptionTextView.text = ""
-        
-        print("clearButton is pressed")
+    func removeText() {
+        newActivityView.textField.text = ""
+        newActivityView.descriptionTextView.text = ""
     }
 
     func okButtonDidPressed() {
