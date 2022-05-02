@@ -8,7 +8,7 @@ protocol ActivitiesViewDelegate: AnyObject {
 class ActivitiesView: UIView {
     
     weak var delegate: ActivitiesViewDelegate?
-    let cellID = CellsID()
+//    let cellID = CellsID()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,12 +22,10 @@ class ActivitiesView: UIView {
         super.layoutSubviews()
         self.addSubview(plusButton)
         placePlusButton()
-        self.addSubview(tableView)
-        tableView.isHidden = true
     }
 
     // MARK: - plusButton
-    private lazy var plusButton: UIButton = {
+    lazy var plusButton: UIButton = {
         let plusButton = UIButton()
         plusButton.setBackgroundImage(UIImage(systemName: "plus"), for: .normal)
         plusButton.tintColor = sandyYellowColor
@@ -35,16 +33,16 @@ class ActivitiesView: UIView {
         return plusButton
     }()
 
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: cellID.activityTableViewID)
-        return tableView
-    }()
+//    private lazy var tableView: UITableView = {
+//        let tableView = UITableView()
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = UITableView.automaticDimension
+//        tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: cellID.activityTableViewID)
+//        return tableView
+//    }()
 
     // MARK: - protocol delegate
     @objc func plusButtonDidPressed() {

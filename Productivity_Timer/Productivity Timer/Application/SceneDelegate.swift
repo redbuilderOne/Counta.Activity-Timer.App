@@ -35,7 +35,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().tintColor = sandyYellowColor
         UITabBar.appearance().unselectedItemTintColor = pinkyWhiteColor
         tabBar.viewControllers = [createTimerNavigationController(), createActivitiesNavigationController()]
-
         return tabBar
     }
 

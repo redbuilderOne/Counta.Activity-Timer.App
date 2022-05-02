@@ -16,18 +16,19 @@ final class ActivitiesViewController: UIViewController, ActivitiesViewDelegate {
         configureView()
     }
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        configureView()
+    }
+
     final private func configureView() {
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.tintColor = sandyYellowColor
-        self.navigationItem.backBarButtonItem = UIBarButtonItem()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
         view.backgroundColor = darkMoonColor
     }
 
     // MARK: - Actions
     func plusButtonDidPressed() {
-//      activitiesView.plusButton.isHidden = true
-//      activitiesView.tableView.isHidden = false
         show(newActivityView, sender: self)
         print("plusButton is pressed")
     }

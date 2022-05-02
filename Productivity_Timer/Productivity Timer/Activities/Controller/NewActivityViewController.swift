@@ -5,6 +5,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     lazy var newActivityView = NewActivityView()
     lazy var conformAlert = Alert(delegate: self)
+    lazy var activityTableViewController = ActivityTableViewController()
 
     override func loadView() {
         view = newActivityView
@@ -13,6 +14,11 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     override func viewDidLoad() {
         super.viewDidLoad()
         newActivityView.delegate = self
+        configureView()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         configureView()
     }
 
@@ -34,6 +40,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     }
 
     func okButtonDidPressed() {
-        print("okButton is pressed")
+        show(activityTableViewController, sender: self)
     }
 }
