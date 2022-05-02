@@ -22,7 +22,9 @@ class NewActivityView: UIView {
     lazy var textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "here"
+        textField.delegate = self
         textField.textColor = sandyYellowColor
+        textField.backgroundColor = blueMoonlight
         textField.font = .systemFont(ofSize: 24)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -40,8 +42,9 @@ class NewActivityView: UIView {
     lazy var descriptionTextView: UITextView = {
         let descriptionTextView = UITextView()
         descriptionTextView.font = .systemFont(ofSize: 24)
+        descriptionTextView.delegate = self
         descriptionTextView.textColor = sandyYellowColor
-        descriptionTextView.backgroundColor = .systemGray6
+        descriptionTextView.backgroundColor = blueMoonlight
         return descriptionTextView
     }()
 
@@ -67,6 +70,10 @@ class NewActivityView: UIView {
         self.addSubview(okButton)
         configureUIElements()
         configureButtonsActions()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
     }
 
     private func configureButtonsActions() {
@@ -114,5 +121,13 @@ class NewActivityView: UIView {
             okButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
             okButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
+    }
+}
+
+extension NewActivityView: UITextFieldDelegate, UITextViewDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleLabel.resignFirstResponder()
+        descriptionTextView.resignFirstResponder()
+        return true
     }
 }

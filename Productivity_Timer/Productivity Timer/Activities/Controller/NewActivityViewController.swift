@@ -45,20 +45,28 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     func okButtonDidPressed() {
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
-        let newActivity = Activity(entity: entity!, insertInto: context)
-        newActivity.id = ActivityTableViewController.objects.count as NSNumber
-        newActivity.title =  newActivityView.textField.text
-        newActivity.desc = newActivityView.descriptionTextView.text
-        newActivity.fav = false
-        do {
-            try context.save()
-            ActivityTableViewController.objects.append(newActivity)
-            show(activityTableViewController, sender: self)
-        } catch {
-            print("Can not save context")
+        if newActivityView.textField.text != "" {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
+            let newActivity = Activity(entity: entity!, insertInto: context)
+
+            newActivity.id = ActivityTableViewController.objects.count as NSNumber
+            newActivity.title = newActivityView.textField.text
+            newActivity.desc = newActivityView.descriptionTextView.text
+            newActivity.fav = false
+
+            do {
+                try context.save()
+                ActivityTableViewController.objects.append(newActivity)
+                print("New Activity is created \(ActivityTableViewController.objects)")
+            } catch {
+                print("Can't save the context")
+            }
+            //        show(activityTableViewController, sender: self)
+        } else {
+            conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
         }
     }
 }

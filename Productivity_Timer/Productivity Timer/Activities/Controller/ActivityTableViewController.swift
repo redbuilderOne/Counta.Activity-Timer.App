@@ -3,7 +3,6 @@ import UIKit
 
 class ActivityTableViewController: UITableViewController {
 
-//    lazy var objects0: [ActivityModel] = []
     static var objects: [Activity] = []
     lazy var identifier = CellsID.activityTableViewID
     
@@ -15,6 +14,7 @@ class ActivityTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.tableView.register(ActivityTableViewController.self, forCellReuseIdentifier: CellsID.activityTableViewID)
     }
+    
 
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
