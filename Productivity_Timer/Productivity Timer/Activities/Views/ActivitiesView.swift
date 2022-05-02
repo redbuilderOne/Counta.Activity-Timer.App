@@ -8,7 +8,6 @@ protocol ActivitiesViewDelegate: AnyObject {
 class ActivitiesView: UIView {
     
     weak var delegate: ActivitiesViewDelegate?
-//    let cellID = CellsID()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,17 +31,6 @@ class ActivitiesView: UIView {
         plusButton.addTarget(self, action: #selector(plusButtonDidPressed), for: .touchUpInside)
         return plusButton
     }()
-
-//    private lazy var tableView: UITableView = {
-//        let tableView = UITableView()
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = UITableView.automaticDimension
-//        tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: cellID.activityTableViewID)
-//        return tableView
-//    }()
 
     // MARK: - protocol delegate
     @objc func plusButtonDidPressed() {

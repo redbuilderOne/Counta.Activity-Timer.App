@@ -30,6 +30,5 @@ final class ActivitiesViewController: UIViewController, ActivitiesViewDelegate {
     // MARK: - Actions
     func plusButtonDidPressed() {
         show(newActivityView, sender: self)
-        print("plusButton is pressed")
     }
 }

@@ -1,16 +1,24 @@
 
 import UIKit
 
+protocol NewActivityIsAdded {
+    func newActivityIsAdded()
+}
+
 class ActivityTableViewController: UITableViewController {
 
-    var objects: [Activity] = []
-    let identifier = CellsID()
+    lazy var objects: [Activity] = []
+    lazy var identifier = CellsID()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         self.title = "My Activities"
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+    }
+
+    func appendNewActivity() {
+//        newActivityIsAdded()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

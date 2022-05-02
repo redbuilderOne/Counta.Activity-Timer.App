@@ -7,8 +7,8 @@ struct Activity {
     var isFavourite: Bool
     var timeSpent: String?
 
-    func createNewActivity(name: String, description: String) -> Activity {
-        let newActivity = Activity(title: name, description: description, isFavourite: false)
+    func createNewActivity(title: String, description: String) -> Activity {
+        let newActivity = Activity(title: title, description: description, isFavourite: false)
         return newActivity
     }
 }

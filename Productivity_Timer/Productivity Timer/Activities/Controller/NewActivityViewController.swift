@@ -1,11 +1,14 @@
 
 import UIKit
 
-class NewActivityViewController: UIViewController, NewActivityViewActions, RemovableTextWithAlert {
+class NewActivityViewController: UIViewController, NewActivityViewActions, RemovableTextWithAlert, NewActivityIsAdded {
 
     lazy var newActivityView = NewActivityView()
     lazy var conformAlert = Alert(delegate: self)
     lazy var activityTableViewController = ActivityTableViewController()
+
+    lazy var newActivityTitle = String()
+    lazy var newActivityDescription = String()
 
     override func loadView() {
         view = newActivityView
@@ -39,7 +42,17 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         newActivityView.descriptionTextView.text = ""
     }
 
+    func newActivityIsAdded() {
+        
+    }
+
     func okButtonDidPressed() {
+        newActivityView.textField.text = newActivityTitle
+        newActivityView.descriptionTextView.text = newActivityDescription
+        lazy var newActivity = Activity(title: newActivityTitle, description: newActivityDescription, isFavourite: false)
+
+
+
         show(activityTableViewController, sender: self)
     }
 }
