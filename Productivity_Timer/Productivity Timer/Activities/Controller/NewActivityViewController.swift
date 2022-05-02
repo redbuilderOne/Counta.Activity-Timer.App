@@ -52,19 +52,19 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
             let newActivity = Activity(entity: entity!, insertInto: context)
 
-            newActivity.id = ActivityTableViewController.objects.count as NSNumber
+            newActivity.id = activityTableViewController.objects.count as NSNumber
             newActivity.title = newActivityView.textField.text
             newActivity.desc = newActivityView.descriptionTextView.text
             newActivity.fav = false
 
             do {
                 try context.save()
-                ActivityTableViewController.objects.append(newActivity)
-                print("New Activity is created \(ActivityTableViewController.objects)")
+                activityTableViewController.objects.append(newActivity)
+                show(activityTableViewController, sender: self)
+                print("New Activity is created \(activityTableViewController.objects)")
             } catch {
                 print("Can't save the context")
             }
-            //        show(activityTableViewController, sender: self)
         } else {
             conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
         }
