@@ -46,12 +46,12 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     func okButtonDidPressed() {
 
         if newActivityView.textField.text != "" {
+            
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
 
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
             let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
             let newActivity = Activity(entity: entity!, insertInto: context)
-
             newActivity.id = activityTableViewController.objects.count as NSNumber
             newActivity.title = newActivityView.textField.text
             newActivity.desc = newActivityView.descriptionTextView.text
@@ -61,7 +61,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 try context.save()
                 activityTableViewController.objects.append(newActivity)
                 show(activityTableViewController, sender: self)
-                print("New Activity is created \(activityTableViewController.objects)")
             } catch {
                 print("Can't save the context")
             }

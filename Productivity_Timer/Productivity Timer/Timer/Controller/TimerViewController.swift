@@ -16,6 +16,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+
         timerView.delegate = self
 
         constants.startTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue) as? Date

@@ -7,7 +7,8 @@ class ActivitiesTableViewCell: UITableViewCell {
         let activityTitleLabel = UILabel()
         activityTitleLabel.text = "Hello"
         activityTitleLabel.textColor = pinkyWhiteColor
-        activityTitleLabel.font = .systemFont(ofSize: 16)
+        activityTitleLabel.font = .boldSystemFont(ofSize: 16)
+        activityTitleLabel.textAlignment = .left
         activityTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         return activityTitleLabel
     }()
@@ -17,6 +18,7 @@ class ActivitiesTableViewCell: UITableViewCell {
         descriptionLabel.text = "World"
         descriptionLabel.textColor = pinkyWhiteColor
         descriptionLabel.font = .systemFont(ofSize: 12)
+        descriptionLabel.textAlignment = .left
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         return descriptionLabel
     }()
@@ -33,6 +35,7 @@ class ActivitiesTableViewCell: UITableViewCell {
         super.layoutSubviews()
         contentView.addSubview(activityTitleLabel)
         contentView.addSubview(descriptionLabel)
+        contentView.backgroundColor = blueMoonlight
         setConstraints()
     }
 
@@ -45,18 +48,14 @@ class ActivitiesTableViewCell: UITableViewCell {
     private func setConstraints() {
         activityTitleLabel.anchor(top: contentView.topAnchor,
                                   left: contentView.leftAnchor,
-                                  paddingTop: 16,
                                   paddingLeft: 16,
-                                  paddingBottom: 12,
                                   width: self.frame.width,
                                   height: self.frame.height)
 
         descriptionLabel.anchor(top: activityTitleLabel.bottomAnchor,
                                 left: contentView.leftAnchor,
                                 right: contentView.rightAnchor,
-                                paddingTop: 16,
                                 paddingLeft: 16,
-                                paddingRight: 0,
                                 width: self.frame.width,
                                 height: self.frame.height)
     }
