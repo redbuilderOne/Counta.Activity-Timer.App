@@ -5,13 +5,25 @@ class ActivityTableViewController: UITableViewController {
 
     lazy var objects: [Activity] = []
     lazy var identifier = CellsID.activityTableViewID
+    lazy var newActivityView = NewActivityViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
-        self.title = "My Activities"
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        setupNavigationBar()
         self.tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: identifier)
+    }
+
+    private func setupNavigationBar() {
+        self.title = "Activities"
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addNewActivity))
+        self.navigationItem.rightBarButtonItem = addItem
+    }
+
+    @objc func addNewActivity() {
+        print("plus is pressed")
+        show(newActivityView, sender: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -39,12 +51,13 @@ class ActivityTableViewController: UITableViewController {
         let object = objects[indexPath.row]
         cell.set(object: object)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDidTapped))
+        cell.backgroundColor = blueMoonlight
         cell.addGestureRecognizer(tapGesture)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
+        return .none
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
