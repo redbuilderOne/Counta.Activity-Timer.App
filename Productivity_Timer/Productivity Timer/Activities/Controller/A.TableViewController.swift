@@ -87,8 +87,8 @@ class ActivityTableViewController: UITableViewController {
             self.objects[indexPath.row] = object
             completion(true)
         }
-        action.backgroundColor = object.fav ? .systemPurple : sandyYellowColor
-        action.image = UIImage(systemName: "heart")
+        action.backgroundColor = object.fav ? .systemPurple : .systemGray
+        action.image = object.fav ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         return action
     }
 }

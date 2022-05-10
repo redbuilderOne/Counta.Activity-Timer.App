@@ -45,7 +45,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     }
 
     func okButtonDidPressed() {
-
         if newActivityView.textField.text != "" {
             
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
