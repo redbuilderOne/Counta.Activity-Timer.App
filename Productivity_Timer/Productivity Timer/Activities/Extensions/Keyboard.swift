@@ -9,11 +9,10 @@ extension ActivitiesViewController: UITextFieldDelegate {
     }
 }
 
-extension NewActivityViewController: UITextFieldDelegate {
+extension NewActivityViewController: UITextFieldDelegate, UITextViewDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         newActivityView.textField.resignFirstResponder()
-        newActivityView.descriptionTextView.resignFirstResponder()
         return true
     }
 }

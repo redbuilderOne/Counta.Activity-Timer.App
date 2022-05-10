@@ -27,6 +27,7 @@ class NewActivityView: UIView {
         textField.backgroundColor = blueMoonlight
         textField.font = .systemFont(ofSize: 24)
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.returnKeyType = .done
         return textField
     }()
 

@@ -18,6 +18,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     override func viewDidLoad() {
         super.viewDidLoad()
         newActivityView.delegate = self
+        newActivityView.textField.delegate = self
         configureView()
     }
 

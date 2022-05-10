@@ -18,6 +18,13 @@ class ActivityTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    @objc func cellDidTapped() {
+        //        show(ActivityDetailedViewController(activity: ActivityModel), sender: self)
+        //        present(ViewFirstPost(post: fourthPostFull), animated: true)
+        tableView.reloadData()
+
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -30,6 +37,8 @@ class ActivityTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ActivitiesTableViewCell else { fatalError() }
         let object = objects[indexPath.row]
         cell.set(object: object)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDidTapped))
+        cell.addGestureRecognizer(tapGesture)
         return cell
     }
 

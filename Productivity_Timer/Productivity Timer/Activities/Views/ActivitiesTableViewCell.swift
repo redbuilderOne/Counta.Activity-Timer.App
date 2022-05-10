@@ -52,11 +52,6 @@ class ActivitiesTableViewCell: UITableViewCell {
                                   width: self.frame.width,
                                   height: self.frame.height)
 
-        descriptionLabel.anchor(top: activityTitleLabel.bottomAnchor,
-                                left: contentView.leftAnchor,
-                                right: contentView.rightAnchor,
-                                paddingLeft: 16,
-                                width: self.frame.width,
-                                height: self.frame.height)
+        descriptionLabel.isHidden = true
     }
 }
