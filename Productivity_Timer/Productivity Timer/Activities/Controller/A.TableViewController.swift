@@ -16,13 +16,14 @@ class ActivityTableViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
+        view.backgroundColor = darkMoonColor
     }
 
     @objc func cellDidTapped() {
+        // TODO: - Переход по тапу на ячейку с активити на страницу подробности этого активити
         //        show(ActivityDetailedViewController(activity: ActivityModel), sender: self)
         //        present(ViewFirstPost(post: fourthPostFull), animated: true)
         tableView.reloadData()
-
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,6 +90,11 @@ class ActivityTableViewController: UITableViewController {
         }
         action.backgroundColor = object.fav ? .systemPurple : .systemGray
         action.image = object.fav ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        if object.fav {
+            object.fav = true
+        } else {
+            object.fav = false
+        }
         return action
     }
 }
