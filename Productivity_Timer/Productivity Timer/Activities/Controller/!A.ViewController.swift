@@ -14,6 +14,7 @@ final class ActivitiesViewController: UIViewController, ActivitiesViewDelegate {
         super.viewDidLoad()
         activitiesView.delegate = self
         configureView()
+        newActivityView.okButtonDidPressed()
     }
 
     override func viewWillLayoutSubviews() {
@@ -29,6 +30,6 @@ final class ActivitiesViewController: UIViewController, ActivitiesViewDelegate {
 
     // MARK: - Actions
     func plusButtonDidPressed() {
-        show(newActivityView, sender: self)
+        self.navigationController?.pushViewController(newActivityView, animated: true)
     }
 }

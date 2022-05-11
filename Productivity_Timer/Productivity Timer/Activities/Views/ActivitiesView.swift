@@ -45,7 +45,4 @@ class ActivitiesView: UIView {
             plusButton.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor)
         ])
     }
-
-    // MARK: - protocol Actions
-
 }

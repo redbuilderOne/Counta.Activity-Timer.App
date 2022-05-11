@@ -5,7 +5,6 @@ class ActivitiesTableViewCell: UITableViewCell {
 
     lazy var activityTitleLabel: UILabel = {
         let activityTitleLabel = UILabel()
-        activityTitleLabel.text = "Hello"
         activityTitleLabel.textColor = pinkyWhiteColor
         activityTitleLabel.font = .boldSystemFont(ofSize: 16)
         activityTitleLabel.textAlignment = .left
@@ -15,7 +14,6 @@ class ActivitiesTableViewCell: UITableViewCell {
 
     lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "World"
         descriptionLabel.textColor = pinkyWhiteColor
         descriptionLabel.font = .systemFont(ofSize: 12)
         descriptionLabel.textAlignment = .left

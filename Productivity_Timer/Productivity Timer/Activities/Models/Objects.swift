@@ -6,3 +6,7 @@ struct Objects {
     var description: String
     // var timeSpent: Data? //will add later
 }
+
+struct ActivitiesObject {
+    static var arrayOfActivities: [Activity] = []
+}

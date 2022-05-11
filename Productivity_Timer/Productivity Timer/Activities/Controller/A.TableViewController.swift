@@ -3,7 +3,7 @@ import UIKit
 
 class ActivityTableViewController: UITableViewController {
 
-    lazy var objects: [Activity] = []
+//    lazy var objects: [Activity] = []
     lazy var identifier = CellsID.activityTableViewID
     lazy var newActivityView = NewActivityViewController()
 
@@ -42,13 +42,17 @@ class ActivityTableViewController: UITableViewController {
         return 1
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40.0
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return ActivitiesObject.arrayOfActivities.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ActivitiesTableViewCell else { fatalError() }
-        let object = objects[indexPath.row]
+        let object = ActivitiesObject.arrayOfActivities[indexPath.row]
         cell.set(object: object)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDidTapped))
         cell.backgroundColor = blueMoonlight
@@ -62,7 +66,7 @@ class ActivityTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -72,8 +76,8 @@ class ActivityTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedEmoji = objects.remove(at: sourceIndexPath.row)
-        objects.insert(movedEmoji, at: destinationIndexPath.row)
+        let movedEmoji = ActivitiesObject.arrayOfActivities.remove(at: sourceIndexPath.row)
+        ActivitiesObject.arrayOfActivities.insert(movedEmoji, at: destinationIndexPath.row)
         tableView.reloadData()
     }
 
@@ -85,7 +89,7 @@ class ActivityTableViewController: UITableViewController {
 
     func doneAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Done") { (action, view, completion) in
-            self.objects.remove(at: indexPath.row)
+            ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
@@ -95,10 +99,10 @@ class ActivityTableViewController: UITableViewController {
     }
 
     func favouriteAction(at indexPath: IndexPath) -> UIContextualAction {
-        let object = objects[indexPath.row]
+        let object = ActivitiesObject.arrayOfActivities[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Favourite") { (action, view, completion) in
             object.fav = !object.fav
-            self.objects[indexPath.row] = object
+            ActivitiesObject.arrayOfActivities[indexPath.row] = object
             completion(true)
         }
         action.backgroundColor = object.fav ? .systemPurple : .systemGray
