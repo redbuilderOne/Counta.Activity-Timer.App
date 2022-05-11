@@ -28,7 +28,6 @@
 		FF71FB672805A1D100F2F455 /* Productivity_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB662805A1D100F2F455 /* Productivity_TimerUITests.swift */; };
 		FF71FB692805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */; };
 		FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB752805A3D200F2F455 /* TimerViewController.swift */; };
-		FF71FB7A2805A40C00F2F455 /* !A.ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB792805A40C00F2F455 /* !A.ViewController.swift */; };
 		FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7D2805A56D00F2F455 /* Color Sets.swift */; };
 		FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */; };
 		FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1CF280B548C0046CE83 /* TimerView.swift */; };
@@ -38,7 +37,6 @@
 		FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */; };
 		FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */; };
 		FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F6280C1F360046CE83 /* AddButton.swift */; };
-		FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */; };
 		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
 		FFD4B201280C74970046CE83 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B200280C74970046CE83 /* TextField.swift */; };
 		FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
@@ -91,7 +89,6 @@
 		FF71FB662805A1D100F2F455 /* Productivity_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerUITests.swift; sourceTree = "<group>"; };
 		FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF71FB752805A3D200F2F455 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		FF71FB792805A40C00F2F455 /* !A.ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "!A.ViewController.swift"; sourceTree = "<group>"; };
 		FF71FB7D2805A56D00F2F455 /* Color Sets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Sets.swift"; sourceTree = "<group>"; };
 		FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView Extension.swift"; sourceTree = "<group>"; };
 		FFD4B1CF280B548C0046CE83 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -101,7 +98,6 @@
 		FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
-		FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		FFD4B200280C74970046CE83 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		FFD4B209281300A10046CE83 /* Picker Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Format.swift"; sourceTree = "<group>"; };
@@ -267,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */,
-				FF71FB792805A40C00F2F455 /* !A.ViewController.swift */,
 				FF229A95281C7B250080B89B /* A.TableViewController.swift */,
 				FF229AE92824F79A0080B89B /* A.DetailedViewController.swift */,
 			);
@@ -303,7 +298,6 @@
 		FFD4B1F1280C1CB90046CE83 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */,
 				FFD4B1FE280C74150046CE83 /* Keyboard.swift */,
 				FF229AEB2824F98B0080B89B /* A.DetailedVCExtension.swift */,
 			);
@@ -439,11 +433,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF71FB7A2805A40C00F2F455 /* !A.ViewController.swift in Sources */,
 				FF229A8A281ADF5A0080B89B /* ActivitiesView.swift in Sources */,
 				FF229AE6282177F20080B89B /* ? ShapeLayer.swift in Sources */,
 				FF229AEA2824F79A0080B89B /* A.DetailedViewController.swift in Sources */,
-				FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */,
 				FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */,
 				FF229A9F28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld in Sources */,
 				FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */,

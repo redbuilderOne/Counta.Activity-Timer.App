@@ -3,7 +3,6 @@ import UIKit
 
 class ActivityTableViewController: UITableViewController {
 
-//    lazy var objects: [Activity] = []
     lazy var identifier = CellsID.activityTableViewID
     lazy var newActivityView = NewActivityViewController()
 
@@ -17,12 +16,13 @@ class ActivityTableViewController: UITableViewController {
     private func setupNavigationBar() {
         self.title = "Activities"
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem?.tintColor = sandyYellowColor
         let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addNewActivity))
         self.navigationItem.rightBarButtonItem = addItem
+        self.navigationItem.rightBarButtonItem?.tintColor = sandyYellowColor
     }
 
     @objc func addNewActivity() {
-        print("plus is pressed")
         show(newActivityView, sender: self)
     }
 
@@ -61,7 +61,7 @@ class ActivityTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
+        return .delete
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

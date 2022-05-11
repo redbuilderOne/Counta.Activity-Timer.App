@@ -77,7 +77,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     func okButtonDidPressed() {
         saveData()
-        //        .tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
 }
