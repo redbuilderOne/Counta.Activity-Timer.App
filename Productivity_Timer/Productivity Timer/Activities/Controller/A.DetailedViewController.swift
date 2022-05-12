@@ -14,23 +14,24 @@ class ActivityDetailedViewController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private lazy var activityDetailedView: UITableView = {
-        let activityDetailedView = UITableView()
-        activityDetailedView.translatesAutoresizingMaskIntoConstraints = false
-        activityDetailedView.delegate = self
-        activityDetailedView.dataSource = self
-        activityDetailedView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        return activityDetailedView
+    private lazy var activityTableView: UITableView = {
+        let activityTableView = UITableView()
+        activityTableView.translatesAutoresizingMaskIntoConstraints = false
+        activityTableView.delegate = self
+        activityTableView.dataSource = self
+        activityTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        activityTableView.backgroundColor = darkMoonColor
+        return activityTableView
     }()
 
     private func confTableView() {
         NSLayoutConstraint.activate([
-            activityDetailedView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityDetailedView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            activityDetailedView.topAnchor.constraint(equalTo: view.topAnchor),
-            activityDetailedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            activityDetailedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            activityDetailedView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            activityTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            activityTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            activityTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            activityTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            activityTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
@@ -41,7 +42,7 @@ class ActivityDetailedViewController: UITabBarController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        view.addSubview(activityDetailedView)
+        view.addSubview(activityTableView)
         confTableView()
     }
 }

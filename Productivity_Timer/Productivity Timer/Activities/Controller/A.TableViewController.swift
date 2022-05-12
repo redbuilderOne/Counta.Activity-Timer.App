@@ -5,6 +5,7 @@ class ActivityTableViewController: UITableViewController {
 
     lazy var identifier = CellsID.activityTableViewID
     lazy var newActivityVC = NewActivityViewController()
+    var activityDetailedViewController: UITabBarController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +34,9 @@ class ActivityTableViewController: UITableViewController {
 
     @objc func cellDidTapped() {
         // TODO: - Переход по тапу на ячейку с активити на страницу подробности этого активити
-        //        show(ActivityDetailedViewController(activity: ActivityModel), sender: self)
-        //        present(ViewFirstPost(post: fourthPostFull), animated: true)
+        if let activityDetailedViewController = activityDetailedViewController {
+        present(activityDetailedViewController, animated: true)
+        }
         tableView.reloadData()
     }
 
@@ -57,6 +59,9 @@ class ActivityTableViewController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDidTapped))
         cell.backgroundColor = blueMoonlight
         cell.addGestureRecognizer(tapGesture)
+
+        activityDetailedViewController = ActivityDetailedViewController(activity: object)
+
         return cell
     }
 

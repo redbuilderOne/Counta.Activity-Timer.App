@@ -8,7 +8,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -19,13 +19,14 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.selectionStyle = .none
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = activity.title
+            cell.backgroundColor = blueMoonlight
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = activity.description
-            cell.imageView?.contentMode = .scaleAspectFill
+            cell.textLabel?.text = activity.desc
             cell.selectionStyle = .none
+            cell.backgroundColor = blueMoonlight
             return cell
 //        case 2:
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -46,8 +47,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
         case 0:
             return 50
         case 1:
-            return 200
-        case 2:
             return UITableView.automaticDimension
         default:
             fatalError()
