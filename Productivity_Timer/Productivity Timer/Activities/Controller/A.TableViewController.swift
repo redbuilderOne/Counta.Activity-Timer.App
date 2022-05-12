@@ -11,7 +11,7 @@ class ActivityTableViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         setupNavigationBar()
-        self.tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: identifier)
+        tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: identifier)
     }
 
     private func setupNavigationBar() {
@@ -33,7 +33,6 @@ class ActivityTableViewController: UITableViewController {
     }
 
     @objc func cellDidTapped() {
-        // TODO: - Переход по тапу на ячейку с активити на страницу подробности этого активити
         if let activityDetailedViewController = activityDetailedViewController {
         present(activityDetailedViewController, animated: true)
         }
@@ -52,15 +51,15 @@ class ActivityTableViewController: UITableViewController {
         return ActivitiesObject.arrayOfActivities.count
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        present(ActivityDetailedViewController(activity: ActivitiesObject.arrayOfActivities[indexPath.row]), animated: true)
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? ActivitiesTableViewCell else { fatalError() }
         let object = ActivitiesObject.arrayOfActivities[indexPath.row]
         cell.set(object: object)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDidTapped))
         cell.backgroundColor = blueMoonlight
-        cell.addGestureRecognizer(tapGesture)
-
-        activityDetailedViewController = ActivityDetailedViewController(activity: object)
 
         return cell
     }
