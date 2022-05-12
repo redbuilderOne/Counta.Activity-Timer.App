@@ -4,7 +4,7 @@ import UIKit
 class ActivityTableViewController: UITableViewController {
 
     lazy var identifier = CellsID.activityTableViewID
-    lazy var newActivityView = NewActivityViewController()
+    lazy var newActivityVC = NewActivityViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,13 +17,13 @@ class ActivityTableViewController: UITableViewController {
         self.title = "Activities"
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.navigationItem.leftBarButtonItem?.tintColor = sandyYellowColor
-        let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addNewActivity))
+        let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action:  #selector(addNewActivity))
         self.navigationItem.rightBarButtonItem = addItem
         self.navigationItem.rightBarButtonItem?.tintColor = sandyYellowColor
     }
 
     @objc func addNewActivity() {
-        show(newActivityView, sender: self)
+        show(newActivityVC, sender: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
