@@ -4,8 +4,10 @@ import CoreData
 
 class NewActivityViewController: UIViewController, NewActivityViewActions, RemovableTextWithAlert {
 
-    lazy var newActivityView = NewActivityView()
+    lazy var newActivityView = CreateNewActivityView()
     lazy var conformAlert = Alert(delegate: self)
+
+    var selectedActivity: Activity? = nil
 
     lazy var newActivityTitle = String()
     lazy var newActivityDescription = String()
@@ -21,6 +23,11 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         newActivityView.textField.delegate = self
         configureView()
         addSaveItem()
+
+        if selectedActivity != nil {
+            newActivityTitle = selectedActivity!.title
+            newActivityDescription = selectedActivity!.desc
+        }
     }
 
     override func viewWillLayoutSubviews() {
@@ -42,10 +49,10 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     }
 
     @objc func saveData() {
-        if newActivityView.textField.text != "" {
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        if selectedActivity == nil {
             let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
             let newActivity = Activity(entity: entity!, insertInto: context)
             newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
@@ -59,14 +66,39 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             } catch {
                 print("Can't save the context")
             }
+        }
+
+        if newActivityView.textField.text == "" {
+            conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
+            return
 
         } else {
-            conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
+            do {
+                let results: NSArray = try context.fetch(request) as NSArray
+                for result in results {
+
+                    let activity = result as! Activity
+
+                    if activity == selectedActivity {
+                        activity.title = newActivityView.textField.text
+                        activity.desc = newActivityView.descriptionTextView.text
+                        try context.save()
+                    }
+                }
+
+            } catch {
+                print("Fetch failed")
+            }
         }
     }
 
     //MARK: - Buttons actions
     func clearButtonDidPressed() {
+        if newActivityView.textField.text == "" {
+            conformAlert.isEmptyTextFields(on: self, with: "Oops", message: "Nothing to clear")
+            return
+        }
         conformAlert.textClearAlert(on: self, with: "Are you sure?", message: "This will delete all the text")
     }
 

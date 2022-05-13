@@ -7,6 +7,7 @@ protocol AddDataToCoreData {
 }
 
 extension AddDataToCoreData {
+
     func addDataToCoreData(appDelegate: AppDelegate, id: Int, title: String, description: String, isFavourite: Bool? = nil) {
 
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext

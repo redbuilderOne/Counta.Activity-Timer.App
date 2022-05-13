@@ -6,7 +6,7 @@ protocol NewActivityViewActions: AnyObject {
     func okButtonDidPressed()
 }
 
-class NewActivityView: UIView {
+class CreateNewActivityView: UIView {
 
     weak var delegate: NewActivityViewActions?
 

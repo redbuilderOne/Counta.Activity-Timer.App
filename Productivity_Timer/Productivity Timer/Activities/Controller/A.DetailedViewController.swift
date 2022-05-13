@@ -4,6 +4,7 @@ import UIKit
 class ActivityDetailedViewController: UITabBarController {
 
     var activity: Activity
+    lazy var createNewActivityView = NewActivityViewController()
 
     init(activity: Activity) {
         self.activity = activity
