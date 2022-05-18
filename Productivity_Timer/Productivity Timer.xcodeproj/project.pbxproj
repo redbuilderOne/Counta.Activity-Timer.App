@@ -11,7 +11,7 @@
 		FF229A8C281BF7F80080B89B /* NewA.ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */; };
 		FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A93281C78E70080B89B /* TableViewCellsID.swift */; };
 		FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A95281C7B250080B89B /* A.TableViewController.swift */; };
-		FF229A98281EEE990080B89B /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A97281EEE990080B89B /* NewActivityView.swift */; };
+		FF229A98281EEE990080B89B /* CreateNewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A97281EEE990080B89B /* CreateNewActivityView.swift */; };
 		FF229A9A281F05C10080B89B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A99281F05C10080B89B /* Alert.swift */; };
 		FF229A9C2820217C0080B89B /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A9B2820217C0080B89B /* Objects.swift */; };
 		FF229A9F28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */; };
@@ -67,7 +67,7 @@
 		FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewA.ViewController.swift; sourceTree = "<group>"; };
 		FF229A93281C78E70080B89B /* TableViewCellsID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsID.swift; sourceTree = "<group>"; };
 		FF229A95281C7B250080B89B /* A.TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.TableViewController.swift; sourceTree = "<group>"; };
-		FF229A97281EEE990080B89B /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
+		FF229A97281EEE990080B89B /* CreateNewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewActivityView.swift; sourceTree = "<group>"; };
 		FF229A99281F05C10080B89B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		FF229A9B2820217C0080B89B /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
 		FF229A9E28202C720080B89B /* ProductivityTimerCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProductivityTimerCoreData.xcdatamodel; sourceTree = "<group>"; };
@@ -282,7 +282,7 @@
 			children = (
 				FF229A89281ADF5A0080B89B /* ? ActivitiesView.swift */,
 				FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */,
-				FF229A97281EEE990080B89B /* NewActivityView.swift */,
+				FF229A97281EEE990080B89B /* CreateNewActivityView.swift */,
 				FFD4B1F6280C1F360046CE83 /* AddButton.swift */,
 				FFD4B200280C74970046CE83 /* TextField.swift */,
 			);
@@ -454,7 +454,7 @@
 				FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */,
 				FF229A8C281BF7F80080B89B /* NewA.ViewController.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
-				FF229A98281EEE990080B89B /* NewActivityView.swift in Sources */,
+				FF229A98281EEE990080B89B /* CreateNewActivityView.swift in Sources */,
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
 				FF229A9C2820217C0080B89B /* Objects.swift in Sources */,
 				FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */,

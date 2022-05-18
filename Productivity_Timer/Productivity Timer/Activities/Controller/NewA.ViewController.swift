@@ -7,7 +7,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     lazy var newActivityView = CreateNewActivityView()
     lazy var conformAlert = Alert(delegate: self)
 
-    var selectedActivity: Activity? = nil
+    static var selectedActivity: Activity? = nil
 
     lazy var newActivityTitle = String()
     lazy var newActivityDescription = String()
@@ -23,17 +23,29 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         newActivityView.textField.delegate = self
         configureView()
         addSaveItem()
-
-        if selectedActivity != nil {
-            newActivityTitle = selectedActivity!.title
-            newActivityDescription = selectedActivity!.desc
-        }
+        checkSelectedActivity()
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         configureView()
         addSaveItem()
+    }
+
+    func checkSelectedActivity() {
+        if NewActivityViewController.selectedActivity != nil {
+            title = "Editing"
+            newActivityView.titleLabel.text = "Title"
+            newActivityView.textField.text = NewActivityViewController.selectedActivity!.title
+            newActivityView.descriptionLabel.text = "Description"
+            newActivityView.descriptionTextView.text = NewActivityViewController.selectedActivity!.desc
+        } else {
+            title = "New Activity"
+            newActivityView.titleLabel.text = "Your activity is..."
+            newActivityView.textField.text = ""
+            newActivityView.descriptionLabel.text = "Add description"
+            newActivityView.descriptionTextView.text = ""
+        }
     }
 
     final private func configureView() {
@@ -52,7 +64,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-        if selectedActivity == nil {
+        if NewActivityViewController.selectedActivity == nil {
             let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
             let newActivity = Activity(entity: entity!, insertInto: context)
             newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
@@ -79,14 +91,12 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 for result in results {
 
                     let activity = result as! Activity
-
-                    if activity == selectedActivity {
+                    if activity == NewActivityViewController.selectedActivity {
                         activity.title = newActivityView.textField.text
                         activity.desc = newActivityView.descriptionTextView.text
                         try context.save()
                     }
                 }
-
             } catch {
                 print("Fetch failed")
             }
@@ -109,6 +119,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     func okButtonDidPressed() {
         saveData()
+        NewActivityViewController.selectedActivity = nil
         navigationController?.popViewController(animated: true)
     }
 }

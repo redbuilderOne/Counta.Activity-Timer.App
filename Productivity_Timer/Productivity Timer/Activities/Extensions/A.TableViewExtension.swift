@@ -17,7 +17,7 @@ extension ActivityTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        present(ActivityDetailedViewController(activity: ActivityTableViewController.nonDeletedActivities()[indexPath.row]), animated: true)
+        show(ActivityDetailedViewController(activity: ActivityTableViewController.nonDeletedActivities()[indexPath.row]), sender: self)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,13 +43,11 @@ extension ActivityTableViewController {
             for result in results {
 
                 let activity = result as! Activity
-
                 if editingStyle == .delete {
                     activity.deletedDate = Date()
                     try context.save()
                 }
             }
-
         } catch {
             print("Fetch failed")
         }

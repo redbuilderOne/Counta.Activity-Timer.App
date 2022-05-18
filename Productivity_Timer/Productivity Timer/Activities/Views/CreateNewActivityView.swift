@@ -12,7 +12,7 @@ class CreateNewActivityView: UIView {
 
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "Your new activity is..."
+        titleLabel.text = "Your activity is..."
         titleLabel.textColor = pinkyWhiteColor
         titleLabel.font = .systemFont(ofSize: 24)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

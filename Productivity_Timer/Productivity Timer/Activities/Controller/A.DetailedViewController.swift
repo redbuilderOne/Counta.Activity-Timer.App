@@ -6,6 +6,8 @@ class ActivityDetailedViewController: UITabBarController {
     var activity: Activity
     lazy var createNewActivityView = NewActivityViewController()
 
+    var selectedActivityB: Activity? = nil
+
     init(activity: Activity) {
         self.activity = activity
         super.init(nibName: nil, bundle: nil)
@@ -39,6 +41,11 @@ class ActivityDetailedViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
+        title = "Details"
+
+        if selectedActivityB != nil {
+            activity.title = selectedActivityB?.title
+        }
     }
 
     override func viewDidLayoutSubviews() {

@@ -10,6 +10,8 @@ class ActivityTableViewController: UITableViewController {
     lazy var newActivityVC = NewActivityViewController()
     var activityDetailedViewController: UITabBarController?
 
+    var selectedActivityTVC: Activity? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
@@ -47,6 +49,7 @@ class ActivityTableViewController: UITableViewController {
     }
 
     @objc func addNewActivity() {
+        NewActivityViewController.selectedActivity = nil
         show(newActivityVC, sender: self)
     }
 
