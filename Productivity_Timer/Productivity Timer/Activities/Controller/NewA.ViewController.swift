@@ -39,6 +39,11 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     }
 
     @objc func saveData() {
+        if newActivityView.textField.text == "" {
+            conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
+            return
+
+        } else {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
@@ -52,30 +57,10 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             do {
                 try context.save()
                 ActivitiesObject.arrayOfActivities.append(newActivity)
+                navigationController?.popViewController(animated: true)
             } catch {
                 print("Can't save the context")
             }
-
-        if newActivityView.textField.text == "" {
-            conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
-            return
-
-        } else {
-//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-//
-//            do {
-//                let results: NSArray = try context.fetch(request) as NSArray
-//                for result in results {
-//                    let activity = result as! Activity
-//                    if activity == SelectedActivity.selectedActivity {
-//                        activity.title = newActivityView.textField.text
-//                        activity.desc = newActivityView.descriptionTextView.text
-//                        try context.save()
-//                    }
-//                }
-//            } catch {
-//                print("Fetch failed")
-//            }
         }
     }
 
