@@ -10,8 +10,6 @@ class ActivityTableViewController: UITableViewController {
     lazy var newActivityVC = NewActivityViewController()
     var activityDetailedViewController: UITabBarController?
 
-    var selectedActivityTVC: Activity? = nil
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
@@ -26,7 +24,6 @@ class ActivityTableViewController: UITableViewController {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
@@ -49,7 +46,6 @@ class ActivityTableViewController: UITableViewController {
     }
 
     @objc func addNewActivity() {
-        NewActivityViewController.selectedActivity = nil
         show(newActivityVC, sender: self)
     }
 

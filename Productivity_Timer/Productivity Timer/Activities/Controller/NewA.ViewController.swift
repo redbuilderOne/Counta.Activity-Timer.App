@@ -7,8 +7,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     lazy var newActivityView = CreateNewActivityView()
     lazy var conformAlert = Alert(delegate: self)
 
-    static var selectedActivity: Activity? = nil
-
     lazy var newActivityTitle = String()
     lazy var newActivityDescription = String()
 
@@ -23,29 +21,12 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         newActivityView.textField.delegate = self
         configureView()
         addSaveItem()
-        checkSelectedActivity()
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         configureView()
         addSaveItem()
-    }
-
-    func checkSelectedActivity() {
-        if NewActivityViewController.selectedActivity != nil {
-            title = "Editing"
-            newActivityView.titleLabel.text = "Title"
-            newActivityView.textField.text = NewActivityViewController.selectedActivity!.title
-            newActivityView.descriptionLabel.text = "Description"
-            newActivityView.descriptionTextView.text = NewActivityViewController.selectedActivity!.desc
-        } else {
-            title = "New Activity"
-            newActivityView.titleLabel.text = "Your activity is..."
-            newActivityView.textField.text = ""
-            newActivityView.descriptionLabel.text = "Add description"
-            newActivityView.descriptionTextView.text = ""
-        }
     }
 
     final private func configureView() {
@@ -64,7 +45,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-        if NewActivityViewController.selectedActivity == nil {
+        if SelectedActivity.selectedActivity == nil {
             let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
             let newActivity = Activity(entity: entity!, insertInto: context)
             newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
@@ -89,9 +70,8 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
-
                     let activity = result as! Activity
-                    if activity == NewActivityViewController.selectedActivity {
+                    if activity == SelectedActivity.selectedActivity {
                         activity.title = newActivityView.textField.text
                         activity.desc = newActivityView.descriptionTextView.text
                         try context.save()
@@ -119,7 +99,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     func okButtonDidPressed() {
         saveData()
-        NewActivityViewController.selectedActivity = nil
         navigationController?.popViewController(animated: true)
     }
 }

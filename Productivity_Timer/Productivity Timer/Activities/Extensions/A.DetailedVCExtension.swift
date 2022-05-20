@@ -1,6 +1,6 @@
 
 import UIKit
-//import CoreData
+import CoreData
 
 extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSource {
 
@@ -27,42 +27,57 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             })
 
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
             })
 
             let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
 
-//                let selectedActivityA = Activity()
+                SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[indexPath.row]
 
-                 self.activity.title = (titleRowEditAction.textFields?.first?.text)!
+                self.activity.title = (titleRowEditAction.textFields?.first?.text)!
 
-//                self.selectedActivityB = selectedActivityA
+                print("\(String(describing: SelectedActivity.selectedActivity))")
 
                 tableView.deselectRow(at: indexPath, animated: true)
 
-//
-//                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-//                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-//                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-//                do {
-//                    let results: NSArray = try context.fetch(request) as NSArray
-//                    for result in results {
-//
-//                        let activity = result as! Activity
-//                        if activity == NewActivityViewController.selectedActivity {
-//                            activity.title = newActivityView.textField.text
-//                            activity.desc = newActivityView.descriptionTextView.text
-//                            try context.save()
-//                        }
-//                    }
-//                } catch {
-//                    print("Fetch failed")
-//                }
-//
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
+                if SelectedActivity.selectedActivity != nil {
+                    guard let newActivity = SelectedActivity.selectedActivity else { return }
+                    newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
+                    newActivity.title = self.activity.title
+//                    newActivity.desc =  self.desc.title
+                    newActivity.fav = false
 
+                    do {
+                        try context.save()
+                        ActivitiesObject.arrayOfActivities.append(newActivity)
+                    } catch {
+                        print("Can't save the context")
+                    }
+                }
 
-                //            yourObject.thatNeedsTheNewString = (titleRowEditAction.textFields?.first?.text)!
+                //                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+                //                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+                //                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
+                //                do {
+                //                    let results: NSArray = try context.fetch(request) as NSArray
+                //                    for result in results {
+                //
+                //                        let activity = result as! Activity
+                //                        if activity == selectedActivity {
+                //                            activity.title = (titleRowEditAction.textFields?.first?.text)!
+                ////                            activity.desc = newActivityView.descriptionTextView.text
+                //                            try context.save()
+                //                            print("context is saved")
+                //                        }
+                //                    }
+                //                } catch {
+                //                    print("Fetch failed")
+                //                }
+
                 tableView.reloadData()
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
             })
@@ -110,6 +125,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = "Your Activity"
             cell.textLabel?.font = .boldSystemFont(ofSize: 24)
+            cell.textLabel?.textColor = sandyYellowColor
             cell.backgroundColor = darkMoonColor
             cell.isUserInteractionEnabled = false
             return cell
@@ -127,6 +143,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.selectionStyle = .none
             cell.textLabel?.text = "Description"
             cell.textLabel?.font = .boldSystemFont(ofSize: 24)
+            cell.textLabel?.textColor = sandyYellowColor
             cell.backgroundColor = darkMoonColor
             cell.isUserInteractionEnabled = false
             return cell
