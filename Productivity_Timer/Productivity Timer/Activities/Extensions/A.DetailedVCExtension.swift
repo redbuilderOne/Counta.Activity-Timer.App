@@ -15,9 +15,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let selectedIndexPath = tableView.indexPathForSelectedRow
-        guard selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 else {
-            return
-        }
+        guard selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 else { return }
 
         if selectedIndexPath?.row == 1 {
             let titleRowEditAction = UIAlertController(title: "Edit Title", message: "Please edit the title", preferredStyle: .alert)
@@ -37,8 +35,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
 
                 self.activity.title = (titleRowEditAction.textFields?.first?.text)!
 
-                print("\(String(describing: SelectedActivity.selectedActivity))")
-
                 tableView.deselectRow(at: indexPath, animated: true)
 
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -54,6 +50,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                     do {
                         try context.save()
                         ActivitiesObject.arrayOfActivities.append(newActivity)
+                        SelectedActivity.selectedActivity = nil
                     } catch {
                         print("Can't save the context")
                     }
@@ -81,7 +78,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                 tableView.reloadData()
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
             })
-
             titleRowEditAction.addAction(okayAction)
             titleRowEditAction.addAction(cancelAction)
             self.present(titleRowEditAction, animated: true, completion: nil)
@@ -139,7 +135,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = activity.desc
             cell.selectionStyle = .none
             cell.textLabel?.text = "Description"
             cell.textLabel?.font = .boldSystemFont(ofSize: 24)
@@ -153,7 +148,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.text = activity.desc
             cell.selectionStyle = .none
             cell.backgroundColor = darkMoonColor
-            cell.isUserInteractionEnabled = false
             return cell
             //        case 3:
             //            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
