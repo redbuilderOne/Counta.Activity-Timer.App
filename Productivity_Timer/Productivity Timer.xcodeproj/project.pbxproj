@@ -22,6 +22,7 @@
 		FF229AEC2824F98B0080B89B /* A.DetailedVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AEB2824F98B0080B89B /* A.DetailedVCExtension.swift */; };
 		FF2A6F00282D920100F13F4E /* A.TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6EFF282D920100F13F4E /* A.TableViewExtension.swift */; };
 		FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */; };
+		FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6F03283E754900F13F4E /* Constraints IDs.swift */; };
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
@@ -79,6 +80,7 @@
 		FF229AEB2824F98B0080B89B /* A.DetailedVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.DetailedVCExtension.swift; sourceTree = "<group>"; };
 		FF2A6EFF282D920100F13F4E /* A.TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.TableViewExtension.swift; sourceTree = "<group>"; };
 		FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedActivity.swift; sourceTree = "<group>"; };
+		FF2A6F03283E754900F13F4E /* Constraints IDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constraints IDs.swift"; sourceTree = "<group>"; };
 		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				FF71FB7D2805A56D00F2F455 /* Color Sets.swift */,
 				FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */,
+				FF2A6F03283E754900F13F4E /* Constraints IDs.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				FF229A98281EEE990080B89B /* CreateNewActivityView.swift in Sources */,
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
 				FF229A9C2820217C0080B89B /* Objects.swift in Sources */,
+				FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */,
 				FFD4B1EA280C17EF0046CE83 /* ? ActivityModel.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
 				FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */,

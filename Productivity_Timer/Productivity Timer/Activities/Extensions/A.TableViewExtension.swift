@@ -9,7 +9,7 @@ extension ActivityTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40.0
+        return 50
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,7 +57,7 @@ extension ActivityTableViewController {
                 try context.save()
                 ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
-
+                tableView.reloadData()
             } catch {
                 print("Can't save the context")
             }
@@ -82,9 +82,10 @@ extension ActivityTableViewController {
 
     func doneAction(at indexPath: IndexPath) -> UIContextualAction {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
+
         do {
             let results: NSArray = try context.fetch(request) as NSArray
             for result in results {
@@ -93,7 +94,6 @@ extension ActivityTableViewController {
                 activity.deletedDate = Date()
                 try context.save()
             }
-
         } catch {
             print("Fetch failed")
         }
@@ -102,6 +102,11 @@ extension ActivityTableViewController {
             ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
+            
+            // TODO: coreData access
+            ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
+            print(ActivitiesObject.arrayOfActivities)
+            self.tableView.reloadData()
         }
         action.backgroundColor = .systemGreen
         action.image = UIImage(systemName: "checkmark.circle")

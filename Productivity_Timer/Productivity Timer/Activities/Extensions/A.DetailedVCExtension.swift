@@ -35,8 +35,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
 
                 self.activity.title = (titleRowEditAction.textFields?.first?.text)!
 
-                tableView.deselectRow(at: indexPath, animated: true)
-
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
                 let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
@@ -44,7 +42,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                     guard let newActivity = SelectedActivity.selectedActivity else { return }
                     newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
                     newActivity.title = self.activity.title
-//                    newActivity.desc =  self.desc.title
                     newActivity.fav = false
 
                     do {
@@ -54,26 +51,45 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                     } catch {
                         print("Can't save the context")
                     }
-                }
 
-                //                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-                //                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-                //                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-                //                do {
-                //                    let results: NSArray = try context.fetch(request) as NSArray
-                //                    for result in results {
-                //
-                //                        let activity = result as! Activity
-                //                        if activity == selectedActivity {
-                //                            activity.title = (titleRowEditAction.textFields?.first?.text)!
-                ////                            activity.desc = newActivityView.descriptionTextView.text
-                //                            try context.save()
-                //                            print("context is saved")
-                //                        }
-                //                    }
-                //                } catch {
-                //                    print("Fetch failed")
-                //                }
+                    //                } else  if selectedIndexPath?.row == 3 {
+                    //                    let descRowEditAction = UIAlertController(title: "Edit Description", message: "Please edit the description", preferredStyle: .alert)
+                    //
+                    //                    descRowEditAction.addTextField(configurationHandler: { (newDescription) -> Void in
+                    //                        newDescription.text = self.activity.desc
+                    //                    })
+                    //
+                    //                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+                    //
+                    //                        self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    //                    })
+
+                    //                    let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                    //
+                    //                        SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[indexPath.row]
+                    //
+                    //                        self.activity.desc = (descRowEditAction.textFields?.first?.text)!
+                    //
+                    //                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+                    //
+                    //                        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+                    //
+                    //                        if SelectedActivity.selectedActivity != nil {
+                    //                            guard let newActivity = SelectedActivity.selectedActivity else { return }
+                    //                            newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
+                    //                            newActivity.title = self.activity.desc
+                    //                            newActivity.fav = false
+                    //
+                    //                            do {
+                    //                                try context.save()
+                    //
+                    //                                ActivitiesObject.arrayOfActivities.append(newActivity)
+                    //                                SelectedActivity.selectedActivity = nil
+                    //                            } catch {
+                    //                                print("Can't save the context")
+                    //                            }
+
+                }
 
                 tableView.reloadData()
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -83,35 +99,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             self.present(titleRowEditAction, animated: true, completion: nil)
         }
     }
-
-    //        if selectedIndexPath?.row == 2 {
-    //            //The third row is selected and needs to be changed in predefined content using a standard selection action sheet.
-    //            let trackLevelAction = UIAlertController(title: "Select Predefined Content”, message: "Please, select the content”, preferredStyle: UIAlertControllerStyle.ActionSheet)
-    //
-    //            for content in arrayOfPredefinedContent {
-    //                predefinedContentAction.addAction(UIAlertAction(title: content, style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
-    //
-    //                    yourObject.thatNeedsTheNewContent = content
-    //                    //Do some other stuff that you want to do
-    //                    self.trackDetailsTable.reloadData()
-    //                }))
-    //
-    //            }
-    //        titleRowEditAction.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (UIAlertAction) -> Void in
-    //
-    //
-    //            }))
-    //
-    //            presentViewController(titleRowEditAction, animated: true, completion: nil)
-    //        }
-
-    //        let indexPath = tableView.indexPathForSelectedRow!
-    //
-    //        NewActivityViewController.selectedActivity = ActivityTableViewController.nonDeletedActivities()[indexPath.row]
-    ////        NewActivityViewController.selectedActivity = ActivitiesObject.arrayOfActivities[indexPath.row]
-    //
-    //        show(createNewActivityView, sender: self)
-    //        tableView.deselectRow(at: indexPath, animated: true)
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
@@ -155,7 +142,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             //            cell.imageView?.image = "heart"
             //            }
             //            cell.textLabel?.numberOfLines = 0
-            //            cell.selectionStyle = .none
+            //            cell.selecti onStyle = .none
             //            return cell
         default:
             fatalError()
