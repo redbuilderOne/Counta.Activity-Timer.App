@@ -31,7 +31,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
 
             let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
 
-                SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[indexPath.row]
+                SelectedActivity.selectedActivity = self.activity
 
                 self.activity.title = (titleRowEditAction.textFields?.first?.text)!
 
@@ -46,6 +46,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
 
                     do {
                         try context.save()
+//                        ActivitiesObject.arrayOfActivities.append(newActivity)
                         SelectedActivity.selectedActivity = nil
                     } catch {
                         print("Can't save the context")

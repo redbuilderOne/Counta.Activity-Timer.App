@@ -13,29 +13,25 @@ extension ActivityTableViewController {
         if editingStyle == .delete {
 
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-
+            SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[indexPath.row]
             ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-
+            
             do {
-                let results: NSArray = try context.fetch(request) as NSArray
 
-                for result in results {
-                    let activity = result as! Activity
-                    activity.deletedDate = Date()
-
-                    ActivitiesObject.arrayOfActivities = ActivitiesObject.arrayOfActivities.filter { $0 != activity }
-                    try context.save()
+                if let selectedActivity = SelectedActivity.selectedActivity {
+                    appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+                    selectedActivity.deletedDate = Date()
                 }
+                try appDelegate.persistentContainer.viewContext.save()
+
             } catch {
                 print("Fetch failed")
             }
 
+            SelectedActivity.selectedActivity = nil
             tableView.reloadData()
-
         }
     }
 
@@ -71,7 +67,7 @@ extension ActivityTableViewController {
                     activity.deletedDate = Date()
                 }
 
-//                activity.deletedDate = Date()
+                //                activity.deletedDate = Date()
                 try context.save()
             }
         } catch {
