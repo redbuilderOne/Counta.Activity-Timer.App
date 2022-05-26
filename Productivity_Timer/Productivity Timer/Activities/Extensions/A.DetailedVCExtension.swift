@@ -39,14 +39,14 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                 let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
                 if SelectedActivity.selectedActivity != nil {
-                    guard let newActivity = SelectedActivity.selectedActivity else { return }
-                    newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
-                    newActivity.title = self.activity.title
-                    newActivity.fav = false
+//                    guard let editedActivity = SelectedActivity.selectedActivity else { return }
+//                    editedActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
+//                    editedActivity.title = self.activity.title
+//                    editedActivity.fav = false
 
                     do {
                         try context.save()
-//                        ActivitiesObject.arrayOfActivities.append(newActivity)
+//                        ActivitiesObject.arrayOfActivities.append(editedActivity)
                         SelectedActivity.selectedActivity = nil
                     } catch {
                         print("Can't save the context")

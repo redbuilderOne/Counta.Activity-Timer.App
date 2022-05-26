@@ -8,6 +8,7 @@ extension ActivityTableViewController {
         return .delete
     }
 
+    //MARK: УДАЛЕНИЕ
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         if editingStyle == .delete {
@@ -19,7 +20,6 @@ extension ActivityTableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             do {
-
                 if let selectedActivity = SelectedActivity.selectedActivity {
                     appDelegate.persistentContainer.viewContext.delete(selectedActivity)
                     selectedActivity.deletedDate = Date()
@@ -39,10 +39,29 @@ extension ActivityTableViewController {
         return true
     }
 
+    // MARK: ПЕРЕМЕЩЕНИЕ
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+
+        SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[sourceIndexPath.row]
+
         let moved = ActivitiesObject.arrayOfActivities.remove(at: sourceIndexPath.row)
         ActivitiesObject.arrayOfActivities.insert(moved, at: destinationIndexPath.row)
         tableView.reloadData()
+
+        do {
+            if let selectedActivity = SelectedActivity.selectedActivity {
+                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+                selectedActivity.deletedDate = Date()
+            }
+            try appDelegate.persistentContainer.viewContext.save()
+
+        } catch {
+            print("Fetch failed")
+        }
+
+        SelectedActivity.selectedActivity = nil
     }
 
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
