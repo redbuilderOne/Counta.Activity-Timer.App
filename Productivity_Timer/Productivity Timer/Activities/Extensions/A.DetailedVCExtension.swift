@@ -46,7 +46,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
 
                     do {
                         try context.save()
-                        ActivitiesObject.arrayOfActivities.append(newActivity)
                         SelectedActivity.selectedActivity = nil
                     } catch {
                         print("Can't save the context")

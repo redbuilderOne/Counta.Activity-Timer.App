@@ -62,7 +62,7 @@ class ActivityTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    static func nonDeletedActivities() -> [Activity] {
+    public func nonDeletedActivities() -> [Activity] {
         var nonDeletedActivities = [Activity]()
         for activity in ActivitiesObject.arrayOfActivities {
             if activity.deletedDate == nil {

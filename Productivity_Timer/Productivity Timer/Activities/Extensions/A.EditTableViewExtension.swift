@@ -10,33 +10,32 @@ extension ActivityTableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        if editingStyle == .delete {
 
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-        do {
-            let results: NSArray = try context.fetch(request) as NSArray
-            for result in results {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-                let activity = result as! Activity
-                if editingStyle == .delete {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
+
+            ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+
+            do {
+                let results: NSArray = try context.fetch(request) as NSArray
+
+                for result in results {
+                    let activity = result as! Activity
                     activity.deletedDate = Date()
+
+                    ActivitiesObject.arrayOfActivities = ActivitiesObject.arrayOfActivities.filter { $0 != activity }
                     try context.save()
                 }
-            }
-        } catch {
-            print("Fetch failed")
-        }
-
-        if editingStyle == .delete {
-            do {
-                try context.save()
-                ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                tableView.reloadData()
             } catch {
-                print("Can't save the context")
+                print("Fetch failed")
             }
+
+            tableView.reloadData()
+
         }
     }
 
@@ -67,7 +66,12 @@ extension ActivityTableViewController {
             for result in results {
 
                 let activity = result as! Activity
-                activity.deletedDate = Date()
+
+                for _ in ActivitiesObject.arrayOfActivities {
+                    activity.deletedDate = Date()
+                }
+
+//                activity.deletedDate = Date()
                 try context.save()
             }
         } catch {
