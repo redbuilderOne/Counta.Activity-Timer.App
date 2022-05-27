@@ -14,8 +14,15 @@ class ActivityTableViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         setupNavigationBar()
-        tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: identifier)
         firstLoadCheck()
+        configureTableView()
+    }
+
+    private func configureTableView() {
+        tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: identifier)
+        tableView.rowHeight = 40
+        tableView.estimatedRowHeight = 80
+        tableView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private func firstLoadCheck() {

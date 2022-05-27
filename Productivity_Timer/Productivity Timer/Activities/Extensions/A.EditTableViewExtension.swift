@@ -46,13 +46,19 @@ extension ActivityTableViewController {
 
         SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[sourceIndexPath.row]
 
-        let moved = ActivitiesObject.arrayOfActivities.remove(at: sourceIndexPath.row)
-        ActivitiesObject.arrayOfActivities.insert(moved, at: destinationIndexPath.row)
-        tableView.reloadData()
+//        let moved = ActivitiesObject.arrayOfActivities.remove(at: sourceIndexPath.row)
+//        ActivitiesObject.arrayOfActivities.insert(moved, at: destinationIndexPath.row)
+//        tableView.reloadData()
 
         do {
             if let selectedActivity = SelectedActivity.selectedActivity {
-                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+
+                let moved = ActivitiesObject.arrayOfActivities.remove(at: sourceIndexPath.row)
+                ActivitiesObject.arrayOfActivities.insert(moved, at: destinationIndexPath.row)
+
+                tableView.reloadData()
+
+//                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
                 selectedActivity.deletedDate = Date()
             }
             try appDelegate.persistentContainer.viewContext.save()
