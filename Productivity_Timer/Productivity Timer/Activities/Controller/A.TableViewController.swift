@@ -36,7 +36,11 @@ class ActivityTableViewController: UITableViewController {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
                     let activity = result as! Activity
-                    ActivitiesObject.arrayOfActivities.append(activity)
+                    if activity.isDone != true {
+                        ActivitiesObject.arrayOfActivities.append(activity)
+                    } else {
+                        DoneActivities.doneActivitiesArray.append(activity)
+                    }
                 }
             } catch {
                 print("Fetch failed")

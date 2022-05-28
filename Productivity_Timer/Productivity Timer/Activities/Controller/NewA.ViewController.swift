@@ -53,6 +53,8 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             newActivity.title = newActivityView.textField.text
             newActivity.desc = newActivityView.descriptionTextView.text
             newActivity.fav = false
+            newActivity.isDone = false
+            print("New Activity \(newActivity.title ?? "") is created at \(Date())")
             
             do {
                 try context.save()

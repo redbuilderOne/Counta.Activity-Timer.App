@@ -9,5 +9,5 @@ class Activity: NSManagedObject {
     @NSManaged var desc: String!
     @NSManaged var deletedDate: Date?
     @NSManaged var fav: Bool
+    @NSManaged var isDone: Bool
 }
-

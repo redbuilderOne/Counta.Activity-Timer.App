@@ -8,10 +8,6 @@ extension ActivityTableViewController {
         return 1
     }
 
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50
-//    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ActivitiesObject.arrayOfActivities.count
     }

@@ -30,7 +30,6 @@ class ActivitiesTableViewCell: UITableViewCell {
         self.activityTitleLabel.text = object.title
     }
 
-    //MARK: Constraints
     private func setConstraints() {
         activityTitleLabel.anchor(top: contentView.topAnchor,
                                   left: contentView.leftAnchor,
