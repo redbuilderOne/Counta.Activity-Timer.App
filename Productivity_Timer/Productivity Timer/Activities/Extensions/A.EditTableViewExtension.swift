@@ -54,14 +54,14 @@ extension ActivityTableViewController {
         do {
             if let selectedActivity = SelectedActivity.selectedActivity {
 
-//                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
-//
-//                ActivitiesObject.arrayOfActivities.append(selectedActivity)
+                //                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+                //
+                //                ActivitiesObject.arrayOfActivities.append(selectedActivity)
 
 
                 tableView.reloadData()
 
-//                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+                //                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
             }
             try appDelegate.persistentContainer.viewContext.save()
 
