@@ -7,7 +7,7 @@ extension ActivityDetailedViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let selectedIndexPath = tableView.indexPathForSelectedRow
-        guard selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 4 else { return }
+        guard selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 5 else { return }
 
         if selectedIndexPath?.row == 1 {
             let titleRowEditAction = UIAlertController(title: "Edit Title", message: "Please edit the title", preferredStyle: .alert)
@@ -80,9 +80,7 @@ extension ActivityDetailedViewController {
             descRowEditAction.addAction(cancelAction)
             self.present(descRowEditAction, animated: true, completion: nil)
         }
-        if selectedIndexPath?.row == 4 {
-            print("4")
-
+        if selectedIndexPath?.row == 5 {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
