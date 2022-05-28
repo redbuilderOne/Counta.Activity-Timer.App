@@ -7,7 +7,7 @@ extension ActivityDetailedViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let selectedIndexPath = tableView.indexPathForSelectedRow
-        guard selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 else { return }
+        guard selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 4 else { return }
 
         if selectedIndexPath?.row == 1 {
             let titleRowEditAction = UIAlertController(title: "Edit Title", message: "Please edit the title", preferredStyle: .alert)
@@ -79,6 +79,34 @@ extension ActivityDetailedViewController {
             descRowEditAction.addAction(okayAction)
             descRowEditAction.addAction(cancelAction)
             self.present(descRowEditAction, animated: true, completion: nil)
+        }
+        if selectedIndexPath?.row == 4 {
+            print("4")
+
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
+            SelectedActivity.selectedActivity = self.activity
+
+            if let selectedActivity = SelectedActivity.selectedActivity {
+
+                if selectedActivity.fav {
+                    selectedActivity.fav = false
+                    print("\(selectedActivity) is now marked nonfavourite")
+                } else {
+                    selectedActivity.fav = true
+                    print("\(selectedActivity) is now marked favourite")
+                }
+
+                do {
+
+                    try context.save()
+                    SelectedActivity.selectedActivity = nil
+                } catch {
+                    print("Can't save the context")
+                }
+            }
+            tableView.reloadData()
         }
     }
 }
