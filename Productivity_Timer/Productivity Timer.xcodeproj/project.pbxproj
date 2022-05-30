@@ -26,6 +26,7 @@
 		FF2A6F06283E7A9E00F13F4E /* A.EditTableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6F05283E7A9E00F13F4E /* A.EditTableViewExt.swift */; };
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */; };
+		FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB5D2805A1D000F2F455 /* Productivity_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */; };
@@ -86,6 +87,7 @@
 		FF2A6F05283E7A9E00F13F4E /* A.EditTableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.EditTableViewExt.swift; sourceTree = "<group>"; };
 		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
 		FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.SelectedDetailsVCExt.swift; sourceTree = "<group>"; };
+		FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlert.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				FF229AA028202D350080B89B /* ActivityCoreData.swift */,
 				FF229A93281C78E70080B89B /* TableViewCellsID.swift */,
 				FF229A99281F05C10080B89B /* Alert.swift */,
+				FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */,
 				FF229A9B2820217C0080B89B /* Objects.swift */,
 				FF229AE328206FB60080B89B /* ? AddDataFuncToCoreData.swift */,
 				FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */,
@@ -470,6 +473,7 @@
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
 				FF229A9C2820217C0080B89B /* Objects.swift in Sources */,
 				FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */,
+				FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */,
 				FFD4B1EA280C17EF0046CE83 /* ? ActivityModel.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
 				FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */,

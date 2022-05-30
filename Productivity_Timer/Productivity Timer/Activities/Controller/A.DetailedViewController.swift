@@ -1,13 +1,17 @@
 
 import UIKit
+import CoreData
 
-class ActivityDetailedViewController: UITabBarController {
+class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
 
     var activity: Activity
     lazy var createNewActivityView = NewActivityViewController()
+    lazy var conformDeleteAlert = DeleteAlert(delegate: self)
+    var selectedIndexToDelete: Int
 
-    init(activity: Activity) {
+    init(activity: Activity, selectedIndexToDelete: Int) {
         self.activity = activity
+        self.selectedIndexToDelete = selectedIndexToDelete
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -46,5 +50,42 @@ class ActivityDetailedViewController: UITabBarController {
         super.viewDidLayoutSubviews()
         view.addSubview(activityTableView)
         confTableView()
+        setupNavigationBar()
+        print("selectedIndexToDelete is \(selectedIndexToDelete)")
+    }
+
+    private func setupNavigationBar() {
+        let trashButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.trash, target: self, action:  #selector(trashButtonDidTapped))
+        self.navigationItem.rightBarButtonItem = trashButton
+        self.navigationItem.rightBarButtonItem?.tintColor = sandyYellowColor
+        self.navigationController?.navigationBar.tintColor = sandyYellowColor
+    }
+
+    @objc func trashButtonDidTapped() {
+        conformDeleteAlert.deleteActivity(on: self, with: "Are you sure?", message: "This will delete the activity forever")
+    }
+
+    func deleteActivity() {
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+
+        SelectedActivity.selectedActivity = self.activity
+
+        do {
+            if let selectedActivity = SelectedActivity.selectedActivity {
+                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+                selectedActivity.deletedDate = Date()
+            }
+            try appDelegate.persistentContainer.viewContext.save()
+
+        } catch {
+            print("Fetch failed")
+        }
+
+        SelectedActivity.selectedActivity = nil
+        ActivitiesObject.arrayOfActivities.remove(at: selectedIndexToDelete)
+
+        print("\(self.activity) is deleted")
+        navigationController?.popViewController(animated: true)
     }
 }

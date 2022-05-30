@@ -40,7 +40,6 @@ extension ActivityTableViewController {
     }
 
     // MARK: ПЕРЕМЕЩЕНИЕ
-    // TODO: CoreData
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }

@@ -39,11 +39,13 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     }
 
     @objc func saveData() {
+
         if newActivityView.textField.text == "" {
             conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
             return
 
         } else {
+
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
