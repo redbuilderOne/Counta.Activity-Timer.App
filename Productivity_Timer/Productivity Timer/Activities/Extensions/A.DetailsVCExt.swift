@@ -31,6 +31,8 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = activity.title
             cell.backgroundColor = darkMoonColor
+            cell.textLabel?.textColor = pinkyWhiteColor
+            cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.textLabel?.textAlignment = .justified
             return cell
         case 2:
@@ -39,8 +41,8 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.selectionStyle = .none
             cell.textLabel?.text = "Description"
             cell.textLabel?.font = .boldSystemFont(ofSize: 24)
-            cell.textLabel?.textColor = sandyYellowColor
             cell.backgroundColor = darkMoonColor
+            cell.textLabel?.textColor = sandyYellowColor
             cell.isUserInteractionEnabled = false
             cell.textLabel?.textAlignment = .justified
             return cell
@@ -50,31 +52,35 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.text = activity.desc
             cell.selectionStyle = .none
             cell.backgroundColor = darkMoonColor
+            cell.textLabel?.textColor = pinkyWhiteColor
+            cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.textLabel?.textAlignment = .justified
             return cell
         case 4:
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.selectionStyle = .none
-        cell.backgroundColor = darkMoonColor
-        cell.textLabel?.text = "Favorite"
-        cell.textLabel?.font = .boldSystemFont(ofSize: 24)
-        cell.textLabel?.textColor = sandyYellowColor
-        cell.textLabel?.textAlignment = .justified
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .none
+            cell.backgroundColor = darkMoonColor
+            cell.textLabel?.text = "Favorite"
+            cell.textLabel?.font = .boldSystemFont(ofSize: 24)
+            cell.textLabel?.textColor = sandyYellowColor
+            cell.textLabel?.textAlignment = .justified
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.selectionStyle = .none
             cell.backgroundColor = darkMoonColor
-            cell.textLabel?.font = .boldSystemFont(ofSize: 24)
-            cell.textLabel?.textColor = sandyYellowColor
+            cell.textLabel?.textColor = pinkyWhiteColor
             cell.textLabel?.textAlignment = .justified
             if activity.fav {
                 cell.imageView?.image = UIImage(systemName: "heart.fill")
+                cell.textLabel?.text = "favorite"
                 cell.imageView?.tintColor = .systemRed
             } else {
                 cell.imageView?.image = UIImage(systemName: "heart")
+                cell.textLabel?.text = "not favorite"
                 cell.imageView?.tintColor = .systemGray
             }
+            cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             return cell
         default:
             fatalError()
@@ -89,5 +95,8 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
         default:
             return UITableView.automaticDimension
         }
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
     }
 }

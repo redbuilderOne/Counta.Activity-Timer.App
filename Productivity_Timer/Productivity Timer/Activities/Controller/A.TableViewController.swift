@@ -18,6 +18,11 @@ class ActivityTableViewController: UITableViewController {
         configureTableView()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+        view.backgroundColor = darkMoonColor
+    }
+
     private func configureTableView() {
         tableView.register(ActivitiesTableViewCell.self, forCellReuseIdentifier: identifier)
         tableView.rowHeight = 40
@@ -59,11 +64,6 @@ class ActivityTableViewController: UITableViewController {
 
     @objc func addNewActivity() {
         show(newActivityVC, sender: self)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
-        view.backgroundColor = darkMoonColor
     }
 
     @objc func cellDidTapped() {

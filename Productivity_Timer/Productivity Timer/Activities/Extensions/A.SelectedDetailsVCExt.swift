@@ -6,6 +6,8 @@ extension ActivityDetailedViewController {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+//        guard let cell = tableView.cellForRow(at: indexPath) as? ActivitiesTableViewCell else { return }
+
         let selectedIndexPath = tableView.indexPathForSelectedRow
         guard selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 5 else { return }
 
@@ -97,7 +99,6 @@ extension ActivityDetailedViewController {
                 }
 
                 do {
-
                     try context.save()
                     SelectedActivity.selectedActivity = nil
                 } catch {
@@ -108,4 +109,3 @@ extension ActivityDetailedViewController {
         }
     }
 }
-
