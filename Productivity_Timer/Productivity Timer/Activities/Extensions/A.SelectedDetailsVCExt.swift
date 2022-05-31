@@ -49,6 +49,7 @@ extension ActivityDetailedViewController {
             self.present(titleRowEditAction, animated: true, completion: nil)
         }
 
+        // MARK: DESCRIPTION EDITING
         if selectedIndexPath?.row == 3 {
             let descRowEditAction = UIAlertController(title: "Edit Description", message: "Please edit the description", preferredStyle: .alert)
             descRowEditAction.addTextField(configurationHandler: { (newDescription) -> Void in
