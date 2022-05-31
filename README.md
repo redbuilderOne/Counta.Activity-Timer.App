@@ -15,6 +15,7 @@ Productivity Timer
 
 ![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 09 12](https://user-images.githubusercontent.com/95698427/171181937-8445c591-f003-43d9-98fc-a761ddb269cb.png)
 
-![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 13 10](https://user-images.githubusercontent.com/95698427/171181950-ddde3b7c-f53b-44c8-b99a-0dacfe7a1d11.png)
+![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 13 10](https://user-images.githubusercontent.com/95698427/171182067-406595e7-4b7b-4b69-9750-bb50c735aeac.png)
+
 
 
