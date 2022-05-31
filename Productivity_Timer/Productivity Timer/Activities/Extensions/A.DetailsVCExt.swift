@@ -14,13 +14,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-//        let index = indexPath.row
-//        switch index {
-//        case 0:
-//            return 50
-//        default:
-//            return UITableView.automaticDimension
-//        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
