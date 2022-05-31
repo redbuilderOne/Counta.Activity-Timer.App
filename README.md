@@ -1,4 +1,4 @@
-# ProductivityTimer---Showcase-Apps
+# Productivity Timer by redbuilderOne
 Portfolio Apps
 
 Productivity Timer
@@ -9,8 +9,8 @@ Productivity Timer
 \[Rus\] Это приложение создано для лучшей концентрации на какой-либо деятельности. Вы просто нажимаете кнопку "Старт" и таймер активируется. Также присутствует анимированный эллипс, который активируется вместе с работой таймера.
 ###
 
-![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 08 46](https://user-images.githubusercontent.com/95698427/171181015-4a8ac589-b78f-4c63-b14d-6e44530f07d1.png)
+![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 08 46](https://user-images.githubusercontent.com/95698427/171181541-f6749270-8d3b-429b-b9e8-f7accd38c6d1.png)
 
-![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 09 06](https://user-images.githubusercontent.com/95698427/171181030-d5701307-dfdc-412d-ade5-728cf553a31d.png)
+![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 09 06](https://user-images.githubusercontent.com/95698427/171181550-fedc2fe9-3461-409c-a1be-896cb42cc944.png)
 
-![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 09 12](https://user-images.githubusercontent.com/95698427/171181053-99077105-a198-439c-913a-e8e6fe6bd3ea.png)
+![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 09 12](https://user-images.githubusercontent.com/95698427/171181558-90718822-3525-4bad-9230-f344bb385675.png)
