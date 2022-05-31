@@ -9,7 +9,7 @@ extension ActivityDetailedViewController {
 //        guard let cell = tableView.cellForRow(at: indexPath) as? ActivitiesTableViewCell else { return }
 
         let selectedIndexPath = tableView.indexPathForSelectedRow
-        guard selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 5 else { return }
+        guard selectedIndexPath?.section != 0 || selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 4 else { return }
 
         if selectedIndexPath?.row == 1 {
             let titleRowEditAction = UIAlertController(title: "Edit Title", message: "Please edit the title", preferredStyle: .alert)
@@ -43,6 +43,7 @@ extension ActivityDetailedViewController {
                 tableView.reloadData()
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
             })
+
             titleRowEditAction.addAction(okayAction)
             titleRowEditAction.addAction(cancelAction)
             self.present(titleRowEditAction, animated: true, completion: nil)
@@ -78,11 +79,13 @@ extension ActivityDetailedViewController {
                 tableView.reloadData()
                 self.presentingViewController?.dismiss(animated: true, completion: nil)
             })
+
             descRowEditAction.addAction(okayAction)
             descRowEditAction.addAction(cancelAction)
             self.present(descRowEditAction, animated: true, completion: nil)
         }
-        if selectedIndexPath?.row == 5 {
+
+        if selectedIndexPath?.row == 0 {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 

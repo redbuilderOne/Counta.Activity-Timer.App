@@ -25,6 +25,11 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
         checkIfTimerActivated()
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToRightSwipeGesture))
+
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        view.addGestureRecognizer(swipeRight)
     }
 
     // MARK: - viewDidLayoutSubviews
@@ -44,6 +49,22 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                     let difference = Date().timeIntervalSince(time)
                     setTimeLabel(Int(difference))
                 }
+            }
+        }
+    }
+
+    //TODO: Swipe Action
+    @objc func respondToRightSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.right:
+                print("swipeRight is done but nothing happens")
+//                navigationController?.pushViewController(activityTableViewController, animated: true)
+//                navigationController?.popViewController(animated: true)
+//                self.show(activityTableViewController, sender: nil)
+            default:
+                break
             }
         }
     }
