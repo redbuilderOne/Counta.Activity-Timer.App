@@ -9,7 +9,18 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 5
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+//        let index = indexPath.row
+//        switch index {
+//        case 0:
+//            return 50
+//        default:
+//            return UITableView.automaticDimension
+//        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -18,12 +29,21 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = "Your Activity"
-            cell.textLabel?.font = .boldSystemFont(ofSize: 24)
+            cell.textLabel?.text = "Activity"
+            cell.textLabel?.font = .boldSystemFont(ofSize: 21)
             cell.textLabel?.textColor = sandyYellowColor
             cell.backgroundColor = darkMoonColor
-            cell.isUserInteractionEnabled = false
+            cell.isUserInteractionEnabled = true
             cell.textLabel?.textAlignment = .justified
+
+            if activity.fav {
+                cell.imageView?.image = UIImage(systemName: "heart.fill")
+                cell.imageView?.tintColor = .systemRed
+            } else {
+                cell.imageView?.image = UIImage(systemName: "heart")
+                cell.imageView?.tintColor = .systemGray
+            }
+
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -40,7 +60,9 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.numberOfLines = 0
             cell.selectionStyle = .none
             cell.textLabel?.text = "Description"
-            cell.textLabel?.font = .boldSystemFont(ofSize: 24)
+            cell.textLabel?.font = .boldSystemFont(ofSize: 21)
+            cell.imageView?.image = UIImage(systemName: "square.text.square")
+            cell.imageView?.tintColor = .systemGray
             cell.backgroundColor = darkMoonColor
             cell.textLabel?.textColor = sandyYellowColor
             cell.isUserInteractionEnabled = false
@@ -54,49 +76,33 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.backgroundColor = darkMoonColor
             cell.textLabel?.textColor = pinkyWhiteColor
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
-            cell.textLabel?.textAlignment = .justified
+            cell.textLabel?.textAlignment = .left
+
+            if activity.desc.isEmpty {
+                cell.textLabel?.text = "tap to add your description"
+                cell.textLabel?.font = .boldSystemFont(ofSize: 10)
+                cell.textLabel?.textColor = .systemGray
+                cell.textLabel?.layer.opacity = 0.6
+                tableView.reloadData()
+            }
+
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.selectionStyle = .none
             cell.backgroundColor = darkMoonColor
-            cell.textLabel?.text = "Favorite"
-            cell.textLabel?.font = .boldSystemFont(ofSize: 24)
             cell.textLabel?.textColor = sandyYellowColor
             cell.textLabel?.textAlignment = .justified
+
+            cell.textLabel?.text = "Focus"
+            cell.imageView?.image = UIImage(systemName: "timelapse")
+            cell.imageView?.tintColor = .systemRed
+
+            cell.textLabel?.font = .boldSystemFont(ofSize: 21)
             return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.selectionStyle = .none
-            cell.backgroundColor = darkMoonColor
-            cell.textLabel?.textColor = pinkyWhiteColor
-            cell.textLabel?.textAlignment = .justified
-            if activity.fav {
-                cell.imageView?.image = UIImage(systemName: "heart.fill")
-                cell.textLabel?.text = "favorite"
-                cell.imageView?.tintColor = .systemRed
-            } else {
-                cell.imageView?.image = UIImage(systemName: "heart")
-                cell.textLabel?.text = "not favorite"
-                cell.imageView?.tintColor = .systemGray
-            }
-            cell.textLabel?.font = .boldSystemFont(ofSize: 16)
-            return cell
+
         default:
             fatalError()
         }
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let index = indexPath.row
-        switch index {
-        case 0:
-            return 50
-        default:
-            return UITableView.automaticDimension
-        }
-    }
-
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
     }
 }
