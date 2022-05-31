@@ -1,10 +1,9 @@
 
 import UIKit
 
-extension ActivitiesViewController: UITextFieldDelegate {
-
+extension NewActivityViewController: UITextFieldDelegate, UITextViewDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        newActivityView.textField.resignFirstResponder()
         return true
     }
 }

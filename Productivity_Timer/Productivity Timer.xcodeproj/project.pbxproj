@@ -7,31 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF229A8A281ADF5A0080B89B /* ? ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A89281ADF5A0080B89B /* ? ActivitiesView.swift */; };
+		FF229A8C281BF7F80080B89B /* NewA.ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */; };
+		FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A93281C78E70080B89B /* TableViewCellsID.swift */; };
+		FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A95281C7B250080B89B /* A.TableViewController.swift */; };
+		FF229A98281EEE990080B89B /* CreateNewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A97281EEE990080B89B /* CreateNewActivityView.swift */; };
+		FF229A9A281F05C10080B89B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A99281F05C10080B89B /* Alert.swift */; };
+		FF229A9C2820217C0080B89B /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A9B2820217C0080B89B /* Objects.swift */; };
+		FF229A9F28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */; };
+		FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AA028202D350080B89B /* ActivityCoreData.swift */; };
+		FF229AE428206FB60080B89B /* ? AddDataFuncToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AE328206FB60080B89B /* ? AddDataFuncToCoreData.swift */; };
+		FF229AE6282177F20080B89B /* ? ShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AE5282177F20080B89B /* ? ShapeLayer.swift */; };
+		FF229AEA2824F79A0080B89B /* A.DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AE92824F79A0080B89B /* A.DetailedViewController.swift */; };
+		FF229AEC2824F98B0080B89B /* A.DetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AEB2824F98B0080B89B /* A.DetailsVCExt.swift */; };
+		FF2A6F00282D920100F13F4E /* A.TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6EFF282D920100F13F4E /* A.TableViewExt.swift */; };
+		FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */; };
+		FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6F03283E754900F13F4E /* Constraints IDs.swift */; };
+		FF2A6F06283E7A9E00F13F4E /* A.EditTableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6F05283E7A9E00F13F4E /* A.EditTableViewExt.swift */; };
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
+		FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */; };
+		FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB5D2805A1D000F2F455 /* Productivity_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */; };
 		FF71FB672805A1D100F2F455 /* Productivity_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB662805A1D100F2F455 /* Productivity_TimerUITests.swift */; };
 		FF71FB692805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */; };
 		FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB752805A3D200F2F455 /* TimerViewController.swift */; };
-		FF71FB7A2805A40C00F2F455 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB792805A40C00F2F455 /* ActivitiesViewController.swift */; };
 		FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7D2805A56D00F2F455 /* Color Sets.swift */; };
 		FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */; };
 		FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1CF280B548C0046CE83 /* TimerView.swift */; };
 		FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1DC280B61250046CE83 /* Control Buttons.swift */; };
 		FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */; };
 		FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E5280BF8120046CE83 /* Time Format.swift */; };
-		FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */; };
+		FFD4B1EA280C17EF0046CE83 /* ? ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E9280C17EF0046CE83 /* ? ActivityModel.swift */; };
 		FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */; };
-		FFD4B1EE280C19CA0046CE83 /* NewActivityCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */; };
-		FFD4B1F0280C1B740046CE83 /* NewActivityCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */; };
-		FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */; };
-		FFD4B1F5280C1D510046CE83 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F4280C1D510046CE83 /* TextFields.swift */; };
 		FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F6280C1F360046CE83 /* AddButton.swift */; };
-		FFD4B1F9280C33440046CE83 /* TableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F8280C33440046CE83 /* TableCells.swift */; };
-		FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */; };
 		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
-		FFD4B201280C74970046CE83 /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B200280C74970046CE83 /* textField.swift */; };
+		FFD4B201280C74970046CE83 /* ? TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B200280C74970046CE83 /* ? TextField.swift */; };
 		FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
 		FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B209281300A10046CE83 /* Picker Format.swift */; };
 		FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B20B28130FB20046CE83 /* Picker Extension.swift */; };
@@ -56,7 +68,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF229A89281ADF5A0080B89B /* ? ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "? ActivitiesView.swift"; sourceTree = "<group>"; };
+		FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewA.ViewController.swift; sourceTree = "<group>"; };
+		FF229A93281C78E70080B89B /* TableViewCellsID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsID.swift; sourceTree = "<group>"; };
+		FF229A95281C7B250080B89B /* A.TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.TableViewController.swift; sourceTree = "<group>"; };
+		FF229A97281EEE990080B89B /* CreateNewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewActivityView.swift; sourceTree = "<group>"; };
+		FF229A99281F05C10080B89B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		FF229A9B2820217C0080B89B /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		FF229A9E28202C720080B89B /* ProductivityTimerCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProductivityTimerCoreData.xcdatamodel; sourceTree = "<group>"; };
+		FF229AA028202D350080B89B /* ActivityCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCoreData.swift; sourceTree = "<group>"; };
+		FF229AE328206FB60080B89B /* ? AddDataFuncToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "? AddDataFuncToCoreData.swift"; sourceTree = "<group>"; };
+		FF229AE5282177F20080B89B /* ? ShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "? ShapeLayer.swift"; sourceTree = "<group>"; };
+		FF229AE92824F79A0080B89B /* A.DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.DetailedViewController.swift; sourceTree = "<group>"; };
+		FF229AEB2824F98B0080B89B /* A.DetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.DetailsVCExt.swift; sourceTree = "<group>"; };
+		FF2A6EFF282D920100F13F4E /* A.TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.TableViewExt.swift; sourceTree = "<group>"; };
+		FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedActivity.swift; sourceTree = "<group>"; };
+		FF2A6F03283E754900F13F4E /* Constraints IDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constraints IDs.swift"; sourceTree = "<group>"; };
+		FF2A6F05283E7A9E00F13F4E /* A.EditTableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.EditTableViewExt.swift; sourceTree = "<group>"; };
 		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
+		FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.SelectedDetailsVCExt.swift; sourceTree = "<group>"; };
+		FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlert.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,24 +99,17 @@
 		FF71FB662805A1D100F2F455 /* Productivity_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerUITests.swift; sourceTree = "<group>"; };
 		FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF71FB752805A3D200F2F455 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		FF71FB792805A40C00F2F455 /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		FF71FB7D2805A56D00F2F455 /* Color Sets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Sets.swift"; sourceTree = "<group>"; };
 		FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView Extension.swift"; sourceTree = "<group>"; };
 		FFD4B1CF280B548C0046CE83 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		FFD4B1DC280B61250046CE83 /* Control Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Control Buttons.swift"; sourceTree = "<group>"; };
 		FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer Vars & Lets.swift"; sourceTree = "<group>"; };
 		FFD4B1E5280BF8120046CE83 /* Time Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time Format.swift"; sourceTree = "<group>"; };
-		FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		FFD4B1E9280C17EF0046CE83 /* ? ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "? ActivityModel.swift"; sourceTree = "<group>"; };
 		FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
-		FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityCreation.swift; sourceTree = "<group>"; };
-		FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityCreationView.swift; sourceTree = "<group>"; };
-		FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewActivityCreationView Exstension.swift"; sourceTree = "<group>"; };
-		FFD4B1F4280C1D510046CE83 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
-		FFD4B1F8280C33440046CE83 /* TableCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCells.swift; sourceTree = "<group>"; };
-		FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
-		FFD4B200280C74970046CE83 /* textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textField.swift; sourceTree = "<group>"; };
+		FFD4B200280C74970046CE83 /* ? TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "? TextField.swift"; sourceTree = "<group>"; };
 		FFD4B209281300A10046CE83 /* Picker Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Format.swift"; sourceTree = "<group>"; };
 		FFD4B20B28130FB20046CE83 /* Picker Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Extension.swift"; sourceTree = "<group>"; };
 		FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "setTimer Defaults.swift"; sourceTree = "<group>"; };
@@ -128,6 +152,7 @@
 		FF06E88D2809A30900907F1B /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				FF2A6EFE282D8BC200F13F4E /* Extensions */,
 				FFD4B1D3280B5B650046CE83 /* Models */,
 				FFD4B1D2280B5B5A0046CE83 /* Views */,
 				FFD4B1D1280B5B410046CE83 /* Controller */,
@@ -140,6 +165,7 @@
 			children = (
 				FF71FB532805A1D000F2F455 /* Info.plist */,
 				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
+				FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -153,6 +179,14 @@
 				FFD4B1DE280BF13E0046CE83 /* Controller */,
 			);
 			path = Activities;
+			sourceTree = "<group>";
+		};
+		FF2A6EFE282D8BC200F13F4E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FFD4B20B28130FB20046CE83 /* Picker Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FF71FB392805A1CF00F2F455 = {
@@ -209,6 +243,7 @@
 			children = (
 				FF71FB7D2805A56D00F2F455 /* Color Sets.swift */,
 				FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */,
+				FF2A6F03283E754900F13F4E /* Constraints IDs.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				FF71FB752805A3D200F2F455 /* TimerViewController.swift */,
-				FFD4B20B28130FB20046CE83 /* Picker Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				FFD4B1CF280B548C0046CE83 /* TimerView.swift */,
+				FF229AE5282177F20080B89B /* ? ShapeLayer.swift */,
 				FFD4B1DC280B61250046CE83 /* Control Buttons.swift */,
 			);
 			path = Views;
@@ -246,7 +281,9 @@
 		FFD4B1DE280BF13E0046CE83 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FF71FB792805A40C00F2F455 /* ActivitiesViewController.swift */,
+				FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */,
+				FF229A95281C7B250080B89B /* A.TableViewController.swift */,
+				FF229AE92824F79A0080B89B /* A.DetailedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -254,11 +291,11 @@
 		FFD4B1DF280BF1480046CE83 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF229A89281ADF5A0080B89B /* ? ActivitiesView.swift */,
 				FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */,
-				FFD4B1EF280C1B740046CE83 /* NewActivityCreationView.swift */,
-				FFD4B1F4280C1D510046CE83 /* TextFields.swift */,
+				FF229A97281EEE990080B89B /* CreateNewActivityView.swift */,
 				FFD4B1F6280C1F360046CE83 /* AddButton.swift */,
-				FFD4B200280C74970046CE83 /* textField.swift */,
+				FFD4B200280C74970046CE83 /* ? TextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,9 +303,14 @@
 		FFD4B1E0280BF14D0046CE83 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FFD4B1E9280C17EF0046CE83 /* ActivityModel.swift */,
-				FFD4B1F8280C33440046CE83 /* TableCells.swift */,
-				FFD4B1ED280C19CA0046CE83 /* NewActivityCreation.swift */,
+				FFD4B1E9280C17EF0046CE83 /* ? ActivityModel.swift */,
+				FF229AA028202D350080B89B /* ActivityCoreData.swift */,
+				FF229A93281C78E70080B89B /* TableViewCellsID.swift */,
+				FF229A99281F05C10080B89B /* Alert.swift */,
+				FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */,
+				FF229A9B2820217C0080B89B /* Objects.swift */,
+				FF229AE328206FB60080B89B /* ? AddDataFuncToCoreData.swift */,
+				FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,9 +318,11 @@
 		FFD4B1F1280C1CB90046CE83 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FFD4B1F2280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift */,
-				FFD4B1FA280C34140046CE83 /* TableViewExtension.swift */,
 				FFD4B1FE280C74150046CE83 /* Keyboard.swift */,
+				FF229AEB2824F98B0080B89B /* A.DetailsVCExt.swift */,
+				FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */,
+				FF2A6EFF282D920100F13F4E /* A.TableViewExt.swift */,
+				FF2A6F05283E7A9E00F13F4E /* A.EditTableViewExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -412,30 +456,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFD4B1F5280C1D510046CE83 /* TextFields.swift in Sources */,
-				FFD4B1EE280C19CA0046CE83 /* NewActivityCreation.swift in Sources */,
-				FF71FB7A2805A40C00F2F455 /* ActivitiesViewController.swift in Sources */,
-				FFD4B1FB280C34140046CE83 /* TableViewExtension.swift in Sources */,
+				FF229A8A281ADF5A0080B89B /* ? ActivitiesView.swift in Sources */,
+				FF229AE6282177F20080B89B /* ? ShapeLayer.swift in Sources */,
+				FF229AEA2824F79A0080B89B /* A.DetailedViewController.swift in Sources */,
 				FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */,
-				FFD4B1F0280C1B740046CE83 /* NewActivityCreationView.swift in Sources */,
+				FF2A6F00282D920100F13F4E /* A.TableViewExt.swift in Sources */,
+				FF229A9F28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld in Sources */,
+				FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */,
 				FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */,
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
-				FFD4B1F3280C1CCC0046CE83 /* NewActivityCreationView Exstension.swift in Sources */,
-				FFD4B1F9280C33440046CE83 /* TableCells.swift in Sources */,
 				FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */,
 				FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */,
+				FF229A8C281BF7F80080B89B /* NewA.ViewController.swift in Sources */,
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
+				FF229A98281EEE990080B89B /* CreateNewActivityView.swift in Sources */,
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
-				FFD4B1EA280C17EF0046CE83 /* ActivityModel.swift in Sources */,
+				FF229A9C2820217C0080B89B /* Objects.swift in Sources */,
+				FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */,
+				FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */,
+				FFD4B1EA280C17EF0046CE83 /* ? ActivityModel.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
 				FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */,
 				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
-				FFD4B201280C74970046CE83 /* textField.swift in Sources */,
+				FFD4B201280C74970046CE83 /* ? TextField.swift in Sources */,
+				FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */,
+				FF229AE428206FB60080B89B /* ? AddDataFuncToCoreData.swift in Sources */,
+				FF2A6F06283E7A9E00F13F4E /* A.EditTableViewExt.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */,
 				FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */,
+				FF229AEC2824F98B0080B89B /* A.DetailsVCExt.swift in Sources */,
+				FF229A9A281F05C10080B89B /* Alert.swift in Sources */,
 				FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */,
 				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
 				FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */,
+				FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */,
+				FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */,
+				FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */,
 				FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +817,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF229A9E28202C720080B89B /* ProductivityTimerCoreData.xcdatamodel */,
+			);
+			currentVersion = FF229A9E28202C720080B89B /* ProductivityTimerCoreData.xcdatamodel */;
+			path = ProductivityTimerCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FF71FB3A2805A1CF00F2F455 /* Project object */;
 }

@@ -3,14 +3,12 @@ import UIKit
 
 class ActivitiesTableViewCell: UITableViewCell {
 
-    lazy var nameLabel: UILabel = {
-        let nameLabel = UILabel()
-        return nameLabel
-    }()
-
-    lazy var descriptionLabel: UILabel = {
-        let descriptionLabel = UILabel()
-        return descriptionLabel
+    lazy var activityTitleLabel: UILabel = {
+        let activityTitleLabel = UILabel()
+        activityTitleLabel.textColor = pinkyWhiteColor
+        activityTitleLabel.font = .boldSystemFont(ofSize: 16)
+        activityTitleLabel.textAlignment = .left
+        return activityTitleLabel
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -23,10 +21,20 @@ class ActivitiesTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        contentView.addSubview(activityTitleLabel)
+        contentView.backgroundColor = blueMoonlight
+        setConstraints()
     }
 
     func set(object: Activity) {
-        self.nameLabel.text = object.title
-        self.descriptionLabel.text = object.description
+        self.activityTitleLabel.text = object.title
+    }
+
+    private func setConstraints() {
+        activityTitleLabel.anchor(top: contentView.topAnchor,
+                                  left: contentView.leftAnchor,
+                                  paddingLeft: 16,
+                                  width: self.frame.width,
+                                  height: 40)
     }
 }

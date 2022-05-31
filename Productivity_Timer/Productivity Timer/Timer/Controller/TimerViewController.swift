@@ -2,14 +2,11 @@
 import UIKit
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
-
+    
     var timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
-
     let secFormat = SecondsPickerFormat()
-    let minFormat = MinutesPickerFormat()
-    let hourFormat = HoursPickerFormat()
 
     override func loadView() {
         view = timerView
@@ -19,6 +16,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+
         timerView.delegate = self
 
         constants.startTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue) as? Date
@@ -26,6 +24,16 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.isTimerActivated = constants.userDefaults.bool(forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
+        checkIfTimerActivated()
+    }
+
+    // MARK: - viewDidLayoutSubviews
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        timerView.animateCircular()
+    }
+
+    private func checkIfTimerActivated() {
         if constants.isTimerActivated {
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
         } else {
@@ -38,17 +46,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 }
             }
         }
-    }
-
-    // MARK: - viewDidLayoutSubviews
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        timerView.animateCircular()
-        timerView.verticalLineView.layer.opacity = 0.0
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
 
     // MARK: - Round Animation
@@ -100,9 +97,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timePickerView.isHidden = true
         timerView.startButton.isHidden = false
         timerView.startButton.isEnabled = true
-        UIView.animate(withDuration: 3.0, delay: 2.0) {
-            self.timerView.verticalLineView.layer.opacity = 0.0
-        }
     }
 
     // MARK: - Start, Pause, Stop Timers
@@ -174,13 +168,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timePickerView.isHidden = false
     }
 
-    private func setCountDownTime(date: Date?) {
-        constants.countDownTime = date
-        constants.userDefaults.set(constants.countDownTime, forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
-    }
-
     @objc func beginCountDown() {
-
         timerView.timerLabel.text = String(constants.countdown)
         timerView.timerLabel.textColor = .white
 
@@ -191,7 +179,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             constants.timer.invalidate()
             timerView.startButton.isEnabled = true
             timerView.timerLabel.text = "TIME'S UP"
-            timerView.timerLabel.textColor = sandyYellowColor
+            timerView.timerLabel.textColor = .systemRed
             setButtonImg(title: "Play", img: "play")
             stopTimer()
         }
