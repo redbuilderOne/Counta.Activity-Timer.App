@@ -64,19 +64,19 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = activity.desc
             cell.selectionStyle = .none
             cell.backgroundColor = darkMoonColor
             cell.textLabel?.textColor = pinkyWhiteColor
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.textLabel?.textAlignment = .left
 
-            if activity.desc.isEmpty {
-                cell.textLabel?.text = "tap to add your description"
-                cell.textLabel?.font = .boldSystemFont(ofSize: 10)
-                cell.textLabel?.textColor = .systemGray
-                cell.textLabel?.layer.opacity = 0.6
-                tableView.reloadData()
+            if activity.desc == "" {
+                    cell.textLabel?.text = "tap to add your description"
+                    cell.textLabel?.font = .boldSystemFont(ofSize: 10)
+                    cell.textLabel?.textColor = .systemGray
+                    cell.textLabel?.layer.opacity = 0.6
+            } else {
+                cell.textLabel?.text = activity.desc
             }
 
             return cell
