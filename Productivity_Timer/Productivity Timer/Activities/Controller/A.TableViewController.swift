@@ -10,17 +10,34 @@ class ActivityTableViewController: UITableViewController {
     lazy var newActivityVC = NewActivityViewController()
     var activityDetailedViewController: UITabBarController?
 
+    let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         setupNavigationBar()
         firstLoadCheck()
         configureTableView()
+
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        view.addGestureRecognizer(swipeDown)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
         view.backgroundColor = darkMoonColor
+    }
+
+    @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.down:
+                show(newActivityVC, sender: self)
+            default:
+                break
+            }
+        }
     }
 
     private func configureTableView() {

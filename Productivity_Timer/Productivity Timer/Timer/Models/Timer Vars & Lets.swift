@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 
 // MARK: - Variables & Constants
 

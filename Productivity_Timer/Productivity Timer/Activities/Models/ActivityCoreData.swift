@@ -10,4 +10,5 @@ class Activity: NSManagedObject {
     @NSManaged var deletedDate: Date?
     @NSManaged var fav: Bool
     @NSManaged var isDone: Bool
+    @NSManaged var focusedActivityTitle: String?
 }

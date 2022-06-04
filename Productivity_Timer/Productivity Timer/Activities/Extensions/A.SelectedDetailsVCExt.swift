@@ -6,8 +6,6 @@ extension ActivityDetailedViewController {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-//        guard let cell = tableView.cellForRow(at: indexPath) as? ActivitiesTableViewCell else { return }
-
         let selectedIndexPath = tableView.indexPathForSelectedRow
         guard selectedIndexPath?.section != 0 || selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 4 else { return }
 
@@ -116,20 +114,33 @@ extension ActivityDetailedViewController {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-//            conformDeleteAlert.focusOnActivityConfirm(on: self, with: "Now \(activity.title ?? "your activity") is being focused", message: "You can return to Timer")
+            conformDeleteAlert.focusOnActivityConfirm(on: self, with: "\(activity.title ?? "your activity") is now being focused", message: "You can return to Timer")
 
             SelectedActivity.selectedActivity = self.activity
             FocusedActivity.focusedActivityText = self.activity.title
-            print("\(FocusedActivity.focusedActivityText)")
+            print("\(FocusedActivity.focusedActivityText ?? "")")
 
             if let selectedActivity = SelectedActivity.selectedActivity {
 
                 FocusedActivity.focusedActivityText = selectedActivity.title
+                activity.focusedActivityTitle = FocusedActivity.focusedActivityText ?? ""
 
-                navigationController?.pushViewController(newTimerScreen, animated: true)
+                TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.focusedActivityTitle
+                TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
+                TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
 
-                newTimerScreen.timerView.focusLabel.text = FocusedActivity.focusedActivityText
-                newTimerScreen.timerView.focusLabel.textColor = sandyYellowColor
+                do {
+                    try context.save()
+//                    SelectedActivity.selectedActivity = nil
+                } catch {
+                    print("Can't save the context")
+                }
+
+//                navigationController?.pushViewController(newTimerScreen, animated: true)
+//                navigationController?.pushViewController(TimerViewControllerStruct.timerViewController, animated: true)
+
+//                newTimerScreen.timerView.focusLabel.text = FocusedActivity.focusedActivityText
+//                newTimerScreen.timerView.focusLabel.textColor = sandyYellowColor
 
 
 //                navigationController?.popToRootViewController(animated: true)

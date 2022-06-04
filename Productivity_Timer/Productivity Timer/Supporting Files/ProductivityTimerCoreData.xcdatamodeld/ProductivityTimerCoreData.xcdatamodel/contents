@@ -4,11 +4,12 @@
         <attribute name="deletedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="fav" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="focusedActivityTitle" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Activity" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

@@ -6,6 +6,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     lazy var newActivityView = CreateNewActivityView()
     lazy var conformAlert = Alert(delegate: self)
+    lazy var activity = Activity()
 
     override func loadView() {
         view = newActivityView
@@ -39,15 +40,13 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     }
 
     @objc func saveData() {
-
         if newActivityView.textField.text == "" {
             conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
             return
 
         } else {
-
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
             let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
             let newActivity = Activity(entity: entity!, insertInto: context)
@@ -57,7 +56,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             newActivity.fav = false
             newActivity.isDone = false
             print("New Activity \(newActivity.title ?? "") is created at \(Date())")
-            
+
             do {
                 try context.save()
                 ActivitiesObject.arrayOfActivities.append(newActivity)

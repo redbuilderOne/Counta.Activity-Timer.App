@@ -2,14 +2,25 @@
 import UIKit
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
-    
+
+    var activity: Activity?
     var timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
     let secFormat = SecondsPickerFormat()
+    lazy var newActivityVC = NewActivityViewController()
 
     override func loadView() {
         view = timerView
+    }
+
+    init(activity: Activity? = nil) {
+        self.activity = activity
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - viewDidLoad
@@ -25,17 +36,30 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
         checkIfTimerActivated()
+        focusActivityCheck()
 
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToRightSwipeGesture))
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
 
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        view.addGestureRecognizer(swipeRight)
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        view.addGestureRecognizer(swipeDown)
     }
 
     // MARK: - viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         timerView.animateCircular()
+    }
+
+    private func focusActivityCheck() {
+        if activity?.focusedActivityTitle == nil {
+            timerView.focusLabel.text = "tap to focus on activity"
+            timerView.focusLabel.textColor = .systemGray
+            timerView.focusLabel.layer.opacity = 0.3
+        } else {
+            timerView.focusLabel.text = activity?.focusedActivityTitle
+            timerView.focusLabel.textColor = sandyYellowColor
+            timerView.focusLabel.layer.opacity = 1
+        }
     }
 
     private func checkIfTimerActivated() {
@@ -54,15 +78,12 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     }
 
     //TODO: Swipe Action
-    @objc func respondToRightSwipeGesture(gesture: UIGestureRecognizer) {
+    @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
 
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-            case UISwipeGestureRecognizer.Direction.right:
-                print("swipeRight is done but nothing happens")
-//                navigationController?.pushViewController(activityTableViewController, animated: true)
-//                navigationController?.popViewController(animated: true)
-//                self.show(activityTableViewController, sender: nil)
+            case UISwipeGestureRecognizer.Direction.down:
+                present(newActivityVC, animated: true, completion: nil)
             default:
                 break
             }
