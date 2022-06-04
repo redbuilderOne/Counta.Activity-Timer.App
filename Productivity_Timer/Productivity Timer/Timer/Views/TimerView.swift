@@ -12,6 +12,18 @@ class TimerView: UIView {
     
     weak var delegate: TimerViewDelegate?
 
+    lazy var focusLabel: UILabel = {
+        let focusLabel = UILabel()
+        focusLabel.text = "focus"
+        focusLabel.textAlignment = .center
+        focusLabel.layer.cornerRadius = 12
+        focusLabel.clipsToBounds = true
+        focusLabel.textColor = sandyYellowColor
+        focusLabel.font = .boldSystemFont(ofSize: 18)
+        focusLabel.translatesAutoresizingMaskIntoConstraints = false
+        return focusLabel
+    }()
+
     lazy var elipseView: UIImageView = {
         let elipseView = UIImageView()
         elipseView.image = elipseSandyYellowColor
@@ -73,6 +85,7 @@ class TimerView: UIView {
         self.addSubview(setButton)
         self.addSubview(elipseView)
         self.addSubview(timePickerView)
+        self.addSubview(focusLabel)
         elipseView.addSubview(timerLabel)
         timePickerView.isHidden = true
         placeButtons()
@@ -119,17 +132,23 @@ class TimerView: UIView {
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
+            timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -40),
             timerLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
             timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
             elipseView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
+            elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -40),
             elipseView.heightAnchor.constraint(equalToConstant: 300),
             elipseView.widthAnchor.constraint(equalToConstant: 300),
             timePickerView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             timePickerView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             timePickerView.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            timePickerView.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
+            timePickerView.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+
+            focusLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            focusLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 70),
+            focusLabel.heightAnchor.constraint(equalToConstant: 50),
+            focusLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
+            focusLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
         ])
     }
 
@@ -147,9 +166,9 @@ class TimerView: UIView {
         NSLayoutConstraint.activate([
             startButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor, constant: 32),
             startButton.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            stopButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 16),
+            stopButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 8),
             stopButton.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
-            setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 16),
+            setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 8),
             setButton.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
         ])
     }

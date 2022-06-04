@@ -96,7 +96,7 @@ extension ActivityDetailedViewController {
 
                 if selectedActivity.fav {
                     selectedActivity.fav = false
-                    print("\(selectedActivity) is now marked nonfavourite")
+                    print("\(selectedActivity) is now not marked favourite")
                 } else {
                     selectedActivity.fav = true
                     print("\(selectedActivity) is now marked favourite")
@@ -108,6 +108,36 @@ extension ActivityDetailedViewController {
                 } catch {
                     print("Can't save the context")
                 }
+            }
+            tableView.reloadData()
+        }
+
+        if selectedIndexPath?.row == 4 {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
+            conformDeleteAlert.focusOnActivityConfirm(on: self, with: "Now \(activity.title ?? "your activity") is being focused", message: "You can return to Timer")
+
+            SelectedActivity.selectedActivity = self.activity
+            FocusedActivity.focusedActivityText = self.activity.title
+
+            if let selectedActivity = SelectedActivity.selectedActivity {
+
+                FocusedActivity.focusedActivityText = selectedActivity.title
+
+
+//                navigationController?.popToRootViewController(animated: true)
+//                _ = navigationController?.popViewController(animated: true)
+//                show(TimerViewController(), sender: self)
+//                navigationController?.pushViewController(TimerViewController(), animated: true)
+
+                do {
+                    try context.save()
+
+                } catch {
+                    print("Can't save the context")
+                }
+                SelectedActivity.selectedActivity = nil
             }
             tableView.reloadData()
         }

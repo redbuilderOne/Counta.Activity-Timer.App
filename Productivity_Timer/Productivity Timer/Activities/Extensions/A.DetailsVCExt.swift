@@ -93,7 +93,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
 
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
             return cell
-
         default:
             fatalError()
         }
