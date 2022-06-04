@@ -18,13 +18,11 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         newActivityView.delegate = self
         newActivityView.textField.delegate = self
         configureView()
-        addSaveItem()
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         configureView()
-        addSaveItem()
     }
 
     final private func configureView() {
@@ -34,10 +32,11 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         view.backgroundColor = darkMoonColor
     }
 
-    private func addSaveItem() {
-        let saveItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveData))
-        self.navigationItem.rightBarButtonItem = saveItem
-    }
+// unused
+//    private func addSaveItem() {
+//        let saveItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveData))
+//        self.navigationItem.rightBarButtonItem = saveItem
+//    }
 
     @objc func saveData() {
         if newActivityView.textField.text == "" {
@@ -60,7 +59,8 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             do {
                 try context.save()
                 ActivitiesObject.arrayOfActivities.append(newActivity)
-                navigationController?.popViewController(animated: true)
+//
+//                navigationController?.popViewController(animated: true)
             } catch {
                 print("Can't save the context")
             }
