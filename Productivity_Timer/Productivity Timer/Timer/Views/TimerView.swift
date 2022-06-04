@@ -14,11 +14,12 @@ class TimerView: UIView {
 
     lazy var focusLabel: UILabel = {
         let focusLabel = UILabel()
-        focusLabel.text = "focus"
+        focusLabel.text = "tap to create new activity"
+        focusLabel.textColor = .systemGray
         focusLabel.textAlignment = .center
         focusLabel.layer.cornerRadius = 12
         focusLabel.clipsToBounds = true
-        focusLabel.textColor = sandyYellowColor
+//        focusLabel.textColor = sandyYellowColor
         focusLabel.font = .boldSystemFont(ofSize: 18)
         focusLabel.translatesAutoresizingMaskIntoConstraints = false
         return focusLabel

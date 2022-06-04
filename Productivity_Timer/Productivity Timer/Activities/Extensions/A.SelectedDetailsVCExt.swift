@@ -116,14 +116,20 @@ extension ActivityDetailedViewController {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-            conformDeleteAlert.focusOnActivityConfirm(on: self, with: "Now \(activity.title ?? "your activity") is being focused", message: "You can return to Timer")
+//            conformDeleteAlert.focusOnActivityConfirm(on: self, with: "Now \(activity.title ?? "your activity") is being focused", message: "You can return to Timer")
 
             SelectedActivity.selectedActivity = self.activity
             FocusedActivity.focusedActivityText = self.activity.title
+            print("\(FocusedActivity.focusedActivityText)")
 
             if let selectedActivity = SelectedActivity.selectedActivity {
 
                 FocusedActivity.focusedActivityText = selectedActivity.title
+
+                navigationController?.pushViewController(newTimerScreen, animated: true)
+
+                newTimerScreen.timerView.focusLabel.text = FocusedActivity.focusedActivityText
+                newTimerScreen.timerView.focusLabel.textColor = sandyYellowColor
 
 
 //                navigationController?.popToRootViewController(animated: true)
