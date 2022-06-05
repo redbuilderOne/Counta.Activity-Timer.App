@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
 
@@ -9,6 +10,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var constants = LetsAndVarsForTimer()
     let secFormat = SecondsPickerFormat()
     lazy var newActivityVC = NewActivityViewController()
+    lazy var instantCreateAlert = InstantCreateAlert()
 
     override func loadView() {
         view = timerView
@@ -39,16 +41,25 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         focusActivityCheck()
 
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnFocusedActivity))
+
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         view.addGestureRecognizer(swipeDown)
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnFocusedActivity))
 
         timerView.focusLabel.addGestureRecognizer(tapGesture)
     }
 
+    func instantCreateActivity() {
+        instantCreateAlert.instantCreateNewActivity(on: self)
+    }
+
     @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
         print("tap on activity")
+//       isFocused = false
+        instantCreateActivity()
+        timerView.focusLabel.textColor = sandyYellowColor
+        timerView.focusLabel.layer.opacity = 1
+        timerView.focusLabel.text = activity?.focusedActivityTitle
     }
 
     // MARK: - viewDidLayoutSubviews

@@ -32,11 +32,11 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         view.backgroundColor = darkMoonColor
     }
 
-// unused
-//    private func addSaveItem() {
-//        let saveItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveData))
-//        self.navigationItem.rightBarButtonItem = saveItem
-//    }
+    // unused
+    //    private func addSaveItem() {
+    //        let saveItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveData))
+    //        self.navigationItem.rightBarButtonItem = saveItem
+    //    }
 
     @objc func saveData() {
         if newActivityView.textField.text == "" {
@@ -56,24 +56,25 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 return
             } else {
 
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-            let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
-            let newActivity = Activity(entity: entity!, insertInto: context)
-            newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
-            newActivity.title = newActivityView.textField.text
-            newActivity.desc = newActivityView.descriptionTextView.text
-            newActivity.fav = false
-            newActivity.isDone = false
-            print("New Activity \(newActivity.title ?? "") is created at \(Date())")
+                let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
+                let newActivity = Activity(entity: entity!, insertInto: context)
+                newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
+                newActivity.title = newActivityView.textField.text
+                newActivity.desc = newActivityView.descriptionTextView.text
+                newActivity.fav = false
+                newActivity.isDone = false
+                newActivity.isFocused = false
+                print("New Activity \(newActivity.title ?? "") is created at \(Date())")
 
-            do {
-                try context.save()
-                ActivitiesObject.arrayOfActivities.append(newActivity)
-            } catch {
-                print("Can't save the context")
-            }
+                do {
+                    try context.save()
+                    ActivitiesObject.arrayOfActivities.append(newActivity)
+                } catch {
+                    print("Can't save the context")
+                }
             }
         }
     }

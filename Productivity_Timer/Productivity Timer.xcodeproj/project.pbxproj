@@ -25,6 +25,8 @@
 		FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */; };
 		FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */; };
 		FF36BE86284BBF3700176FA0 /* timerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE85284BBF3700176FA0 /* timerVC.swift */; };
+		FF36BE88284CD94100176FA0 /* InstantCreateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE87284CD94100176FA0 /* InstantCreateAlert.swift */; };
+		FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB5D2805A1D000F2F455 /* Productivity_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */; };
@@ -82,6 +84,8 @@
 		FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.SelectedDetailsVCExt.swift; sourceTree = "<group>"; };
 		FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlert.swift; sourceTree = "<group>"; };
 		FF36BE85284BBF3700176FA0 /* timerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerVC.swift; sourceTree = "<group>"; };
+		FF36BE87284CD94100176FA0 /* InstantCreateAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantCreateAlert.swift; sourceTree = "<group>"; };
+		FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRowEditAlert.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 				FFD4B1E5280BF8120046CE83 /* Time Format.swift */,
 				FFD4B209281300A10046CE83 /* Picker Format.swift */,
 				FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */,
+				FF36BE87284CD94100176FA0 /* InstantCreateAlert.swift */,
+				FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
 				FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */,
 				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
+				FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */,
 				FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */,
 				FF36BE86284BBF3700176FA0 /* timerVC.swift in Sources */,
 				FF2A6F06283E7A9E00F13F4E /* A.EditTableViewExt.swift in Sources */,
@@ -476,6 +483,7 @@
 				FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */,
 				FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */,
 				FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */,
+				FF36BE88284CD94100176FA0 /* InstantCreateAlert.swift in Sources */,
 				FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

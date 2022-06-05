@@ -8,6 +8,8 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     lazy var createNewActivityView = NewActivityViewController()
     lazy var conformDeleteAlert = DeleteAlert(delegate: self)
     var selectedIndexToDelete: Int
+    lazy var titleRowEditAlert = TitleRowEditAlert()
+
 
     init(activity: Activity, selectedIndexToDelete: Int) {
         self.activity = activity

@@ -3,48 +3,49 @@ import UIKit
 import CoreData
 
 extension ActivityDetailedViewController {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let selectedIndexPath = tableView.indexPathForSelectedRow
         guard selectedIndexPath?.section != 0 || selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 4 else { return }
 
         if selectedIndexPath?.row == 1 {
-            let titleRowEditAction = UIAlertController(title: "Edit Title", message: "Please edit the title", preferredStyle: .alert)
-            titleRowEditAction.addTextField(configurationHandler: { (newTitle) -> Void in
-                newTitle.text = self.activity.title
-            })
+            titleRowEditAlert.titleRowEditAction(on: self, activity: activity, tableView: tableView)
+//            let titleRowEditAction = UIAlertController(title: "Edit Title", message: "Please edit the title", preferredStyle: .alert)
+//            titleRowEditAction.addTextField(configurationHandler: { (newTitle) -> Void in
+//                newTitle.text = self.activity.title
+//            })
+//
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+//                self.presentingViewController?.dismiss(animated: true, completion: nil)
+//            })
+//
+//            let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+//
+//                SelectedActivity.selectedActivity = self.activity
+//
+//                self.activity.title = (titleRowEditAction.textFields?.first?.text)!
 
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
-                self.presentingViewController?.dismiss(animated: true, completion: nil)
-            })
 
-            let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-
-                SelectedActivity.selectedActivity = self.activity
-
-                self.activity.title = (titleRowEditAction.textFields?.first?.text)!
-
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-
-                if SelectedActivity.selectedActivity != nil {
-
-                    do {
-                        try context.save()
-                        SelectedActivity.selectedActivity = nil
-                    } catch {
-                        print("Can't save the context")
-                    }
-                }
-
-                tableView.reloadData()
-                self.presentingViewController?.dismiss(animated: true, completion: nil)
-            })
-
-            titleRowEditAction.addAction(okayAction)
-            titleRowEditAction.addAction(cancelAction)
-            self.present(titleRowEditAction, animated: true, completion: nil)
+//                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+//                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+//
+//                if SelectedActivity.selectedActivity != nil {
+//
+//                    do {
+//                        try context.save()
+//                        SelectedActivity.selectedActivity = nil
+//                    } catch {
+//                        print("Can't save the context")
+//                    }
+//                }
+//
+//                tableView.reloadData()
+//                self.presentingViewController?.dismiss(animated: true, completion: nil)
+//            })
+//
+//            titleRowEditAction.addAction(okayAction)
+//            titleRowEditAction.addAction(cancelAction)
+//            self.present(titleRowEditAction, animated: true, completion: nil)
         }
 
         // MARK: DESCRIPTION EDITING
@@ -121,13 +122,15 @@ extension ActivityDetailedViewController {
             print("\(FocusedActivity.focusedActivityText ?? "")")
 
             if let selectedActivity = SelectedActivity.selectedActivity {
-
                 FocusedActivity.focusedActivityText = selectedActivity.title
                 activity.focusedActivityTitle = FocusedActivity.focusedActivityText ?? ""
+                activity.isFocused = true
 
+                if activity.isFocused {
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.focusedActivityTitle
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
+                }
 
                 do {
                     try context.save()

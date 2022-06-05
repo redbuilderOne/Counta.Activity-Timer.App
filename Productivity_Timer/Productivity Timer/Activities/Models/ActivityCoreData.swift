@@ -11,4 +11,5 @@ class Activity: NSManagedObject {
     @NSManaged var fav: Bool
     @NSManaged var isDone: Bool
     @NSManaged var focusedActivityTitle: String?
+    @NSManaged var isFocused: Bool
 }
