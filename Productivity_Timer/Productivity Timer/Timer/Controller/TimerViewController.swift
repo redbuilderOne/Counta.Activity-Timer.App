@@ -39,9 +39,16 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         focusActivityCheck()
 
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
-
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
         view.addGestureRecognizer(swipeDown)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnFocusedActivity))
+
+        timerView.focusLabel.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
+        print("tap on activity")
     }
 
     // MARK: - viewDidLayoutSubviews
@@ -77,9 +84,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    //TODO: Swipe Action
     @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
-
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.down:

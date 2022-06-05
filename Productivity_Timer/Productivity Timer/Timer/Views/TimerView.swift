@@ -14,14 +14,14 @@ class TimerView: UIView {
 
     lazy var focusLabel: UILabel = {
         let focusLabel = UILabel()
-        focusLabel.text = "tap to create new activity"
+        focusLabel.text = "swipe down to create new activity"
         focusLabel.textColor = .systemGray
         focusLabel.textAlignment = .center
         focusLabel.layer.cornerRadius = 12
         focusLabel.clipsToBounds = true
-//        focusLabel.textColor = sandyYellowColor
         focusLabel.font = .boldSystemFont(ofSize: 18)
         focusLabel.translatesAutoresizingMaskIntoConstraints = false
+        focusLabel.isUserInteractionEnabled = true
         return focusLabel
     }()
 
@@ -60,10 +60,6 @@ class TimerView: UIView {
         timePickerView.delegate = delegate as? UIPickerViewDelegate
         return timePickerView
     }()
-
-    @objc func endTimePickerEditing() {
-        self.endEditing(true)
-    }
 
     //MARK: - Buttons
     lazy var startButton = TimerControlButton(title: "Start", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: blueMoonlight,  systemImageName: "play")
@@ -109,6 +105,10 @@ class TimerView: UIView {
 
     @objc func startSetTimerButtonPressed() {
         delegate?.startSetTimerButtonDidPressed()
+    }
+
+    @objc func endTimePickerEditing() {
+        self.endEditing(true)
     }
 
     //MARK: - Circular ANIMATION
