@@ -44,6 +44,18 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             return
 
         } else {
+            var duplicateIndex: Int?
+            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == newActivityView.textField.text})
+
+            print("Found duplicate index: \(String(describing: duplicateIndex))")
+
+            if duplicateIndex != nil {
+                duplicateIndex = nil
+                conformAlert.isEmptyTextFields(on: self, with: "Sorry", message: "Activity already exists")
+                print("Index \(String(describing: duplicateIndex)) cleared")
+                return
+            } else {
+
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
@@ -59,10 +71,9 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
             do {
                 try context.save()
                 ActivitiesObject.arrayOfActivities.append(newActivity)
-//
-//                navigationController?.popViewController(animated: true)
             } catch {
                 print("Can't save the context")
+            }
             }
         }
     }
@@ -86,3 +97,4 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         navigationController?.popViewController(animated: true)
     }
 }
+
