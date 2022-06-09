@@ -13,6 +13,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     lazy var instantCreateAlert = InstantCreateAlert()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText = String()
+//    lazy var keyboardDismissClosure = ((UILabel, String) -> String).self
 
     override func loadView() {
         view = timerView
@@ -42,7 +43,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
         checkIfTimerActivated()
         focusActivityCheck()
-        hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround(textToClear: timerView.focusLabel)
 
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnFocusedActivity))
@@ -68,7 +69,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             print("Error the textField is empty")
         }
         timerView.focusLabel.text = focusCurrentText
-        print("\(focusCurrentText)")
         return focusCurrentText
     }
 
