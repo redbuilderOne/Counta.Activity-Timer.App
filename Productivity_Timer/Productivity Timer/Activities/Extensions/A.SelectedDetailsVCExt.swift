@@ -8,22 +8,22 @@ extension ActivityDetailedViewController {
         let selectedIndexPath = tableView.indexPathForSelectedRow
         guard selectedIndexPath?.section != 0 || selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 4 else { return }
 
-        // MARK: FAVOURITE EDITING
+        // MARK: FAVOURITE
         if selectedIndexPath?.row == 0 {
             favRowEditAlert.favRowEditAction(on: self, activity: activity, tableView: tableView)
         }
 
-        // MARK: TITLE EDITING
+        // MARK: TITLE
         if selectedIndexPath?.row == 1 {
             titleRowEditAlert.titleRowEditAction(on: self, activity: activity, tableView: tableView)
         }
 
-        // MARK: DESCRIPTION EDITING
+        // MARK: DESCRIPTION
         if selectedIndexPath?.row == 3 {
             descRowEditAlert.descRowEditAction(on: self, activity: activity, tableView: tableView)
         }
 
-        // MARK: FOCUS EDITING
+        // MARK: FOCUS
         if selectedIndexPath?.row == 4 {
             focusRowEditAlert.focusRowEditAction(on: self, activity: activity, tableView: tableView)
 

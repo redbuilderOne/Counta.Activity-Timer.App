@@ -25,16 +25,16 @@ struct InstantCreateAlert {
                 newActivity.focusedActivityTitle = newTitle.text
                 newActivity.isFocused = true
                 FocusedActivity.focusedActivityText = newActivity.title
-
+                
                 do {
                     try context.save()
                     ActivitiesObject.arrayOfActivities.append(newActivity)
                 } catch {
                     print("Can't save the context")
                 }
-                vc.view.setNeedsDisplay()
             })
 
+            vc.view.setNeedsDisplay()
             addActivityAction.addAction(okayAction)
             addActivityAction.addAction(cancelAction)
             vc.present(addActivityAction, animated: true, completion: nil)

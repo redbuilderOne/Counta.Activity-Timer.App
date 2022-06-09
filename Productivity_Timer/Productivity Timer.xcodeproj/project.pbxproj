@@ -25,7 +25,7 @@
 		FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */; };
 		FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */; };
 		FF36BE86284BBF3700176FA0 /* TimerViewControllerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE85284BBF3700176FA0 /* TimerViewControllerStruct.swift */; };
-		FF36BE88284CD94100176FA0 /* InstantCreateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE87284CD94100176FA0 /* InstantCreateAlert.swift */; };
+		FF36BE88284CD94100176FA0 /* ? InstantCreateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE87284CD94100176FA0 /* ? InstantCreateAlert.swift */; };
 		FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */; };
 		FF36BE8F284D2B5D00176FA0 /* DescRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */; };
 		FF36BE91284D2CE700176FA0 /* FavRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */; };
@@ -87,7 +87,7 @@
 		FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.SelectedDetailsVCExt.swift; sourceTree = "<group>"; };
 		FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlert.swift; sourceTree = "<group>"; };
 		FF36BE85284BBF3700176FA0 /* TimerViewControllerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewControllerStruct.swift; sourceTree = "<group>"; };
-		FF36BE87284CD94100176FA0 /* InstantCreateAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantCreateAlert.swift; sourceTree = "<group>"; };
+		FF36BE87284CD94100176FA0 /* ? InstantCreateAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "? InstantCreateAlert.swift"; sourceTree = "<group>"; };
 		FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRowEditAlert.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		FF36BE8B284D2ABF00176FA0 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				FF36BE87284CD94100176FA0 /* InstantCreateAlert.swift */,
+				FF36BE87284CD94100176FA0 /* ? InstantCreateAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -518,7 +518,7 @@
 				FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */,
 				FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */,
 				FF36BE93284D2D8D00176FA0 /* FocusRowEditAlert.swift in Sources */,
-				FF36BE88284CD94100176FA0 /* InstantCreateAlert.swift in Sources */,
+				FF36BE88284CD94100176FA0 /* ? InstantCreateAlert.swift in Sources */,
 				FF36BE8F284D2B5D00176FA0 /* DescRowEditAlert.swift in Sources */,
 				FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */,
 			);

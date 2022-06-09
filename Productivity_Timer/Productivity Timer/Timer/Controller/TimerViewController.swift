@@ -49,17 +49,52 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.focusLabel.addGestureRecognizer(tapGesture)
     }
 
-    func instantCreateActivity() {
+    func instantCreateActivity(using completionHandler: (Bool) -> Void) {
         instantCreateAlert.instantCreateNewActivity(on: self)
+        timerView.focusLabel.textColor = pinkyWhiteColor
+        timerView.focusLabel.layer.opacity = 0.7
+
+        print("Function finished.")
+        self.timerView.focusLabel.text = FocusedActivity.focusedActivityText
+        self.timerView.focusLabel.textColor = sandyYellowColor
+        self.timerView.focusLabel.layer.opacity = 1
+        self.view.setNeedsDisplay()
+        completionHandler(true)
+    }
+
+    let myCompletionHandler: (Bool) -> Void = { doneWorking in
+        if FocusedActivity.focusedActivityText != nil {
+            print("FocusedActivity.focusedActivityText != nil")
+        }
     }
 
     @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
         print("tap on activity")
-//       isFocused = false
-        instantCreateActivity()
-        timerView.focusLabel.textColor = sandyYellowColor
-        timerView.focusLabel.layer.opacity = 1
-        timerView.focusLabel.text = activity?.focusedActivityTitle
+        //       isFocused = false
+        instantCreateActivity(using: myCompletionHandler)
+
+//        func myFunction(using completionHandler: (Bool) -> Void) {
+////            sleep(3)
+//            print("Function finished.")
+//            self.timerView.focusLabel.text = FocusedActivity.focusedActivityText
+//            self.timerView.focusLabel.textColor = sandyYellowColor
+//            self.timerView.focusLabel.layer.opacity = 1
+//            self.view.setNeedsDisplay()
+//            completionHandler(true)
+//        }
+//
+
+
+//        myFunction(using: myCompletionHandler)
+
+
+
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//            self.timerView.focusLabel.text = FocusedActivity.focusedActivityText
+//            self.timerView.focusLabel.textColor = sandyYellowColor
+//            self.timerView.focusLabel.layer.opacity = 1
+//            FocusedActivity.focusedActivityText = nil // ?
+//        }
     }
 
     // MARK: - viewDidLayoutSubviews
