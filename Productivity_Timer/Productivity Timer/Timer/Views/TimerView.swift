@@ -9,12 +9,11 @@ protocol TimerViewDelegate: AnyObject {
 }
 
 class TimerView: UIView {
-    
+
     weak var delegate: TimerViewDelegate?
 
     lazy var focusLabel: UILabel = {
         let focusLabel = UILabel()
-        focusLabel.text = "swipe down to create new activity"
         focusLabel.textColor = .systemGray
         focusLabel.textAlignment = .center
         focusLabel.layer.cornerRadius = 12
@@ -23,6 +22,20 @@ class TimerView: UIView {
         focusLabel.translatesAutoresizingMaskIntoConstraints = false
         focusLabel.isUserInteractionEnabled = true
         return focusLabel
+    }()
+
+    lazy var focusTextField: UITextField = {
+        let focusTextField = UITextField()
+        focusTextField.textColor = pinkyWhiteColor
+        focusTextField.textAlignment = .center
+        focusTextField.layer.cornerRadius = 12
+        focusTextField.clipsToBounds = true
+        focusTextField.font = .boldSystemFont(ofSize: 18)
+        focusTextField.translatesAutoresizingMaskIntoConstraints = false
+        focusTextField.isUserInteractionEnabled = true
+        focusTextField.returnKeyType = .done
+        focusTextField.resignFirstResponder()
+        return focusTextField
     }()
 
     lazy var elipseView: UIImageView = {
@@ -83,6 +96,7 @@ class TimerView: UIView {
         self.addSubview(elipseView)
         self.addSubview(timePickerView)
         self.addSubview(focusLabel)
+        self.addSubview(focusTextField)
         elipseView.addSubview(timerLabel)
         timePickerView.isHidden = true
         placeButtons()
@@ -149,7 +163,13 @@ class TimerView: UIView {
             focusLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 70),
             focusLabel.heightAnchor.constraint(equalToConstant: 50),
             focusLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            focusLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
+            focusLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+
+            focusTextField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            focusTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 70),
+            focusTextField.heightAnchor.constraint(equalToConstant: 50),
+            focusTextField.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
+            focusTextField.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
         ])
     }
 

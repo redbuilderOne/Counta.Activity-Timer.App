@@ -11,6 +11,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     let secFormat = SecondsPickerFormat()
     lazy var newActivityVC = NewActivityViewController()
     lazy var instantCreateAlert = InstantCreateAlert()
+    var focusTextLabelDidTapped = false
+    lazy var focusCurrentText = String()
 
     override func loadView() {
         view = timerView
@@ -31,6 +33,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         self.navigationController?.navigationBar.isHidden = true
 
         timerView.delegate = self
+        timerView.focusTextField.delegate = self
 
         constants.startTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue) as? Date
         constants.stopTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.STOP_TIME_KEY.rawValue) as? Date
@@ -47,31 +50,33 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         view.addGestureRecognizer(swipeDown)
 
         timerView.focusLabel.addGestureRecognizer(tapGesture)
+        timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
     }
 
-    func instantCreateActivity(using completionHandler: (Bool) -> Void) {
-        instantCreateAlert.instantCreateNewActivity(on: self)
-        timerView.focusLabel.textColor = pinkyWhiteColor
-        timerView.focusLabel.layer.opacity = 0.7
-
-        print("Function finished.")
-        self.timerView.focusLabel.text = FocusedActivity.focusedActivityText
-        self.timerView.focusLabel.textColor = sandyYellowColor
-        self.timerView.focusLabel.layer.opacity = 1
-        self.view.setNeedsDisplay()
-        completionHandler(true)
+    // MARK: - viewDidLayoutSubviews
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        timerView.animateCircular()
     }
 
-    let myCompletionHandler: (Bool) -> Void = { doneWorking in
-        if FocusedActivity.focusedActivityText != nil {
-            print("FocusedActivity.focusedActivityText != nil")
-        }
-    }
+//    func instantCreateActivity(using completionHandler: (Bool) -> Void) {
+//        print("completionHandler")
+//        completionHandler(true)
+//    }
+//
+//    let myCompletionHandler: (Bool) -> Void = { doneWorking in
+//        if FocusedActivity.focusedActivityText != nil {
+//            print("FocusedActivity.focusedActivityText != nil")
+//        }
+//    }
 
     @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
         print("tap on activity")
-        //       isFocused = false
-        instantCreateActivity(using: myCompletionHandler)
+        focusTextLabelDidTapped = true
+        focusActivityCheck()
+
+//        view.setNeedsDisplay()
+
 
 //        func myFunction(using completionHandler: (Bool) -> Void) {
 ////            sleep(3)
@@ -82,39 +87,36 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 //            self.view.setNeedsDisplay()
 //            completionHandler(true)
 //        }
-//
-
-
-//        myFunction(using: myCompletionHandler)
-
-
-
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//            self.timerView.focusLabel.text = FocusedActivity.focusedActivityText
-//            self.timerView.focusLabel.textColor = sandyYellowColor
-//            self.timerView.focusLabel.layer.opacity = 1
-//            FocusedActivity.focusedActivityText = nil // ?
-//        }
     }
 
-    // MARK: - viewDidLayoutSubviews
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        timerView.animateCircular()
-    }
-
-    private func focusActivityCheck() {
-        if activity?.focusedActivityTitle == nil {
+    func focusActivityCheck() {
+        if focusTextLabelDidTapped != true {
+            timerView.focusLabel.isHidden = false
             timerView.focusLabel.text = "tap to focus on activity"
             timerView.focusLabel.textColor = .systemGray
             timerView.focusLabel.layer.opacity = 0.3
         } else {
-            timerView.focusLabel.text = activity?.focusedActivityTitle
-            timerView.focusLabel.textColor = sandyYellowColor
-            timerView.focusLabel.layer.opacity = 1
+            timerView.focusLabel.isHidden = true
+            timerView.focusLabel.text = ""
+            view.setNeedsDisplay()
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // MARK: -TIMER
     private func checkIfTimerActivated() {
         if constants.isTimerActivated {
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))

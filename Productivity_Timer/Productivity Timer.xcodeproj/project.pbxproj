@@ -30,6 +30,7 @@
 		FF36BE8F284D2B5D00176FA0 /* DescRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */; };
 		FF36BE91284D2CE700176FA0 /* FavRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */; };
 		FF36BE93284D2D8D00176FA0 /* FocusRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */; };
+		FF36BE992852493600176FA0 /* KeyboardExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE982852493600176FA0 /* KeyboardExt.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB5D2805A1D000F2F455 /* Productivity_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */; };
@@ -92,6 +93,7 @@
 		FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRowEditAlert.swift; sourceTree = "<group>"; };
+		FF36BE982852493600176FA0 /* KeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExt.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				FFD4B20B28130FB20046CE83 /* Picker Extension.swift */,
+				FF36BE982852493600176FA0 /* KeyboardExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				FF2A6F00282D920100F13F4E /* A.TableViewExt.swift in Sources */,
 				FF36BE91284D2CE700176FA0 /* FavRowEditAlert.swift in Sources */,
 				FF229A9F28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld in Sources */,
+				FF36BE992852493600176FA0 /* KeyboardExt.swift in Sources */,
 				FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */,
 				FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */,
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
