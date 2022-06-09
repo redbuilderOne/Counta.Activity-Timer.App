@@ -31,6 +31,7 @@
 		FF36BE91284D2CE700176FA0 /* FavRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */; };
 		FF36BE93284D2D8D00176FA0 /* FocusRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */; };
 		FF36BE992852493600176FA0 /* KeyboardExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE982852493600176FA0 /* KeyboardExt.swift */; };
+		FF36BE9D2852578900176FA0 /* KeyboardDismissExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB5D2805A1D000F2F455 /* Productivity_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */; };
@@ -94,6 +95,7 @@
 		FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE982852493600176FA0 /* KeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExt.swift; sourceTree = "<group>"; };
+		FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissExt.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				FFD4B20B28130FB20046CE83 /* Picker Extension.swift */,
 				FF36BE982852493600176FA0 /* KeyboardExt.swift */,
+				FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */,
 				FF36BE86284BBF3700176FA0 /* TimerViewControllerStruct.swift in Sources */,
 				FF2A6F06283E7A9E00F13F4E /* A.EditTableViewExt.swift in Sources */,
+				FF36BE9D2852578900176FA0 /* KeyboardDismissExt.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */,
 				FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */,
 				FF229AEC2824F98B0080B89B /* A.DetailsVCExt.swift in Sources */,

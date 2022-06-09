@@ -34,7 +34,6 @@ class TimerView: UIView {
         focusTextField.translatesAutoresizingMaskIntoConstraints = false
         focusTextField.isUserInteractionEnabled = true
         focusTextField.returnKeyType = .done
-        focusTextField.resignFirstResponder()
         return focusTextField
     }()
 

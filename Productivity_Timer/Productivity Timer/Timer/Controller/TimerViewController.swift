@@ -42,6 +42,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
         checkIfTimerActivated()
         focusActivityCheck()
+        hideKeyboardWhenTappedAround()
 
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnFocusedActivity))
@@ -57,6 +58,18 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         timerView.animateCircular()
+    }
+
+    @objc func focusTextFieldAction(_ textField: UITextField) -> String {
+        let newTextTyped = timerView.focusTextField.text
+        if let newTextTyped = newTextTyped {
+            focusCurrentText = newTextTyped
+        } else {
+            print("Error the textField is empty")
+        }
+        timerView.focusLabel.text = focusCurrentText
+        print("\(focusCurrentText)")
+        return focusCurrentText
     }
 
 //    func instantCreateActivity(using completionHandler: (Bool) -> Void) {
@@ -96,8 +109,11 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             timerView.focusLabel.textColor = .systemGray
             timerView.focusLabel.layer.opacity = 0.3
         } else {
-            timerView.focusLabel.isHidden = true
-            timerView.focusLabel.text = ""
+            timerView.focusLabel.isHidden = false
+            timerView.focusTextField.isHidden = true
+            timerView.focusLabel.text = focusCurrentText
+            timerView.focusLabel.textColor = sandyYellowColor
+            timerView.focusLabel.layer.opacity = 1
             view.setNeedsDisplay()
         }
     }

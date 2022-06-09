@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 
 extension TimerViewController: UITextFieldDelegate {
     func textFieldShouldReturn(userText: UITextField) -> Bool {
@@ -15,14 +16,13 @@ extension TimerViewController: UITextFieldDelegate {
             return true
         }
 
-    @objc func focusTextFieldAction(_ textField: UITextField) -> String {
-        let newTextTyped = timerView.focusTextField.text
-        if let newTextTyped = newTextTyped {
-            focusCurrentText = newTextTyped
-        } else {
-            print("Error the textField is empty")
-        }
-        timerView.focusLabel.text = focusCurrentText
-        return focusCurrentText
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        focusTextLabelDidTapped = true
+        focusActivityCheck()
+//        timerView.focusLabel.isHidden = false
+//        timerView.focusTextField.isHidden = true
+        return false
     }
+
 }
