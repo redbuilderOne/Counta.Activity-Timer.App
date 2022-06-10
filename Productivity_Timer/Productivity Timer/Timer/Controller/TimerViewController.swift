@@ -13,8 +13,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
     lazy var instantCreateAlert = InstantCreateAlert()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
-    var conformAlert = Alert(delegate: self as? RemovableTextWithAlert)
-//    lazy var keyboardDismissClosure = ((UILabel, String) -> String).self
 
     override func loadView() {
         view = timerView
@@ -71,6 +69,55 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
         }
         timerView.focusLabel.text = focusCurrentText
         return focusCurrentText ?? ""
+    }
+
+    func saveFocusActivityToCoreData() {
+        if focusCurrentText == "" {
+            focusCurrentText = nil
+            return
+
+        } else  {
+            var duplicateIndex: Int?
+            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == focusCurrentText})
+            print("Found duplicate index: \(String(describing: duplicateIndex))")
+
+            if duplicateIndex != nil {
+                duplicateIndex = nil
+
+                let alert = UIAlertController(title: "Sorry", message: "Activity already exists", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+
+                print("Index \(String(describing: duplicateIndex)) cleared")
+                return
+
+            } else {
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
+                let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
+                let newActivity = Activity(entity: entity!, insertInto: context)
+                newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
+                newActivity.title = focusCurrentText
+                newActivity.fav = false
+                newActivity.isDone = false
+                newActivity.focusedActivityTitle = focusCurrentText
+                newActivity.isFocused = true
+                FocusedActivity.focusedActivityText = newActivity.title
+                ActivitiesObject.arrayOfActivities.append(newActivity)
+
+                do {
+                    try context.save()
+                    print("New activity \(newActivity.title ?? "") is created and being focused")
+                } catch {
+                    print("Can't save the context")
+                }
+
+                focusCurrentText = nil
+                return
+            }
+        }
     }
 
 //    func instantCreateActivity(using completionHandler: (Bool) -> Void) {
