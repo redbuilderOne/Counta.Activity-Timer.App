@@ -54,6 +54,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 conformAlert.isEmptyTextFields(on: self, with: "Sorry", message: "Activity already exists")
                 print("Index \(String(describing: duplicateIndex)) cleared")
                 return
+                
             } else {
 
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }

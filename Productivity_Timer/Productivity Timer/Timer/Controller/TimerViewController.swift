@@ -2,7 +2,7 @@
 import UIKit
 import CoreData
 
-final class TimerViewController: UIViewController, TimerViewDelegate {
+final class TimerViewController: UIViewController, TimerViewDelegate  {
 
     var activity: Activity?
     var timerView = TimerView()
@@ -12,7 +12,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     lazy var newActivityVC = NewActivityViewController()
     lazy var instantCreateAlert = InstantCreateAlert()
     var focusTextLabelDidTapped = false
-    lazy var focusCurrentText = String()
+    lazy var focusCurrentText: String? = nil
+    var conformAlert = Alert(delegate: self as? RemovableTextWithAlert)
 //    lazy var keyboardDismissClosure = ((UILabel, String) -> String).self
 
     override func loadView() {
@@ -69,7 +70,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             print("Error the textField is empty")
         }
         timerView.focusLabel.text = focusCurrentText
-        return focusCurrentText
+        return focusCurrentText ?? ""
     }
 
 //    func instantCreateActivity(using completionHandler: (Bool) -> Void) {
