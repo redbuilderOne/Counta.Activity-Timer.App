@@ -72,8 +72,13 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
     }
 
     func saveFocusActivityToCoreData() {
+        focusTextLabelDidTapped = true
+        focusActivityCheck()
+
         if focusCurrentText == "" {
             focusCurrentText = nil
+            focusTextLabelDidTapped = false
+            focusActivityCheck()
             return
 
         } else  {
@@ -90,6 +95,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
                 self.present(alert, animated: true)
 
                 print("Index \(String(describing: duplicateIndex)) cleared")
+                focusTextLabelDidTapped = false
+                focusActivityCheck()
                 return
 
             } else {
@@ -117,6 +124,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
                 focusCurrentText = nil
                 return
             }
+
         }
     }
 

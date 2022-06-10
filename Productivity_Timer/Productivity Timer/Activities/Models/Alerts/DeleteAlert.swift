@@ -7,11 +7,9 @@ protocol DeleteAlertProtocol {
 }
 
 struct DeleteAlert {
-
     let delegate: DeleteAlertProtocol?
 
     func deleteActivity(on vc: UIViewController, with title: String, message: String) {
-
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -27,7 +25,6 @@ struct DeleteAlert {
     }
 
     func focusOnActivityConfirm(on vc: UIViewController, with title: String, message: String) {
-
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
