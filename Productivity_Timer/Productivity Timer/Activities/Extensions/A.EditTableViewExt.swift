@@ -3,7 +3,6 @@ import UIKit
 import CoreData
 
 extension ActivityTableViewController {
-
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -42,7 +41,7 @@ extension ActivityTableViewController {
     // MARK: ПЕРЕМЕЩЕНИЕ
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
 
         SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[sourceIndexPath.row]
 
@@ -50,23 +49,17 @@ extension ActivityTableViewController {
         ActivitiesObject.arrayOfActivities.insert(moved, at: destinationIndexPath.row)
         tableView.reloadData()
 
-        do {
-            if let selectedActivity = SelectedActivity.selectedActivity {
-
-                //                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
-                //
-                //                ActivitiesObject.arrayOfActivities.append(selectedActivity)
-
-
-                tableView.reloadData()
-
-                //                appDelegate.persistentContainer.viewContext.delete(selectedActivity)
-            }
-            try appDelegate.persistentContainer.viewContext.save()
-
-        } catch {
-            print("Fetch failed")
-        }
+//        do {
+//            if let selectedActivity = SelectedActivity.selectedActivity {
+//            appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+//            ActivitiesObject.arrayOfActivities.append(selectedActivity)
+//                tableView.reloadData()
+//               appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+//            }
+//            try appDelegate.persistentContainer.viewContext.save()
+//        } catch {
+//            print("Fetch failed")
+//        }
 
         SelectedActivity.selectedActivity = nil
     }

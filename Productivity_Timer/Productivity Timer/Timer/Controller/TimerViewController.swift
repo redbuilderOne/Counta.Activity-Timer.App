@@ -2,8 +2,7 @@
 import UIKit
 import CoreData
 
-final class TimerViewController: UIViewController, TimerViewDelegate  {
-
+final class TimerViewController: UIViewController, TimerViewDelegate {
     var activity: Activity?
     var timerView = TimerView()
     let timerFormat = TimerFormat()
@@ -41,7 +40,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
         checkIfTimerActivated()
-        focusActivityCheck()
+//        focusActivityCheck()
         hideKeyboardWhenTappedAround(textToClear: timerView.focusLabel)
 
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
@@ -62,11 +61,13 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
 
     @objc func focusTextFieldAction(_ textField: UITextField) -> String {
         let newTextTyped = timerView.focusTextField.text
+
         if let newTextTyped = newTextTyped {
             focusCurrentText = newTextTyped
         } else {
             print("Error the textField is empty")
         }
+
         timerView.focusLabel.text = focusCurrentText
         return focusCurrentText ?? ""
     }
@@ -81,7 +82,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
             focusActivityCheck()
             return
 
-        } else  {
+        } else {
             var duplicateIndex: Int?
             duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == focusCurrentText})
             print("Found duplicate index: \(String(describing: duplicateIndex))")
@@ -124,38 +125,13 @@ final class TimerViewController: UIViewController, TimerViewDelegate  {
                 focusCurrentText = nil
                 return
             }
-
         }
     }
-
-//    func instantCreateActivity(using completionHandler: (Bool) -> Void) {
-//        print("completionHandler")
-//        completionHandler(true)
-//    }
-//
-//    let myCompletionHandler: (Bool) -> Void = { doneWorking in
-//        if FocusedActivity.focusedActivityText != nil {
-//            print("FocusedActivity.focusedActivityText != nil")
-//        }
-//    }
 
     @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
         print("tap on activity")
         focusTextLabelDidTapped = true
         focusActivityCheck()
-
-//        view.setNeedsDisplay()
-
-
-//        func myFunction(using completionHandler: (Bool) -> Void) {
-////            sleep(3)
-//            print("Function finished.")
-//            self.timerView.focusLabel.text = FocusedActivity.focusedActivityText
-//            self.timerView.focusLabel.textColor = sandyYellowColor
-//            self.timerView.focusLabel.layer.opacity = 1
-//            self.view.setNeedsDisplay()
-//            completionHandler(true)
-//        }
     }
 
     func focusActivityCheck() {
