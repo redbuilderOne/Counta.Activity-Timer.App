@@ -9,7 +9,6 @@ protocol TimerViewDelegate: AnyObject {
 }
 
 class TimerView: UIView {
-
     weak var delegate: TimerViewDelegate?
 
     lazy var focusLabel: UILabel = {
@@ -153,6 +152,7 @@ class TimerView: UIView {
             elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -40),
             elipseView.heightAnchor.constraint(equalToConstant: 300),
             elipseView.widthAnchor.constraint(equalToConstant: 300),
+
             timePickerView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             timePickerView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
             timePickerView.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),

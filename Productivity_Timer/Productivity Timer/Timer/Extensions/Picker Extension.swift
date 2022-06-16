@@ -24,6 +24,7 @@ extension TimerViewController: UIPickerViewDelegate {
 
         timerView.timerLabel.text = "SET"
         timerView.timerLabel.textColor = .systemGreen
+
         startTimer(timeInterval: 1, action: #selector(beginCountDown))
     }
 }

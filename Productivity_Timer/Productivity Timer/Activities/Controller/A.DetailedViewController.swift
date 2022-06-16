@@ -3,7 +3,6 @@ import UIKit
 import CoreData
 
 class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
-
     var activity: Activity
     lazy var createNewActivityView = NewActivityViewController()
     lazy var conformDeleteAlert = DeleteAlert(delegate: self)

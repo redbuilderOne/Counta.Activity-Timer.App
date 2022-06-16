@@ -8,3 +8,7 @@ struct SelectedActivity {
 struct FocusedActivity {
     static var focusedActivityText: String?
 }
+
+struct FocusedActivityToPresent {
+    static var focusedActivity: Activity? 
+}

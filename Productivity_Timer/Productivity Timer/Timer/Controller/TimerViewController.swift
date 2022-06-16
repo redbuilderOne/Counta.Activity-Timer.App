@@ -12,6 +12,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     lazy var instantCreateAlert = InstantCreateAlert()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
+    lazy var selectedIndexToDelete = Int()
 
     override func loadView() {
         view = timerView
@@ -79,7 +80,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         if focusCurrentText == "" {
             focusCurrentText = nil
             focusTextLabelDidTapped = false
-            focusActivityCheck()
             return
 
         } else {
@@ -97,7 +97,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
                 print("Index \(String(describing: duplicateIndex)) cleared")
                 focusTextLabelDidTapped = false
-                focusActivityCheck()
                 return
 
             } else {
@@ -115,6 +114,9 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 FocusedActivity.focusedActivityText = newActivity.title
                 ActivitiesObject.arrayOfActivities.append(newActivity)
 
+                FocusedActivityToPresent.focusedActivity = newActivity
+                selectedIndexToDelete = newActivity.id as! Int
+
                 do {
                     try context.save()
                     print("New activity \(newActivity.title ?? "") is created and being focused")
@@ -130,12 +132,14 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
     @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
         print("tap on activity")
-        focusTextLabelDidTapped = true
-        focusActivityCheck()
+        if let focusedActivity = FocusedActivityToPresent.focusedActivity {
+            present(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true, completion: nil)
+        }
     }
 
     func focusActivityCheck() {
         if focusTextLabelDidTapped != true {
+            timerView.focusTextField.isHidden = true
             timerView.focusLabel.isHidden = false
             timerView.focusLabel.text = "tap to focus on activity"
             timerView.focusLabel.textColor = .systemGray
