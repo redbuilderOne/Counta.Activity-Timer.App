@@ -25,9 +25,11 @@ extension ActivityDetailedViewController {
 
         // MARK: FOCUS
         if selectedIndexPath?.row == 4 {
+            print("Focused Activity before was \(activity.title ?? "")")
             focusRowEditAlert.focusRowEditAction(on: self, activity: activity, tableView: tableView)
             conformDeleteAlert.focusOnActivityConfirm(on: self, with: "\(activity.title ?? "your activity") is now being focused", message: "You can return to Timer")
             FocusedActivityToPresent.focusedActivity = activity
+            print("Now Focused Activity is \(activity.title ?? "")")
         }
     }
 }
