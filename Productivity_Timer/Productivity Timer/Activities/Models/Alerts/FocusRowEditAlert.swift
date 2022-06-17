@@ -9,8 +9,10 @@ struct FocusRowEditAlert {
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
         SelectedActivity.selectedActivity = activity
+        FocusedActivity.activity = activity
         FocusedActivity.focusedActivityText = activity.title
         print("\(FocusedActivity.focusedActivityText ?? "")")
+        print("Now Focused Activity is \(activity.title ?? "")")
 
         if let selectedActivity = SelectedActivity.selectedActivity {
             FocusedActivity.focusedActivityText = selectedActivity.title

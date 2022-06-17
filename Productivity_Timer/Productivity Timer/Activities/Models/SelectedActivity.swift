@@ -6,9 +6,10 @@ struct SelectedActivity {
 }
 
 struct FocusedActivity {
+    static var activity: Activity?
     static var focusedActivityText: String?
 }
 
 struct FocusedActivityToPresent {
-    static var focusedActivity: Activity? 
+    static var focusedActivity: Activity?
 }

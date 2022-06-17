@@ -2,8 +2,6 @@
 import UIKit
 import CoreData
 
-// MARK: - Variables & Constants
-
 struct LetsAndVarsForTimer {
 
     enum Keys: String {

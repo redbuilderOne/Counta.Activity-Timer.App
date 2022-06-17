@@ -111,6 +111,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 newActivity.focusedActivityTitle = focusCurrentText
                 newActivity.isFocused = true
                 FocusedActivity.focusedActivityText = newActivity.title
+                FocusedActivity.activity = newActivity
+                print("Now Focused Activity is \(newActivity.title ?? "")")
                 ActivitiesObject.arrayOfActivities.append(newActivity)
 
                 FocusedActivityToPresent.focusedActivity = newActivity

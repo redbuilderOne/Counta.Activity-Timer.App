@@ -9,7 +9,6 @@ extension ActivityTableViewController {
 
     //MARK: УДАЛЕНИЕ
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
         if editingStyle == .delete {
 
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -31,6 +30,13 @@ extension ActivityTableViewController {
 
             SelectedActivity.selectedActivity = nil
             tableView.reloadData()
+
+            TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = false
+            TimerViewControllerStruct.timerViewController.timerView.focusTextField.text = ""
+            TimerViewControllerStruct.timerViewController.timerView.focusLabel.isHidden = false
+            TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = "tap to focus on activity"
+            TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = .systemGray
+            TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 0.1
         }
     }
 
@@ -41,6 +47,7 @@ extension ActivityTableViewController {
     // MARK: ПЕРЕМЕЩЕНИЕ
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 
+        // TODO: moving elements' order in coreData
 //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
 
         SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[sourceIndexPath.row]
