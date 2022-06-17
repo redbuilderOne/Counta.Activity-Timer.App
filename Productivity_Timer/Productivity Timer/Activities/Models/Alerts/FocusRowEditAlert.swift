@@ -23,6 +23,7 @@ struct FocusRowEditAlert {
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.focusedActivityTitle
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
+                TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
             }
 
             do {
@@ -35,5 +36,6 @@ struct FocusRowEditAlert {
         }
         
         tableView.reloadData()
+        TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
     }
 }

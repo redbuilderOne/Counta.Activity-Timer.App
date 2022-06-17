@@ -88,6 +88,21 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.imageView?.tintColor = .systemRed
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
             return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .none
+            cell.backgroundColor = darkMoonColor
+            cell.textLabel?.textColor = pinkyWhiteColor
+            cell.textLabel?.font = .boldSystemFont(ofSize: 16)
+            cell.textLabel?.textAlignment = .left
+
+            cell.textLabel?.text = "Time Spent: 00:00:00"
+
+            if let timeSpent = FocusedActivity.activity?.timeSpentTracker {
+                cell.textLabel?.text = "Time Spent: " + timeSpent
+            }
+
+            return cell
         default:
             fatalError()
         }

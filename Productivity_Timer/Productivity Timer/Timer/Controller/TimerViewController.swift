@@ -293,6 +293,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
+        FocusedActivity.activity?.timeSpentTracker = timeString
+        print("timeSpentTracker = \(String(describing: FocusedActivity.activity?.timeSpentTracker))")
     }
 
     @objc func pauseTimer() {

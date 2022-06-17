@@ -30,6 +30,7 @@ extension ActivityDetailedViewController {
             conformDeleteAlert.focusOnActivityConfirm(on: self, with: "\(activity.title ?? "your activity") is now being focused", message: "You can return to Timer")
             FocusedActivityToPresent.focusedActivity = activity
             print("Now Focused Activity is \(activity.title ?? "")")
+            TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
         }
     }
 }
