@@ -18,7 +18,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
         switch index {
-
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
@@ -37,7 +36,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                 cell.imageView?.tintColor = .systemGray
             }
             return cell
-
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.selectionStyle = .gray
@@ -48,7 +46,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.textLabel?.textAlignment = .justified
             return cell
-
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
@@ -62,7 +59,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.isUserInteractionEnabled = false
             cell.textLabel?.textAlignment = .justified
             return cell
-
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
@@ -81,7 +77,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                 cell.textLabel?.text = activity.desc
             }
             return cell
-
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.selectionStyle = .none
@@ -93,7 +88,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.imageView?.tintColor = .systemRed
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
             return cell
-
         default:
             fatalError()
         }

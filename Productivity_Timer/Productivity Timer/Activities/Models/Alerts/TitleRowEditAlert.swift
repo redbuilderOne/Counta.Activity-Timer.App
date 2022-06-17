@@ -33,6 +33,8 @@ struct TitleRowEditAlert {
                 }
             }
 
+            TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.title
+            
             tableView.reloadData()
             vc.presentingViewController?.dismiss(animated: true, completion: nil)
         })

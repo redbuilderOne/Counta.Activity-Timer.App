@@ -9,7 +9,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var constants = LetsAndVarsForTimer()
     let secFormat = SecondsPickerFormat()
     lazy var newActivityVC = NewActivityViewController()
-    lazy var instantCreateAlert = InstantCreateAlert()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
     lazy var selectedIndexToDelete = Int()
@@ -143,7 +142,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             timerView.focusLabel.isHidden = false
             timerView.focusLabel.text = "tap to focus on activity"
             timerView.focusLabel.textColor = .systemGray
-            timerView.focusLabel.layer.opacity = 0.3
+            timerView.focusLabel.layer.opacity = 0.1
         } else {
             timerView.focusLabel.isHidden = false
             timerView.focusTextField.isHidden = true
