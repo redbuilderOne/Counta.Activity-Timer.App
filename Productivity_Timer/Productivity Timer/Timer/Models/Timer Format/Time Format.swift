@@ -10,7 +10,6 @@ class TimerFormat {
     }
 
     func convertTimeToString(hour: Int? = nil, min: Int? = nil, sec: Int? = nil) -> String {
-
         var timeString = ""
 
         if let hour = hour {

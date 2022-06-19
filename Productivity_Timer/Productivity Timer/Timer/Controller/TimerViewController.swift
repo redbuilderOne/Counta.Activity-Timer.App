@@ -109,7 +109,12 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 newActivity.fav = false
                 newActivity.isDone = false
                 newActivity.focusedActivityTitle = focusCurrentText
+                for activities in ActivitiesObject.arrayOfActivities {
+                    activities.isFocused = false
+                    print("Every activity isFocused = false except \(newActivity.title ?? "")")
+                }
                 newActivity.isFocused = true
+                
                 FocusedActivity.focusedActivityText = newActivity.title
                 FocusedActivity.activity = newActivity
                 print("Now Focused Activity is \(newActivity.title ?? "")")
@@ -287,14 +292,35 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
         setTimerCounting(false)
         startStopAnimation(toValue: 1, repeatCount: 1)
+
+        FocusedActivity.activity?.timeSpentTracker = nil
     }
 
     func setTimeLabel(_ val: Int) {
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
+
         FocusedActivity.activity?.timeSpentTracker = timeString
         print("timeSpentTracker = \(String(describing: FocusedActivity.activity?.timeSpentTracker))")
+
+        for activity in ActivitiesObject.arrayOfActivities {
+            if activity.isFocused {
+//                FocusedActivity.activity = activity
+                FocusedActivity.activity?.timeSpentTracker = activity.timeSpentTracker
+        }
+
+        do {
+            try context.save()
+            print("Focused activity \(activity.title ?? "")")
+        } catch {
+            print("Can't save the context")
+        }
+        }
     }
 
     @objc func pauseTimer() {

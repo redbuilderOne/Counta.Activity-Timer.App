@@ -8,7 +8,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -98,7 +98,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
 
             cell.textLabel?.text = "Time Spent: 00:00:00"
 
-            if let timeSpent = FocusedActivity.activity?.timeSpentTracker {
+            if let timeSpent = activity.timeSpentTracker {
                 cell.textLabel?.text = "Time Spent: " + timeSpent
             }
 

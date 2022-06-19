@@ -17,9 +17,15 @@ struct FocusRowEditAlert {
         if let selectedActivity = SelectedActivity.selectedActivity {
             FocusedActivity.focusedActivityText = selectedActivity.title
             activity.focusedActivityTitle = FocusedActivity.focusedActivityText ?? ""
+
+            for activities in ActivitiesObject.arrayOfActivities {
+                activities.isFocused = false
+                print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(activity.title ?? "")")
+            }
             activity.isFocused = true
 
             if activity.isFocused {
+                TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.focusedActivityTitle
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
                 TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
