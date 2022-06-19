@@ -11,10 +11,6 @@ struct FocusRowEditAlert {
         SelectedActivity.selectedActivity = activity
         print("Now Focused Activity is \(activity.title ?? "")")
 
-//        if let selectedActivity = SelectedActivity.selectedActivity {
-//            FocusedActivity.focusedActivityText = selectedActivity.title
-//            activity.focusedActivityTitle = FocusedActivity.focusedActivityText ?? ""
-
             for activities in ActivitiesObject.arrayOfActivities {
                 activities.isFocused = false
                 print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(activity.title ?? "")")
@@ -36,7 +32,6 @@ struct FocusRowEditAlert {
                 print("Can't save the context")
             }
             SelectedActivity.selectedActivity = nil
-//        }
         
         tableView.reloadData()
         TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
