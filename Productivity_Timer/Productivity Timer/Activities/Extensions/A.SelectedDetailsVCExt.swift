@@ -4,8 +4,8 @@ import CoreData
 
 extension ActivityDetailedViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         let selectedIndexPath = tableView.indexPathForSelectedRow
+
         guard selectedIndexPath?.section != 0 || selectedIndexPath?.section != 1 || selectedIndexPath?.section != 3 || selectedIndexPath?.section != 4 else { return }
 
         // MARK: FAVOURITE
@@ -31,6 +31,13 @@ extension ActivityDetailedViewController {
             FocusedActivityToPresent.focusedActivity = activity
             print("Now Focused Activity is \(activity.title ?? "")")
             TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
+
+            for activities in ActivitiesObject.arrayOfActivities {
+                activities.isFocused = false
+                print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(activity.title ?? "")")
+            }
+            activity.isFocused = true
+
         }
     }
 }

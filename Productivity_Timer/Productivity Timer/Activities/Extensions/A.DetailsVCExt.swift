@@ -83,7 +83,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.backgroundColor = darkMoonColor
             cell.textLabel?.textColor = sandyYellowColor
             cell.textLabel?.textAlignment = .justified
-            cell.textLabel?.text = "Focus"
+            cell.textLabel?.text = "Tap to focus"
             cell.imageView?.image = UIImage(systemName: "timelapse")
             cell.imageView?.tintColor = .systemRed
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
@@ -93,15 +93,15 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.selectionStyle = .none
             cell.backgroundColor = darkMoonColor
             cell.textLabel?.textColor = pinkyWhiteColor
+            cell.textLabel?.textAlignment = .justified
+            cell.imageView?.tintColor = .systemGray
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
-            cell.textLabel?.textAlignment = .left
-
-            cell.textLabel?.text = "Time Spent: 00:00:00"
+            cell.imageView?.image = UIImage(systemName: "timer")
+            cell.textLabel?.text = "Time spent: 00:00:00"
 
             if let timeSpent = activity.timeSpentTracker {
                 cell.textLabel?.text = "Time Spent: " + timeSpent
             }
-
             return cell
         default:
             fatalError()

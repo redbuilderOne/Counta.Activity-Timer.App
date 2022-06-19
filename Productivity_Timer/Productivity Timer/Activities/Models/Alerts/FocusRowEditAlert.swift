@@ -9,14 +9,11 @@ struct FocusRowEditAlert {
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
         SelectedActivity.selectedActivity = activity
-        FocusedActivity.activity = activity
-        FocusedActivity.focusedActivityText = activity.title
-        print("\(FocusedActivity.focusedActivityText ?? "")")
         print("Now Focused Activity is \(activity.title ?? "")")
 
-        if let selectedActivity = SelectedActivity.selectedActivity {
-            FocusedActivity.focusedActivityText = selectedActivity.title
-            activity.focusedActivityTitle = FocusedActivity.focusedActivityText ?? ""
+//        if let selectedActivity = SelectedActivity.selectedActivity {
+//            FocusedActivity.focusedActivityText = selectedActivity.title
+//            activity.focusedActivityTitle = FocusedActivity.focusedActivityText ?? ""
 
             for activities in ActivitiesObject.arrayOfActivities {
                 activities.isFocused = false
@@ -39,7 +36,7 @@ struct FocusRowEditAlert {
                 print("Can't save the context")
             }
             SelectedActivity.selectedActivity = nil
-        }
+//        }
         
         tableView.reloadData()
         TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
