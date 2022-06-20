@@ -8,7 +8,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 8
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -45,6 +45,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.textColor = pinkyWhiteColor
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.textLabel?.textAlignment = .justified
+            cell.imageView?.image = UIImage(systemName: "")
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -67,6 +68,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.textColor = pinkyWhiteColor
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.textLabel?.textAlignment = .left
+            cell.imageView?.image = UIImage(systemName: "")
 
             if activity.desc == "" {
                     cell.textLabel?.text = "tap to add your description"
@@ -90,17 +92,45 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel?.numberOfLines = 0
             cell.selectionStyle = .none
+            cell.textLabel?.text = "Time info"
+            cell.textLabel?.font = .boldSystemFont(ofSize: 21)
+            cell.imageView?.image = UIImage(systemName: "timer")
+            cell.imageView?.tintColor = .systemGray
+            cell.backgroundColor = darkMoonColor
+            cell.textLabel?.textColor = sandyYellowColor
+            cell.isUserInteractionEnabled = false
+            cell.textLabel?.textAlignment = .justified
+            return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .gray
             cell.backgroundColor = darkMoonColor
             cell.textLabel?.textColor = pinkyWhiteColor
             cell.textLabel?.textAlignment = .justified
             cell.imageView?.tintColor = .systemGray
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
-            cell.imageView?.image = UIImage(systemName: "timer")
-            cell.textLabel?.text = "Time spent: 00:00:00"
+            cell.imageView?.image = UIImage(systemName: "")
+            cell.textLabel?.text = "Last session: 00:00:00"
+
+            if let lastSession = activity.timeSpentTracker {
+                cell.textLabel?.text = "Last session: " + lastSession
+            }
+            return cell
+        case 7:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .gray
+            cell.backgroundColor = darkMoonColor
+            cell.textLabel?.textColor = pinkyWhiteColor
+            cell.textLabel?.textAlignment = .justified
+            cell.imageView?.tintColor = .systemGray
+            cell.textLabel?.font = .boldSystemFont(ofSize: 16)
+            cell.imageView?.image = UIImage(systemName: "")
+            cell.textLabel?.text = "Time spent in total: 00:00:00"
 
             if let timeSpent = activity.timeSpentTracker {
-                cell.textLabel?.text = "Time Spent: " + timeSpent
+                cell.textLabel?.text = "Time spent in total: " + timeSpent
             }
             return cell
         default:

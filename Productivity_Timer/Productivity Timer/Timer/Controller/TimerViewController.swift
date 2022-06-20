@@ -283,13 +283,14 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
+        let previousSessions = activity?.timeSpentTracker
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
 
         for activity in ActivitiesObject.arrayOfActivities {
             if activity.isFocused {
-                activity.timeSpentTracker = timeString
+                activity.timeSpentTracker = previousSessions ?? "" + timeString
             }
 
             do {
