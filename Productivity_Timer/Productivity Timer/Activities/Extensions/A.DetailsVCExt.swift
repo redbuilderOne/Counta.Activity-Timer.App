@@ -87,8 +87,15 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.textAlignment = .justified
             cell.textLabel?.text = "Tap to focus"
             cell.imageView?.image = UIImage(systemName: "timelapse")
-            cell.imageView?.tintColor = .systemRed
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
+
+            if activity.isFocused {
+                cell.imageView?.image = UIImage(systemName: "timelapse")
+                cell.imageView?.tintColor = .systemRed
+            } else {
+                cell.imageView?.image = UIImage(systemName: "timelapse")
+                cell.imageView?.tintColor = .systemGray
+            }
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)

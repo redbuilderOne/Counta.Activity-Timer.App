@@ -4,7 +4,6 @@ import CoreData
 
 struct FocusRowEditAlert {
     func focusRowEditAction(on vc: UIViewController, activity: Activity, tableView: UITableView) {
-        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
@@ -15,6 +14,7 @@ struct FocusRowEditAlert {
                 activities.isFocused = false
                 print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(activity.title ?? "")")
             }
+
             activity.isFocused = true
 
             if activity.isFocused {
@@ -31,6 +31,7 @@ struct FocusRowEditAlert {
             } catch {
                 print("Can't save the context")
             }
+
             SelectedActivity.selectedActivity = nil
         
         tableView.reloadData()

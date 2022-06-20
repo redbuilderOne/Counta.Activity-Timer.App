@@ -37,7 +37,6 @@ extension ActivityDetailedViewController {
                 print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(activity.title ?? "")")
             }
             activity.isFocused = true
-
         }
     }
 }
