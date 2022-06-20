@@ -13,6 +13,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
     lazy var selectedIndexToDelete = Int()
+    var firstLoadCheck = FirstLoadCheck()
 
     override func loadView() {
         view = timerView
@@ -52,32 +53,33 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.focusLabel.addGestureRecognizer(tapGesture)
         timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
 
-        firstLoadCheck()
+        firstLoadCheck.firstLoadCheckTimerVC()
+//        firstLoadCheck()
     }
 
-    private func firstLoadCheck() {
-        if firstLoad {
-            firstLoad = false
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-
-            do {
-                let results: NSArray = try context.fetch(request) as NSArray
-                for result in results {
-                    let activity = result as! Activity
-                    if activity.isFocused {
-                        timerView.focusLabel.text = activity.title
-                        timerView.focusLabel.textColor = sandyYellowColor
-                        timerView.focusLabel.layer.opacity = 1
-                    } else {
-                    }
-                }
-            } catch {
-                print("Fetch failed")
-            }
-        }
-    }
+//    private func firstLoadCheck() {
+//        if firstLoad {
+//            firstLoad = false
+//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+//            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
+//
+//            do {
+//                let results: NSArray = try context.fetch(request) as NSArray
+//                for result in results {
+//                    let activity = result as! Activity
+//                    if activity.isFocused {
+//                        timerView.focusLabel.text = activity.title
+//                        timerView.focusLabel.textColor = sandyYellowColor
+//                        timerView.focusLabel.layer.opacity = 1
+//                    } else {
+//                    }
+//                }
+//            } catch {
+//                print("Fetch failed")
+//            }
+//        }
+//    }
 
     // MARK: - viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
