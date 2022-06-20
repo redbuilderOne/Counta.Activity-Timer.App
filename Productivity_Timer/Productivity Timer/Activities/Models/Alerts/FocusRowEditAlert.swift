@@ -14,7 +14,7 @@ struct FocusRowEditAlert {
                 activities.isFocused = false
                 print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(activity.title ?? "")")
             }
-
+        
             activity.isFocused = true
 
             if activity.isFocused {

@@ -3,6 +3,7 @@ import UIKit
 import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
+    var firstLoad = true
     var activity: Activity?
     var timerView = TimerView()
     let timerFormat = TimerFormat()
@@ -40,7 +41,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
         checkIfTimerActivated()
-        //        focusActivityCheck()
         hideKeyboardWhenTappedAround(textToClear: timerView.focusLabel)
 
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
@@ -51,6 +51,32 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
         timerView.focusLabel.addGestureRecognizer(tapGesture)
         timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
+
+        firstLoadCheck()
+    }
+
+    private func firstLoadCheck() {
+        if firstLoad {
+            firstLoad = false
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
+
+            do {
+                let results: NSArray = try context.fetch(request) as NSArray
+                for result in results {
+                    let activity = result as! Activity
+                    if activity.isFocused {
+                        timerView.focusLabel.text = activity.title
+                        timerView.focusLabel.textColor = sandyYellowColor
+                        timerView.focusLabel.layer.opacity = 1
+                    } else {
+                    }
+                }
+            } catch {
+                print("Fetch failed")
+            }
+        }
     }
 
     // MARK: - viewDidLayoutSubviews
@@ -163,6 +189,21 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     private func checkIfTimerActivated() {
         if constants.isTimerActivated {
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
+
+            let focusedActivity = ActivitiesObject.arrayOfActivities.first(where: { value -> Bool in
+                activity?.isFocused != false
+            })
+            print("\(focusedActivity)")
+
+            if focusedActivity != nil {
+                timerView.focusLabel.text = focusedActivity?.title
+                timerView.focusLabel.textColor = sandyYellowColor
+                timerView.focusLabel.layer.opacity = 1
+                view.setNeedsDisplay()
+            }
+
+
+
         } else {
             stopTimer()
             if let start = constants.startTime {

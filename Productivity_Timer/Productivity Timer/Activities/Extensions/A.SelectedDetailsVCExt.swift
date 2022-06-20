@@ -28,15 +28,8 @@ extension ActivityDetailedViewController {
             print("Focused Activity before was \(activity.title ?? "")")
             focusRowEditAlert.focusRowEditAction(on: self, activity: activity, tableView: tableView)
             conformDeleteAlert.focusOnActivityConfirm(on: self, with: "\(activity.title ?? "your activity") is now being focused", message: "You can return to Timer")
-            FocusedActivityToPresent.focusedActivity = activity
             print("Now Focused Activity is \(activity.title ?? "")")
             TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
-
-            for activities in ActivitiesObject.arrayOfActivities {
-                activities.isFocused = false
-                print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(activity.title ?? "")")
-            }
-            activity.isFocused = true
         }
     }
 }

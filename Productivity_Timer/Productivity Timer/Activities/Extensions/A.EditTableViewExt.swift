@@ -29,6 +29,8 @@ extension ActivityTableViewController {
             }
 
             SelectedActivity.selectedActivity = nil
+            FocusedActivityToPresent.focusedActivity = nil
+            
             tableView.reloadData()
 
             TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = false
@@ -104,6 +106,8 @@ extension ActivityTableViewController {
             completion(true)
             self.tableView.reloadData()
         }
+
+        FocusedActivityToPresent.focusedActivity = nil
         action.backgroundColor = .systemGreen
         action.image = UIImage(systemName: "checkmark.circle")
         return action
