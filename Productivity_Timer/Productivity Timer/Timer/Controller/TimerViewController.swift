@@ -54,32 +54,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
 
         firstLoadCheck.firstLoadCheckTimerVC()
-//        firstLoadCheck()
     }
-
-//    private func firstLoadCheck() {
-//        if firstLoad {
-//            firstLoad = false
-//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-//            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-//
-//            do {
-//                let results: NSArray = try context.fetch(request) as NSArray
-//                for result in results {
-//                    let activity = result as! Activity
-//                    if activity.isFocused {
-//                        timerView.focusLabel.text = activity.title
-//                        timerView.focusLabel.textColor = sandyYellowColor
-//                        timerView.focusLabel.layer.opacity = 1
-//                    } else {
-//                    }
-//                }
-//            } catch {
-//                print("Fetch failed")
-//            }
-//        }
-//    }
 
     // MARK: - viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
@@ -314,11 +289,55 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timerLabel.text = timeString
 
         let currentTime = time
+        print("time - \(time)")
 
         for activity in ActivitiesObject.arrayOfActivities {
             if activity.isFocused {
                 activity.lastSession = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
-                activity.timeSpentTracker = timerFormat.convertTimeToString(hour: time.0 + currentTime.0, min: time.1 + currentTime.1, sec: time.2 + currentTime.2)
+//                activity.timeSpentTracker = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
+
+                let mapping = activity.lastSession.map{ String($0).split(separator: ":") }
+                
+                if let mapping = mapping {
+                    activity.timeSpentTracker = timerFormat.convertTimeToString(hour: time.0 + Int(mapping[0])!, min: time.1 + Int(mapping[1])!, sec: time.2 + Int(mapping[2])!)
+                    print("activity.timeSpentTracker = \(activity.timeSpentTracker)")
+                }
+
+                if let mapping0 = mapping?[0] {
+                    let value0 = String(mapping0)
+                    print("value0 - \(value0)")
+                }
+
+                if let mapping1 = mapping?[1] {
+                    let value1 = String(mapping1)
+                    print("value1 - \(value1)")
+                }
+
+                if let mapping2 = mapping?[2] {
+                    let value2 = String(mapping2)
+                    print("value2 - \(value2)")
+                }
+
+
+
+
+//                    TimerFormat.formatTimeSpent(mapping)
+//                    let testActivityTimeSpentTracker = mapping.reduce(activity.lastSession ?? "", +)
+//                    print("testActivityTimeSpentTracker - \(testActivityTimeSpentTracker)")
+//                    activity.timeSpentTracker = mapping.reduce(activity.lastSession ?? "", +)
+
+
+//                    for i in mapping {
+//                        var array: [Int] = []
+//                        array.append(Int(i) ?? 0)
+//                        print("array - \(array)")
+//                        let stringArray = array.map{ String($0)}
+//                        print("stringArray - \(stringArray)")
+//                    }
+
+
+//                mapping?.mapValues( { $0 + "1" } )
+//                print("mapping - \(mapping)")
             }
 
             do {
