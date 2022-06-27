@@ -53,4 +53,32 @@ struct FirstLoadCheck {
             }
         }
     }
+
+    mutating func firstLoadCheckTimeSpent() {
+        if firstLoad {
+            firstLoad = false
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
+
+            do {
+                let results: NSArray = try context.fetch(request) as NSArray
+                for result in results {
+                    let activity = result as! Activity
+
+                    for activity in ActivitiesObject.arrayOfActivities {
+                        activity.timeSpentTracker = activity.lastSession
+                    }
+
+                    if activity.isDone != true {
+                        ActivitiesObject.arrayOfActivities.append(activity)
+                    } else {
+                        DoneActivities.doneActivitiesArray.append(activity)
+                    }
+                }
+            } catch {
+                print("Fetch failed")
+            }
+        }
+    }
 }

@@ -95,7 +95,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         } else {
             print("Error the textField is empty")
         }
-
         timerView.focusLabel.text = focusCurrentText
         return focusCurrentText ?? ""
     }
@@ -156,7 +155,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 } catch {
                     print("Can't save the context")
                 }
-
                 focusCurrentText = nil
                 return
             }
@@ -191,21 +189,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     private func checkIfTimerActivated() {
         if constants.isTimerActivated {
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
-
-            let focusedActivity = ActivitiesObject.arrayOfActivities.first(where: { value -> Bool in
-                activity?.isFocused != false
-            })
-            print("\(focusedActivity)")
-
-            if focusedActivity != nil {
-                timerView.focusLabel.text = focusedActivity?.title
-                timerView.focusLabel.textColor = sandyYellowColor
-                timerView.focusLabel.layer.opacity = 1
-                view.setNeedsDisplay()
-            }
-
-
-
         } else {
             stopTimer()
             if let start = constants.startTime {
@@ -326,14 +309,16 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-        let previousSessions = activity?.timeSpentTracker
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
 
+        let currentTime = time
+
         for activity in ActivitiesObject.arrayOfActivities {
             if activity.isFocused {
-                activity.timeSpentTracker = previousSessions ?? "" + timeString
+                activity.lastSession = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
+                activity.timeSpentTracker = timerFormat.convertTimeToString(hour: time.0 + currentTime.0, min: time.1 + currentTime.1, sec: time.2 + currentTime.2)
             }
 
             do {

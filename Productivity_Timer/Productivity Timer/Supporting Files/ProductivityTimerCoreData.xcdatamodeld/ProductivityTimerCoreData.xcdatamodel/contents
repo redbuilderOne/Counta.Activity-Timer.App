@@ -8,10 +8,11 @@
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isFocused" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastSession" optional="YES" attributeType="String"/>
         <attribute name="timeSpentTracker" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="Activity" positionX="-63" positionY="-18" width="128" height="179"/>
     </elements>
 </model>

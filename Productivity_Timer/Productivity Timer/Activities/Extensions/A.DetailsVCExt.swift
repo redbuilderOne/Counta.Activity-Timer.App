@@ -121,7 +121,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.imageView?.image = UIImage(systemName: "")
             cell.textLabel?.text = "Last session: 00:00:00"
 
-            if let lastSession = activity.timeSpentTracker {
+            if let lastSession = activity.lastSession {
                 cell.textLabel?.text = "Last session: " + lastSession
             }
             return cell
@@ -134,10 +134,10 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.imageView?.tintColor = .systemGray
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.imageView?.image = UIImage(systemName: "")
-            cell.textLabel?.text = "Time spent in total: 00:00:00"
+            cell.textLabel?.text = "Total time spent: 00:00:00"
 
             if let timeSpent = activity.timeSpentTracker {
-                cell.textLabel?.text = "Time spent in total: " + timeSpent
+                cell.textLabel?.text = "Total time spent: " + timeSpent
             }
             return cell
         default:
