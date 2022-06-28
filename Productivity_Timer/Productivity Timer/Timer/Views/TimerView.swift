@@ -4,7 +4,6 @@ import UIKit
 protocol TimerViewDelegate: AnyObject {
     func startActionDidPressed()
     func stopActionDidPressed()
-    func startSetTimerButtonDidPressed()
 }
 
 class TimerView: UIView {
@@ -86,10 +85,6 @@ class TimerView: UIView {
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
-    }
-
-    @objc func startSetTimerButtonPressed() {
-        delegate?.startSetTimerButtonDidPressed()
     }
 
     @objc func endTimePickerEditing() {

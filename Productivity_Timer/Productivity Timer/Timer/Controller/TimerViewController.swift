@@ -8,7 +8,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
-    let secFormat = SecondsPickerFormat()
     lazy var newActivityVC = NewActivityViewController()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
@@ -315,32 +314,5 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     func setButtonImg(title: String, img: String) {
         timerView.startButton.setTitle(title, for: .normal)
         timerView.startButton.setImage(UIImage(systemName: img), for: .normal)
-    }
-
-    //MARK: - Обратный таймер
-    func startSetTimerButtonDidPressed() {
-        constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(beginCountDown), userInfo: nil, repeats: false)
-    }
-
-    func setActionDidPressed() {
-        stopTimer()
-        timerView.timerLabel.isHidden = true
-    }
-
-    @objc func beginCountDown() {
-        timerView.timerLabel.text = String(constants.countdown)
-        timerView.timerLabel.textColor = .white
-
-        if constants.countdown > 0 {
-            setButtonImg(title: "Countdown", img: "")
-            constants.countdown -= 1
-        } else {
-            constants.timer.invalidate()
-            timerView.startButton.isEnabled = true
-            timerView.timerLabel.text = "TIME'S UP"
-            timerView.timerLabel.textColor = .systemRed
-            setButtonImg(title: "", img: "play")
-            stopTimer()
-        }
     }
 }
