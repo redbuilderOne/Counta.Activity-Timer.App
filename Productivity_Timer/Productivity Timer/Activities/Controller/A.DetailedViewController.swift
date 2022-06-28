@@ -3,11 +3,15 @@ import UIKit
 import CoreData
 
 class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
-
     var activity: Activity
     lazy var createNewActivityView = NewActivityViewController()
     lazy var conformDeleteAlert = DeleteAlert(delegate: self)
     var selectedIndexToDelete: Int
+    lazy var titleRowEditAlert = TitleRowEditAlert()
+    lazy var descRowEditAlert = DescRowEditAlert()
+    lazy var favRowEditAlert = FavRowEditAlert()
+    lazy var focusRowEditAlert = FocusRowEditAlert()
+    lazy var firstLoadCheck = FirstLoadCheck()
 
     init(activity: Activity, selectedIndexToDelete: Int) {
         self.activity = activity
@@ -62,6 +66,16 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
 
     @objc func trashButtonDidTapped() {
         conformDeleteAlert.deleteActivity(on: self, with: "Are you sure?", message: "This will delete the activity forever")
+
+//        TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
+//        TimerViewControllerStruct.timerViewController.timerView.focusLabel.isHidden = false
+        TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = "tap to focus on activity"
+        TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = .systemGray
+        TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 0.1
+        TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = false
+
+        activity.isFocused = false
+        print("Now activity (\(activity.title ?? "")) is deleted and NOT marked FOCUSED")
     }
 
     func deleteActivity() {

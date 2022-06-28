@@ -3,24 +3,40 @@ import UIKit
 import CoreData
 
 class ActivityTableViewController: UITableViewController {
-
-    var firstLoad = true
-
+    lazy var firstLoadCheck = FirstLoadCheck()
     lazy var identifier = CellsID.activityTableViewID
     lazy var newActivityVC = NewActivityViewController()
     var activityDetailedViewController: UITabBarController?
+
+    let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         setupNavigationBar()
-        firstLoadCheck()
+        firstLoadCheck.firstLoadCheckTableVC()
         configureTableView()
+
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        view.addGestureRecognizer(swipeDown)
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.reloadData()
         view.backgroundColor = darkMoonColor
+    }
+
+    @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
+
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.down:
+                show(newActivityVC, sender: self)
+            default:
+                break
+            }
+        }
     }
 
     private func configureTableView() {
@@ -28,29 +44,6 @@ class ActivityTableViewController: UITableViewController {
         tableView.rowHeight = 40
         tableView.estimatedRowHeight = 80
         tableView.translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    private func firstLoadCheck() {
-        if firstLoad {
-            firstLoad = false
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-            
-            do {
-                let results: NSArray = try context.fetch(request) as NSArray
-                for result in results {
-                    let activity = result as! Activity
-                    if activity.isDone != true {
-                        ActivitiesObject.arrayOfActivities.append(activity)
-                    } else {
-                        DoneActivities.doneActivitiesArray.append(activity)
-                    }
-                }
-            } catch {
-                print("Fetch failed")
-            }
-        }
     }
 
     private func setupNavigationBar() {

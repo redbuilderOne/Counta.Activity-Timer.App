@@ -1,15 +1,31 @@
 
 import UIKit
+import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
-    
+    var firstLoad = true
+    var activity: Activity?
     var timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
     let secFormat = SecondsPickerFormat()
+    lazy var newActivityVC = NewActivityViewController()
+    var focusTextLabelDidTapped = false
+    lazy var focusCurrentText: String? = nil
+    lazy var selectedIndexToDelete = Int()
+    var firstLoadCheck = FirstLoadCheck()
 
     override func loadView() {
         view = timerView
+    }
+
+    init(activity: Activity? = nil) {
+        self.activity = activity
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - viewDidLoad
@@ -18,6 +34,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         self.navigationController?.navigationBar.isHidden = true
 
         timerView.delegate = self
+        timerView.focusTextField.delegate = self
 
         constants.startTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue) as? Date
         constants.stopTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.STOP_TIME_KEY.rawValue) as? Date
@@ -25,11 +42,18 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
 
         checkIfTimerActivated()
+        hideKeyboardWhenTappedAround(textToClear: timerView.focusLabel)
 
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToRightSwipeGesture))
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnFocusedActivity))
 
-        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-        view.addGestureRecognizer(swipeRight)
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        view.addGestureRecognizer(swipeDown)
+
+        timerView.focusLabel.addGestureRecognizer(tapGesture)
+        timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
+
+        firstLoadCheck.firstLoadCheckTimerVC()
     }
 
     // MARK: - viewDidLayoutSubviews
@@ -38,6 +62,105 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.animateCircular()
     }
 
+    @objc func focusTextFieldAction(_ textField: UITextField) -> String {
+        let newTextTyped = timerView.focusTextField.text
+
+        if let newTextTyped = newTextTyped {
+            focusCurrentText = newTextTyped
+        } else {
+            print("Error the textField is empty")
+        }
+        timerView.focusLabel.text = focusCurrentText
+        return focusCurrentText ?? ""
+    }
+
+    func saveFocusActivityToCoreData() {
+        focusTextLabelDidTapped = true
+        focusActivityCheck()
+
+        if focusCurrentText == "" {
+            focusCurrentText = nil
+            focusTextLabelDidTapped = false
+            return
+
+        } else {
+            var duplicateIndex: Int?
+            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == focusCurrentText})
+            print("Found duplicate index: \(String(describing: duplicateIndex))")
+
+            if duplicateIndex != nil {
+                duplicateIndex = nil
+
+                let alert = UIAlertController(title: "Sorry", message: "Activity already exists", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+
+                print("Index \(String(describing: duplicateIndex)) cleared")
+                focusTextLabelDidTapped = false
+                return
+
+            } else {
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
+                let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
+                let newActivity = Activity(entity: entity!, insertInto: context)
+                newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
+                newActivity.title = focusCurrentText
+                newActivity.fav = false
+                newActivity.isDone = false
+                newActivity.focusedActivityTitle = focusCurrentText
+
+                for activities in ActivitiesObject.arrayOfActivities {
+                    activities.isFocused = false
+                    print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(newActivity.title ?? "")")
+                }
+                newActivity.isFocused = true
+
+                print("Now Focused Activity is \(newActivity.title ?? "")")
+                ActivitiesObject.arrayOfActivities.append(newActivity)
+
+                FocusedActivityToPresent.focusedActivity = newActivity
+                selectedIndexToDelete = newActivity.id as! Int
+
+                do {
+                    try context.save()
+                    print("New activity \(newActivity.title ?? "") is created and being focused")
+                } catch {
+                    print("Can't save the context")
+                }
+                focusCurrentText = nil
+                return
+            }
+        }
+    }
+
+    @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
+        print("tap on activity")
+        if let focusedActivity = FocusedActivityToPresent.focusedActivity {
+            present(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true, completion: nil)
+        }
+    }
+
+    func focusActivityCheck() {
+        if focusTextLabelDidTapped != true {
+            timerView.focusTextField.isHidden = true
+            timerView.focusLabel.isHidden = false
+            timerView.focusLabel.text = "tap to focus on activity"
+            timerView.focusLabel.textColor = .systemGray
+            timerView.focusLabel.layer.opacity = 0.1
+        } else {
+            timerView.focusLabel.isHidden = false
+            timerView.focusTextField.isHidden = true
+            timerView.focusLabel.text = focusCurrentText
+            timerView.focusLabel.textColor = sandyYellowColor
+            timerView.focusLabel.layer.opacity = 1
+            view.setNeedsDisplay()
+        }
+    }
+
+    // MARK: -TIMER
     private func checkIfTimerActivated() {
         if constants.isTimerActivated {
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
@@ -53,16 +176,11 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    //TODO: Swipe Action
-    @objc func respondToRightSwipeGesture(gesture: UIGestureRecognizer) {
-
+    @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
-            case UISwipeGestureRecognizer.Direction.right:
-                print("swipeRight is done but nothing happens")
-//                navigationController?.pushViewController(activityTableViewController, animated: true)
-//                navigationController?.popViewController(animated: true)
-//                self.show(activityTableViewController, sender: nil)
+            case UISwipeGestureRecognizer.Direction.down:
+                present(newActivityVC, animated: true, completion: nil)
             default:
                 break
             }
@@ -162,10 +280,32 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         startStopAnimation(toValue: 1, repeatCount: 1)
     }
 
+    func sumTimeArray(array1: [Int?], array2: [Int?]) -> (Int, Int, Int) {
+        let sum0 = (array1[0] ?? 0) + (array2[0] ?? 0)
+        let sum1 = (array1[1] ?? 0) + (array2[1] ?? 0)
+        let sum2 = (array1[2] ?? 0) + (array2[2] ?? 0)
+        return (sum0, sum1, sum2)
+    }
+
     func setTimeLabel(_ val: Int) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
+
+        for activity in ActivitiesObject.arrayOfActivities {
+            if activity.isFocused {
+                activity.lastSession = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
+            }
+
+            do {
+                try context.save()
+            } catch {
+                print("Can't save the context")
+            }
+        }
     }
 
     @objc func pauseTimer() {

@@ -1,7 +1,6 @@
 
 import UIKit
-
-// MARK: - Variables & Constants
+import CoreData
 
 struct LetsAndVarsForTimer {
 

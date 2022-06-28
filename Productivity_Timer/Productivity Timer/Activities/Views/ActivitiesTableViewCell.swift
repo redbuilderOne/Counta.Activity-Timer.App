@@ -2,7 +2,6 @@
 import UIKit
 
 class ActivitiesTableViewCell: UITableViewCell {
-
     lazy var activityTitleLabel: UILabel = {
         let activityTitleLabel = UILabel()
         activityTitleLabel.textColor = pinkyWhiteColor

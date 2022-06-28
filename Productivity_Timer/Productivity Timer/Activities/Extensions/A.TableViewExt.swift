@@ -3,7 +3,6 @@ import UIKit
 import CoreData
 
 extension ActivityTableViewController {
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

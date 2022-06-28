@@ -6,11 +6,9 @@ protocol RemovableTextWithAlert {
 }
 
 struct Alert {
-
     let delegate: RemovableTextWithAlert?
 
     func textClearAlert(on vc: UIViewController, with title: String, message: String) {
-
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -26,11 +24,9 @@ struct Alert {
     }
 
     func isEmptyTextFields(on vc: UIViewController, with title: String, message: String) {
-
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-
         vc.present(alert, animated: true)
     }
 }

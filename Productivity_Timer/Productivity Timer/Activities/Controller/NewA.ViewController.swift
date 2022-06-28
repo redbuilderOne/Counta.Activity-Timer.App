@@ -6,6 +6,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     lazy var newActivityView = CreateNewActivityView()
     lazy var conformAlert = Alert(delegate: self)
+    lazy var activity = Activity()
 
     override func loadView() {
         view = newActivityView
@@ -17,13 +18,11 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         newActivityView.delegate = self
         newActivityView.textField.delegate = self
         configureView()
-        addSaveItem()
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         configureView()
-        addSaveItem()
     }
 
     final private func configureView() {
@@ -33,37 +32,44 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         view.backgroundColor = darkMoonColor
     }
 
-    private func addSaveItem() {
-        let saveItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveData))
-        self.navigationItem.rightBarButtonItem = saveItem
-    }
-
     @objc func saveData() {
-
         if newActivityView.textField.text == "" {
             conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
             return
 
         } else {
+            var duplicateIndex: Int?
+            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == newActivityView.textField.text})
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            print("Found duplicate index: \(String(describing: duplicateIndex))")
 
-            let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
-            let newActivity = Activity(entity: entity!, insertInto: context)
-            newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
-            newActivity.title = newActivityView.textField.text
-            newActivity.desc = newActivityView.descriptionTextView.text
-            newActivity.fav = false
-            newActivity.isDone = false
-            print("New Activity \(newActivity.title ?? "") is created at \(Date())")
-            
-            do {
-                try context.save()
-                ActivitiesObject.arrayOfActivities.append(newActivity)
-                navigationController?.popViewController(animated: true)
-            } catch {
-                print("Can't save the context")
+            if duplicateIndex != nil {
+                duplicateIndex = nil
+                conformAlert.isEmptyTextFields(on: self, with: "Sorry", message: "Activity already exists")
+                print("Index \(String(describing: duplicateIndex)) cleared")
+                return
+                
+            } else {
+
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
+                let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
+                let newActivity = Activity(entity: entity!, insertInto: context)
+                newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
+                newActivity.title = newActivityView.textField.text
+                newActivity.desc = newActivityView.descriptionTextView.text
+                newActivity.fav = false
+                newActivity.isDone = false
+                newActivity.isFocused = false
+                print("New Activity \(newActivity.title ?? "") is created at \(Date())")
+
+                do {
+                    try context.save()
+                    ActivitiesObject.arrayOfActivities.append(newActivity)
+                } catch {
+                    print("Can't save the context")
+                }
             }
         }
     }
@@ -87,3 +93,4 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         navigationController?.popViewController(animated: true)
     }
 }
+

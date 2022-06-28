@@ -12,11 +12,12 @@
 		FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A95281C7B250080B89B /* A.TableViewController.swift */; };
 		FF229A98281EEE990080B89B /* CreateNewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A97281EEE990080B89B /* CreateNewActivityView.swift */; };
 		FF229A9A281F05C10080B89B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A99281F05C10080B89B /* Alert.swift */; };
-		FF229A9C2820217C0080B89B /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A9B2820217C0080B89B /* Objects.swift */; };
+		FF229A9C2820217C0080B89B /* ActivitiesObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A9B2820217C0080B89B /* ActivitiesObjects.swift */; };
 		FF229A9F28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */; };
 		FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AA028202D350080B89B /* ActivityCoreData.swift */; };
 		FF229AEA2824F79A0080B89B /* A.DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AE92824F79A0080B89B /* A.DetailedViewController.swift */; };
 		FF229AEC2824F98B0080B89B /* A.DetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229AEB2824F98B0080B89B /* A.DetailsVCExt.swift */; };
+		FF25CA272860B16900C4B8C0 /* FirstLoadCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */; };
 		FF2A6F00282D920100F13F4E /* A.TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6EFF282D920100F13F4E /* A.TableViewExt.swift */; };
 		FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */; };
 		FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A6F03283E754900F13F4E /* Constraints IDs.swift */; };
@@ -24,7 +25,13 @@
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */; };
 		FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */; };
-		FF36BE8428454D9800176FA0 /* ActivityInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE8328454D9800176FA0 /* ActivityInstance.swift */; };
+		FF36BE86284BBF3700176FA0 /* TimerViewControllerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE85284BBF3700176FA0 /* TimerViewControllerStruct.swift */; };
+		FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */; };
+		FF36BE8F284D2B5D00176FA0 /* DescRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */; };
+		FF36BE91284D2CE700176FA0 /* FavRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */; };
+		FF36BE93284D2D8D00176FA0 /* FocusRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */; };
+		FF36BE992852493600176FA0 /* KeyboardExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE982852493600176FA0 /* KeyboardExt.swift */; };
+		FF36BE9D2852578900176FA0 /* KeyboardDismissExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB5D2805A1D000F2F455 /* Productivity_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */; };
@@ -69,11 +76,12 @@
 		FF229A95281C7B250080B89B /* A.TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.TableViewController.swift; sourceTree = "<group>"; };
 		FF229A97281EEE990080B89B /* CreateNewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewActivityView.swift; sourceTree = "<group>"; };
 		FF229A99281F05C10080B89B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		FF229A9B2820217C0080B89B /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		FF229A9B2820217C0080B89B /* ActivitiesObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesObjects.swift; sourceTree = "<group>"; };
 		FF229A9E28202C720080B89B /* ProductivityTimerCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProductivityTimerCoreData.xcdatamodel; sourceTree = "<group>"; };
 		FF229AA028202D350080B89B /* ActivityCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCoreData.swift; sourceTree = "<group>"; };
 		FF229AE92824F79A0080B89B /* A.DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.DetailedViewController.swift; sourceTree = "<group>"; };
 		FF229AEB2824F98B0080B89B /* A.DetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.DetailsVCExt.swift; sourceTree = "<group>"; };
+		FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoadCheck.swift; sourceTree = "<group>"; };
 		FF2A6EFF282D920100F13F4E /* A.TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.TableViewExt.swift; sourceTree = "<group>"; };
 		FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedActivity.swift; sourceTree = "<group>"; };
 		FF2A6F03283E754900F13F4E /* Constraints IDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constraints IDs.swift"; sourceTree = "<group>"; };
@@ -81,7 +89,13 @@
 		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
 		FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.SelectedDetailsVCExt.swift; sourceTree = "<group>"; };
 		FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlert.swift; sourceTree = "<group>"; };
-		FF36BE8328454D9800176FA0 /* ActivityInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInstance.swift; sourceTree = "<group>"; };
+		FF36BE85284BBF3700176FA0 /* TimerViewControllerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewControllerStruct.swift; sourceTree = "<group>"; };
+		FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRowEditAlert.swift; sourceTree = "<group>"; };
+		FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescRowEditAlert.swift; sourceTree = "<group>"; };
+		FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRowEditAlert.swift; sourceTree = "<group>"; };
+		FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRowEditAlert.swift; sourceTree = "<group>"; };
+		FF36BE982852493600176FA0 /* KeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExt.swift; sourceTree = "<group>"; };
+		FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissExt.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +169,7 @@
 		FF06E8912809A36500907F1B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
 				FF71FB532805A1D000F2F455 /* Info.plist */,
 				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
 				FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */,
@@ -177,8 +192,34 @@
 			isa = PBXGroup;
 			children = (
 				FFD4B20B28130FB20046CE83 /* Picker Extension.swift */,
+				FF36BE982852493600176FA0 /* KeyboardExt.swift */,
+				FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FF36BE8C284D2ADC00176FA0 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				FF229A99281F05C10080B89B /* Alert.swift */,
+				FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */,
+				FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */,
+				FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */,
+				FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */,
+				FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		FF36BE8D284D2B1300176FA0 /* Timer Format */ = {
+			isa = PBXGroup;
+			children = (
+				FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */,
+				FFD4B1E5280BF8120046CE83 /* Time Format.swift */,
+				FFD4B209281300A10046CE83 /* Picker Format.swift */,
+				FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */,
+			);
+			path = "Timer Format";
 			sourceTree = "<group>";
 		};
 		FF71FB392805A1CF00F2F455 = {
@@ -260,12 +301,9 @@
 		FFD4B1D3280B5B650046CE83 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FF36BE8D284D2B1300176FA0 /* Timer Format */,
 				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
-				FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */,
-				FFD4B1E5280BF8120046CE83 /* Time Format.swift */,
-				FFD4B209281300A10046CE83 /* Picker Format.swift */,
-				FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */,
-				FF36BE8328454D9800176FA0 /* ActivityInstance.swift */,
+				FF36BE85284BBF3700176FA0 /* TimerViewControllerStruct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -293,11 +331,10 @@
 		FFD4B1E0280BF14D0046CE83 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FF36BE8C284D2ADC00176FA0 /* Alerts */,
 				FF229AA028202D350080B89B /* ActivityCoreData.swift */,
 				FF229A93281C78E70080B89B /* TableViewCellsID.swift */,
-				FF229A99281F05C10080B89B /* Alert.swift */,
-				FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */,
-				FF229A9B2820217C0080B89B /* Objects.swift */,
+				FF229A9B2820217C0080B89B /* ActivitiesObjects.swift */,
 				FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */,
 			);
 			path = Models;
@@ -447,7 +484,10 @@
 				FF229AEA2824F79A0080B89B /* A.DetailedViewController.swift in Sources */,
 				FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */,
 				FF2A6F00282D920100F13F4E /* A.TableViewExt.swift in Sources */,
+				FF36BE91284D2CE700176FA0 /* FavRowEditAlert.swift in Sources */,
 				FF229A9F28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld in Sources */,
+				FF25CA272860B16900C4B8C0 /* FirstLoadCheck.swift in Sources */,
+				FF36BE992852493600176FA0 /* KeyboardExt.swift in Sources */,
 				FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */,
 				FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */,
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
@@ -457,14 +497,17 @@
 				FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */,
 				FF229A98281EEE990080B89B /* CreateNewActivityView.swift in Sources */,
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
-				FF229A9C2820217C0080B89B /* Objects.swift in Sources */,
+				FF229A9C2820217C0080B89B /* ActivitiesObjects.swift in Sources */,
 				FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */,
 				FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
 				FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */,
 				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
+				FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */,
 				FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */,
+				FF36BE86284BBF3700176FA0 /* TimerViewControllerStruct.swift in Sources */,
 				FF2A6F06283E7A9E00F13F4E /* A.EditTableViewExt.swift in Sources */,
+				FF36BE9D2852578900176FA0 /* KeyboardDismissExt.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */,
 				FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */,
 				FF229AEC2824F98B0080B89B /* A.DetailsVCExt.swift in Sources */,
@@ -473,9 +516,10 @@
 				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
 				FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */,
 				FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */,
-				FF36BE8428454D9800176FA0 /* ActivityInstance.swift in Sources */,
 				FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */,
 				FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */,
+				FF36BE93284D2D8D00176FA0 /* FocusRowEditAlert.swift in Sources */,
+				FF36BE8F284D2B5D00176FA0 /* DescRowEditAlert.swift in Sources */,
 				FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

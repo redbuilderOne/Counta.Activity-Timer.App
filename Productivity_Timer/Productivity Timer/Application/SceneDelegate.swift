@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -11,6 +12,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = createTabBar()
         window?.makeKeyAndVisible()
+    }
+
+    func useCreatedTimerVC() -> UINavigationController {
+        TimerViewControllerStruct.timerViewController.title = "Timer"
+        TimerViewControllerStruct.timerViewController.tabBarItem.image = UIImage(systemName: "stopwatch")
+        TimerViewControllerStruct.timerViewController.tabBarItem.selectedImage = UIImage(systemName:  "stopwatch.fill")
+        return UINavigationController(rootViewController: TimerViewControllerStruct.timerViewController)
     }
 
     func createTimerNavigationController() -> UINavigationController {
@@ -34,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBar = UITabBarController()
         UITabBar.appearance().tintColor = sandyYellowColor
         UITabBar.appearance().unselectedItemTintColor = pinkyWhiteColor
-        tabBar.viewControllers = [createTimerNavigationController(), createActivitiesNavigationController()]
+        tabBar.viewControllers = [useCreatedTimerVC(), createActivitiesNavigationController()]
         return tabBar
     }
 

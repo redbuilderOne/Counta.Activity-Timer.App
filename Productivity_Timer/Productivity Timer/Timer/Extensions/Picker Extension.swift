@@ -2,7 +2,6 @@
 import UIKit
 
 extension TimerViewController: UIPickerViewDataSource {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -13,7 +12,6 @@ extension TimerViewController: UIPickerViewDataSource {
 }
 
 extension TimerViewController: UIPickerViewDelegate {
-
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(secFormat.secondsArray[row]) + " sec"
     }
@@ -26,7 +24,7 @@ extension TimerViewController: UIPickerViewDelegate {
 
         timerView.timerLabel.text = "SET"
         timerView.timerLabel.textColor = .systemGreen
+
         startTimer(timeInterval: 1, action: #selector(beginCountDown))
     }
 }
-
