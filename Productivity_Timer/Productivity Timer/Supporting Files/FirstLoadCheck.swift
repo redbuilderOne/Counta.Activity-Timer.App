@@ -22,7 +22,9 @@ struct FirstLoadCheck {
                         TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
                         TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
                         TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
+                        TimerViewControllerStruct.timerViewController.setButtonImg(title: " Play", img: "play")
                     } else {
+                        TimerViewControllerStruct.timerViewController.setButtonImg(title: " Pause", img: "pause")
                     }
                 }
             } catch {

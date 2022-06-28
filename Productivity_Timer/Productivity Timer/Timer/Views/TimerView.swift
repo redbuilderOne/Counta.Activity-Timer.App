@@ -4,7 +4,6 @@ import UIKit
 protocol TimerViewDelegate: AnyObject {
     func startActionDidPressed()
     func stopActionDidPressed()
-    func setActionDidPressed()
     func startSetTimerButtonDidPressed()
 }
 
@@ -73,9 +72,8 @@ class TimerView: UIView {
     }()
 
     //MARK: - Buttons
-    lazy var startButton = TimerControlButton(title: "Start", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: blueMoonlight,  systemImageName: "play")
-    lazy var stopButton = TimerControlButton(title: "Stop", titleColor: .systemRed, tintColor: .systemRed, backgroundColor: blueMoonlight, systemImageName: "stop")
-    lazy var setButton = TimerControlButton(title: "Set", titleColor: .systemBlue, tintColor: .systemBlue, backgroundColor: blueMoonlight, systemImageName: "clock.arrow.2.circlepath")
+    lazy var startButton = TimerControlButton(title: " Start", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: blueMoonlight,  systemImageName: "play")
+    lazy var stopButton = TimerControlButton(title: "", titleColor: .systemRed, tintColor: .systemRed, backgroundColor: blueMoonlight, systemImageName: "stop")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,7 +88,6 @@ class TimerView: UIView {
         self.backgroundColor = darkMoonColor
         self.addSubview(startButton)
         self.addSubview(stopButton)
-        self.addSubview(setButton)
         self.addSubview(elipseView)
         self.addSubview(timePickerView)
         self.addSubview(focusLabel)
@@ -109,10 +106,6 @@ class TimerView: UIView {
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
-    }
-
-    @objc func setButtonPressed() {
-        delegate?.setActionDidPressed()
     }
 
     @objc func startSetTimerButtonPressed() {
@@ -176,20 +169,16 @@ class TimerView: UIView {
     private func configureButtonsAction() {
         startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
         stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-        setButton.addTarget(self, action: #selector(setButtonPressed), for: .touchUpInside)
     }
 
     final private func placeButtons() {
-        startButton.anchor(width: 250, height: 50)
-        stopButton.anchor(width: 117, height: 50)
-        setButton.anchor(width: 117, height: 50)
+        startButton.anchor(width: 300, height: 50)
+        stopButton.anchor(width: 50, height: 50)
         NSLayoutConstraint.activate([
             startButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor, constant: 32),
-            startButton.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            stopButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 8),
-            stopButton.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
-            setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 8),
-            setButton.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
+            startButton.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
+            stopButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor, constant: 32),
+            stopButton.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
         ])
     }
 }

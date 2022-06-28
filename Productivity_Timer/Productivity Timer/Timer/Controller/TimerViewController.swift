@@ -205,7 +205,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         if constants.isTimerActivated {
             setStopTime(date: Date())
             stopTimer()
-            setButtonImg(title: "Play", img: "play")
+            setButtonImg(title: " Play", img: "play")
         } else {
             if let stop = constants.stopTime {
                 let restartTime = countRestartTime(start: constants.startTime!, stop: stop)
@@ -215,7 +215,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 setStartTime(date: Date())
             }
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
-            setButtonImg(title: "Pause", img: "pause")
+            setButtonImg(title: " Pause", img: "pause")
         }
     }
 
@@ -248,7 +248,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     private func setStopTime(date: Date?) {
         constants.stopTime = date
         constants.userDefaults.set(constants.stopTime, forKey: LetsAndVarsForTimer.Keys.STOP_TIME_KEY.rawValue)
-        setButtonImg(title: "Play", img: "play")
+        setButtonImg(title: " Play", img: "play")
     }
 
     private func setTimerCounting(_ val: Bool) {
@@ -341,7 +341,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             timerView.startButton.isEnabled = true
             timerView.timerLabel.text = "TIME'S UP"
             timerView.timerLabel.textColor = .systemRed
-            setButtonImg(title: "Play", img: "play")
+            setButtonImg(title: " Play", img: "play")
             stopTimer()
         }
     }
