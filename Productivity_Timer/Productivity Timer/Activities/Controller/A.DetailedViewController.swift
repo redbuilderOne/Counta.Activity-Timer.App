@@ -67,14 +67,13 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     @objc func trashButtonDidTapped() {
         conformDeleteAlert.deleteActivity(on: self, with: "Are you sure?", message: "This will delete the activity forever")
 
-//        TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
-//        TimerViewControllerStruct.timerViewController.timerView.focusLabel.isHidden = false
         TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = "tap to focus on activity"
         TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = .systemGray
         TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 0.1
         TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = false
 
         activity.isFocused = false
+        TimerViewControllerStruct.timerViewController.stopActionDidPressed()
         print("Now activity (\(activity.title ?? "")) is deleted and NOT marked FOCUSED")
     }
 

@@ -60,7 +60,7 @@ struct FirstLoadCheck {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-
+            
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
