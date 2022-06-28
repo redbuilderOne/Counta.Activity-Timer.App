@@ -55,6 +55,17 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         firstLoadCheck.firstLoadCheckTimerVC()
     }
 
+    @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.down:
+                present(newActivityVC, animated: true, completion: nil)
+            default:
+                break
+            }
+        }
+    }
+
     // MARK: - viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -171,17 +182,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                     let difference = Date().timeIntervalSince(time)
                     setTimeLabel(Int(difference))
                 }
-            }
-        }
-    }
-
-    @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizer.Direction.down:
-                present(newActivityVC, animated: true, completion: nil)
-            default:
-                break
             }
         }
     }
