@@ -233,7 +233,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timerLabel.text = "STOP"
         timerView.timerLabel.textColor = .systemRed
         timerView.timerLabel.isHidden = false
-        timerView.timePickerView.isHidden = true
         timerView.startButton.isHidden = false
         timerView.startButton.isEnabled = true
     }
@@ -326,7 +325,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     func setActionDidPressed() {
         stopTimer()
         timerView.timerLabel.isHidden = true
-        timerView.timePickerView.isHidden = false
     }
 
     @objc func beginCountDown() {
