@@ -39,6 +39,8 @@ extension ActivityTableViewController {
             TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = "tap to focus on activity"
             TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = .systemGray
             TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 0.1
+            TimerViewControllerStruct.timerViewController.stopTimer()
+            TimerViewControllerStruct.timerViewController.stopActionDidPressed()
         }
     }
 

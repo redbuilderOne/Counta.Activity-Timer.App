@@ -74,6 +74,7 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
 
         activity.isFocused = false
         TimerViewControllerStruct.timerViewController.stopActionDidPressed()
+        TimerViewControllerStruct.timerViewController.stopTimer()
         print("Now activity (\(activity.title ?? "")) is deleted and NOT marked FOCUSED")
     }
 

@@ -105,7 +105,7 @@ class TimerView: UIView {
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeEnd = 1
         shapeLayer.lineCap = CAShapeLayerLineCap.round
-        shapeLayer.strokeColor = sandyYellowColor.cgColor
+        shapeLayer.strokeColor = pinkyWhiteColor.cgColor
         elipseView.layer.addSublayer(shapeLayer)
     }
 
@@ -122,13 +122,13 @@ class TimerView: UIView {
             elipseView.widthAnchor.constraint(equalToConstant: 300),
 
             focusLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            focusLabel.bottomAnchor.constraint(equalTo: elipseView.topAnchor, constant: -16),
+            focusLabel.bottomAnchor.constraint(equalTo: elipseView.topAnchor, constant: -32),
             focusLabel.heightAnchor.constraint(equalToConstant: 50),
             focusLabel.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
             focusLabel.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
 
             focusTextField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            focusTextField.bottomAnchor.constraint(equalTo: elipseView.topAnchor, constant: -16),
+            focusTextField.bottomAnchor.constraint(equalTo: elipseView.topAnchor, constant: -32),
             focusTextField.heightAnchor.constraint(equalToConstant: 50),
             focusTextField.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
             focusTextField.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor)
@@ -142,8 +142,8 @@ class TimerView: UIView {
     }
 
     final private func placeButtons() {
-        startButton.anchor(width: 100, height: 100)
-        stopButton.anchor(width: 100, height: 100)
+        startButton.anchor(width: 100, height: 50)
+        stopButton.anchor(width: 100, height: 50)
         NSLayoutConstraint.activate([
             startButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor),
             startButton.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
