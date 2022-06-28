@@ -32,12 +32,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         view.backgroundColor = darkMoonColor
     }
 
-    // unused
-    //    private func addSaveItem() {
-    //        let saveItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveData))
-    //        self.navigationItem.rightBarButtonItem = saveItem
-    //    }
-
     @objc func saveData() {
         if newActivityView.textField.text == "" {
             conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")

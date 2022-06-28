@@ -12,6 +12,5 @@ class Activity: NSManagedObject {
     @NSManaged var isDone: Bool
     @NSManaged var focusedActivityTitle: String?
     @NSManaged var isFocused: Bool
-    @NSManaged var timeSpentTracker: String?
     @NSManaged var lastSession: String?
 }

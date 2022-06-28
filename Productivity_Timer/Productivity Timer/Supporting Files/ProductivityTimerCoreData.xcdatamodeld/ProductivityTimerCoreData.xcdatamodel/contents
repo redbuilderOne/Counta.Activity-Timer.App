@@ -9,10 +9,9 @@
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isFocused" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastSession" optional="YES" attributeType="String"/>
-        <attribute name="timeSpentTracker" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="Activity" positionX="-63" positionY="-18" width="128" height="164"/>
     </elements>
 </model>

@@ -2,12 +2,12 @@
 import UIKit
 
 class TimerFormat {
-    func formatTimeSpent(_ time: [String]?) -> (Int, Int, Int) {
+    func formatTimeSpent(_ time: [Int]?) -> (Int, Int, Int) {
         if let time = time {
             let time0 = Int(time[0])
             let time1 = Int(time[1])
             let time2 = Int(time[2])
-            return (time0!, time1!, time2!)
+            return (time0, time1, time2)
         }
         return (0, 0, 0)
     }

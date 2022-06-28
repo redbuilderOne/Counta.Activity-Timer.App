@@ -66,10 +66,6 @@ struct FirstLoadCheck {
                 for result in results {
                     let activity = result as! Activity
 
-                    for activity in ActivitiesObject.arrayOfActivities {
-                        activity.timeSpentTracker = activity.lastSession
-                    }
-
                     if activity.isDone != true {
                         ActivitiesObject.arrayOfActivities.append(activity)
                     } else {
