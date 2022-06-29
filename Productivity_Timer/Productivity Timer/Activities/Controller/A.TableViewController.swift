@@ -16,7 +16,7 @@ class ActivityTableViewController: UITableViewController {
         firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
             print("firstLoadCheck - \(String(describing: firstLoadCheck))")
         }
-        
+
         firstLoadCheck.firstLoadCheckTableVC()
         configureTableView()
     }
