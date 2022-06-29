@@ -2,10 +2,11 @@
 import UIKit
 import CoreData
 
-struct FirstLoadCheck {
+class FirstLoadCheck {
     var firstLoad = true
+    var actionHandler: (() -> Void)?
 
-    mutating func firstLoadCheckTimerVC() {
+    func firstLoadCheckTimerVC() {
         if firstLoad {
             firstLoad = false
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -33,7 +34,7 @@ struct FirstLoadCheck {
         }
     }
 
-    mutating func firstLoadCheckTableVC() {
+    func firstLoadCheckTableVC() {
         if firstLoad {
             firstLoad = false
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -56,7 +57,7 @@ struct FirstLoadCheck {
         }
     }
 
-    mutating func firstLoadCheckTimeSpent() {
+    func firstLoadCheckTimeSpent() {
         if firstLoad {
             firstLoad = false
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }

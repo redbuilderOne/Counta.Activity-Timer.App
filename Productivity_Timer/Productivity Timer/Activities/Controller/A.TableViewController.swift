@@ -3,7 +3,6 @@ import UIKit
 import CoreData
 
 class ActivityTableViewController: UITableViewController {
-    lazy var firstLoadCheck = FirstLoadCheck()
     lazy var identifier = CellsID.activityTableViewID
     var activityDetailedViewController: UITabBarController?
     var actionHandler: (() -> Void)?
@@ -12,6 +11,12 @@ class ActivityTableViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         setupNavigationBar()
+
+        let firstLoadCheck = FirstLoadCheck()
+        firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
+            print("firstLoadCheck - \(String(describing: firstLoadCheck))")
+        }
+        
         firstLoadCheck.firstLoadCheckTableVC()
         configureTableView()
     }
