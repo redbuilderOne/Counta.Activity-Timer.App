@@ -4,11 +4,10 @@ import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
     var firstLoad = true
-    var activity: Activity?
+//    weak var activity: Activity?
     var timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
-    lazy var newActivityVC = NewActivityViewController()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
     lazy var selectedIndexToDelete = Int()
@@ -19,7 +18,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     }
 
     init(activity: Activity? = nil) {
-        self.activity = activity
+//        self.activity = activity
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -59,7 +58,11 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.down:
-                present(newActivityVC, animated: true, completion: nil)
+                let newActivityVC = NewActivityViewController()
+                    newActivityVC.actionHandler = { [weak newActivityVC] in
+                        newActivityVC?.dismiss(animated: true, completion: nil)
+                  }
+                  present(newActivityVC, animated: true, completion: nil)
             default:
                 break
             }
