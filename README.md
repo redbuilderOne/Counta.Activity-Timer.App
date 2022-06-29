@@ -1,7 +1,7 @@
 # Productivity Timer by redbuilderOne
 Portfolio Apps
 
-Productivity Timer
+Protimer
 ------------------
 
 \[Eng\] This App is made to focus better on something necessary. You simply press "Start" button and the timer starts. Also there's round ellipse that animates while time goes by
@@ -9,12 +9,8 @@ Productivity Timer
 \[Rus\] Это приложение создано для лучшей концентрации на какой-либо деятельности. Вы просто нажимаете кнопку "Старт" и таймер активируется. Также присутствует анимированный эллипс, который активируется вместе с работой таймера.
 ###
 
-![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 08 46](https://user-images.githubusercontent.com/95698427/171181907-7c119057-b230-486d-a69b-8d11439b9476.jpeg)
-
-![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 09 06](https://user-images.githubusercontent.com/95698427/171181920-82fd151c-f5f1-42a7-93a4-4443d23e6654.png)
-
-![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 09 12](https://user-images.githubusercontent.com/95698427/171181937-8445c591-f003-43d9-98fc-a761ddb269cb.png)
-
-![Simulator Screen Shot - iPhone 13 mini - 2022-05-31 at 16 15 52](https://user-images.githubusercontent.com/95698427/171182301-b8f6b3c8-0fce-4468-a434-9c4065810c0b.png)
-
+![Protimer-1](https://user-images.githubusercontent.com/95698427/176440902-d87757a7-6432-46e2-9130-a1f13316ec1e.jpg)
+![Protimer-2](https://user-images.githubusercontent.com/95698427/176440913-8604b360-4a07-4f55-b871-d7f93fda74f4.jpg)
+![Protimer-3](https://user-images.githubusercontent.com/95698427/176440918-2879bd00-0004-4fb8-91cc-ff06e292cdd9.jpg)
+![Protimer-4](https://user-images.githubusercontent.com/95698427/176440930-6c1093c5-5237-4ba2-85b0-ad5d18f14dc3.jpg)
 
