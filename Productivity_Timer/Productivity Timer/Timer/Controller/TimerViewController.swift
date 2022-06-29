@@ -11,6 +11,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     lazy var focusCurrentText: String? = nil
     lazy var selectedIndexToDelete = Int()
     var firstLoadCheck = FirstLoadCheck()
+    var actionHandler: (() -> Void)?
 
     override func loadView() {
         view = timerView
