@@ -31,12 +31,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func createActivitiesNavigationController() -> UINavigationController {
         let activityTableViewController = ActivityTableViewController()
+        activityTableViewController.actionHandler = { [weak activityTableViewController] in activityTableViewController?.dismiss(animated: true, completion: nil)
+        }
         activityTableViewController.title = "Activities"
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: pinkyWhiteColor]
         activityTableViewController.tabBarItem.image = UIImage(systemName:   "gearshape.circle")
         activityTableViewController.tabBarItem.selectedImage = UIImage(systemName:  "gearshape.circle.fill")
         return UINavigationController(rootViewController: activityTableViewController)
     }
+//    let activityTableViewController = ActivityTableViewController()
+//        activityTableViewController.title = "Activities"
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: pinkyWhiteColor]
+//        activityTableViewController.tabBarItem.image = UIImage(systemName:   "gearshape.circle")
+//        activityTableViewController.tabBarItem.selectedImage = UIImage(systemName:  "gearshape.circle.fill")
+//        return UINavigationController(rootViewController: activityTableViewController)
+//    }
 
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()

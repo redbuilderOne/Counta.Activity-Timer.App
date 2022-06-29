@@ -52,6 +52,11 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         firstLoadCheck.firstLoadCheckTimerVC()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        timerView.animateCircular()
+    }
+
     @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -65,12 +70,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 break
             }
         }
-    }
-
-    // MARK: - viewDidLayoutSubviews
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        timerView.animateCircular()
     }
 
     @objc func focusTextFieldAction(_ textField: UITextField) -> String {

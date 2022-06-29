@@ -6,6 +6,7 @@ class ActivityTableViewController: UITableViewController {
     lazy var firstLoadCheck = FirstLoadCheck()
     lazy var identifier = CellsID.activityTableViewID
     var activityDetailedViewController: UITabBarController?
+    var actionHandler: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()

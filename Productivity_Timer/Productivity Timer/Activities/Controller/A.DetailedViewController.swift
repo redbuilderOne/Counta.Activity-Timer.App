@@ -4,9 +4,8 @@ import CoreData
 
 class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     var activity: Activity
-    lazy var createNewActivityView = NewActivityViewController()
-    lazy var conformDeleteAlert = DeleteAlert(delegate: self)
     var selectedIndexToDelete: Int
+    lazy var conformDeleteAlert = DeleteAlert(delegate: self)
     lazy var titleRowEditAlert = TitleRowEditAlert()
     lazy var descRowEditAlert = DescRowEditAlert()
     lazy var favRowEditAlert = FavRowEditAlert()
@@ -89,7 +88,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
                 selectedActivity.deletedDate = Date()
             }
             try appDelegate.persistentContainer.viewContext.save()
-
         } catch {
             print("Fetch failed")
         }
