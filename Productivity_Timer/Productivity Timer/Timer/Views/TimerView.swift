@@ -4,8 +4,6 @@ import UIKit
 protocol TimerViewDelegate: AnyObject {
     func startActionDidPressed()
     func stopActionDidPressed()
-    func setActionDidPressed()
-    func startSetTimerButtonDidPressed()
 }
 
 class TimerView: UIView {
@@ -54,28 +52,9 @@ class TimerView: UIView {
         return timerLabel
     }()
 
-    lazy var setTimerLabel: UILabel = {
-        let setTimerLabel = UILabel()
-        setTimerLabel.text = ""
-        setTimerLabel.textAlignment = .center
-        setTimerLabel.textColor = pinkyWhiteColor
-        setTimerLabel.font = .systemFont(ofSize: 64)
-        setTimerLabel.translatesAutoresizingMaskIntoConstraints = false
-        return setTimerLabel
-    }()
-
-    lazy var timePickerView: UIPickerView = {
-        let timePickerView = UIPickerView()
-        timePickerView.translatesAutoresizingMaskIntoConstraints = false
-        timePickerView.dataSource = delegate as? UIPickerViewDataSource
-        timePickerView.delegate = delegate as? UIPickerViewDelegate
-        return timePickerView
-    }()
-
-    //MARK: - Buttons
-    lazy var startButton = TimerControlButton(title: "Start", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: blueMoonlight,  systemImageName: "play")
-    lazy var stopButton = TimerControlButton(title: "Stop", titleColor: .systemRed, tintColor: .systemRed, backgroundColor: blueMoonlight, systemImageName: "stop")
-    lazy var setButton = TimerControlButton(title: "Set", titleColor: .systemBlue, tintColor: .systemBlue, backgroundColor: blueMoonlight, systemImageName: "clock.arrow.2.circlepath")
+    //MARK: -Buttons
+    lazy var startButton = TimerControlButton(title: "", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: darkMoonColor,  systemImageName: "play")
+    lazy var stopButton = TimerControlButton(title: "", titleColor: .systemRed, tintColor: .systemRed, backgroundColor: darkMoonColor, systemImageName: "stop")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,19 +69,16 @@ class TimerView: UIView {
         self.backgroundColor = darkMoonColor
         self.addSubview(startButton)
         self.addSubview(stopButton)
-        self.addSubview(setButton)
         self.addSubview(elipseView)
-        self.addSubview(timePickerView)
         self.addSubview(focusLabel)
         self.addSubview(focusTextField)
         elipseView.addSubview(timerLabel)
-        timePickerView.isHidden = true
         placeButtons()
         placeTimerLabel()
         configureButtonsAction()
     }
 
-    // MARK: - protocol delegate
+    // MARK: -protocol delegate
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
     }
@@ -111,19 +87,11 @@ class TimerView: UIView {
         delegate?.stopActionDidPressed()
     }
 
-    @objc func setButtonPressed() {
-        delegate?.setActionDidPressed()
-    }
-
-    @objc func startSetTimerButtonPressed() {
-        delegate?.startSetTimerButtonDidPressed()
-    }
-
     @objc func endTimePickerEditing() {
         self.endEditing(true)
     }
 
-    //MARK: - Circular ANIMATION
+    //MARK:  Circular ANIMATION
     let shapeLayer = CAShapeLayer()
 
     func animateCircular() {
@@ -137,59 +105,50 @@ class TimerView: UIView {
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeEnd = 1
         shapeLayer.lineCap = CAShapeLayerLineCap.round
-        shapeLayer.strokeColor = sandyYellowColor.cgColor
+        shapeLayer.strokeColor = pinkyWhiteColor.cgColor
         elipseView.layer.addSublayer(shapeLayer)
     }
 
-    // MARK: - Constraints
+    // MARK: -Constraints
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -40),
-            timerLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            timerLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+            timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: 0),
+            timerLabel.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
+            timerLabel.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
             elipseView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -40),
+            elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: 0),
             elipseView.heightAnchor.constraint(equalToConstant: 300),
             elipseView.widthAnchor.constraint(equalToConstant: 300),
 
-            timePickerView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            timePickerView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: -75),
-            timePickerView.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            timePickerView.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
-
             focusLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            focusLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 70),
+            focusLabel.bottomAnchor.constraint(equalTo: elipseView.topAnchor, constant: -32),
             focusLabel.heightAnchor.constraint(equalToConstant: 50),
-            focusLabel.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            focusLabel.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
+            focusLabel.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
+            focusLabel.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
 
             focusTextField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            focusTextField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 70),
+            focusTextField.bottomAnchor.constraint(equalTo: elipseView.topAnchor, constant: -32),
             focusTextField.heightAnchor.constraint(equalToConstant: 50),
-            focusTextField.trailingAnchor.constraint(equalTo: startButton.trailingAnchor),
-            focusTextField.leadingAnchor.constraint(equalTo: startButton.leadingAnchor)
+            focusTextField.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
+            focusTextField.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor)
         ])
     }
 
-    //MARK: - Buttons Configuration
+    //MARK: -Buttons Configuration
     private func configureButtonsAction() {
         startButton.addTarget(self, action: #selector(startPauseTimerButton), for: .touchUpInside)
         stopButton.addTarget(self, action: #selector(stopButtonPressed), for: .touchUpInside)
-        setButton.addTarget(self, action: #selector(setButtonPressed), for: .touchUpInside)
     }
 
     final private func placeButtons() {
-        startButton.anchor(width: 250, height: 50)
-        stopButton.anchor(width: 117, height: 50)
-        setButton.anchor(width: 117, height: 50)
+        startButton.anchor(width: 100, height: 50)
+        stopButton.anchor(width: 100, height: 50)
         NSLayoutConstraint.activate([
-            startButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor, constant: 32),
-            startButton.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            stopButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 8),
-            stopButton.leadingAnchor.constraint(equalTo: startButton.leadingAnchor),
-            setButton.topAnchor.constraint(equalTo: startButton.bottomAnchor, constant: 8),
-            setButton.trailingAnchor.constraint(equalTo: startButton.trailingAnchor)
+            startButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor),
+            startButton.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
+            stopButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor),
+            stopButton.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
         ])
     }
 }

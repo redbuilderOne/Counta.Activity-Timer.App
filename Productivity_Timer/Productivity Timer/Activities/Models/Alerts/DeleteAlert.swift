@@ -1,7 +1,6 @@
 
 import UIKit
 
-
 protocol DeleteAlertProtocol {
     func deleteActivity()
 }

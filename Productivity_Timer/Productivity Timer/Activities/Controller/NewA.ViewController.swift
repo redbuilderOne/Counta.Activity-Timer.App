@@ -3,10 +3,10 @@ import UIKit
 import CoreData
 
 class NewActivityViewController: UIViewController, NewActivityViewActions, RemovableTextWithAlert {
-
     lazy var newActivityView = CreateNewActivityView()
     lazy var conformAlert = Alert(delegate: self)
     lazy var activity = Activity()
+    var actionHandler: (() -> Void)?
 
     override func loadView() {
         view = newActivityView

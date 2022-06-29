@@ -4,12 +4,10 @@ import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
     var firstLoad = true
-    var activity: Activity?
+//    weak var activity: Activity?
     var timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
-    let secFormat = SecondsPickerFormat()
-    lazy var newActivityVC = NewActivityViewController()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
     lazy var selectedIndexToDelete = Int()
@@ -20,7 +18,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     }
 
     init(activity: Activity? = nil) {
-        self.activity = activity
+//        self.activity = activity
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -54,6 +52,21 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
 
         firstLoadCheck.firstLoadCheckTimerVC()
+    }
+
+    @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.down:
+                let newActivityVC = NewActivityViewController()
+                    newActivityVC.actionHandler = { [weak newActivityVC] in
+                        newActivityVC?.dismiss(animated: true, completion: nil)
+                  }
+                  present(newActivityVC, animated: true, completion: nil)
+            default:
+                break
+            }
+        }
     }
 
     // MARK: - viewDidLayoutSubviews
@@ -176,17 +189,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizer.Direction.down:
-                present(newActivityVC, animated: true, completion: nil)
-            default:
-                break
-            }
-        }
-    }
-
     // MARK: - Round Animation
     let roundAnimation = CABasicAnimation(keyPath: "strokeEnd")
 
@@ -205,7 +207,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         if constants.isTimerActivated {
             setStopTime(date: Date())
             stopTimer()
-            setButtonImg(title: "Play", img: "play")
+            setButtonImg(title: "", img: "play")
         } else {
             if let stop = constants.stopTime {
                 let restartTime = countRestartTime(start: constants.startTime!, stop: stop)
@@ -215,7 +217,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 setStartTime(date: Date())
             }
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
-            setButtonImg(title: "Pause", img: "pause")
+            setButtonImg(title: "", img: "pause")
         }
     }
 
@@ -233,7 +235,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.timerLabel.text = "STOP"
         timerView.timerLabel.textColor = .systemRed
         timerView.timerLabel.isHidden = false
-        timerView.timePickerView.isHidden = true
         timerView.startButton.isHidden = false
         timerView.startButton.isEnabled = true
     }
@@ -248,7 +249,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     private func setStopTime(date: Date?) {
         constants.stopTime = date
         constants.userDefaults.set(constants.stopTime, forKey: LetsAndVarsForTimer.Keys.STOP_TIME_KEY.rawValue)
-        setButtonImg(title: "Play", img: "play")
+        setButtonImg(title: "", img: "play")
     }
 
     private func setTimerCounting(_ val: Bool) {
@@ -316,33 +317,5 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     func setButtonImg(title: String, img: String) {
         timerView.startButton.setTitle(title, for: .normal)
         timerView.startButton.setImage(UIImage(systemName: img), for: .normal)
-    }
-
-    //MARK: - Обратный таймер
-    func startSetTimerButtonDidPressed() {
-        constants.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(beginCountDown), userInfo: nil, repeats: false)
-    }
-
-    func setActionDidPressed() {
-        stopTimer()
-        timerView.timerLabel.isHidden = true
-        timerView.timePickerView.isHidden = false
-    }
-
-    @objc func beginCountDown() {
-        timerView.timerLabel.text = String(constants.countdown)
-        timerView.timerLabel.textColor = .white
-
-        if constants.countdown > 0 {
-            setButtonImg(title: "Countdown", img: "")
-            constants.countdown -= 1
-        } else {
-            constants.timer.invalidate()
-            timerView.startButton.isEnabled = true
-            timerView.timerLabel.text = "TIME'S UP"
-            timerView.timerLabel.textColor = .systemRed
-            setButtonImg(title: "Play", img: "play")
-            stopTimer()
-        }
     }
 }

@@ -49,7 +49,6 @@
 		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
 		FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
 		FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B209281300A10046CE83 /* Picker Format.swift */; };
-		FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B20B28130FB20046CE83 /* Picker Extension.swift */; };
 		FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,7 +116,6 @@
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		FFD4B209281300A10046CE83 /* Picker Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Format.swift"; sourceTree = "<group>"; };
-		FFD4B20B28130FB20046CE83 /* Picker Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker Extension.swift"; sourceTree = "<group>"; };
 		FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "setTimer Defaults.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,7 +189,6 @@
 		FF2A6EFE282D8BC200F13F4E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FFD4B20B28130FB20046CE83 /* Picker Extension.swift */,
 				FF36BE982852493600176FA0 /* KeyboardExt.swift */,
 				FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */,
 			);
@@ -501,7 +498,6 @@
 				FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */,
 				FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
-				FFD4B20C28130FB20046CE83 /* Picker Extension.swift in Sources */,
 				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
 				FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */,
 				FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */,
@@ -683,6 +679,7 @@
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Protimer;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -711,6 +708,7 @@
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Protimer;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

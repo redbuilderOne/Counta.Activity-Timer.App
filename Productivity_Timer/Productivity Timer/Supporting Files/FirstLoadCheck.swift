@@ -22,7 +22,9 @@ struct FirstLoadCheck {
                         TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
                         TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
                         TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
+                        TimerViewControllerStruct.timerViewController.setButtonImg(title: "", img: "play")
                     } else {
+                        TimerViewControllerStruct.timerViewController.setButtonImg(title: "", img: "pause")
                     }
                 }
             } catch {
@@ -60,7 +62,7 @@ struct FirstLoadCheck {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-
+            
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
