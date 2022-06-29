@@ -4,7 +4,6 @@ import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
     var firstLoad = true
-//    weak var activity: Activity?
     var timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
@@ -18,7 +17,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     }
 
     init(activity: Activity? = nil) {
-//        self.activity = activity
         super.init(nibName: nil, bundle: nil)
     }
 
