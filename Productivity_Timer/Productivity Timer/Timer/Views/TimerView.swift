@@ -8,7 +8,6 @@ protocol TimerViewDelegate: AnyObject {
 
 class TimerView: UIView {
     weak var delegate: TimerViewDelegate?
-    var actionHandler: (() -> Void)?
 
     lazy var focusLabel: UILabel = {
         let focusLabel = UILabel()
