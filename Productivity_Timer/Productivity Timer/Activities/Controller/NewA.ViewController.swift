@@ -50,7 +50,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 return
                 
             } else {
-
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
                 let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 

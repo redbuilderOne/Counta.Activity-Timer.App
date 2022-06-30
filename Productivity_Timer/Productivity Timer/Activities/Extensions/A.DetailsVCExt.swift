@@ -85,7 +85,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.backgroundColor = darkMoonColor
             cell.textLabel?.textColor = sandyYellowColor
             cell.textLabel?.textAlignment = .justified
-//            cell.textLabel?.text = "Tap to focus"
             cell.imageView?.image = UIImage(systemName: "timelapse")
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
 

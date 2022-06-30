@@ -7,7 +7,6 @@ protocol NewActivityViewActions: AnyObject {
 }
 
 class CreateNewActivityView: UIView {
-
     weak var delegate: NewActivityViewActions?
 
     lazy var titleLabel: UILabel = {
@@ -93,6 +92,7 @@ class CreateNewActivityView: UIView {
         descriptionTextView.anchor(height: 128)
         clearButton.anchor(width: 117, height: 50)
         okButton.anchor(width: 117, height: 50)
+
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),

@@ -10,7 +10,6 @@ extension TimerViewController: UITextFieldDelegate {
         timerView.stopButtonPressed()
         timerView.timerLabel.text = "FOCUSED"
         timerView.timerLabel.textColor = pinkyWhiteColor
-//      timerView.focusLabel.isUserInteractionEnabled = false
         timerView.focusTextField.text = ""
         return false
     }

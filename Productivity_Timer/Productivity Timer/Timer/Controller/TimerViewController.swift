@@ -53,6 +53,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
             print("firstLoadCheck - \(String(describing: firstLoadCheck))")
         }
+
         firstLoadCheck.firstLoadCheckTimerVC()
     }
 
@@ -178,8 +179,10 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     private func checkIfTimerActivated() {
         if constants.isTimerActivated {
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
+            setButtonImg(title: "", img: "pause")
         } else {
             stopTimer()
+            setButtonImg(title: "", img: "play")
             if let start = constants.startTime {
                 if let stop = constants.stopTime {
                     let time = countRestartTime(start: start, stop: stop)
