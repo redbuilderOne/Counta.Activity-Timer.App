@@ -46,9 +46,9 @@ class CreateNewActivityView: UIView {
         return descriptionTextView
     }()
 
-    lazy var clearButton = TimerControlButton(title: "clear", titleColor: .systemRed, tintColor: .systemRed, backgroundColor: blueMoonlight, systemImageName: "xmark.square")
+    lazy var clearButton = TimerControlButton(title: "", titleColor: .systemRed, tintColor: .systemRed, backgroundColor: darkMoonColor, systemImageName: "xmark.square")
 
-    lazy var okButton = TimerControlButton(title: "ok", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: blueMoonlight, systemImageName: "checkmark")
+    lazy var okButton = TimerControlButton(title: "", titleColor: .systemGreen, tintColor: .systemGreen, backgroundColor: darkMoonColor, systemImageName: "checkmark")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,8 +90,8 @@ class CreateNewActivityView: UIView {
     //MARK: - Constraints
     final private func configureUIElements() {
         descriptionTextView.anchor(height: 128)
-        clearButton.anchor(width: 117, height: 50)
-        okButton.anchor(width: 117, height: 50)
+        clearButton.anchor(width: 100, height: 50)
+        okButton.anchor(width: 100, height: 50)
 
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),

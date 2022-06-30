@@ -24,7 +24,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - viewDidLoad
+    // MARK: -viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
@@ -67,10 +67,10 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.down:
                 let newActivityVC = NewActivityViewController()
-                    newActivityVC.actionHandler = { [weak newActivityVC] in
-                        newActivityVC?.dismiss(animated: true, completion: nil)
-                  }
-                  present(newActivityVC, animated: true, completion: nil)
+                newActivityVC.actionHandler = { [weak newActivityVC] in
+                    newActivityVC?.dismiss(animated: true, completion: nil)
+                }
+                present(newActivityVC, animated: true, completion: nil)
             default:
                 break
             }
@@ -193,7 +193,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    // MARK: - Round Animation
+    // MARK: -Round Animation
     let roundAnimation = CABasicAnimation(keyPath: "strokeEnd")
 
     func startStopAnimation(toValue: Int, repeatCount: Float) {
@@ -205,7 +205,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
 
-    //MARK: - startActionDidPressed
+    //MARK: -startActionDidPressed
     func startActionDidPressed() {
         timerView.timerLabel.isHidden = false
         if constants.isTimerActivated {
@@ -230,7 +230,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         return Date().addingTimeInterval(difference)
     }
 
-    //MARK: - stopActionDidPressed
+    //MARK: -stopActionDidPressed
     func stopActionDidPressed() {
         setStopTime(date: nil)
         setStartTime(date: nil)
@@ -243,7 +243,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.startButton.isEnabled = true
     }
 
-    // MARK: - Start, Pause, Stop Timers
+    // MARK: -Start, Pause, Stop Timers
     private func setStartTime(date: Date?) {
         constants.startTime = date
         constants.userDefaults.set(constants.startTime, forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue)
@@ -285,13 +285,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         startStopAnimation(toValue: 1, repeatCount: 1)
     }
 
-    func sumTimeArray(array1: [Int?], array2: [Int?]) -> (Int, Int, Int) {
-        let sum0 = (array1[0] ?? 0) + (array2[0] ?? 0)
-        let sum1 = (array1[1] ?? 0) + (array2[1] ?? 0)
-        let sum2 = (array1[2] ?? 0) + (array2[2] ?? 0)
-        return (sum0, sum1, sum2)
-    }
-
     func setTimeLabel(_ val: Int) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
@@ -299,12 +292,11 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
-
+        
         for activity in ActivitiesObject.arrayOfActivities {
             if activity.isFocused {
                 activity.lastSession = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
             }
-
             do {
                 try context.save()
             } catch {
