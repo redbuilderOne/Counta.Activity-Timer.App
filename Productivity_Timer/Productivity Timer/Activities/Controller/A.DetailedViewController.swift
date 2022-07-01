@@ -78,7 +78,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
 
     func deleteActivity() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-
         SelectedActivity.selectedActivity = self.activity
 
         do {

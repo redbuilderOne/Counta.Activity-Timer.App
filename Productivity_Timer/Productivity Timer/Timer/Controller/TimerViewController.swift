@@ -128,7 +128,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 newActivity.title = focusCurrentText
                 newActivity.fav = false
                 newActivity.isDone = false
-                newActivity.focusedActivityTitle = focusCurrentText
 
                 for activities in ActivitiesObject.arrayOfActivities {
                     activities.isFocused = false

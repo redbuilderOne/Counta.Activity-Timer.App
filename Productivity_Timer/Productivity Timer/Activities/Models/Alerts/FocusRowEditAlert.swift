@@ -20,7 +20,7 @@ struct FocusRowEditAlert {
         
         if activity.isFocused {
             TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
-            TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.focusedActivityTitle
+            TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.title
             TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
             TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
             TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
