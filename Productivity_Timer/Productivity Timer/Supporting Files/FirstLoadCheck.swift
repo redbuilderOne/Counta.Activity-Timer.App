@@ -63,6 +63,12 @@ class FirstLoadCheck {
             
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
+
+                let firstLoadCheck = FirstLoadCheck()
+                firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
+                    print("firstLoadCheck - \(String(describing: firstLoadCheck))")
+                }
+
                 for result in results {
                     let activity = result as! Activity
 

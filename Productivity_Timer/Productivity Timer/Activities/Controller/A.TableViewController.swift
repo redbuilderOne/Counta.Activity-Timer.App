@@ -3,7 +3,7 @@ import UIKit
 import CoreData
 
 class ActivityTableViewController: UITableViewController {
-    lazy var identifier = CellsID.activityTableViewID
+    var identifier = CellsID.activityTableViewID
     var activityDetailedViewController: UITabBarController?
     var actionHandler: (() -> Void)?
 
@@ -16,8 +16,8 @@ class ActivityTableViewController: UITableViewController {
         firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
             print("firstLoadCheck - \(String(describing: firstLoadCheck))")
         }
-
         firstLoadCheck.firstLoadCheckTableVC()
+        
         configureTableView()
     }
 
@@ -45,9 +45,9 @@ class ActivityTableViewController: UITableViewController {
 
     @objc func addNewActivity() {
         let newActivityVC = NewActivityViewController()
-            newActivityVC.actionHandler = { [weak newActivityVC] in
-                newActivityVC?.dismiss(animated: true, completion: nil)
-          }
+        newActivityVC.actionHandler = { [weak newActivityVC] in
+            newActivityVC?.dismiss(animated: true, completion: nil)
+        }
         show(newActivityVC, sender: self)
     }
 

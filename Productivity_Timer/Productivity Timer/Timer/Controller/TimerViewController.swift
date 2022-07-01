@@ -4,7 +4,7 @@ import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
     var firstLoad = true
-    var timerView = TimerView()
+    let timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
     var focusTextLabelDidTapped = false
@@ -292,7 +292,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
-        
+
         for activity in ActivitiesObject.arrayOfActivities {
             if activity.isFocused {
                 activity.lastSession = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
