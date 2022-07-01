@@ -28,6 +28,10 @@ class ActivityTableViewController: UITableViewController {
         configureTableView()
     }
 
+    deinit {
+        print("ActivityTableViewController deinit")
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()

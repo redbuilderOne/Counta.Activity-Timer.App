@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func createTimerNavigationController() -> UINavigationController {
-        let timerViewController = ActivityTableViewController()
+        lazy var timerViewController = TimerViewController()
         timerViewController.actionHandler = { [weak timerViewController] in timerViewController?.dismiss(animated: true, completion: nil)
         }
         timerViewController.title = "Timer"

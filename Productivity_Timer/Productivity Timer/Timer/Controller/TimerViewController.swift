@@ -3,7 +3,6 @@ import UIKit
 import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
-//    var firstLoad = true
     let timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
@@ -55,6 +54,10 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
 
         firstLoadCheck.firstLoadCheckTimerVC()
+    }
+
+    deinit {
+        print("deinit TimerVC")
     }
 
     override func viewDidLayoutSubviews() {
