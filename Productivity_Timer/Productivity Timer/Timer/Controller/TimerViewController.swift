@@ -3,7 +3,7 @@ import UIKit
 import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
-    var firstLoad = true
+//    var firstLoad = true
     let timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
