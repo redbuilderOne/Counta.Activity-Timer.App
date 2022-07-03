@@ -3,7 +3,6 @@ import UIKit
 import CoreData
 
 final class TimerViewController: UIViewController, TimerViewDelegate {
-    var activity: Activity?
     let timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
@@ -12,12 +11,12 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     lazy var selectedIndexToDelete = Int()
     var actionHandler: (() -> Void)?
 
+
     override func loadView() {
         view = timerView
     }
 
     init(activity: Activity? = nil) {
-        self.activity = activity
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -62,13 +61,32 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         firstLoadCheck.firstLoadCheckTimerVC()
     }
 
-    deinit {
-        print("deinit TimerVC")
-    }
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         timerView.animateCircular()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+        checkFocusedActivity()
+    }
+
+    func checkFocusedActivity() {
+        if let activity = StaticSelectedActivity.activity {
+            if activity.isFocused {
+                timerView.focusLabel.text = activity.title
+                timerView.focusLabel.textColor = sandyYellowColor
+                timerView.focusLabel.layer.opacity = 1
+                timerView.focusTextField.isHidden = true
+                timerView.focusLabel.isHidden = false
+            } else {
+                timerView.focusTextField.isHidden = false
+                timerView.focusLabel.text = "tap to focus on activity"
+                timerView.focusLabel.textColor = .systemGray
+                timerView.focusLabel.layer.opacity = 0.3
+            }
+        }
     }
 
     @objc func respondToDownSwipeGesture(gesture: UIGestureRecognizer) {
@@ -163,6 +181,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         print("tap on activity")
         if let focusedActivity = FocusedActivityToPresent.focusedActivity {
             present(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true, completion: nil)
+            view.setNeedsDisplay()
         }
     }
 
@@ -172,7 +191,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             timerView.focusLabel.isHidden = false
             timerView.focusLabel.text = "tap to focus on activity"
             timerView.focusLabel.textColor = .systemGray
-            timerView.focusLabel.layer.opacity = 0.1
+            timerView.focusLabel.layer.opacity = 0.3
         } else {
             timerView.focusLabel.isHidden = false
             timerView.focusTextField.isHidden = true

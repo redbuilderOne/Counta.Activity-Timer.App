@@ -21,6 +21,10 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        print("newActivityView deinit")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "New Activity"

@@ -4,12 +4,16 @@ import CoreData
 
 class ActivityTableViewController: UITableViewController {
     var identifier = CellsID.activityTableViewID
+    var activity: Activity
     var activityDetailedViewController: UITabBarController?
     var actionHandler: (() -> Void)?
     var firstLoadCheck: FirstLoadCheck?
+    let timerViewController: TimerViewController?
 
-    init() {
+    init(activity: Activity) {
+        self.activity = activity
         firstLoadCheck = FirstLoadCheck()
+        timerViewController = TimerViewController(activity: activity)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -26,10 +30,6 @@ class ActivityTableViewController: UITableViewController {
         firstLoadCheck = nil
 
         configureTableView()
-    }
-
-    deinit {
-        print("ActivityTableViewController deinit")
     }
 
     override func viewDidAppear(_ animated: Bool) {

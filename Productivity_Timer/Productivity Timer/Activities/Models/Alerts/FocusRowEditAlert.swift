@@ -3,9 +3,12 @@ import UIKit
 import CoreData
 
 struct FocusRowEditAlert {
-    func focusRowEditAction(on vc: UIViewController, activity: Activity, tableView: UITableView) {
+    var timerViewController: TimerViewController?
+
+    mutating func focusRowEditAction(on vc: UIViewController, activity: Activity, tableView: UITableView) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        timerViewController = TimerViewController(activity: activity)
         
         SelectedActivity.selectedActivity = activity
         FocusedActivityToPresent.focusedActivity = activity
@@ -19,11 +22,13 @@ struct FocusRowEditAlert {
         activity.isFocused = true
         
         if activity.isFocused {
-            TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
-            TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.title
-            TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
-            TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
-            TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
+            StaticSelectedActivity.activity = activity
+
+//            timerViewController?.timerView.focusTextField.isHidden = true
+//            timerViewController?.timerView.focusLabel.text = activity.title
+//            timerViewController?.timerView.focusLabel.textColor = sandyYellowColor
+//            timerViewController?.timerView.focusLabel.layer.opacity = 1
+//            timerViewController?.timerView.stopButtonPressed()
         }
         
         do {
@@ -35,7 +40,7 @@ struct FocusRowEditAlert {
         SelectedActivity.selectedActivity = nil
         
         tableView.reloadData()
-        TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
+        timerViewController?.timerView.stopButtonPressed()
     }
     
     func cancelFocusRowEditAction(on vc: UIViewController, activity: Activity, tableView: UITableView) {
@@ -53,11 +58,11 @@ struct FocusRowEditAlert {
         
         activity.isFocused = false
         
-        TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = false
-        TimerViewControllerStruct.timerViewController.timerView.focusLabel.isHidden = false
-        TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = "tap to focus on activity"
-        TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = .systemGray
-        TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 0.3
+        timerViewController?.timerView.focusTextField.isHidden = false
+        timerViewController?.timerView.focusLabel.isHidden = false
+        timerViewController?.timerView.focusLabel.text = "tap to focus on activity"
+        timerViewController?.timerView.focusLabel.textColor = .systemGray
+        timerViewController?.timerView.focusLabel.layer.opacity = 0.3
         
         do {
             try context.save()
@@ -68,6 +73,6 @@ struct FocusRowEditAlert {
         SelectedActivity.selectedActivity = nil
         
         tableView.reloadData()
-        TimerViewControllerStruct.timerViewController.timerView.stopButtonPressed()
+        timerViewController?.timerView.stopButtonPressed()
     }
 }

@@ -1,6 +1,20 @@
+//
+//import UIKit
+//
+//class TimerViewControllerStruct {
+//    let timerViewController: TimerViewController?
+//
+//    init() {
+//        timerViewController = TimerViewController()
+//    }
+//
+////    static var timerViewController = TimerViewController()
+//}
 
-import UIKit
+struct StaticSelectedActivity {
+    static var activity: Activity?
 
-struct TimerViewControllerStruct {
-    static var timerViewController = TimerViewController()
+    static func deinitActivity() {
+        self.activity = nil
+    }
 }

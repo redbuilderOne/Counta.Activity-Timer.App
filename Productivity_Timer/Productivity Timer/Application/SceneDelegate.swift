@@ -14,15 +14,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
-    func useCreatedTimerVC() -> UINavigationController {
-        TimerViewControllerStruct.timerViewController.title = "Timer"
-        TimerViewControllerStruct.timerViewController.tabBarItem.image = UIImage(systemName: "stopwatch")
-        TimerViewControllerStruct.timerViewController.tabBarItem.selectedImage = UIImage(systemName:  "stopwatch.fill")
-        return UINavigationController(rootViewController: TimerViewControllerStruct.timerViewController)
-    }
+//    func useCreatedTimerVC() -> UINavigationController {
+//        TimerViewControllerStruct.timerViewController.title = "Timer"
+//        TimerViewControllerStruct.timerViewController.tabBarItem.image = UIImage(systemName: "stopwatch")
+//        TimerViewControllerStruct.timerViewController.tabBarItem.selectedImage = UIImage(systemName:  "stopwatch.fill")
+//        return UINavigationController(rootViewController: TimerViewControllerStruct.timerViewController)
+//    }
 
     func createTimerNavigationController() -> UINavigationController {
-        lazy var timerViewController = TimerViewController()
+        let timerViewController = TimerViewController(activity: Activity())
         timerViewController.actionHandler = { [weak timerViewController] in timerViewController?.dismiss(animated: true, completion: nil)
         }
         timerViewController.title = "Timer"
@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func createActivitiesNavigationController() -> UINavigationController {
-        let activityTableViewController = ActivityTableViewController()
+        let activityTableViewController = ActivityTableViewController(activity: Activity())
         activityTableViewController.actionHandler = { [weak activityTableViewController] in activityTableViewController?.dismiss(animated: true, completion: nil)
         }
         activityTableViewController.title = "Activities"
@@ -46,7 +46,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBar = UITabBarController()
         UITabBar.appearance().tintColor = sandyYellowColor
         UITabBar.appearance().unselectedItemTintColor = pinkyWhiteColor
-        tabBar.viewControllers = [useCreatedTimerVC(), createActivitiesNavigationController()]
+        tabBar.viewControllers = [
+//            useCreatedTimerVC(),
+            createTimerNavigationController(),
+            createActivitiesNavigationController()]
         return tabBar
     }
 

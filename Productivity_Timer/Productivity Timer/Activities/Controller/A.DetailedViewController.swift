@@ -3,22 +3,28 @@ import UIKit
 import CoreData
 
 class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
-    var activity: Activity
     var selectedIndexToDelete: Int
+    var activity: Activity
     lazy var conformDeleteAlert = DeleteAlert(delegate: self)
-    lazy var titleRowEditAlert = TitleRowEditAlert()
     lazy var descRowEditAlert = DescRowEditAlert()
     lazy var favRowEditAlert = FavRowEditAlert()
-    lazy var focusRowEditAlert = FocusRowEditAlert()
+    let timerViewController: TimerViewController?
+    lazy var titleRowEditAlert = TitleRowEditAlert(timerViewController: TimerViewController(activity: activity))
+    lazy var focusRowEditAlert = FocusRowEditAlert(timerViewController: TimerViewController(activity: activity))
 
     init(activity: Activity, selectedIndexToDelete: Int) {
         self.activity = activity
         self.selectedIndexToDelete = selectedIndexToDelete
+        timerViewController = TimerViewController()
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        print("detailed View deinit")
     }
 
     private lazy var activityTableView: UITableView = {
@@ -65,14 +71,14 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     @objc func trashButtonDidTapped() {
         conformDeleteAlert.deleteActivity(on: self, with: "Are you sure?", message: "This will delete the activity forever")
 
-        TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = "tap to focus on activity"
-        TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = .systemGray
-        TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 0.1
-        TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = false
+        timerViewController?.timerView.focusLabel.text = "tap to focus on activity"
+        timerViewController?.timerView.focusLabel.textColor = .systemGray
+        timerViewController?.timerView.focusLabel.layer.opacity = 0.1
+        timerViewController?.timerView.focusTextField.isHidden = false
 
         activity.isFocused = false
-        TimerViewControllerStruct.timerViewController.stopActionDidPressed()
-        TimerViewControllerStruct.timerViewController.stopTimer()
+        timerViewController?.stopActionDidPressed()
+        timerViewController?.stopTimer()
         print("Now activity (\(activity.title ?? "")) is deleted and NOT marked FOCUSED")
     }
 
@@ -93,7 +99,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
         SelectedActivity.selectedActivity = nil
         ActivitiesObject.arrayOfActivities.remove(at: selectedIndexToDelete)
 
-        print("\(self.activity) is deleted")
         navigationController?.popViewController(animated: true)
     }
 }

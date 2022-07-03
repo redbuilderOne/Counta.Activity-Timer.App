@@ -33,14 +33,14 @@ extension ActivityTableViewController {
             
             tableView.reloadData()
 
-            TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = false
-            TimerViewControllerStruct.timerViewController.timerView.focusTextField.text = ""
-            TimerViewControllerStruct.timerViewController.timerView.focusLabel.isHidden = false
-            TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = "tap to focus on activity"
-            TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = .systemGray
-            TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 0.1
-            TimerViewControllerStruct.timerViewController.stopTimer()
-            TimerViewControllerStruct.timerViewController.stopActionDidPressed()
+            timerViewController?.timerView.focusTextField.isHidden = false
+            timerViewController?.timerView.focusTextField.text = ""
+            timerViewController?.timerView.focusLabel.isHidden = false
+            timerViewController?.timerView.focusLabel.text = "tap to focus on activity"
+            timerViewController?.timerView.focusLabel.textColor = .systemGray
+            timerViewController?.timerView.focusLabel.layer.opacity = 0.1
+            timerViewController?.stopTimer()
+            timerViewController?.stopActionDidPressed()
         }
     }
 

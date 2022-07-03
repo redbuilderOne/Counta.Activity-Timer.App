@@ -5,6 +5,17 @@ import CoreData
 class FirstLoadCheck {
     var firstLoad = true
     var actionHandler: (() -> Void)?
+    var activity: Activity
+    let timerViewController: TimerViewController?
+
+    init(activity: Activity? = nil) {
+        self.activity = Activity()
+        timerViewController = TimerViewController()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     func firstLoadCheckTimerVC() {
         if firstLoad {
@@ -18,11 +29,14 @@ class FirstLoadCheck {
                 for result in results {
                     let activity = result as! Activity
                     if activity.isFocused {
-                        FocusedActivityToPresent.focusedActivity = activity
-                        TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.title
-                        TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
-                        TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
-                        TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
+
+                        StaticSelectedActivity.activity = activity
+
+//                        FocusedActivityToPresent.focusedActivity = activity
+//                        timerViewController?.timerView.focusLabel.text = activity.title
+//                        timerViewController?.timerView.focusLabel.textColor = sandyYellowColor
+//                        timerViewController?.timerView.focusLabel.layer.opacity = 1
+//                        timerViewController?.timerView.focusTextField.isHidden = true
                     }
                 }
             } catch {

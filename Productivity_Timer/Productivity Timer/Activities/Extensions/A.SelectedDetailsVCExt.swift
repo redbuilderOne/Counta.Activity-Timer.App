@@ -30,7 +30,7 @@ extension ActivityDetailedViewController {
                 focusRowEditAlert.focusRowEditAction(on: self, activity: activity, tableView: tableView)
                 conformDeleteAlert.focusOnActivityConfirm(on: self, with: "\(activity.title ?? "your activity") is now being focused", message: "You can return to Timer")
                 print("Now Focused Activity is \(activity.title ?? "")")
-                TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.title
+                timerViewController?.timerView.focusLabel.text = activity.title
             } else {
                 focusRowEditAlert.cancelFocusRowEditAction(on: self, activity: activity, tableView: tableView)
                 print("Now Activity \(activity.title ?? "") is NOT focused")
