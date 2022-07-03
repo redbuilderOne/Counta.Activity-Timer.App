@@ -70,6 +70,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         super.viewWillAppear(animated)
         print("viewWillAppear")
         checkFocusedActivity()
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     func checkFocusedActivity() {
@@ -106,7 +107,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
     @objc func focusTextFieldAction(_ textField: UITextField) -> String {
         let newTextTyped = timerView.focusTextField.text
-
         if let newTextTyped = newTextTyped {
             focusCurrentText = newTextTyped
         } else {
@@ -179,11 +179,9 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
     @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
         print("tap on activity")
+        self.navigationController?.navigationBar.isHidden = false
         if let focusedActivity = FocusedActivityToPresent.focusedActivity {
-//            show(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), sender: sender)
             navigationController?.pushViewController(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true)
-
-//            present(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true, completion: nil)
         }
     }
 
