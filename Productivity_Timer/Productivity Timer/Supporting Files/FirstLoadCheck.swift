@@ -32,12 +32,7 @@ class FirstLoadCheck {
 
                         StaticSelectedActivity.activity = activity
                         FocusedActivityToPresent.focusedActivity = activity
-
-//                        FocusedActivityToPresent.focusedActivity = activity
-//                        timerViewController?.timerView.focusLabel.text = activity.title
-//                        timerViewController?.timerView.focusLabel.textColor = sandyYellowColor
-//                        timerViewController?.timerView.focusLabel.layer.opacity = 1
-//                        timerViewController?.timerView.focusTextField.isHidden = true
+                        SelectedActivity.selectedIndexToDelete = activity.id as? Int
                     }
                 }
             } catch {

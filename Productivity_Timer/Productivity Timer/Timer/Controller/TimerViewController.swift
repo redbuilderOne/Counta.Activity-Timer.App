@@ -8,9 +8,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var constants = LetsAndVarsForTimer()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
-    lazy var selectedIndexToDelete = Int()
     var actionHandler: (() -> Void)?
-
 
     override func loadView() {
         view = timerView
@@ -57,7 +55,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
             print("firstLoadCheck - \(String(describing: firstLoadCheck))")
         }
-
         firstLoadCheck.firstLoadCheckTimerVC()
     }
 
@@ -163,7 +160,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 ActivitiesObject.arrayOfActivities.append(newActivity)
 
                 FocusedActivityToPresent.focusedActivity = newActivity
-                selectedIndexToDelete = newActivity.id as! Int
+                SelectedActivity.selectedIndexToDelete = newActivity.id as? Int
 
                 do {
                     try context.save()
@@ -181,7 +178,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         print("tap on activity")
         self.navigationController?.navigationBar.isHidden = false
         if let focusedActivity = FocusedActivityToPresent.focusedActivity {
-            navigationController?.pushViewController(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true)
+            navigationController?.pushViewController(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: SelectedActivity.selectedIndexToDelete!), animated: true)
         }
     }
 

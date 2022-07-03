@@ -13,6 +13,7 @@ extension ActivityTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         show(ActivityDetailedViewController(activity:  ActivitiesObject.arrayOfActivities[indexPath.row], selectedIndexToDelete: indexPath.row), sender: self)
+        SelectedActivity.selectedIndexToDelete = indexPath.row
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
