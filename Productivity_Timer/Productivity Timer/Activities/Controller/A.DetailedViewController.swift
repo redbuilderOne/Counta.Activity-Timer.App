@@ -24,6 +24,7 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     }
 
     deinit {
+        navigationController?.popViewController(animated: false)
         print("detailed View deinit")
     }
 

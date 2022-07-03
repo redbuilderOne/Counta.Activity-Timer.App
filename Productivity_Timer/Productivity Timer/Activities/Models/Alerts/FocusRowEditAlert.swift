@@ -23,12 +23,7 @@ struct FocusRowEditAlert {
         
         if activity.isFocused {
             StaticSelectedActivity.activity = activity
-
-//            timerViewController?.timerView.focusTextField.isHidden = true
-//            timerViewController?.timerView.focusLabel.text = activity.title
-//            timerViewController?.timerView.focusLabel.textColor = sandyYellowColor
-//            timerViewController?.timerView.focusLabel.layer.opacity = 1
-//            timerViewController?.timerView.stopButtonPressed()
+            FocusedActivityToPresent.focusedActivity = activity
         }
         
         do {

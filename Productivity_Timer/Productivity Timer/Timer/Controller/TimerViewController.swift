@@ -25,7 +25,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     }
 
     deinit {
-        print("deinit TimerVC")
+        print("deinit in TimerVC")
     }
 
     // MARK: -viewDidLoad
@@ -180,8 +180,10 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
         print("tap on activity")
         if let focusedActivity = FocusedActivityToPresent.focusedActivity {
-            present(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true, completion: nil)
-            view.setNeedsDisplay()
+//            show(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), sender: sender)
+            navigationController?.pushViewController(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true)
+
+//            present(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: selectedIndexToDelete), animated: true, completion: nil)
         }
     }
 

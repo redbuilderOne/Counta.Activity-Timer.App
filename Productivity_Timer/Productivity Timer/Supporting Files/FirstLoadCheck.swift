@@ -31,6 +31,7 @@ class FirstLoadCheck {
                     if activity.isFocused {
 
                         StaticSelectedActivity.activity = activity
+                        FocusedActivityToPresent.focusedActivity = activity
 
 //                        FocusedActivityToPresent.focusedActivity = activity
 //                        timerViewController?.timerView.focusLabel.text = activity.title
