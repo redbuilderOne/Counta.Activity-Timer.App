@@ -24,7 +24,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     }
 
     deinit {
-        navigationController?.popViewController(animated: false)
         print("detailed View deinit")
     }
 
@@ -60,6 +59,11 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
         view.addSubview(activityTableView)
         confTableView()
         setupNavigationBar()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.popViewController(animated: true)
     }
 
     private func setupNavigationBar() {
