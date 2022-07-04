@@ -6,7 +6,6 @@ class ActivityTableViewController: UITableViewController {
     var identifier = CellsID.activityTableViewID
     var activity: Activity
     var activityDetailedViewController: UITabBarController?
-    var actionHandler: (() -> Void)?
     var firstLoadCheck: FirstLoadCheck?
     let timerViewController: TimerViewController?
 

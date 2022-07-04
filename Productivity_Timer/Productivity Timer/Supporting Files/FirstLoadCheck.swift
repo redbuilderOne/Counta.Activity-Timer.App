@@ -4,7 +4,6 @@ import CoreData
 
 class FirstLoadCheck {
     var firstLoad = true
-    var actionHandler: (() -> Void)?
     var activity: Activity
     let timerViewController: TimerViewController?
 
@@ -73,10 +72,10 @@ class FirstLoadCheck {
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
 
-                let firstLoadCheck = FirstLoadCheck()
-                firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
-                    print("firstLoadCheck - \(String(describing: firstLoadCheck))")
-                }
+//                let firstLoadCheck = FirstLoadCheck()
+//                firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
+//                    print("firstLoadCheck - \(String(describing: firstLoadCheck))")
+//                }
 
                 for result in results {
                     let activity = result as! Activity

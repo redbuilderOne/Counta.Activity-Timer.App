@@ -8,8 +8,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var constants = LetsAndVarsForTimer()
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
-    var actionHandler: (() -> Void)?
-    var firstLoadCheck: FirstLoadCheck? = FirstLoadCheck()
 
     override func loadView() {
         view = timerView
@@ -52,6 +50,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.focusLabel.addGestureRecognizer(tapGesture)
         timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
 
+        var firstLoadCheck: FirstLoadCheck?
+        firstLoadCheck = FirstLoadCheck()
         firstLoadCheck?.firstLoadCheckTimerVC()
         firstLoadCheck = nil
 
