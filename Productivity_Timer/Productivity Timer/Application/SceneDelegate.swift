@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //    }
 
     func createTimerNavigationController() -> UINavigationController {
-        let timerViewController = TimerViewController(activity: Activity())
+        let timerViewController = TimerViewController()
         timerViewController.title = "Timer"
         timerViewController.tabBarItem.image = UIImage(systemName: "stopwatch")
         timerViewController.tabBarItem.selectedImage = UIImage(systemName:  "stopwatch.fill")
@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func createActivitiesNavigationController() -> UINavigationController {
-        let activityTableViewController = ActivityTableViewController(activity: Activity())
+        let activityTableViewController = ActivityTableViewController()
         activityTableViewController.title = "Activities"
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: pinkyWhiteColor]
         activityTableViewController.tabBarItem.image = UIImage(systemName:   "gearshape.circle")
