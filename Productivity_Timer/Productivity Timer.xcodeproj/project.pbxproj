@@ -25,7 +25,7 @@
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */; };
 		FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */; };
-		FF36BE86284BBF3700176FA0 /* TimerViewControllerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE85284BBF3700176FA0 /* TimerViewControllerStruct.swift */; };
+		FF36BE86284BBF3700176FA0 /* StaticSelectedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE85284BBF3700176FA0 /* StaticSelectedActivity.swift */; };
 		FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */; };
 		FF36BE8F284D2B5D00176FA0 /* DescRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */; };
 		FF36BE91284D2CE700176FA0 /* FavRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */; };
@@ -88,7 +88,7 @@
 		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
 		FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.SelectedDetailsVCExt.swift; sourceTree = "<group>"; };
 		FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlert.swift; sourceTree = "<group>"; };
-		FF36BE85284BBF3700176FA0 /* TimerViewControllerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewControllerStruct.swift; sourceTree = "<group>"; };
+		FF36BE85284BBF3700176FA0 /* StaticSelectedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSelectedActivity.swift; sourceTree = "<group>"; };
 		FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRowEditAlert.swift; sourceTree = "<group>"; };
@@ -167,7 +167,6 @@
 		FF06E8912809A36500907F1B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
 				FF71FB532805A1D000F2F455 /* Info.plist */,
 				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
 				FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */,
@@ -299,8 +298,9 @@
 			isa = PBXGroup;
 			children = (
 				FF36BE8D284D2B1300176FA0 /* Timer Format */,
+				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
 				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
-				FF36BE85284BBF3700176FA0 /* TimerViewControllerStruct.swift */,
+				FF36BE85284BBF3700176FA0 /* StaticSelectedActivity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -501,7 +501,7 @@
 				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
 				FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */,
 				FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */,
-				FF36BE86284BBF3700176FA0 /* TimerViewControllerStruct.swift in Sources */,
+				FF36BE86284BBF3700176FA0 /* StaticSelectedActivity.swift in Sources */,
 				FF2A6F06283E7A9E00F13F4E /* A.EditTableViewExt.swift in Sources */,
 				FF36BE9D2852578900176FA0 /* KeyboardDismissExt.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */,

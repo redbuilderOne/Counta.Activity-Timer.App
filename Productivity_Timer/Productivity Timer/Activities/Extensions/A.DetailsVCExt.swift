@@ -35,6 +35,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                 cell.imageView?.image = UIImage(systemName: "heart")
                 cell.imageView?.tintColor = .systemGray
             }
+
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -85,14 +86,15 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.backgroundColor = darkMoonColor
             cell.textLabel?.textColor = sandyYellowColor
             cell.textLabel?.textAlignment = .justified
-            cell.textLabel?.text = "Tap to focus"
             cell.imageView?.image = UIImage(systemName: "timelapse")
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
 
             if activity.isFocused {
                 cell.imageView?.image = UIImage(systemName: "timelapse")
                 cell.imageView?.tintColor = .systemRed
+                cell.textLabel?.text = "Focused"
             } else {
+                cell.textLabel?.text = "Tap to focus"
                 cell.imageView?.image = UIImage(systemName: "timelapse")
                 cell.imageView?.tintColor = .systemGray
             }

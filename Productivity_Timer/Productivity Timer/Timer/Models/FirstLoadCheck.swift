@@ -2,10 +2,19 @@
 import UIKit
 import CoreData
 
-struct FirstLoadCheck {
+class FirstLoadCheck {
     var firstLoad = true
+    let timerViewController: TimerViewController?
 
-    mutating func firstLoadCheckTimerVC() {
+    init(activity: Activity? = nil) {
+        timerViewController = TimerViewController()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func firstLoadCheck() {
         if firstLoad {
             firstLoad = false
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -17,14 +26,15 @@ struct FirstLoadCheck {
                 for result in results {
                     let activity = result as! Activity
                     if activity.isFocused {
+                        StaticSelectedActivity.activity = activity
                         FocusedActivityToPresent.focusedActivity = activity
-                        TimerViewControllerStruct.timerViewController.timerView.focusLabel.text = activity.title
-                        TimerViewControllerStruct.timerViewController.timerView.focusLabel.textColor = sandyYellowColor
-                        TimerViewControllerStruct.timerViewController.timerView.focusLabel.layer.opacity = 1
-                        TimerViewControllerStruct.timerViewController.timerView.focusTextField.isHidden = true
-                        TimerViewControllerStruct.timerViewController.setButtonImg(title: "", img: "play")
+                        SelectedActivity.selectedIndexToDelete = activity.id as? Int
+                    }
+
+                    if activity.isDone != true {
+                        ActivitiesObject.arrayOfActivities.append(activity)
                     } else {
-                        TimerViewControllerStruct.timerViewController.setButtonImg(title: "", img: "pause")
+                        DoneActivities.doneActivitiesArray.append(activity)
                     }
                 }
             } catch {
@@ -33,7 +43,7 @@ struct FirstLoadCheck {
         }
     }
 
-    mutating func firstLoadCheckTableVC() {
+    func firstLoadCheckTableVC() {
         if firstLoad {
             firstLoad = false
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -56,7 +66,7 @@ struct FirstLoadCheck {
         }
     }
 
-    mutating func firstLoadCheckTimeSpent() {
+    func firstLoadCheckTimeSpent() {
         if firstLoad {
             firstLoad = false
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -65,6 +75,12 @@ struct FirstLoadCheck {
             
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
+
+//                let firstLoadCheck = FirstLoadCheck()
+//                firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
+//                    print("firstLoadCheck - \(String(describing: firstLoadCheck))")
+//                }
+
                 for result in results {
                     let activity = result as! Activity
 
