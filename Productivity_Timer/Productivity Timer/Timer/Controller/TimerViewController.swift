@@ -21,10 +21,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    deinit {
-        print("deinit in TimerVC")
-    }
-
     // MARK: -viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()

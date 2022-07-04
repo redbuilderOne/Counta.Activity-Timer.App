@@ -23,10 +23,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
-    deinit {
-        print("detailed View deinit")
-    }
-
     private lazy var activityTableView: UITableView = {
         let activityTableView = UITableView()
         activityTableView.translatesAutoresizingMaskIntoConstraints = false
