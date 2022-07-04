@@ -54,8 +54,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         firstLoadChecker = FirstLoadCheck()
         firstLoadChecker?.firstLoadCheck()
         firstLoadChecker = nil
-
-        print("\(ActivitiesObject.arrayOfActivities)")
     }
 
     override func viewDidLayoutSubviews() {
@@ -331,6 +329,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             if activity.isFocused {
                 activity.lastSession = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
             }
+
             do {
                 try context.save()
             } catch {
