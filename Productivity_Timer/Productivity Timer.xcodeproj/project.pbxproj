@@ -167,7 +167,6 @@
 		FF06E8912809A36500907F1B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
 				FF71FB532805A1D000F2F455 /* Info.plist */,
 				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
 				FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */,
@@ -299,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				FF36BE8D284D2B1300176FA0 /* Timer Format */,
+				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
 				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
 				FF36BE85284BBF3700176FA0 /* StaticSelectedActivity.swift */,
 			);

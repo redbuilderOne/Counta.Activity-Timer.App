@@ -96,7 +96,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
 
         SelectedActivity.selectedActivity = nil
         ActivitiesObject.arrayOfActivities.remove(at: selectedIndexToDelete)
-
         navigationController?.popViewController(animated: true)
     }
 }

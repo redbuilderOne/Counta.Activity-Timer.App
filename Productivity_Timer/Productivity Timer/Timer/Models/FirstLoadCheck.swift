@@ -3,7 +3,7 @@ import UIKit
 import CoreData
 
 class FirstLoadCheck {
-    var firstLoad = true 
+    var firstLoad = true
     let timerViewController: TimerViewController?
 
     init(activity: Activity? = nil) {
