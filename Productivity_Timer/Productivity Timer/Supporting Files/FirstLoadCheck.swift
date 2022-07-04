@@ -29,7 +29,6 @@ class FirstLoadCheck {
                 for result in results {
                     let activity = result as! Activity
                     if activity.isFocused {
-
                         StaticSelectedActivity.activity = activity
                         FocusedActivityToPresent.focusedActivity = activity
                         SelectedActivity.selectedIndexToDelete = activity.id as? Int

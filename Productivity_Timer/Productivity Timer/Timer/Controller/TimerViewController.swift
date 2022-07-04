@@ -9,6 +9,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
     var actionHandler: (() -> Void)?
+    var firstLoadCheck: FirstLoadCheck? = FirstLoadCheck()
 
     override func loadView() {
         view = timerView
@@ -51,11 +52,10 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.focusLabel.addGestureRecognizer(tapGesture)
         timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
 
-        let firstLoadCheck = FirstLoadCheck()
-        firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
-            print("firstLoadCheck - \(String(describing: firstLoadCheck))")
-        }
-        firstLoadCheck.firstLoadCheckTimerVC()
+        firstLoadCheck?.firstLoadCheckTimerVC()
+        firstLoadCheck = nil
+
+        print("\(ActivitiesObject.arrayOfActivities)")
     }
 
     override func viewDidLayoutSubviews() {
@@ -142,34 +142,36 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             } else {
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
                 let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-
                 let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
-                let newActivity = Activity(entity: entity!, insertInto: context)
-                newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
-                newActivity.title = focusCurrentText
-                newActivity.fav = false
-                newActivity.isDone = false
 
-                for activities in ActivitiesObject.arrayOfActivities {
-                    activities.isFocused = false
-                    print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(newActivity.title ?? "")")
+                if let entity = entity {
+                    let newActivity = Activity(entity: entity, insertInto: context)
+                    newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
+                    newActivity.title = focusCurrentText
+                    newActivity.fav = false
+                    newActivity.isDone = false
+
+                    for activities in ActivitiesObject.arrayOfActivities {
+                        activities.isFocused = false
+                        print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(newActivity.title ?? "")")
+                    }
+                    newActivity.isFocused = true
+
+                    print("Now Focused Activity is \(newActivity.title ?? "")")
+                    ActivitiesObject.arrayOfActivities.append(newActivity)
+
+                    FocusedActivityToPresent.focusedActivity = newActivity
+                    SelectedActivity.selectedIndexToDelete = newActivity.id as? Int
+
+                    do {
+                        try context.save()
+                        print("New activity \(newActivity.title ?? "") is created and being focused")
+                    } catch {
+                        print("Can't save the context")
+                    }
+                    focusCurrentText = nil
+                    return
                 }
-                newActivity.isFocused = true
-
-                print("Now Focused Activity is \(newActivity.title ?? "")")
-                ActivitiesObject.arrayOfActivities.append(newActivity)
-
-                FocusedActivityToPresent.focusedActivity = newActivity
-                SelectedActivity.selectedIndexToDelete = newActivity.id as? Int
-
-                do {
-                    try context.save()
-                    print("New activity \(newActivity.title ?? "") is created and being focused")
-                } catch {
-                    print("Can't save the context")
-                }
-                focusCurrentText = nil
-                return
             }
         }
     }

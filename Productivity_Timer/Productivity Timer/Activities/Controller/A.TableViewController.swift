@@ -13,7 +13,7 @@ class ActivityTableViewController: UITableViewController {
     init(activity: Activity) {
         self.activity = activity
         firstLoadCheck = FirstLoadCheck()
-        timerViewController = TimerViewController(activity: activity)
+        timerViewController = TimerViewController()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -30,6 +30,8 @@ class ActivityTableViewController: UITableViewController {
         firstLoadCheck = nil
 
         configureTableView()
+
+        print("\(ActivitiesObject.arrayOfActivities)")
     }
 
     override func viewDidAppear(_ animated: Bool) {
