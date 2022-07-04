@@ -50,11 +50,10 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.focusLabel.addGestureRecognizer(tapGesture)
         timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
 
-        var firstLoadCheck: FirstLoadCheck?
-        firstLoadCheck = FirstLoadCheck()
-        firstLoadCheck?.firstLoadCheckTimerVC()
-        firstLoadCheck?.activateArray()
-        firstLoadCheck = nil
+        var firstLoadChecker: FirstLoadCheck?
+        firstLoadChecker = FirstLoadCheck()
+        firstLoadChecker?.firstLoadCheck()
+        firstLoadChecker = nil
 
         print("\(ActivitiesObject.arrayOfActivities)")
     }
@@ -84,9 +83,9 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 timerView.focusLabel.text = "tap to focus on activity"
                 timerView.focusLabel.textColor = .systemGray
                 timerView.focusLabel.layer.opacity = 0.3
+                stopActionDidPressed()
+                stopTimer()
             }
-            stopActionDidPressed()
-            stopTimer()
         }
     }
 
