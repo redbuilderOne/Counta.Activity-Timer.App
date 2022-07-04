@@ -39,6 +39,27 @@ class FirstLoadCheck {
         }
     }
 
+    func activateArray() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
+
+        do {
+            let results: NSArray = try context.fetch(request) as NSArray
+            for result in results {
+                let activity = result as! Activity
+                if activity.isDone != true {
+                    ActivitiesObject.arrayOfActivities.append(activity)
+                } else {
+                    DoneActivities.doneActivitiesArray.append(activity)
+                }
+            }
+        } catch {
+            print("Fetch failed")
+        }
+        firstLoad = false
+    }
+
     func firstLoadCheckTableVC() {
         if firstLoad {
             firstLoad = false

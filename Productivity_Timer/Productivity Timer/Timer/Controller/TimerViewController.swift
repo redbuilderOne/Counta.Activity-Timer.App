@@ -53,6 +53,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         var firstLoadCheck: FirstLoadCheck?
         firstLoadCheck = FirstLoadCheck()
         firstLoadCheck?.firstLoadCheckTimerVC()
+        firstLoadCheck?.activateArray()
         firstLoadCheck = nil
 
         print("\(ActivitiesObject.arrayOfActivities)")
@@ -84,6 +85,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 timerView.focusLabel.textColor = .systemGray
                 timerView.focusLabel.layer.opacity = 0.3
             }
+            stopActionDidPressed()
+            stopTimer()
         }
     }
 
@@ -137,6 +140,12 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
                 print("Index \(String(describing: duplicateIndex)) cleared")
                 focusTextLabelDidTapped = false
+
+                timerView.focusTextField.isHidden = false
+                timerView.focusLabel.text = "tap to focus on activity"
+                timerView.focusLabel.textColor = .systemGray
+                timerView.focusLabel.layer.opacity = 0.3
+
                 return
 
             } else {

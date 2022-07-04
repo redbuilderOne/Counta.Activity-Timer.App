@@ -6,12 +6,12 @@ class ActivityTableViewController: UITableViewController {
     var identifier = CellsID.activityTableViewID
     var activity: Activity
     var activityDetailedViewController: UITabBarController?
-    var firstLoadCheck: FirstLoadCheck?
+//    var firstLoadCheck: FirstLoadCheck?
     let timerViewController: TimerViewController?
 
     init(activity: Activity) {
         self.activity = activity
-        firstLoadCheck = FirstLoadCheck()
+//        firstLoadCheck = FirstLoadCheck()
         timerViewController = TimerViewController()
         super.init(nibName: nil, bundle: nil)
     }
@@ -24,13 +24,9 @@ class ActivityTableViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         setupNavigationBar()
-
-        firstLoadCheck?.firstLoadCheckTableVC()
-        firstLoadCheck = nil
-
+//        firstLoadCheck?.firstLoadCheckTableVC()
+//        firstLoadCheck = nil
         configureTableView()
-
-        print("\(ActivitiesObject.arrayOfActivities)")
     }
 
     override func viewDidAppear(_ animated: Bool) {
