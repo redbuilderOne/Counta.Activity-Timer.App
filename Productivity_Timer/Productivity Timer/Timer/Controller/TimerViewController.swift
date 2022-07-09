@@ -55,6 +55,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         timerView.animateCircular()
+        timerView.reverseAnimation()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -224,13 +225,24 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     // MARK: -Round Animation
     let roundAnimation = CABasicAnimation(keyPath: "strokeEnd")
 
-    func startStopAnimation(toValue: Int, repeatCount: Float) {
+    func startStopAnimation(toValue: Int, repeatCount: Float, duration: CFTimeInterval? = nil) {
         roundAnimation.toValue = toValue
         roundAnimation.duration = CFTimeInterval(60)
         roundAnimation.fillMode = CAMediaTimingFillMode.forwards
         roundAnimation.isRemovedOnCompletion = false
         roundAnimation.repeatCount = repeatCount
         timerView.shapeLayer.add(roundAnimation, forKey: "roundAnimation")
+        timerView.reverseShapeLayer.isHidden = true
+    }
+
+    func startReverseAnimation() {
+        roundAnimation.toValue = 1
+        roundAnimation.duration = CFTimeInterval(1)
+        roundAnimation.fillMode = CAMediaTimingFillMode.forwards
+        roundAnimation.isRemovedOnCompletion = true
+        roundAnimation.repeatCount = 1
+        timerView.shapeLayer.isHidden = true
+        timerView.reverseShapeLayer.add(roundAnimation, forKey: "roundAnimation")
     }
 
     //MARK: -startActionDidPressed
@@ -263,7 +275,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         setStopTime(date: nil)
         setStartTime(date: nil)
         stopTimer()
-        startStopAnimation(toValue: 1, repeatCount: 1)
+        startStopAnimation(toValue: 1, repeatCount: 1, duration: 1)
         timerView.timerLabel.text = "STOP"
         timerView.timerLabel.textColor = .systemRed
         timerView.timerLabel.isHidden = false

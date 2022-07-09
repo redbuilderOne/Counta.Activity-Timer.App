@@ -93,6 +93,7 @@ class TimerView: UIView {
 
     //MARK:  Circular ANIMATION
     let shapeLayer = CAShapeLayer()
+    let reverseShapeLayer = CAShapeLayer()
 
     func animateCircular() {
         let center = CGPoint(x: elipseView.frame.width / 2, y: elipseView.frame.height / 2)
@@ -107,6 +108,21 @@ class TimerView: UIView {
         shapeLayer.lineCap = CAShapeLayerLineCap.round
         shapeLayer.strokeColor = pinkyWhiteColor.cgColor
         elipseView.layer.addSublayer(shapeLayer)
+    }
+
+    func reverseAnimation() {
+        let center = CGPoint(x: elipseView.frame.width / 2, y: elipseView.frame.height / 2)
+        let endAngle = (-CGFloat.pi / 2)
+        let startAngle = 2 * CGFloat.pi + endAngle
+        let circularPath = UIBezierPath(arcCenter: center, radius: 150, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        reverseShapeLayer.opacity = 1
+        reverseShapeLayer.path = circularPath.cgPath
+        reverseShapeLayer.lineWidth = 1
+        reverseShapeLayer.fillColor = UIColor.clear.cgColor
+        reverseShapeLayer.strokeEnd = 1
+        reverseShapeLayer.lineCap = CAShapeLayerLineCap.round
+        reverseShapeLayer.strokeColor = pinkyWhiteColor.cgColor
+        elipseView.layer.addSublayer(reverseShapeLayer)
     }
 
     // MARK: -Constraints

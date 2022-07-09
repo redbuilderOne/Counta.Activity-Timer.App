@@ -71,7 +71,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 newActivity.isDone = false
                 newActivity.isFocused = false
                 print("New Activity \(newActivity.title ?? "") is created at \(Date())")
-                
+
                 do {
                     try context.save()
                     ActivitiesObject.arrayOfActivities.append(newActivity)
