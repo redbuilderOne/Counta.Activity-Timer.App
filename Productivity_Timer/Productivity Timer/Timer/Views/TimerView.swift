@@ -8,6 +8,7 @@ protocol TimerViewDelegate: AnyObject {
 
 class TimerView: UIView {
     weak var delegate: TimerViewDelegate?
+    lazy var pulsingView = PulsingView()
 
     lazy var focusLabel: UILabel = {
         let focusLabel = UILabel()
@@ -32,14 +33,6 @@ class TimerView: UIView {
         focusTextField.isUserInteractionEnabled = true
         focusTextField.returnKeyType = .done
         return focusTextField
-    }()
-
-    lazy var elipseView: UIImageView = {
-        let elipseView = UIImageView()
-        elipseView.image = elipseSandyYellowColor
-        elipseView.contentMode = .scaleAspectFit
-        elipseView.translatesAutoresizingMaskIntoConstraints = false
-        return elipseView
     }()
 
     lazy var timerLabel: UILabel = {
@@ -69,10 +62,11 @@ class TimerView: UIView {
         self.backgroundColor = darkMoonColor
         self.addSubview(startButton)
         self.addSubview(stopButton)
-        self.addSubview(elipseView)
+        self.addSubview(pulsingView)
         self.addSubview(focusLabel)
         self.addSubview(focusTextField)
-        elipseView.addSubview(timerLabel)
+        pulsingView.addSubview(timerLabel)
+        pulsingView.translatesAutoresizingMaskIntoConstraints = false
         placeButtons()
         placeTimerLabel()
         configureButtonsAction()
@@ -91,63 +85,30 @@ class TimerView: UIView {
         self.endEditing(true)
     }
 
-    //MARK:  Circular ANIMATION
-    let shapeLayer = CAShapeLayer()
-    let reverseShapeLayer = CAShapeLayer()
-
-    func animateCircular() {
-        let center = CGPoint(x: elipseView.frame.width / 2, y: elipseView.frame.height / 2)
-        let endAngle = (-CGFloat.pi / 2)
-        let startAngle = 2 * CGFloat.pi + endAngle
-        let circularPath = UIBezierPath(arcCenter: center, radius: 150, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-        shapeLayer.opacity = 1
-        shapeLayer.path = circularPath.cgPath
-        shapeLayer.lineWidth = 1
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeEnd = 1
-        shapeLayer.lineCap = CAShapeLayerLineCap.round
-        shapeLayer.strokeColor = pinkyWhiteColor.cgColor
-        elipseView.layer.addSublayer(shapeLayer)
-    }
-
-    func reverseAnimation() {
-        let center = CGPoint(x: elipseView.frame.width / 2, y: elipseView.frame.height / 2)
-        let endAngle = (-CGFloat.pi / 2)
-        let startAngle = 2 * CGFloat.pi + endAngle
-        let circularPath = UIBezierPath(arcCenter: center, radius: 150, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        reverseShapeLayer.opacity = 1
-        reverseShapeLayer.path = circularPath.cgPath
-        reverseShapeLayer.lineWidth = 1
-        reverseShapeLayer.fillColor = UIColor.clear.cgColor
-        reverseShapeLayer.strokeEnd = 1
-        reverseShapeLayer.lineCap = CAShapeLayerLineCap.round
-        reverseShapeLayer.strokeColor = pinkyWhiteColor.cgColor
-        elipseView.layer.addSublayer(reverseShapeLayer)
-    }
-
     // MARK: -Constraints
     final private func placeTimerLabel() {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: 0),
-            timerLabel.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
-            timerLabel.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
-            elipseView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            elipseView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: 0),
-            elipseView.heightAnchor.constraint(equalToConstant: 300),
-            elipseView.widthAnchor.constraint(equalToConstant: 300),
+            timerLabel.trailingAnchor.constraint(equalTo: pulsingView.trailingAnchor),
+            timerLabel.leadingAnchor.constraint(equalTo: pulsingView.leadingAnchor),
+
+            pulsingView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            pulsingView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: 0),
+            pulsingView.heightAnchor.constraint(equalToConstant: 300),
+            pulsingView.widthAnchor.constraint(equalToConstant: 300),
 
             focusLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            focusLabel.bottomAnchor.constraint(equalTo: elipseView.topAnchor, constant: -32),
+            focusLabel.bottomAnchor.constraint(equalTo: pulsingView.topAnchor, constant: -32),
             focusLabel.heightAnchor.constraint(equalToConstant: 50),
-            focusLabel.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
-            focusLabel.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
+            focusLabel.trailingAnchor.constraint(equalTo: pulsingView.trailingAnchor),
+            focusLabel.leadingAnchor.constraint(equalTo: pulsingView.leadingAnchor),
 
             focusTextField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            focusTextField.bottomAnchor.constraint(equalTo: elipseView.topAnchor, constant: -32),
+            focusTextField.bottomAnchor.constraint(equalTo: pulsingView.topAnchor, constant: -32),
             focusTextField.heightAnchor.constraint(equalToConstant: 50),
-            focusTextField.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
-            focusTextField.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor)
+            focusTextField.trailingAnchor.constraint(equalTo: pulsingView.trailingAnchor),
+            focusTextField.leadingAnchor.constraint(equalTo: pulsingView.leadingAnchor)
         ])
     }
 
@@ -161,10 +122,10 @@ class TimerView: UIView {
         startButton.anchor(width: 100, height: 50)
         stopButton.anchor(width: 100, height: 50)
         NSLayoutConstraint.activate([
-            startButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor),
-            startButton.leadingAnchor.constraint(equalTo: elipseView.leadingAnchor),
-            stopButton.topAnchor.constraint(equalTo: elipseView.bottomAnchor),
-            stopButton.trailingAnchor.constraint(equalTo: elipseView.trailingAnchor),
+            startButton.topAnchor.constraint(equalTo: pulsingView.bottomAnchor),
+            startButton.leadingAnchor.constraint(equalTo: pulsingView.leadingAnchor),
+            stopButton.topAnchor.constraint(equalTo: pulsingView.bottomAnchor),
+            stopButton.trailingAnchor.constraint(equalTo: pulsingView.trailingAnchor),
         ])
     }
 }
