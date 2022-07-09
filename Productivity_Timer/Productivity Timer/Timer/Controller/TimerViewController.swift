@@ -301,6 +301,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     func startTimer(timeInterval: TimeInterval, action: Selector) {
         constants.scheduledTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: action, userInfo: nil, repeats: true)
         setTimerCounting(true)
+
 //        startStopAnimation(toValue: 0, repeatCount: 999)
     }
 

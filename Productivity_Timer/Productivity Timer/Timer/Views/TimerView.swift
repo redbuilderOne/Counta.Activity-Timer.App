@@ -75,10 +75,13 @@ class TimerView: UIView {
     // MARK: -protocol delegate
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
+        pulsingView.pulsingLayer.add(pulsingView.expandingAnimation, forKey: nil)
+        pulsingView.pulsingLayer.add(pulsingView.fadedAnimation, forKey: nil)
     }
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
+        pulsingView.pulsingLayer.removeAllAnimations()
     }
 
     @objc func endTimePickerEditing() {
