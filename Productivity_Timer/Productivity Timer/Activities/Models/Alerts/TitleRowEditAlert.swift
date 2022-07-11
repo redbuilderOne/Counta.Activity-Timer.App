@@ -19,14 +19,12 @@ struct TitleRowEditAlert {
         let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
 
             SelectedActivity.selectedActivity = activity
-
             activity.title = (titleRowEditAction.textFields?.first?.text)!
 
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
             if SelectedActivity.selectedActivity != nil {
-
                 do {
                     try context.save()
                     SelectedActivity.selectedActivity = nil

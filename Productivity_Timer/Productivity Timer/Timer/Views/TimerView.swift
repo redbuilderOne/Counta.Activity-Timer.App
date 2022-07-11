@@ -8,7 +8,7 @@ protocol TimerViewDelegate: AnyObject {
 
 class TimerView: UIView {
     weak var delegate: TimerViewDelegate?
-    lazy var pulsingView = PulsingView()
+    lazy var pulsingView = CircleView()
 
     lazy var focusLabel: UILabel = {
         let focusLabel = UILabel()
@@ -75,13 +75,14 @@ class TimerView: UIView {
     // MARK: -protocol delegate
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
-        pulsingView.pulsingLayer.add(pulsingView.expandingAnimation, forKey: nil)
-        pulsingView.pulsingLayer.add(pulsingView.fadedAnimation, forKey: nil)
+        pulsingView.layer.addSublayer(pulsingView.roundShapeLayer)
+        pulsingView.roundShapeLayer.isHidden = false
     }
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
-        pulsingView.pulsingLayer.removeAllAnimations()
+        pulsingView.layer.removeAllAnimations()
+        pulsingView.roundShapeLayer.isHidden = true
     }
 
     @objc func endTimePickerEditing() {
