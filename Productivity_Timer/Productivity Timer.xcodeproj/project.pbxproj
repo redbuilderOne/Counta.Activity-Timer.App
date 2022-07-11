@@ -32,6 +32,7 @@
 		FF36BE93284D2D8D00176FA0 /* FocusRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */; };
 		FF36BE992852493600176FA0 /* KeyboardExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE982852493600176FA0 /* KeyboardExt.swift */; };
 		FF36BE9D2852578900176FA0 /* KeyboardDismissExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */; };
+		FF4D523F2879BACD00470AE5 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4D523E2879BACD00470AE5 /* CircleView.swift */; };
 		FF71FB462805A1CF00F2F455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB452805A1CF00F2F455 /* AppDelegate.swift */; };
 		FF71FB482805A1CF00F2F455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */; };
 		FF71FB5D2805A1D000F2F455 /* Productivity_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */; };
@@ -95,6 +96,7 @@
 		FF36BE92284D2D8D00176FA0 /* FocusRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE982852493600176FA0 /* KeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExt.swift; sourceTree = "<group>"; };
 		FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissExt.swift; sourceTree = "<group>"; };
+		FF4D523E2879BACD00470AE5 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			children = (
 				FFD4B1CF280B548C0046CE83 /* TimerView.swift */,
 				FFD4B1DC280B61250046CE83 /* Control Buttons.swift */,
+				FF4D523E2879BACD00470AE5 /* CircleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				FF36BE992852493600176FA0 /* KeyboardExt.swift in Sources */,
 				FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */,
 				FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */,
+				FF4D523F2879BACD00470AE5 /* CircleView.swift in Sources */,
 				FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */,
 				FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */,
 				FFD4B20A281300A10046CE83 /* Picker Format.swift in Sources */,
