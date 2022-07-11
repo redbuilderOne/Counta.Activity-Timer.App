@@ -8,7 +8,7 @@ protocol TimerViewDelegate: AnyObject {
 
 class TimerView: UIView {
     weak var delegate: TimerViewDelegate?
-    lazy var pulsingView = CircleView()
+    lazy var circleView = CircleView()
 
     lazy var focusLabel: UILabel = {
         let focusLabel = UILabel()
@@ -62,11 +62,11 @@ class TimerView: UIView {
         self.backgroundColor = darkMoonColor
         self.addSubview(startButton)
         self.addSubview(stopButton)
-        self.addSubview(pulsingView)
+        self.addSubview(circleView)
         self.addSubview(focusLabel)
         self.addSubview(focusTextField)
-        pulsingView.addSubview(timerLabel)
-        pulsingView.translatesAutoresizingMaskIntoConstraints = false
+        circleView.addSubview(timerLabel)
+        circleView.translatesAutoresizingMaskIntoConstraints = false
         placeButtons()
         placeTimerLabel()
         configureButtonsAction()
@@ -75,14 +75,14 @@ class TimerView: UIView {
     // MARK: -protocol delegate
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
-        pulsingView.layer.addSublayer(pulsingView.roundShapeLayer)
-        pulsingView.roundShapeLayer.isHidden = false
+        circleView.layer.addSublayer(circleView.roundShapeLayer)
+        circleView.roundShapeLayer.isHidden = false
     }
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
-        pulsingView.layer.removeAllAnimations()
-        pulsingView.roundShapeLayer.isHidden = true
+        circleView.layer.removeAllAnimations()
+        circleView.roundShapeLayer.isHidden = true
     }
 
     @objc func endTimePickerEditing() {
@@ -94,25 +94,25 @@ class TimerView: UIView {
         NSLayoutConstraint.activate([
             timerLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             timerLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: 0),
-            timerLabel.trailingAnchor.constraint(equalTo: pulsingView.trailingAnchor),
-            timerLabel.leadingAnchor.constraint(equalTo: pulsingView.leadingAnchor),
+            timerLabel.trailingAnchor.constraint(equalTo: circleView.trailingAnchor),
+            timerLabel.leadingAnchor.constraint(equalTo: circleView.leadingAnchor),
 
-            pulsingView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            pulsingView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: 0),
-            pulsingView.heightAnchor.constraint(equalToConstant: 300),
-            pulsingView.widthAnchor.constraint(equalToConstant: 300),
+            circleView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            circleView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor, constant: 0),
+            circleView.heightAnchor.constraint(equalToConstant: 300),
+            circleView.widthAnchor.constraint(equalToConstant: 300),
 
             focusLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            focusLabel.bottomAnchor.constraint(equalTo: pulsingView.topAnchor, constant: -32),
+            focusLabel.bottomAnchor.constraint(equalTo: circleView.topAnchor, constant: -32),
             focusLabel.heightAnchor.constraint(equalToConstant: 50),
-            focusLabel.trailingAnchor.constraint(equalTo: pulsingView.trailingAnchor),
-            focusLabel.leadingAnchor.constraint(equalTo: pulsingView.leadingAnchor),
+            focusLabel.trailingAnchor.constraint(equalTo: circleView.trailingAnchor),
+            focusLabel.leadingAnchor.constraint(equalTo: circleView.leadingAnchor),
 
             focusTextField.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            focusTextField.bottomAnchor.constraint(equalTo: pulsingView.topAnchor, constant: -32),
+            focusTextField.bottomAnchor.constraint(equalTo: circleView.topAnchor, constant: -32),
             focusTextField.heightAnchor.constraint(equalToConstant: 50),
-            focusTextField.trailingAnchor.constraint(equalTo: pulsingView.trailingAnchor),
-            focusTextField.leadingAnchor.constraint(equalTo: pulsingView.leadingAnchor)
+            focusTextField.trailingAnchor.constraint(equalTo: circleView.trailingAnchor),
+            focusTextField.leadingAnchor.constraint(equalTo: circleView.leadingAnchor)
         ])
     }
 
@@ -126,10 +126,10 @@ class TimerView: UIView {
         startButton.anchor(width: 100, height: 50)
         stopButton.anchor(width: 100, height: 50)
         NSLayoutConstraint.activate([
-            startButton.topAnchor.constraint(equalTo: pulsingView.bottomAnchor),
-            startButton.leadingAnchor.constraint(equalTo: pulsingView.leadingAnchor),
-            stopButton.topAnchor.constraint(equalTo: pulsingView.bottomAnchor),
-            stopButton.trailingAnchor.constraint(equalTo: pulsingView.trailingAnchor),
+            startButton.topAnchor.constraint(equalTo: circleView.bottomAnchor),
+            startButton.leadingAnchor.constraint(equalTo: circleView.leadingAnchor),
+            stopButton.topAnchor.constraint(equalTo: circleView.bottomAnchor),
+            stopButton.trailingAnchor.constraint(equalTo: circleView.trailingAnchor),
         ])
     }
 }
