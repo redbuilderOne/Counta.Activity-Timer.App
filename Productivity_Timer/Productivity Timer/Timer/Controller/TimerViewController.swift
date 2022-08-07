@@ -65,7 +65,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         self.navigationController?.navigationBar.isHidden = true
     }
 
-    func checkFocusedActivity() {
+    private func checkFocusedActivity() {
         if let activity = StaticSelectedActivity.activity {
             if activity.isFocused {
                 timerView.focusLabel.text = activity.title
@@ -135,7 +135,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 timerView.focusLabel.text = "tap to focus on activity"
                 timerView.focusLabel.textColor = .systemGray
                 timerView.focusLabel.layer.opacity = 0.3
-
                 return
 
             } else {
@@ -184,7 +183,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    func focusActivityCheck() {
+    private func focusActivityCheck() {
         if focusTextLabelDidTapped != true {
             timerView.focusTextField.isHidden = true
             timerView.focusLabel.isHidden = false
@@ -321,7 +320,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.timer.invalidate()
     }
 
-    func setButtonImg(title: String, img: String) {
+    private func setButtonImg(title: String, img: String) {
         timerView.startButton.setTitle(title, for: .normal)
         timerView.startButton.setImage(UIImage(systemName: img), for: .normal)
     }
