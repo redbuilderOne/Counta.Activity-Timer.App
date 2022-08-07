@@ -154,6 +154,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                         activities.isFocused = false
                         print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(newActivity.title ?? "")")
                     }
+
                     newActivity.isFocused = true
 
                     print("Now Focused Activity is \(newActivity.title ?? "")")

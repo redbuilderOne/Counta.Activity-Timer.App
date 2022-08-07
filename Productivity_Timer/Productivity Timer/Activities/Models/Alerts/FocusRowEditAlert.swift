@@ -33,6 +33,7 @@ struct FocusRowEditAlert {
         }
         
         SelectedActivity.selectedActivity = nil
+        FocusedActivityToPresent.focusedActivity = nil
         
         tableView.reloadData()
         timerViewController?.timerView.stopButtonPressed()
