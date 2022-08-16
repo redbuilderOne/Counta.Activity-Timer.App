@@ -276,6 +276,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     func startTimer(timeInterval: TimeInterval, action: Selector) {
         constants.scheduledTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: action, userInfo: nil, repeats: true)
         setTimerCounting(true)
+        timerView.circleView.layer.addSublayer(timerView.circleView.roundShapeLayer)
+        timerView.circleView.roundShapeLayer.isHidden = false
     }
 
     @objc func refreshValue() {
@@ -291,6 +293,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     func stopTimer() {
         if constants.scheduledTimer != nil {
             constants.scheduledTimer.invalidate()
+            timerView.circleView.layer.removeAllAnimations()
+            timerView.circleView.roundShapeLayer.isHidden = true
         }
         setTimerCounting(false)
     }
@@ -318,6 +322,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
     @objc func pauseTimer() {
         constants.timer.invalidate()
+        timerView.circleView.layer.removeAllAnimations()
+        timerView.circleView.roundShapeLayer.isHidden = true
     }
 
     private func setButtonImg(title: String, img: String) {

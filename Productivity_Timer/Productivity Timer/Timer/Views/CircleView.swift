@@ -2,6 +2,7 @@
 import UIKit
 
 class CircleView: UIView {
+
     init() {
         super.init(frame: .zero)
         layer.addSublayer(trackShapeLayer)
@@ -39,7 +40,7 @@ class CircleView: UIView {
         static let roundAnimation: CABasicAnimation = {
             let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.toValue = 1
-            animation.duration = 60
+            animation.duration = 1
             animation.repeatCount = .infinity
             animation.fillMode = .forwards
             animation.isRemovedOnCompletion = false

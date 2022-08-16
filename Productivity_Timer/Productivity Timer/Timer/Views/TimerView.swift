@@ -75,14 +75,10 @@ class TimerView: UIView {
     // MARK: -protocol delegate
     @objc func startPauseTimerButton() {
         delegate?.startActionDidPressed()
-        circleView.layer.addSublayer(circleView.roundShapeLayer)
-        circleView.roundShapeLayer.isHidden = false
     }
 
     @objc func stopButtonPressed() {
         delegate?.stopActionDidPressed()
-        circleView.layer.removeAllAnimations()
-        circleView.roundShapeLayer.isHidden = true
     }
 
     @objc func endTimePickerEditing() {
