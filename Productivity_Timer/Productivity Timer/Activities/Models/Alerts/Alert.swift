@@ -8,11 +8,11 @@ protocol RemovableTextWithAlert {
 struct Alert {
     let delegate: RemovableTextWithAlert?
 
+    var timer: Timer?
+
     func textClearAlert(on vc: UIViewController, with title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in removeFunction()
         }))
 

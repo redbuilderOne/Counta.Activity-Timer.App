@@ -10,9 +10,7 @@ extension ActivityTableViewController {
     //MARK: УДАЛЕНИЕ
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-
             SelectedActivity.selectedActivity = ActivitiesObject.arrayOfActivities[indexPath.row]
             ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)

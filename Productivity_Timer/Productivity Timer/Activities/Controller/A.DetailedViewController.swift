@@ -3,6 +3,7 @@ import UIKit
 import CoreData
 
 class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
+
     var selectedIndexToDelete: Int
     var activity: Activity
     lazy var conformDeleteAlert = DeleteAlert(delegate: self)
