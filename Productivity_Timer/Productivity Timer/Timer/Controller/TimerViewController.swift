@@ -23,7 +23,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     private func runUserDefaults() {
         constants.startTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue) as? Date
         constants.stopTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.STOP_TIME_KEY.rawValue) as? Date
@@ -67,7 +66,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         checkFocusedActivity()
         self.navigationController?.navigationBar.isHidden = true
     }
