@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FF077B6B28CA1E3D0046FA5F /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */; };
+		FF077B6D28CA330D0046FA5F /* CoreDataTimeSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF077B6C28CA330D0046FA5F /* CoreDataTimeSaver.swift */; };
 		FF229A8C281BF7F80080B89B /* NewA.ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */; };
 		FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A93281C78E70080B89B /* TableViewCellsID.swift */; };
 		FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A95281C7B250080B89B /* A.TableViewController.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
+		FF077B6C28CA330D0046FA5F /* CoreDataTimeSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTimeSaver.swift; sourceTree = "<group>"; };
 		FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewA.ViewController.swift; sourceTree = "<group>"; };
 		FF229A93281C78E70080B89B /* TableViewCellsID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsID.swift; sourceTree = "<group>"; };
 		FF229A95281C7B250080B89B /* A.TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.TableViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
 				FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */,
+				FF077B6C28CA330D0046FA5F /* CoreDataTimeSaver.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				FF229A9A281F05C10080B89B /* Alert.swift in Sources */,
 				FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */,
 				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
+				FF077B6D28CA330D0046FA5F /* CoreDataTimeSaver.swift in Sources */,
 				FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */,
 				FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */,
 				FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */,

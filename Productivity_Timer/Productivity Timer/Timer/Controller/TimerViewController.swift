@@ -8,6 +8,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var constants = LetsAndVarsForTimer()
     let newActivityVC: NewActivityViewController
     var coreDataSaver: CoreDataSaver?
+    var coreDataTimeSaver: CoreDataTimeSaver?
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
 
@@ -169,7 +170,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    //MARK: -startActionDidPressed
+    // MARK: Timers Logic
     func startActionDidPressed() {
         timerView.timerLabel.isHidden = false
         if constants.isTimerActivated {
@@ -194,7 +195,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         return Date().addingTimeInterval(difference)
     }
 
-    //MARK: -stopActionDidPressed
     func stopActionDidPressed() {
         setStopTime(date: nil)
         setStartTime(date: nil)
@@ -206,7 +206,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         timerView.startButton.isEnabled = true
     }
 
-    // MARK: -Start, Pause, Stop Timers
     private func setStartTime(date: Date?) {
         constants.startTime = date
         constants.userDefaults.set(constants.startTime, forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue)
@@ -224,7 +223,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.userDefaults.set(constants.isTimerActivated, forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
     }
 
-    func startTimer(timeInterval: TimeInterval, action: Selector) {
+    private func startTimer(timeInterval: TimeInterval, action: Selector) {
         constants.scheduledTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: action, userInfo: nil, repeats: true)
         setTimerCounting(true)
         timerView.circleView.layer.addSublayer(timerView.circleView.roundShapeLayer)
@@ -250,25 +249,10 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         setTimerCounting(false)
     }
 
-    func setTimeLabel(_ val: Int) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-
-        let time = timerFormat.setSecondsToHoursMinutesToHours(val)
-        let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
-        timerView.timerLabel.text = timeString
-
-        for activity in ActivitiesObject.arrayOfActivities {
-            if activity.isFocused {
-                activity.lastSession = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
-            }
-
-            do {
-                try context.save()
-            } catch {
-                print("Can't save the context")
-            }
-        }
+    private func setTimeLabel(_ val: Int) {
+        coreDataTimeSaver = CoreDataTimeSaver()
+        coreDataTimeSaver?.saveTime(timerFormat: self.timerFormat, val: val, timerView: self.timerView)
+        coreDataTimeSaver = nil
     }
 
     @objc func pauseTimer() {
