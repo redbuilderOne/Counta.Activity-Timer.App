@@ -2,7 +2,6 @@
 import UIKit
 
 class AddButton: UIButton {
-
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

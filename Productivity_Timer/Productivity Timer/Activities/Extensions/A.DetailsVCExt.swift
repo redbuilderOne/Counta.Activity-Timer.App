@@ -1,6 +1,5 @@
 
 import UIKit
-import CoreData
 
 extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +34,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                 cell.imageView?.image = UIImage(systemName: "heart")
                 cell.imageView?.tintColor = .systemGray
             }
-
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)

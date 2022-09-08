@@ -3,7 +3,7 @@ import UIKit
 import CoreData
 
 struct FavRowEditAlert {
-    func favRowEditAction(on vc: UIViewController, activity: Activity, tableView: UITableView) {
+    func favRowEditAction(on viewController: UIViewController, activity: Activity, tableView: UITableView) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
 
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext

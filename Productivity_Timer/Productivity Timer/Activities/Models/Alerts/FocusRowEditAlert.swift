@@ -5,7 +5,7 @@ import CoreData
 struct FocusRowEditAlert {
     var timerViewController: TimerViewController?
 
-    mutating func focusRowEditAction(on vc: UIViewController, activity: Activity, tableView: UITableView) {
+    mutating func focusRowEditAction(on viewController: UIViewController, activity: Activity, tableView: UITableView) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         timerViewController = TimerViewController(activity: activity)

@@ -1,6 +1,5 @@
 
 import UIKit
-import CoreData
 
 extension ActivityTableViewController {
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -57,19 +56,7 @@ extension ActivityTableViewController {
         let moved = ActivitiesObject.arrayOfActivities.remove(at: sourceIndexPath.row)
         ActivitiesObject.arrayOfActivities.insert(moved, at: destinationIndexPath.row)
         tableView.reloadData()
-
-//        do {
-//            if let selectedActivity = SelectedActivity.selectedActivity {
-//            appDelegate.persistentContainer.viewContext.delete(selectedActivity)
-//            ActivitiesObject.arrayOfActivities.append(selectedActivity)
-//                tableView.reloadData()
-//               appDelegate.persistentContainer.viewContext.delete(selectedActivity)
-//            }
-//            try appDelegate.persistentContainer.viewContext.save()
-//        } catch {
-//            print("Fetch failed")
-//        }
-
+        
         SelectedActivity.selectedActivity = nil
     }
 

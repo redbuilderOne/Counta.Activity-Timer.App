@@ -1,6 +1,5 @@
 
 import UIKit
-import CoreData
 
 extension ActivityDetailedViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
