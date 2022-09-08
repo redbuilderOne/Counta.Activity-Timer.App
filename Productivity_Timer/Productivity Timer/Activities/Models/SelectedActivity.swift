@@ -2,10 +2,8 @@
 import Foundation
 
 struct SelectedActivity {
-    static var selectedActivity: Activity?
-    static var selectedIndexToDelete: Int?
-}
+    static var shared = SelectedActivity()
 
-struct FocusedActivityToPresent {
-    static var focusedActivity: Activity?
+    var activity: Activity?
+    var selectedIndexToDelete: Int?
 }

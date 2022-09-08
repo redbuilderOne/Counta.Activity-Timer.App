@@ -24,6 +24,7 @@ extension ActivityDetailedViewController {
 
         // MARK: FOCUS
         if selectedIndexPath?.row == 4 {
+            SelectedActivity.shared.activity = activity
             if activity.isFocused == false {
                 print("Focused Activity before was \(activity.title ?? "")")
                 focusRowEditAlert.focusRowEditAction(on: self, activity: activity, tableView: tableView)

@@ -7,6 +7,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
     let newActivityVC: NewActivityViewController
+    var coreDataSaver: CoreDataSaver?
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
 
@@ -21,6 +22,44 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: -viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
+
+        timerView.delegate = self
+        timerView.focusTextField.delegate = self
+        runUserDefaults()
+        checkIfTimerActivated()
+        hideKeyboardWhenTappedAround(textToClear: timerView.focusLabel)
+        runSwiperDownSettings()
+        firstLoadChecker()
+        timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkFocusedActivity()
+        self.navigationController?.navigationBar.isHidden = true
+    }
+
+    func useAndDeleteCoreDataSaver(isViewAffected: Bool) {
+        coreDataSaver = CoreDataSaver()
+        coreDataSaver?.saveFocusActivityToCoreData(controller: self, timerView: self.timerView)
+        switch isViewAffected {
+        case true:
+            timerView.focusLabel.isHidden = false
+            timerView.stopButtonPressed()
+            timerView.timerLabel.text = "FOCUSED"
+            timerView.timerLabel.textColor = pinkyWhiteColor
+            timerView.focusTextField.text = ""
+        default:
+            print("view not affected")
+            break
+        }
+        coreDataSaver = nil
     }
 
     private func runUserDefaults() {
@@ -45,40 +84,16 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         firstLoadChecker = nil
     }
 
-    // MARK: -viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
-
-        timerView.delegate = self
-        timerView.focusTextField.delegate = self
-        runUserDefaults()
-        checkIfTimerActivated()
-        hideKeyboardWhenTappedAround(textToClear: timerView.focusLabel)
-        runSwiperDownSettings()
-        firstLoadChecker()
-        timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        checkFocusedActivity()
-        self.navigationController?.navigationBar.isHidden = true
-    }
-
     private func checkFocusedActivity() {
-        if let activity = StaticSelectedActivity.activity {
-            if activity.isFocused {
+        if let activity = SelectedActivity.shared.activity {
+            switch activity.isFocused {
+            case true:
                 timerView.focusLabel.text = activity.title
                 timerView.focusLabel.textColor = sandyYellowColor
                 timerView.focusLabel.layer.opacity = 1
                 timerView.focusTextField.isHidden = true
                 timerView.focusLabel.isHidden = false
-            } else {
+            default:
                 timerView.focusTextField.isHidden = false
                 timerView.focusLabel.text = "tap to focus on activity"
                 timerView.focusLabel.textColor = .systemGray
@@ -111,84 +126,15 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         return focusCurrentText ?? ""
     }
 
-    func saveFocusActivityToCoreData() {
-        focusTextLabelDidTapped = true
-        focusActivityCheck()
-
-        if focusCurrentText == "" {
-            focusCurrentText = nil
-            focusTextLabelDidTapped = false
-            return
-
-        } else {
-            var duplicateIndex: Int?
-            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == focusCurrentText})
-            print("Found duplicate index: \(String(describing: duplicateIndex))")
-
-            if duplicateIndex != nil {
-                duplicateIndex = nil
-
-                let alert = UIAlertController(title: "Sorry", message: "Activity already exists", preferredStyle: .alert)
-
-                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                self.present(alert, animated: true)
-
-                print("Index \(String(describing: duplicateIndex)) cleared")
-                focusTextLabelDidTapped = false
-
-                timerView.focusTextField.isHidden = false
-                timerView.focusLabel.text = "tap to focus on activity"
-                timerView.focusLabel.textColor = .systemGray
-                timerView.focusLabel.layer.opacity = 0.3
-                return
-
-            } else {
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-                let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
-
-                if let entity = entity {
-                    let newActivity = Activity(entity: entity, insertInto: context)
-                    newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
-                    newActivity.title = focusCurrentText
-                    newActivity.fav = false
-                    newActivity.isDone = false
-
-                    for activities in ActivitiesObject.arrayOfActivities {
-                        activities.isFocused = false
-                        print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(newActivity.title ?? "")")
-                    }
-
-                    newActivity.isFocused = true
-
-                    print("Now Focused Activity is \(newActivity.title ?? "")")
-                    ActivitiesObject.arrayOfActivities.append(newActivity)
-
-                    FocusedActivityToPresent.focusedActivity = newActivity
-                    SelectedActivity.selectedIndexToDelete = newActivity.id as? Int
-
-                    do {
-                        try context.save()
-                        print("New activity \(newActivity.title ?? "") is created and being focused")
-                    } catch {
-                        print("Can't save the context")
-                    }
-                    focusCurrentText = nil
-                    return
-                }
-            }
-        }
-    }
-
     @objc func tapOnFocusedActivity(sender: UITapGestureRecognizer) {
         print("tap on activity")
         self.navigationController?.navigationBar.isHidden = false
-        if let focusedActivity = FocusedActivityToPresent.focusedActivity {
-            navigationController?.pushViewController(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: SelectedActivity.selectedIndexToDelete!), animated: true)
+        if let focusedActivity = SelectedActivity.shared.activity {
+            navigationController?.pushViewController(ActivityDetailedViewController(activity: focusedActivity, selectedIndexToDelete: SelectedActivity.shared.selectedIndexToDelete!), animated: true)
         }
     }
 
-    private func focusActivityCheck() {
+    func focusActivityCheck() {
         if focusTextLabelDidTapped != true {
             timerView.focusTextField.isHidden = true
             timerView.focusLabel.isHidden = false

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF077B6B28CA1E3D0046FA5F /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */; };
 		FF229A8C281BF7F80080B89B /* NewA.ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */; };
 		FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A93281C78E70080B89B /* TableViewCellsID.swift */; };
 		FF229A96281C7B250080B89B /* A.TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF229A95281C7B250080B89B /* A.TableViewController.swift */; };
@@ -25,7 +26,6 @@
 		FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2D557D2806ED7F007C3350 /* Elipse Images.swift */; };
 		FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */; };
 		FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */; };
-		FF36BE86284BBF3700176FA0 /* StaticSelectedActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE85284BBF3700176FA0 /* StaticSelectedActivity.swift */; };
 		FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */; };
 		FF36BE8F284D2B5D00176FA0 /* DescRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */; };
 		FF36BE91284D2CE700176FA0 /* FavRowEditAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */; };
@@ -71,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewA.ViewController.swift; sourceTree = "<group>"; };
 		FF229A93281C78E70080B89B /* TableViewCellsID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellsID.swift; sourceTree = "<group>"; };
 		FF229A95281C7B250080B89B /* A.TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.TableViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		FF2D557D2806ED7F007C3350 /* Elipse Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elipse Images.swift"; sourceTree = "<group>"; };
 		FF36BE7B28423B2700176FA0 /* A.SelectedDetailsVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.SelectedDetailsVCExt.swift; sourceTree = "<group>"; };
 		FF36BE7F28453E5C00176FA0 /* DeleteAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlert.swift; sourceTree = "<group>"; };
-		FF36BE85284BBF3700176FA0 /* StaticSelectedActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSelectedActivity.swift; sourceTree = "<group>"; };
 		FF36BE89284D283500176FA0 /* TitleRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE8E284D2B5D00176FA0 /* DescRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescRowEditAlert.swift; sourceTree = "<group>"; };
 		FF36BE90284D2CE700176FA0 /* FavRowEditAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRowEditAlert.swift; sourceTree = "<group>"; };
@@ -160,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				FF2A6EFE282D8BC200F13F4E /* Extensions */,
+				FF36BE8D284D2B1300176FA0 /* Timer Format */,
+				FF077B6928CA1DDC0046FA5F /* Logic */,
 				FFD4B1D3280B5B650046CE83 /* Models */,
 				FFD4B1D2280B5B5A0046CE83 /* Views */,
 				FFD4B1D1280B5B410046CE83 /* Controller */,
@@ -186,6 +188,15 @@
 				FFD4B1DE280BF13E0046CE83 /* Controller */,
 			);
 			path = Activities;
+			sourceTree = "<group>";
+		};
+		FF077B6928CA1DDC0046FA5F /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
+				FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 		FF2A6EFE282D8BC200F13F4E /* Extensions */ = {
@@ -310,10 +321,7 @@
 		FFD4B1D3280B5B650046CE83 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FF36BE8D284D2B1300176FA0 /* Timer Format */,
-				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
 				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
-				FF36BE85284BBF3700176FA0 /* StaticSelectedActivity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -515,7 +523,7 @@
 				FFD4B1E6280BF8120046CE83 /* Time Format.swift in Sources */,
 				FF36BE8A284D283500176FA0 /* TitleRowEditAlert.swift in Sources */,
 				FF229AA128202D350080B89B /* ActivityCoreData.swift in Sources */,
-				FF36BE86284BBF3700176FA0 /* StaticSelectedActivity.swift in Sources */,
+				FF077B6B28CA1E3D0046FA5F /* CoreDataSaver.swift in Sources */,
 				FF2A6F06283E7A9E00F13F4E /* A.EditTableViewExt.swift in Sources */,
 				FF36BE9D2852578900176FA0 /* KeyboardDismissExt.swift in Sources */,
 				FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */,

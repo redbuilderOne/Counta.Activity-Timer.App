@@ -26,9 +26,8 @@ class FirstLoadCheck {
                 for result in results {
                     let activity = result as! Activity
                     if activity.isFocused {
-                        StaticSelectedActivity.activity = activity
-                        FocusedActivityToPresent.focusedActivity = activity
-                        SelectedActivity.selectedIndexToDelete = activity.id as? Int
+                        SelectedActivity.shared.activity = activity
+                        SelectedActivity.shared.selectedIndexToDelete = activity.id as? Int
                     }
 
                     if activity.isDone != true {
@@ -75,11 +74,6 @@ class FirstLoadCheck {
             
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
-
-//                let firstLoadCheck = FirstLoadCheck()
-//                firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
-//                    print("firstLoadCheck - \(String(describing: firstLoadCheck))")
-//                }
 
                 for result in results {
                     let activity = result as! Activity

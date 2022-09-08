@@ -14,16 +14,16 @@ struct TitleRowEditAlert {
             viewController.presentingViewController?.dismiss(animated: true, completion: nil)
         })
         let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-            SelectedActivity.selectedActivity = activity
+            SelectedActivity.shared.activity = activity
             activity.title = (titleRowEditAction.textFields?.first?.text)!
 
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-            if SelectedActivity.selectedActivity != nil {
+            if SelectedActivity.shared.activity != nil {
                 do {
                     try context.save()
-                    SelectedActivity.selectedActivity = nil
+                    SelectedActivity.shared.activity = nil
                 } catch {
                     print("Can't save the context")
                 }
@@ -32,7 +32,6 @@ struct TitleRowEditAlert {
             timerViewController?.timerView.focusLabel.text = activity.title
             tableView.reloadData()
             viewController.presentingViewController?.dismiss(animated: true, completion: nil)
-
         })
 
         titleRowEditAction.addAction(okayAction)
@@ -40,4 +39,3 @@ struct TitleRowEditAlert {
         viewController.present(titleRowEditAction, animated: true, completion: nil)
     }
 }
-

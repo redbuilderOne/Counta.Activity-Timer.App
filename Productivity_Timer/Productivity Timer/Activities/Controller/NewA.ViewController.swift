@@ -48,7 +48,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
         } else {
             var duplicateIndex: Int?
-            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == newActivityView?.textField.text})
+            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == newActivityView?.textField.text })
 
             print("Found duplicate index: \(String(describing: duplicateIndex))")
 

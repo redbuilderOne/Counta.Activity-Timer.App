@@ -8,9 +8,9 @@ struct FavRowEditAlert {
 
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-        SelectedActivity.selectedActivity = activity
+        SelectedActivity.shared.activity = activity
 
-        if let selectedActivity = SelectedActivity.selectedActivity {
+        if let selectedActivity = SelectedActivity.shared.activity {
 
             if selectedActivity.fav {
                 selectedActivity.fav = false
@@ -22,7 +22,7 @@ struct FavRowEditAlert {
 
             do {
                 try context.save()
-                SelectedActivity.selectedActivity = nil
+                SelectedActivity.shared.activity = nil
             } catch {
                 print("Can't save the context")
             }
