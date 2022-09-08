@@ -2,7 +2,6 @@
 import UIKit
 
 class CircleView: UIView {
-
     init() {
         super.init(frame: .zero)
         layer.addSublayer(trackShapeLayer)
@@ -47,14 +46,8 @@ class CircleView: UIView {
             return animation
         }()
 
-        static let bezierPath: UIBezierPath = .init(arcCenter: CGPoint(x: 150, y: 150),
-                                                     radius: 150,
-                                                     startAngle: -(.pi / 2),
-                                                     endAngle: .pi * 2,
-                                                     clockwise: true)
-
+        static let bezierPath: UIBezierPath = .init(arcCenter: CGPoint(x: 150, y: 150), radius: 150, startAngle: -(.pi / 2), endAngle: .pi * 2, clockwise: true)
         static let mainColor = pinkyWhiteColor.cgColor
-
         static let pulsingColor = blueMoonlight.cgColor
     }
 }

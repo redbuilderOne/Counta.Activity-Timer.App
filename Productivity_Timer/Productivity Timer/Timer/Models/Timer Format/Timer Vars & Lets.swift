@@ -1,9 +1,7 @@
 
 import UIKit
-import CoreData
 
 struct LetsAndVarsForTimer {
-
     enum Keys: String {
         case START_TIME_KEY = "startTime"
         case STOP_TIME_KEY = "stopTime"

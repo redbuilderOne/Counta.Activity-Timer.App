@@ -23,6 +23,29 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
+
+    private func runUserDefaults() {
+        constants.startTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue) as? Date
+        constants.stopTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.STOP_TIME_KEY.rawValue) as? Date
+        constants.isTimerActivated = constants.userDefaults.bool(forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
+        constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
+    }
+
+    private func runSwiperDownSettings() {
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnFocusedActivity))
+        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+        view.addGestureRecognizer(swipeDown)
+        timerView.focusLabel.addGestureRecognizer(tapGesture)
+    }
+
+    private func firstLoadChecker() {
+        var firstLoadChecker: FirstLoadCheck?
+        firstLoadChecker = FirstLoadCheck()
+        firstLoadChecker?.firstLoadCheck()
+        firstLoadChecker = nil
+    }
+
     // MARK: -viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,28 +53,12 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
         timerView.delegate = self
         timerView.focusTextField.delegate = self
-
-        constants.startTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.START_TIME_KEY.rawValue) as? Date
-        constants.stopTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.STOP_TIME_KEY.rawValue) as? Date
-        constants.isTimerActivated = constants.userDefaults.bool(forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
-        constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
-
+        runUserDefaults()
         checkIfTimerActivated()
         hideKeyboardWhenTappedAround(textToClear: timerView.focusLabel)
-
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(respondToDownSwipeGesture))
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnFocusedActivity))
-
-        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-        view.addGestureRecognizer(swipeDown)
-
-        timerView.focusLabel.addGestureRecognizer(tapGesture)
+        runSwiperDownSettings()
+        firstLoadChecker()
         timerView.focusTextField.addTarget(self, action: #selector(focusTextFieldAction), for: .editingChanged)
-
-        var firstLoadChecker: FirstLoadCheck?
-        firstLoadChecker = FirstLoadCheck()
-        firstLoadChecker?.firstLoadCheck()
-        firstLoadChecker = nil
     }
 
     override func viewDidLayoutSubviews() {
