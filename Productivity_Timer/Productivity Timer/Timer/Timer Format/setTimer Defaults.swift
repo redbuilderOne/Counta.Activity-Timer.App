@@ -2,6 +2,7 @@
 import Foundation
 
 final class SetTimerSettings {
+    
     static var setTimerValue: Int? {
         get {
             return UserDefaults.standard.integer(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue)
@@ -15,4 +16,5 @@ final class SetTimerSettings {
             }
         }
     }
+
 }

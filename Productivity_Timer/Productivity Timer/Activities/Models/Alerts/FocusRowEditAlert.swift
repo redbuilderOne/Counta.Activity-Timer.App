@@ -29,8 +29,9 @@ class FocusRowEditAlert {
         } catch {
             print("Can't save the context")
         }
-        
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            tableView.reloadData()
+        }
         timerViewController?.timerView.stopButtonPressed()
     }
     
@@ -59,8 +60,9 @@ class FocusRowEditAlert {
         } catch {
             print("Can't save the context")
         }
-        
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            tableView.reloadData()
+        }
         timerViewController?.timerView.stopButtonPressed()
     }
 }

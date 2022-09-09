@@ -29,7 +29,9 @@ struct DescRowEditAlert {
                 }
             }
 
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
             viewController.presentingViewController?.dismiss(animated: true, completion: nil)
         })
 

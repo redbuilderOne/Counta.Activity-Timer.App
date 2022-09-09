@@ -13,31 +13,21 @@ extension ActivityTableViewController {
             SelectedActivity.shared.activity = ActivitiesObject.arrayOfActivities[indexPath.row]
             ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
+
             do {
                 if let selectedActivity = SelectedActivity.shared.activity {
                     appDelegate.persistentContainer.viewContext.delete(selectedActivity)
+                    selectedActivity.isFocused = false
                     selectedActivity.deletedDate = Date()
                 }
                 try appDelegate.persistentContainer.viewContext.save()
-
             } catch {
                 print("Fetch failed")
             }
 
-            SelectedActivity.shared.activity = nil
-            SelectedActivity.shared.activity?.isFocused = false
-            
-            tableView.reloadData()
-
-            timerViewController?.timerView.focusTextField.isHidden = false
-            timerViewController?.timerView.focusTextField.text = ""
-            timerViewController?.timerView.focusLabel.isHidden = false
-            timerViewController?.timerView.focusLabel.text = "tap to focus on activity"
-            timerViewController?.timerView.focusLabel.textColor = .systemGray
-            timerViewController?.timerView.focusLabel.layer.opacity = 0.1
-            timerViewController?.stopTimer()
-            timerViewController?.stopActionDidPressed()
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
         }
     }
 
@@ -49,13 +39,16 @@ extension ActivityTableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 
         // TODO: moving elements' order in coreData
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
 
         SelectedActivity.shared.activity = ActivitiesObject.arrayOfActivities[sourceIndexPath.row]
 
         let moved = ActivitiesObject.arrayOfActivities.remove(at: sourceIndexPath.row)
         ActivitiesObject.arrayOfActivities.insert(moved, at: destinationIndexPath.row)
-        tableView.reloadData()
+
+        DispatchQueue.main.async {
+            tableView.reloadData()
+        }
         
         SelectedActivity.shared.activity = nil
     }
@@ -86,17 +79,16 @@ extension ActivityTableViewController {
                     print("\(selectedActivity.title ?? "") is marked done and sent to doneActivitiesArray")
                 }
                 try appDelegate.persistentContainer.viewContext.save()
-
             } catch {
                 print("Fetch failed")
             }
-
             completion(true)
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
 
         SelectedActivity.shared.activity = nil
-
         action.backgroundColor = .systemGreen
         action.image = UIImage(systemName: "checkmark.circle")
         return action

@@ -120,7 +120,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.imageView?.image = UIImage(systemName: "")
             cell.textLabel?.text = "Last session: 00:00:00"
-
             if let lastSession = activity.lastSession {
                 cell.textLabel?.text = "Last session: " + lastSession
             }

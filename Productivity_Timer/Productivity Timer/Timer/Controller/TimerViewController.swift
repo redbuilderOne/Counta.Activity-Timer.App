@@ -68,6 +68,9 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         constants.stopTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.STOP_TIME_KEY.rawValue) as? Date
         constants.isTimerActivated = constants.userDefaults.bool(forKey: LetsAndVarsForTimer.Keys.COUNTING_KEY.rawValue)
         constants.countDownTime = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SET_TIME_KEY.rawValue) as? Date
+        constants.secondsToSave = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.SEC_TO_SAVE.rawValue) as? Date
+        constants.minutesToSave = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.MIN_TO_SAVE.rawValue) as? Date
+        constants.hoursToSave = constants.userDefaults.object(forKey: LetsAndVarsForTimer.Keys.HOURS_TO_SAVE.rawValue) as? Date
     }
 
     private func runSwiperDownSettings() {
@@ -94,7 +97,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 timerView.focusLabel.layer.opacity = 1
                 timerView.focusTextField.isHidden = true
                 timerView.focusLabel.isHidden = false
-            default:
+            case false:
                 timerView.focusTextField.isHidden = false
                 timerView.focusLabel.text = "tap to focus on activity"
                 timerView.focusLabel.textColor = .systemGray
