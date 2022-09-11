@@ -60,37 +60,24 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 return
                 
             } else {
-                coreDataSaver = CoreDataSaver()
-                let context = coreDataSaver!.loadPersistentContainer()
-                let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
-
-                let newActivity = Activity(entity: entity!, insertInto: context)
-                newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
-                newActivity.title = newActivityView?.textField.text
-                newActivity.desc = newActivityView?.descriptionTextView.text
-                newActivity.fav = false
-                newActivity.isDone = false
-                newActivity.isFocused = false
-                newActivity.timeSpentInTotal = "00:00:00"
-                newActivity.spentInTotalDays = "0"
-                newActivity.spentInTotalHours = "0"
-                newActivity.spentInTotalMinutes = "0"
-                newActivity.spentInTotalSeconds = "0"
-                print("New Activity \(newActivity.title ?? "") is created at \(Date())")
-                print(newActivity)
-
-                do {
-                    try context.save()
-                    ActivitiesObject.arrayOfActivities.append(newActivity)
-                } catch {
-                    print("Can't save the context")
+            coreDataSaver = CoreDataSaver()
+                if let coreDataSaver = coreDataSaver {
+                    let context = coreDataSaver.loadPersistentContainer()
+                guard let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context) else { return }
+                    let newActivity = coreDataSaver.createCoreDataNewActivity(titleText: newActivityView?.textField.text, descText: newActivityView?.descriptionTextView.text, entity: entity, insertInto: context, isFocused: false)
+                    do {
+                        try context.save()
+                        ActivitiesObject.arrayOfActivities.append(newActivity)
+                    } catch {
+                        print("Can't save the context")
+                    }
                 }
                 coreDataSaver = nil
             }
         }
     }
 
-    //MARK: - Buttons actions
+    //MARK: - Button actions
     func clearButtonDidPressed() {
         if newActivityView?.textField.text == "" {
             conformAlert.isEmptyTextFields(on: self, with: "Oops", message: "Nothing to clear")

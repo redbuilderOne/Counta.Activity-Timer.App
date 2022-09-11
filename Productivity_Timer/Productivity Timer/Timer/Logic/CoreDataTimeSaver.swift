@@ -11,7 +11,6 @@ import CoreData
 class CoreDataTimeSaver {
     var currentTimeValue: (Int, Int, Int)?
     var timeSpentStringSum: (String, String, String)?
-    //    var timeSpentIntSum: (Int, Int, Int)?
 
     func loadPersistentContainer() -> NSManagedObjectContext {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
