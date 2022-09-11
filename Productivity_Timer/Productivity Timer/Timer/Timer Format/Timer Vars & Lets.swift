@@ -13,21 +13,13 @@ struct LetsAndVarsForTimer {
         case HOURS_TO_SAVE = "hoursToSave"
     }
 
-
-    // TODO: CHECK UNUSED ONES
     var timer = Timer()
-    var countdown = Int()
-    var secCountdown = Int()
-    var minCountdown = Int()
-    var hoursCountdown = Int()
     var isTimerActivated = false
     var startTime: Date?
     var stopTime: Date?
     var countDownTime: Date?
     let userDefaults = UserDefaults.standard
     var scheduledTimer: Timer!
-    var setCdTimerString = String()
-
     var secondsToSave: Date?
     var minutesToSave: Date?
     var hoursToSave: Date?

@@ -155,7 +155,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    // MARK: -TIMER
+    // MARK: TIMER
     private func checkIfTimerActivated() {
         if constants.isTimerActivated {
             startTimer(timeInterval: 0.1, action: #selector(refreshValue))
@@ -255,6 +255,8 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     private func setTimeLabel(_ val: Int) {
         coreDataTimeSaver = CoreDataTimeSaver()
         coreDataTimeSaver?.saveTime(timerFormat: self.timerFormat, val: val, timerView: self.timerView)
+        
+        timerFormat.converter(val)
         coreDataTimeSaver = nil
     }
 

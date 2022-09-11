@@ -7,6 +7,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     lazy var conformAlert = Alert(delegate: self)
     lazy var activity = Activity()
     var actionHandler: (() -> Void)?
+    var coreDataSaver: CoreDataSaver?
 
     override func loadView() {
         view = newActivityView
@@ -59,10 +60,10 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 return
                 
             } else {
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-
+                coreDataSaver = CoreDataSaver()
+                let context = coreDataSaver!.loadPersistentContainer()
                 let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
+
                 let newActivity = Activity(entity: entity!, insertInto: context)
                 newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
                 newActivity.title = newActivityView?.textField.text
@@ -70,7 +71,13 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 newActivity.fav = false
                 newActivity.isDone = false
                 newActivity.isFocused = false
+                newActivity.timeSpentInTotal = "00:00:00"
+                newActivity.spentInTotalDays = "0"
+                newActivity.spentInTotalHours = "0"
+                newActivity.spentInTotalMinutes = "0"
+                newActivity.spentInTotalSeconds = "0"
                 print("New Activity \(newActivity.title ?? "") is created at \(Date())")
+                print(newActivity)
 
                 do {
                     try context.save()
@@ -78,6 +85,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 } catch {
                     print("Can't save the context")
                 }
+                coreDataSaver = nil
             }
         }
     }

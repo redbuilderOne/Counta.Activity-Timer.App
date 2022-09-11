@@ -37,7 +37,21 @@ class TimerFormat {
         if let sec = sec {
             timeString += String(format: "%02d", sec)
         }
-
         return timeString
+    }
+
+    func converter(_ mil: Int) -> [Int] {
+        let miliseconds = mil
+
+        let days = miliseconds / 86400
+        let hours = miliseconds % 86400 / 3600
+        let minutes = miliseconds % 3600 / 60
+        let seconds = miliseconds % 3600 % 60
+
+        print(String((miliseconds / 86400)) + " days")
+        print(String((miliseconds % 86400) / 3600) + " hours")
+        print(String((miliseconds % 3600) / 60) + " minutes")
+        print(String((miliseconds % 3600) % 60) + " seconds")
+        return [days, hours, minutes, seconds]
     }
 }

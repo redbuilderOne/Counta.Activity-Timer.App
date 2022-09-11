@@ -105,13 +105,11 @@ extension ActivityTableViewController {
         }
 
         SelectedActivity.shared.activity = ActivitiesObject.arrayOfActivities[indexPath.row]
-
         action.backgroundColor = object.fav ? .systemPurple : .systemGray
         action.image = object.fav ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
 
         if object.fav {
             object.fav = true
-
             do {
                 if let selectedActivity = SelectedActivity.shared.activity {
                     selectedActivity.fav = true
@@ -121,17 +119,14 @@ extension ActivityTableViewController {
             } catch {
                 print("Fetch failed")
             }
-
         } else {
             object.fav = false
-
             do {
                 if let selectedActivity = SelectedActivity.shared.activity {
                     selectedActivity.fav = false
                     print("\(selectedActivity.title ?? "") is not marked Favourite")
                 }
                 try appDelegate.persistentContainer.viewContext.save()
-
             } catch {
                 print("Fetch failed")
             }

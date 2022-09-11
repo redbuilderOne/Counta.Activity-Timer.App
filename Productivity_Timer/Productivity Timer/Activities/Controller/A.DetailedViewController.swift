@@ -72,9 +72,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
 
     @objc func trashButtonDidTapped() {
         conformDeleteAlert.deleteActivity(on: self, with: "Are you sure?", message: "This will delete the activity forever")
-        SelectedActivity.shared.activity = activity
-        activity.isFocused = false
-        print("Now activity (\(activity.title ?? "")) is deleted and NOT marked FOCUSED")
     }
 
     func deleteActivity() {
@@ -91,7 +88,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
             print("Fetch failed")
         }
 
-        SelectedActivity.shared.activity = nil
         ActivitiesObject.arrayOfActivities.remove(at: selectedIndexToDelete)
         navigationController?.popViewController(animated: true)
     }

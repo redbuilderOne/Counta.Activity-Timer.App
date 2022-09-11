@@ -9,6 +9,12 @@ import UIKit
 import CoreData
 
 class CoreDataSaver {
+    func loadPersistentContainer() -> NSManagedObjectContext {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        return context
+    }
+
     func saveFocusActivityToCoreData(controller: TimerViewController, timerView: TimerView) {
         controller.focusTextLabelDidTapped = true
         controller.focusActivityCheck()
@@ -41,8 +47,9 @@ class CoreDataSaver {
                 return
 
             } else {
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+//                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+//                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+                let context = loadPersistentContainer()
                 let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
 
                 if let entity = entity {
@@ -51,6 +58,11 @@ class CoreDataSaver {
                     newActivity.title = controller.focusCurrentText
                     newActivity.fav = false
                     newActivity.isDone = false
+                    newActivity.timeSpentInTotal = "00:00:00"
+                    newActivity.spentInTotalDays = "0"
+                    newActivity.spentInTotalHours = "0"
+                    newActivity.spentInTotalMinutes = "0"
+                    newActivity.spentInTotalSeconds = "0"
 
                     for activities in ActivitiesObject.arrayOfActivities {
                         activities.isFocused = false
