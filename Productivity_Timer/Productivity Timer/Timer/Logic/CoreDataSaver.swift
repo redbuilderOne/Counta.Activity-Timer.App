@@ -42,7 +42,7 @@ class CoreDataSaver {
         return newActivity
     }
 
-    func saveFocusActivityToCoreData(controller: TimerViewController, timerView: TimerView) {
+    func saveNewActivityToCoreData(controller: TimerViewController, timerView: TimerView) {
         controller.focusTextLabelDidTapped = true
         controller.focusActivityCheck()
 
@@ -76,7 +76,7 @@ class CoreDataSaver {
                     activities.isFocused = false
                     print("Activity (\(activities.title ?? "")) is NOT focused EXCEPT \(newActivity.title ?? "")")
                 }
-                
+
                 newActivity.isFocused = true
                 print("Now Focused Activity is \(newActivity.title ?? "")")
                 ActivitiesObject.arrayOfActivities.append(newActivity)

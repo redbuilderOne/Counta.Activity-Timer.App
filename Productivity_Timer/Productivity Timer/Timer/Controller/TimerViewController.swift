@@ -48,7 +48,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
 
     func useAndDeleteCoreDataSaver(isViewAffected: Bool) {
         coreDataSaver = CoreDataSaver()
-        coreDataSaver?.saveFocusActivityToCoreData(controller: self, timerView: self.timerView)
+        coreDataSaver?.saveNewActivityToCoreData(controller: self, timerView: self.timerView)
         switch isViewAffected {
         case true:
             timerView.focusLabel.isHidden = false
