@@ -44,7 +44,7 @@
 		FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */; };
 		FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1CF280B548C0046CE83 /* TimerView.swift */; };
 		FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1DC280B61250046CE83 /* Control Buttons.swift */; };
-		FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */; };
+		FFD4B1E2280BF33F0046CE83 /* TimerVarsAndLets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E1280BF33F0046CE83 /* TimerVarsAndLets.swift */; };
 		FFD4B1E6280BF8120046CE83 /* TimerFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E5280BF8120046CE83 /* TimerFormat.swift */; };
 		FFD4B1EC280C18FD0046CE83 /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */; };
 		FFD4B1F7280C1F360046CE83 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1F6280C1F360046CE83 /* AddButton.swift */; };
@@ -114,7 +114,7 @@
 		FFA55F48289FFE3C00F375DB /* realm-swift-master */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "realm-swift-master"; path = "../../Downloads/realm-swift-master"; sourceTree = "<group>"; };
 		FFD4B1CF280B548C0046CE83 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		FFD4B1DC280B61250046CE83 /* Control Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Control Buttons.swift"; sourceTree = "<group>"; };
-		FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer Vars & Lets.swift"; sourceTree = "<group>"; };
+		FFD4B1E1280BF33F0046CE83 /* TimerVarsAndLets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVarsAndLets.swift; sourceTree = "<group>"; };
 		FFD4B1E5280BF8120046CE83 /* TimerFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFormat.swift; sourceTree = "<group>"; };
 		FFD4B1EB280C18FD0046CE83 /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
@@ -194,8 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				FF25CA262860B16900C4B8C0 /* FirstLoadCheck.swift */,
-				FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */,
-				FF077B6C28CA330D0046FA5F /* CoreDataTimeSaver.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -225,11 +223,37 @@
 		FF36BE8D284D2B1300176FA0 /* Timer Format */ = {
 			isa = PBXGroup;
 			children = (
-				FFD4B1E1280BF33F0046CE83 /* Timer Vars & Lets.swift */,
+				FFD4B1E1280BF33F0046CE83 /* TimerVarsAndLets.swift */,
 				FFD4B1E5280BF8120046CE83 /* TimerFormat.swift */,
 				FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */,
 			);
 			path = "Timer Format";
+			sourceTree = "<group>";
+		};
+		FF613D7A28CE2CBF00CAF28B /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FF613D7C28CE2CDA00CAF28B /* Model */,
+				FF613D7B28CE2CD200CAF28B /* Logic */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		FF613D7B28CE2CD200CAF28B /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */,
+				FF077B6C28CA330D0046FA5F /* CoreDataTimeSaver.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		FF613D7C28CE2CDA00CAF28B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF229AA028202D350080B89B /* ActivityCoreData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FF71FB392805A1CF00F2F455 = {
@@ -257,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				FF06E88B2809A2A900907F1B /* Application */,
+				FF613D7A28CE2CBF00CAF28B /* CoreData */,
 				FF06E88D2809A30900907F1B /* Timer */,
 				FF06E8922809A8D600907F1B /* Activities */,
 				FF71FB832805B26000F2F455 /* Extensions */,
@@ -350,7 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				FF36BE8C284D2ADC00176FA0 /* Alerts */,
-				FF229AA028202D350080B89B /* ActivityCoreData.swift */,
 				FF229A93281C78E70080B89B /* TableViewCellsID.swift */,
 				FF229A9B2820217C0080B89B /* ActivitiesObjects.swift */,
 				FF2A6F0128363C5C00F13F4E /* SelectedActivity.swift */,
@@ -532,7 +556,7 @@
 				FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */,
 				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
 				FF077B6D28CA330D0046FA5F /* CoreDataTimeSaver.swift in Sources */,
-				FFD4B1E2280BF33F0046CE83 /* Timer Vars & Lets.swift in Sources */,
+				FFD4B1E2280BF33F0046CE83 /* TimerVarsAndLets.swift in Sources */,
 				FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */,
 				FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */,
 				FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */,

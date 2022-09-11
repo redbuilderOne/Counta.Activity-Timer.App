@@ -6,7 +6,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     let timerView = TimerView()
     let timerFormat = TimerFormat()
     var constants = LetsAndVarsForTimer()
-    let newActivityVC: NewActivityViewController
+    let newActivityViewController: NewActivityViewController
     var coreDataSaver: CoreDataSaver?
     var coreDataTimeSaver: CoreDataTimeSaver?
     var focusTextLabelDidTapped = false
@@ -17,7 +17,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     }
 
     init(activity: Activity? = nil) {
-        newActivityVC = NewActivityViewController()
+        newActivityViewController = NewActivityViewController()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -112,7 +112,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.down:
-                present(newActivityVC, animated: true, completion: nil)
+                present(newActivityViewController, animated: true, completion: nil)
             default:
                 break
             }

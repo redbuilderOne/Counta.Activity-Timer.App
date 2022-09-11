@@ -52,7 +52,7 @@ class CoreDataSaver {
             return
         } else {
             var duplicateIndex: Int?
-            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == controller.focusCurrentText})
+            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == controller.focusCurrentText })
             print("Found duplicate index: \(String(describing: duplicateIndex))")
 
             if duplicateIndex != nil {
