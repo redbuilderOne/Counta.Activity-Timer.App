@@ -47,8 +47,6 @@ class CoreDataSaver {
                 return
 
             } else {
-//                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-//                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
                 let context = loadPersistentContainer()
                 let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
 

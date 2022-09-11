@@ -5,6 +5,7 @@ import CoreData
 class FirstLoadCheck {
     var firstLoad = true
     let timerViewController: TimerViewController?
+    var coreDataSaver: CoreDataSaver?
 
     init(activity: Activity? = nil) {
         timerViewController = TimerViewController()
@@ -17,8 +18,8 @@ class FirstLoadCheck {
     func firstLoadCheck() {
         if firstLoad {
             firstLoad = false
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            coreDataSaver = CoreDataSaver()
+            let context = coreDataSaver!.loadPersistentContainer()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
 
             do {
@@ -39,14 +40,15 @@ class FirstLoadCheck {
             } catch {
                 print("Fetch failed")
             }
+            coreDataSaver = nil
         }
     }
 
     func firstLoadCheckTableVC() {
         if firstLoad {
             firstLoad = false
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            coreDataSaver = CoreDataSaver()
+            let context = coreDataSaver!.loadPersistentContainer()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
 
             do {
@@ -62,14 +64,15 @@ class FirstLoadCheck {
             } catch {
                 print("Fetch failed")
             }
+            coreDataSaver = nil
         }
     }
 
     func firstLoadCheckTimeSpent() {
         if firstLoad {
             firstLoad = false
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            coreDataSaver = CoreDataSaver()
+            let context = coreDataSaver!.loadPersistentContainer()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
             
             do {
@@ -87,6 +90,7 @@ class FirstLoadCheck {
             } catch {
                 print("Fetch failed")
             }
+            coreDataSaver = nil
         }
     }
 }
