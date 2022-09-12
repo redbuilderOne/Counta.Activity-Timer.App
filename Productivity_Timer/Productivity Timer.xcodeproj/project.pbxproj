@@ -98,6 +98,7 @@
 		FF36BE982852493600176FA0 /* KeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExt.swift; sourceTree = "<group>"; };
 		FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissExt.swift; sourceTree = "<group>"; };
 		FF4D523E2879BACD00470AE5 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		FF613D7D28CF0B3000CAF28B /* draft.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = draft.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,7 +175,6 @@
 			children = (
 				FF71FB532805A1D000F2F455 /* Info.plist */,
 				FF71FB4E2805A1D000F2F455 /* Assets.xcassets */,
-				FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -235,6 +235,7 @@
 			children = (
 				FF613D7C28CE2CDA00CAF28B /* Model */,
 				FF613D7B28CE2CD200CAF28B /* Logic */,
+				FF229A9D28202C720080B89B /* ProductivityTimerCoreData.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -244,6 +245,7 @@
 			children = (
 				FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */,
 				FF077B6C28CA330D0046FA5F /* CoreDataTimeSaver.swift */,
+				FF613D7D28CF0B3000CAF28B /* draft.playground */,
 			);
 			path = Logic;
 			sourceTree = "<group>";

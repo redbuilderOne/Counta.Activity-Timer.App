@@ -9,8 +9,7 @@ import UIKit
 import CoreData
 
 class CoreDataTimeSaver {
-    var currentTimeValue: (Int, Int, Int)?
-    var timeSpentStringSum: (String, String, String)?
+    var sorted: [Int]?
 
     func loadPersistentContainer() -> NSManagedObjectContext {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
@@ -18,43 +17,55 @@ class CoreDataTimeSaver {
         return context
     }
 
-    func loadLastSessionTime() -> String {
-        //        let context = loadPersistentContainer()
-        let lastSession: String
-
-        for activity in ActivitiesObject.arrayOfActivities {
-            if activity.isFocused {
-                lastSession = activity.lastSession ?? "00:00:00"
-                return lastSession
-            }
-        }
-        return "00:00:00"
-    }
-
     func saveTime(timerFormat: TimerFormat, val: Int, timerView: TimerView) {
         let context = loadPersistentContainer()
-
         let time = timerFormat.setSecondsToHoursMinutesToHours(val)
         let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
         timerView.timerLabel.text = timeString
-
-        for activity in ActivitiesObject.arrayOfActivities {
-            if activity.isFocused {
-                activity.lastSession = timeString
-                let lastSessionStringArray = activity.lastSession.map(){$0}
-                print("lastSessionStringArray: \(lastSessionStringArray)")
-            }
+        if let selectedActivity = SelectedActivity.shared.activity {
+            selectedActivity.lastSession = timeString
+            selectedActivity.spentInTotalSeconds! += String(time.2)
+            selectedActivity.spentInTotalMinutes! += String(time.1)
+            selectedActivity.spentInTotalHours! += String(time.0)
+            print(selectedActivity)
         }
-
         do {
             try context.save()
-            sumSavedTime()
         } catch {
             print("Can't save the context")
         }
     }
 
-    private func sortTimeValues(_ timeString: String?) -> [Int] {
+
+    func sumTotals(hours: Int, minutes: Int, seconds: Int) {
+        let context = loadPersistentContainer()
+        for i in ActivitiesObject.arrayOfActivities {
+            if i.isFocused {
+                guard var currentSeconds = Int(i.spentInTotalSeconds!),
+                      var currentMinutes = Int(i.spentInTotalMinutes!),
+                      var currentHours = Int(i.spentInTotalHours!) else { return }
+
+                currentSeconds += seconds
+                i.spentInTotalSeconds! = String(currentSeconds)
+                print("i.spentInTotalSeconds!: \(i.spentInTotalSeconds!)")
+
+                currentMinutes += minutes
+                i.spentInTotalMinutes! = String(currentMinutes)
+                print("i.spentInTotalMinutes!: \(i.spentInTotalMinutes!)")
+
+                currentHours += hours
+                i.spentInTotalHours! = String(currentHours)
+                print("i.spentInTotalHours!: \(i.spentInTotalHours!)")
+            }
+        }
+        do {
+            try context.save()
+        } catch {
+            print("Can't save the context")
+        }
+    }
+
+    func sortTimeValues(_ timeString: String?) -> [Int] {
         var resultArray: [Int] = []
         let lastSessionStringArray = timeString.map(){$0}
         guard let sorted = lastSessionStringArray?.components(separatedBy: ":") else { return [] }
@@ -62,85 +73,27 @@ class CoreDataTimeSaver {
         return resultArray
     }
 
-    private func secondsToHoursMinutesSeconds(_ seconds: Int) -> (Int, Int, Int) {
-        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
-    }
 
-    func converter(_ seconds: Int) {
-        let seconds = seconds
-
-        print(String((seconds / 86400)) + " days")
-        print(String((seconds % 86400) / 3600) + " hours")
-        print(String((seconds % 3600) / 60) + " minutes")
-        print(String((seconds % 3600) % 60) + " seconds")
-    }
-
-
-    func convertTotal (_ val: Int) {
-        let timerFormat = TimerFormat()
-        let totalArray = timerFormat.converter(val)
+    func setTotalIntToString(days: Int, hours: Int, minutes: Int, seconds: Int) {
         let context = loadPersistentContainer()
+        var activity: Activity?
 
-        totalArray
+        for i in ActivitiesObject.arrayOfActivities {
+            if i.isFocused {
+                activity = i
+            }
+        }
+
+        activity?.spentInTotalSeconds = String(seconds)
+        activity?.spentInTotalMinutes = String(minutes)
+        activity?.spentInTotalHours = String(hours)
+        activity?.spentInTotalDays = String(days)
 
         do {
             try context.save()
         } catch {
-            print("Convert Total Error")
+            print("error")
         }
+        activity = nil
     }
-
-    // TODO
-//    func sumSavedTime(currentTimeValue: String, newTimeValue: String)
-    func sumSavedTime() {
-        let context = loadPersistentContainer()
-        let lastSessionTimeString = loadLastSessionTime()
-        let timerFormat = TimerFormat()
-        var sortedLastSession: [Int] = []
-        var sortedSavedSession: [Int] = []
-
-
-        for activity in ActivitiesObject.arrayOfActivities {
-            if activity.isFocused {
-                activity.timeSpentInTotal = "00:12:33"
-                sortedLastSession = sortTimeValues(activity.lastSession)
-                sortedSavedSession = sortTimeValues(activity.timeSpentInTotal)
-
-//                converter(sortedLastSession[2])
-
-                let seconds = sortedLastSession[2] + sortedSavedSession[2]
-                let minutes = sortedLastSession[1] + sortedSavedSession[1]
-                let hours = sortedLastSession[0] + sortedSavedSession[0]
-
-
-
-            }
-
-                print(sortedLastSession)
-                print(sortedSavedSession)
-
-//                let newArray = (sortedLastSession[0] + sortedSavedSession[0], sortedLastSession[1] + sortedSavedSession[1], sortedLastSession[2] + sortedSavedSession[2])
-//                print("newArray: \(newArray)")
-
-//                activity.timeSpentInTotal = timerFormat.convertTimeToString(hour: newArray.0, min: newArray.1, sec: newArray.2)
-
-//                let hours =
-//                let minutes =
-
-
-                print("activity.timeSpentInTotal: \(activity.timeSpentInTotal)")
-            }
-
-
-                do {
-                    try context.save()
-                } catch {
-                    print("Can't save the context")
-                }
-
-
-                
-
-            }
-
 }
