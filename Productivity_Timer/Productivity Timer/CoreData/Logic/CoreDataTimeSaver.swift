@@ -64,110 +64,19 @@ class CoreDataTimeSaver {
         var sorted: [Int]
 
         for i in ActivitiesObject.arrayOfActivities {
-        if i.isFocused {
-            sorted = sortTimeValues(i.lastSession)
-            print("sorted: \(sorted)")
-
-            var secs = i.spentInTotalSeconds as! Int
-
-            if sorted.isEmpty == false {
-                secs += sorted[2]
-            }
-
-            i.spentInTotalSeconds = secs as NSNumber
-            print("activity.spentInTotalSeconds: \(i.spentInTotalSeconds)")
-        }
-        }
-    }
-
-//    func stackTimeToContext(context: NSManagedObjectContext) {
-//        var lastSessionIntArray: [Int]
-//        var spentIntTotalSeconds: [Int]
-//        var spentIntTotalMinutes: [Int]
-//        var spentIntTotalHours: [Int]
-//
-//        if let selectedActivity = SelectedActivity.shared.activity {
-//            lastSessionIntArray = sortTimeValues(selectedActivity.lastSession) // [0, 0, 12]
-//            spentIntTotalSeconds = sortTimeValues(selectedActivity.spentInTotalSeconds)
-//            spentIntTotalMinutes = sortTimeValues(selectedActivity.spentInTotalMinutes)
-//            spentIntTotalHours = sortTimeValues(selectedActivity.spentInTotalHours)
-//
-//            if spentIntTotalSeconds.isEmpty && spentIntTotalMinutes.isEmpty && spentIntTotalHours.isEmpty == false {
-//                selectedActivity.spentInTotalSeconds! += String((lastSessionIntArray[2] + spentIntTotalSeconds.first!))
-//                selectedActivity.spentInTotalMinutes = String((lastSessionIntArray[1] + spentIntTotalMinutes.first!))
-//                selectedActivity.spentInTotalHours = String((lastSessionIntArray[0] + spentIntTotalHours.first!))
-//            }
-//
-//            print("selectedActivity.sec: \(selectedActivity.spentInTotalSeconds)")
-//        }
-//
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Can't save the context")
-//        }
-//    }
-}
-
-    /*
-    func sumTotals(hours: Int, minutes: Int, seconds: Int) {
-        let context = loadPersistentContainer()
-        for i in ActivitiesObject.arrayOfActivities {
             if i.isFocused {
-                guard var currentSeconds = Int(i.spentInTotalSeconds!),
-                      var currentMinutes = Int(i.spentInTotalMinutes!),
-                      var currentHours = Int(i.spentInTotalHours!) else { return }
+                sorted = sortTimeValues(i.lastSession)
+                print("sorted: \(sorted)")
 
-                currentSeconds += seconds
-                i.spentInTotalSeconds! = String(currentSeconds)
-                print("i.spentInTotalSeconds!: \(i.spentInTotalSeconds!)")
+                var secs = i.spentInTotalSeconds as! Int
 
-                currentMinutes += minutes
-                i.spentInTotalMinutes! = String(currentMinutes)
-                print("i.spentInTotalMinutes!: \(i.spentInTotalMinutes!)")
+                if sorted.isEmpty == false {
+                    secs += sorted[2]
+                }
 
-                currentHours += hours
-                i.spentInTotalHours! = String(currentHours)
-                print("i.spentInTotalHours!: \(i.spentInTotalHours!)")
+                i.spentInTotalSeconds = secs as NSNumber
+                print("activity.spentInTotalSeconds: \(i.spentInTotalSeconds)")
             }
         }
-        do {
-            try context.save()
-        } catch {
-            print("Can't save the context")
-        }
-    }
-
-    func sortTimeValues(_ timeString: String?) -> [Int] {
-        var resultArray: [Int] = []
-        let lastSessionStringArray = timeString.map(){$0}
-        guard let sorted = lastSessionStringArray?.components(separatedBy: ":") else { return [] }
-        resultArray = sorted.map { Int($0)! }
-        return resultArray
-    }
-
-
-    func setTotalIntToString(days: Int, hours: Int, minutes: Int, seconds: Int) {
-        let context = loadPersistentContainer()
-        var activity: Activity?
-
-        for i in ActivitiesObject.arrayOfActivities {
-            if i.isFocused {
-                activity = i
-            }
-        }
-
-        activity?.spentInTotalSeconds = String(seconds)
-        activity?.spentInTotalMinutes = String(minutes)
-        activity?.spentInTotalHours = String(hours)
-        activity?.spentInTotalDays = String(days)
-
-        do {
-            try context.save()
-        } catch {
-            print("error")
-        }
-        activity = nil
     }
 }
-*/

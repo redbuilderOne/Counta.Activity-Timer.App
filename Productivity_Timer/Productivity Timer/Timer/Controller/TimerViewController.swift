@@ -11,6 +11,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
     var coreDataTimeSaver: CoreDataTimeSaver?
     var focusTextLabelDidTapped = false
     lazy var focusCurrentText: String? = nil
+    var buttonDidPressedSwitcher = false
 
     override func loadView() {
         view = timerView
@@ -231,6 +232,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         setTimerCounting(true)
         timerView.circleView.layer.addSublayer(timerView.circleView.roundShapeLayer)
         timerView.circleView.roundShapeLayer.isHidden = false
+        buttonDidPressedSwitcher = true
     }
 
     @objc func refreshValue() {
@@ -251,10 +253,13 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
         setTimerCounting(false)
 
-        coreDataTimeSaver = CoreDataTimeSaver()
-        guard let context = coreDataTimeSaver?.loadPersistentContainer() else { return }
-        coreDataTimeSaver?.saveStackedTime(context: context)
-        coreDataTimeSaver = nil
+        if buttonDidPressedSwitcher {
+            buttonDidPressedSwitcher = false
+            coreDataTimeSaver = CoreDataTimeSaver()
+            guard let context = coreDataTimeSaver?.loadPersistentContainer() else { return }
+            coreDataTimeSaver?.saveStackedTime(context: context)
+            coreDataTimeSaver = nil
+        }
     }
 
     private func setTimeLabel(_ val: Int) {
