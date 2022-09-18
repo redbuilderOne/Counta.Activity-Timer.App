@@ -1,6 +1,5 @@
 
 import UIKit
-import CoreData
 
 extension ActivityTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -13,7 +12,7 @@ extension ActivityTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         show(ActivityDetailedViewController(activity:  ActivitiesObject.arrayOfActivities[indexPath.row], selectedIndexToDelete: indexPath.row), sender: self)
-        SelectedActivity.selectedIndexToDelete = indexPath.row
+        SelectedActivity.shared.selectedIndexToDelete = indexPath.row
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

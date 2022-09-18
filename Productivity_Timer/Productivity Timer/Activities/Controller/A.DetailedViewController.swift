@@ -3,7 +3,6 @@ import UIKit
 import CoreData
 
 class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
-
     var selectedIndexToDelete: Int
     var activity: Activity
     lazy var conformDeleteAlert = DeleteAlert(delegate: self)
@@ -11,7 +10,7 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     lazy var favRowEditAlert = FavRowEditAlert()
     let timerViewController: TimerViewController?
     lazy var titleRowEditAlert = TitleRowEditAlert(timerViewController: TimerViewController(activity: activity))
-    lazy var focusRowEditAlert = FocusRowEditAlert(timerViewController: TimerViewController(activity: activity))
+    lazy var focusRowEditAlert = FocusRowEditAlert()
 
     init(activity: Activity, selectedIndexToDelete: Int) {
         self.activity = activity
@@ -49,6 +48,7 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
         title = "Details"
+        SelectedActivity.shared.activity = activity
     }
 
     override func viewDidLayoutSubviews() {
@@ -72,17 +72,14 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
 
     @objc func trashButtonDidTapped() {
         conformDeleteAlert.deleteActivity(on: self, with: "Are you sure?", message: "This will delete the activity forever")
-        StaticSelectedActivity.activity = activity
-        activity.isFocused = false
-        print("Now activity (\(activity.title ?? "")) is deleted and NOT marked FOCUSED")
     }
 
     func deleteActivity() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        SelectedActivity.selectedActivity = self.activity
+        SelectedActivity.shared.activity = self.activity
 
         do {
-            if let selectedActivity = SelectedActivity.selectedActivity {
+            if let selectedActivity = SelectedActivity.shared.activity {
                 appDelegate.persistentContainer.viewContext.delete(selectedActivity)
                 selectedActivity.deletedDate = Date()
             }
@@ -91,7 +88,6 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
             print("Fetch failed")
         }
 
-        SelectedActivity.selectedActivity = nil
         ActivitiesObject.arrayOfActivities.remove(at: selectedIndexToDelete)
         navigationController?.popViewController(animated: true)
     }

@@ -5,7 +5,7 @@ import CoreData
 class ActivityTableViewController: UITableViewController {
     var identifier = CellsID.activityTableViewID
     var activityDetailedViewController: UITabBarController?
-    let timerViewController: TimerViewController?
+    var timerViewController: TimerViewController?
 
     init() {
         timerViewController = TimerViewController()
@@ -25,7 +25,9 @@ class ActivityTableViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         view.backgroundColor = darkMoonColor
     }
 
@@ -57,6 +59,8 @@ class ActivityTableViewController: UITableViewController {
         if let activityDetailedViewController = activityDetailedViewController {
             present(activityDetailedViewController, animated: true)
         }
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

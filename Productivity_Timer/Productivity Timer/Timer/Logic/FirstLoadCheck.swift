@@ -5,6 +5,7 @@ import CoreData
 class FirstLoadCheck {
     var firstLoad = true
     let timerViewController: TimerViewController?
+    var coreDataSaver: CoreDataSaver?
 
     init(activity: Activity? = nil) {
         timerViewController = TimerViewController()
@@ -17,8 +18,8 @@ class FirstLoadCheck {
     func firstLoadCheck() {
         if firstLoad {
             firstLoad = false
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            coreDataSaver = CoreDataSaver()
+            let context = coreDataSaver!.loadPersistentContainer()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
 
             do {
@@ -26,9 +27,8 @@ class FirstLoadCheck {
                 for result in results {
                     let activity = result as! Activity
                     if activity.isFocused {
-                        StaticSelectedActivity.activity = activity
-                        FocusedActivityToPresent.focusedActivity = activity
-                        SelectedActivity.selectedIndexToDelete = activity.id as? Int
+                        SelectedActivity.shared.activity = activity
+                        SelectedActivity.shared.selectedIndexToDelete = activity.id as? Int
                     }
 
                     if activity.isDone != true {
@@ -40,14 +40,15 @@ class FirstLoadCheck {
             } catch {
                 print("Fetch failed")
             }
+            coreDataSaver = nil
         }
     }
 
     func firstLoadCheckTableVC() {
         if firstLoad {
             firstLoad = false
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            coreDataSaver = CoreDataSaver()
+            let context = coreDataSaver!.loadPersistentContainer()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
 
             do {
@@ -63,23 +64,19 @@ class FirstLoadCheck {
             } catch {
                 print("Fetch failed")
             }
+            coreDataSaver = nil
         }
     }
 
     func firstLoadCheckTimeSpent() {
         if firstLoad {
             firstLoad = false
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            coreDataSaver = CoreDataSaver()
+            let context = coreDataSaver!.loadPersistentContainer()
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
             
             do {
                 let results: NSArray = try context.fetch(request) as NSArray
-
-//                let firstLoadCheck = FirstLoadCheck()
-//                firstLoadCheck.actionHandler = { [weak firstLoadCheck] in
-//                    print("firstLoadCheck - \(String(describing: firstLoadCheck))")
-//                }
 
                 for result in results {
                     let activity = result as! Activity
@@ -93,6 +90,7 @@ class FirstLoadCheck {
             } catch {
                 print("Fetch failed")
             }
+            coreDataSaver = nil
         }
     }
 }

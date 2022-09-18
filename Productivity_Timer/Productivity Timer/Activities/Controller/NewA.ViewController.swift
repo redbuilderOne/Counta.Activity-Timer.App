@@ -7,6 +7,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     lazy var conformAlert = Alert(delegate: self)
     lazy var activity = Activity()
     var actionHandler: (() -> Void)?
+    var coreDataSaver: CoreDataSaver?
 
     override func loadView() {
         view = newActivityView
@@ -48,7 +49,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
         } else {
             var duplicateIndex: Int?
-            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == newActivityView?.textField.text})
+            duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == newActivityView?.textField.text })
 
             print("Found duplicate index: \(String(describing: duplicateIndex))")
 
@@ -59,30 +60,24 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 return
                 
             } else {
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-                let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-
-                let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context)
-                let newActivity = Activity(entity: entity!, insertInto: context)
-                newActivity.id = ActivitiesObject.arrayOfActivities.count as NSNumber
-                newActivity.title = newActivityView?.textField.text
-                newActivity.desc = newActivityView?.descriptionTextView.text
-                newActivity.fav = false
-                newActivity.isDone = false
-                newActivity.isFocused = false
-                print("New Activity \(newActivity.title ?? "") is created at \(Date())")
-
-                do {
-                    try context.save()
-                    ActivitiesObject.arrayOfActivities.append(newActivity)
-                } catch {
-                    print("Can't save the context")
+            coreDataSaver = CoreDataSaver()
+                if let coreDataSaver = coreDataSaver {
+                    let context = coreDataSaver.loadPersistentContainer()
+                guard let entity = NSEntityDescription.entity(forEntityName: "Activity", in: context) else { return }
+                    let newActivity = coreDataSaver.createCoreDataNewActivity(titleText: newActivityView?.textField.text, descText: newActivityView?.descriptionTextView.text, entity: entity, insertInto: context, isFocused: false)
+                    do {
+                        try context.save()
+                        ActivitiesObject.arrayOfActivities.append(newActivity)
+                    } catch {
+                        print("Can't save the context")
+                    }
                 }
+                coreDataSaver = nil
             }
         }
     }
 
-    //MARK: - Buttons actions
+    //MARK: - Button actions
     func clearButtonDidPressed() {
         if newActivityView?.textField.text == "" {
             conformAlert.isEmptyTextFields(on: self, with: "Oops", message: "Nothing to clear")
@@ -101,4 +96,3 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         navigationController?.popViewController(animated: true)
     }
 }
-

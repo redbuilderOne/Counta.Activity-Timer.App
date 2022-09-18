@@ -2,7 +2,6 @@
 import UIKit
 
 class TimerControlButton: UIButton {
-
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -13,7 +12,7 @@ class TimerControlButton: UIButton {
 
     init(title: String, titleColor: UIColor? = nil, tintColor: UIColor? = nil, backgroundColor: UIColor, systemImageName: String? = nil) {
         super.init(frame: .zero)
-        
+
         setTitle(title, for: .normal)
         self.tintColor = tintColor
         self.backgroundColor = backgroundColor

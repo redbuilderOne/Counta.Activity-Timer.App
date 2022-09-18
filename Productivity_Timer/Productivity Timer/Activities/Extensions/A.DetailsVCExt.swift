@@ -1,6 +1,5 @@
 
 import UIKit
-import CoreData
 
 extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -8,7 +7,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 8
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -35,7 +34,6 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
                 cell.imageView?.image = UIImage(systemName: "heart")
                 cell.imageView?.tintColor = .systemGray
             }
-
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -122,9 +120,22 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.imageView?.image = UIImage(systemName: "")
             cell.textLabel?.text = "Last session: 00:00:00"
-
             if let lastSession = activity.lastSession {
                 cell.textLabel?.text = "Last session: " + lastSession
+            }
+            return cell
+        case 7:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .gray
+            cell.backgroundColor = darkMoonColor
+            cell.textLabel?.textColor = pinkyWhiteColor
+            cell.textLabel?.textAlignment = .justified
+            cell.imageView?.tintColor = .systemGray
+            cell.textLabel?.font = .boldSystemFont(ofSize: 16)
+            cell.imageView?.image = UIImage(systemName: "")
+            cell.textLabel?.text = "Total time spent: 00:00:00"
+            if let timeSpentInTotal = activity.timeSpentInTotal {
+                cell.textLabel?.text = "Time spent in total: " + timeSpentInTotal
             }
             return cell
         default:

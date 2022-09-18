@@ -3,15 +3,12 @@ import UIKit
 import CoreData
 
 struct FavRowEditAlert {
-    func favRowEditAction(on vc: UIViewController, activity: Activity, tableView: UITableView) {
+    func favRowEditAction(on viewController: UIViewController, activity: Activity, tableView: UITableView) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
 
-        SelectedActivity.selectedActivity = activity
-
-        if let selectedActivity = SelectedActivity.selectedActivity {
-
+        SelectedActivity.shared.activity = activity
+        if let selectedActivity = SelectedActivity.shared.activity {
             if selectedActivity.fav {
                 selectedActivity.fav = false
                 print("\(selectedActivity) is now not marked favourite")
@@ -22,11 +19,13 @@ struct FavRowEditAlert {
 
             do {
                 try context.save()
-                SelectedActivity.selectedActivity = nil
+                SelectedActivity.shared.activity = nil
             } catch {
                 print("Can't save the context")
             }
         }
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            tableView.reloadData()
+        }
     }
 }
