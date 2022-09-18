@@ -174,7 +174,6 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         }
     }
 
-    // MARK: Timers Logic
     func startActionDidPressed() {
         timerView.timerLabel.isHidden = false
         if constants.isTimerActivated {
@@ -261,7 +260,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             coreDataTimeSaver = nil
         }
     }
-
+    
     private func setTimeLabel(_ val: Int) {
         coreDataTimeSaver = CoreDataTimeSaver()
         coreDataTimeSaver?.saveTime(timerFormat: self.timerFormat, val: val, timerView: self.timerView)

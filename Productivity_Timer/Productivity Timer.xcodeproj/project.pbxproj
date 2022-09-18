@@ -98,7 +98,6 @@
 		FF36BE982852493600176FA0 /* KeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExt.swift; sourceTree = "<group>"; };
 		FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissExt.swift; sourceTree = "<group>"; };
 		FF4D523E2879BACD00470AE5 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		FF613D7D28CF0B3000CAF28B /* draft.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = draft.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,7 +162,6 @@
 				FF2A6EFE282D8BC200F13F4E /* Extensions */,
 				FF36BE8D284D2B1300176FA0 /* Timer Format */,
 				FF077B6928CA1DDC0046FA5F /* Logic */,
-				FFD4B1D3280B5B650046CE83 /* Models */,
 				FFD4B1D2280B5B5A0046CE83 /* Views */,
 				FFD4B1D1280B5B410046CE83 /* Controller */,
 			);
@@ -245,7 +243,6 @@
 			children = (
 				FF077B6A28CA1E3D0046FA5F /* CoreDataSaver.swift */,
 				FF077B6C28CA330D0046FA5F /* CoreDataTimeSaver.swift */,
-				FF613D7D28CF0B3000CAF28B /* draft.playground */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -338,19 +335,12 @@
 		FFD4B1D2280B5B5A0046CE83 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
 				FFD4B1CF280B548C0046CE83 /* TimerView.swift */,
 				FFD4B1DC280B61250046CE83 /* Control Buttons.swift */,
 				FF4D523E2879BACD00470AE5 /* CircleView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		FFD4B1D3280B5B650046CE83 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				FF2D557D2806ED7F007C3350 /* Elipse Images.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		FFD4B1DE280BF13E0046CE83 /* Controller */ = {

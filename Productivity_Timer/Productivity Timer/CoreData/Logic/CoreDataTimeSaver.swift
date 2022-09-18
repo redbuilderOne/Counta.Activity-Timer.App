@@ -15,25 +15,6 @@ class CoreDataTimeSaver {
         return context
     }
 
-    func saveTime(timerFormat: TimerFormat, val: Int, timerView: TimerView) {
-        let context = loadPersistentContainer()
-
-        let time = timerFormat.setSecondsToHoursMinutesToHours(val)
-        let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
-        timerView.timerLabel.text = timeString
-
-        for i in ActivitiesObject.arrayOfActivities {
-            if i.isFocused {
-                i.lastSession = timeString
-            }
-        }
-        do {
-            try context.save()
-        } catch {
-            print("Can't save the context")
-        }
-    }
-
     private func sortTimeValues(_ timeString: String?) -> [Int] {
         var resultArray: [Int] = []
         let lastSessionStringArray = timeString.map(){$0}
@@ -57,6 +38,30 @@ class CoreDataTimeSaver {
         return nil
     }
 
+    private func secondsToHoursMinutesSeconds(_ seconds: Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+
+    func saveTime(timerFormat: TimerFormat, val: Int, timerView: TimerView) {
+        let context = loadPersistentContainer()
+
+        let time = timerFormat.setSecondsToHoursMinutesToHours(val)
+        let timeString = timerFormat.convertTimeToString(hour: time.0, min: time.1, sec: time.2)
+        timerView.timerLabel.text = timeString
+
+        for i in ActivitiesObject.arrayOfActivities {
+            if i.isFocused {
+                i.lastSession = timeString
+            }
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print("Can't save the context")
+        }
+    }
+
     func saveStackedTime(context: NSManagedObjectContext, timerFormat: TimerFormat) {
         var sorted: [Int]
 
@@ -76,9 +81,5 @@ class CoreDataTimeSaver {
                 i.timeSpentInTotal = timeString
             }
         }
-    }
-
-    private func secondsToHoursMinutesSeconds(_ seconds: Int) -> (Int, Int, Int) {
-        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
 }

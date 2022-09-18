@@ -96,4 +96,3 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         navigationController?.popViewController(animated: true)
     }
 }
-

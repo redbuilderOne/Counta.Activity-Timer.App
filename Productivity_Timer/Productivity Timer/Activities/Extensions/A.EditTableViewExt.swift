@@ -37,20 +37,6 @@ extension ActivityTableViewController {
 
     // MARK: ПЕРЕМЕЩЕНИЕ
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-
-        // TODO: moving elements' order in coreData
-        //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-
-        SelectedActivity.shared.activity = ActivitiesObject.arrayOfActivities[sourceIndexPath.row]
-
-        let moved = ActivitiesObject.arrayOfActivities.remove(at: sourceIndexPath.row)
-        ActivitiesObject.arrayOfActivities.insert(moved, at: destinationIndexPath.row)
-
-        DispatchQueue.main.async {
-            tableView.reloadData()
-        }
-        
-        SelectedActivity.shared.activity = nil
     }
 
     // MARK: FAVOURITE
@@ -61,12 +47,9 @@ extension ActivityTableViewController {
     }
 
     // MARK: DONE ACTION
-    // TODO: поменять вместо DONE на MARK - чтобы отправлять на первый экран с таймером? ИЛИ добавить новый action "FOCUS"
     func doneAction(at indexPath: IndexPath) -> UIContextualAction {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-
         SelectedActivity.shared.activity = ActivitiesObject.arrayOfActivities[indexPath.row]
-
         let action = UIContextualAction(style: .destructive, title: "Done") { (action, view, completion) in
 
             ActivitiesObject.arrayOfActivities.remove(at: indexPath.row)
@@ -96,14 +79,12 @@ extension ActivityTableViewController {
 
     func favouriteAction(at indexPath: IndexPath) -> UIContextualAction {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-
         let object = ActivitiesObject.arrayOfActivities[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Favourite") { (action, view, completion) in
             object.fav = !object.fav
             ActivitiesObject.arrayOfActivities[indexPath.row] = object
             completion(true)
         }
-
         SelectedActivity.shared.activity = ActivitiesObject.arrayOfActivities[indexPath.row]
         action.backgroundColor = object.fav ? .systemPurple : .systemGray
         action.image = object.fav ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
