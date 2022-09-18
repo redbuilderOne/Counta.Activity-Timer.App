@@ -12,9 +12,10 @@ class Activity: NSManagedObject {
     @NSManaged var isDone: Bool
     @NSManaged var isFocused: Bool
     @NSManaged var lastSession: String?
-    @NSManaged var spentInTotalDays: String?
-    @NSManaged var spentInTotalHours: String?
-    @NSManaged var spentInTotalMinutes: String?
-    @NSManaged var spentInTotalSeconds: String?
+    @NSManaged var spentInTotalDays: NSNumber?
+    @NSManaged var spentInTotalHours: NSNumber?
+    @NSManaged var spentInTotalMinutes: NSNumber?
+    @NSManaged var spentInTotalSeconds: NSNumber?
     @NSManaged var timeSpentInTotal: String?
+    @NSManaged var secs: NSNumber?
 }

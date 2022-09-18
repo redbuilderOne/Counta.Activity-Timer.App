@@ -250,12 +250,16 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             timerView.circleView.roundShapeLayer.isHidden = true
         }
         setTimerCounting(false)
+
+        coreDataTimeSaver = CoreDataTimeSaver()
+        guard let context = coreDataTimeSaver?.loadPersistentContainer() else { return }
+        coreDataTimeSaver?.saveStackedTime(context: context)
+        coreDataTimeSaver = nil
     }
 
     private func setTimeLabel(_ val: Int) {
         coreDataTimeSaver = CoreDataTimeSaver()
         coreDataTimeSaver?.saveTime(timerFormat: self.timerFormat, val: val, timerView: self.timerView)
-//        coreDataTimeSaver?.convertTotal(val)
         coreDataTimeSaver = nil
     }
 
