@@ -17,5 +17,4 @@ class Activity: NSManagedObject {
     @NSManaged var spentInTotalMinutes: NSNumber?
     @NSManaged var spentInTotalSeconds: NSNumber?
     @NSManaged var timeSpentInTotal: String?
-    @NSManaged var secs: NSNumber?
 }

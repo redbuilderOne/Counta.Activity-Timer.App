@@ -36,7 +36,6 @@ class CoreDataSaver {
         newActivity.spentInTotalHours = 0 as NSNumber
         newActivity.spentInTotalMinutes = 0 as NSNumber
         newActivity.spentInTotalSeconds = 0 as NSNumber
-        newActivity.secs = 0 as NSNumber
         newActivity.isFocused = isFocused
         print("New Activity \(newActivity.title ?? "") is created at \(Date())")
         print(newActivity)

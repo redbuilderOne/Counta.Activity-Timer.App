@@ -257,7 +257,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
             buttonDidPressedSwitcher = false
             coreDataTimeSaver = CoreDataTimeSaver()
             guard let context = coreDataTimeSaver?.loadPersistentContainer() else { return }
-            coreDataTimeSaver?.saveStackedTime(context: context)
+            coreDataTimeSaver?.saveStackedTime(context: context, timerFormat: self.timerFormat)
             coreDataTimeSaver = nil
         }
     }
