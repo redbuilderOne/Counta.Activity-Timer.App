@@ -2,7 +2,7 @@
 Portfolio Apps
 MVC
 
-Protimer
+ATimer
 ------------------
 
 \[Eng\] This App is made to focus better on something necessary. You simply press "Start" button and the timer starts. Also there's round ellipse that animates while time goes by
