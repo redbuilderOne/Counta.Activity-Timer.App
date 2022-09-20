@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/dimalbion/ProtimerApp/Productivity_Timer/ATimer.xcodeproj">
    </FileRef>
 </Workspace>

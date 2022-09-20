@@ -4,16 +4,16 @@ import CoreData
 
 struct DescRowEditAlert {
     func descRowEditAction(on viewController: UIViewController, activity: Activity, tableView: UITableView) {
-        let descRowEditAction = UIAlertController(title: "Edit Description", message: "Please edit the description", preferredStyle: .alert)
+        let descRowEditAction = UIAlertController(title: "Edit Description".localized(), message: "Please edit the description".localized(), preferredStyle: .alert)
         descRowEditAction.addTextField(configurationHandler: { (newDescription) -> Void in
             newDescription.text = activity.desc
         })
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: { (action) -> Void in
             viewController.presentingViewController?.dismiss(animated: true, completion: nil)
         })
 
-        let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+        let okayAction = UIAlertAction(title: "Ok".localized(), style: .default, handler: { (action) -> Void in
             SelectedActivity.shared.activity = activity
             activity.desc = (descRowEditAction.textFields?.first?.text)!
 

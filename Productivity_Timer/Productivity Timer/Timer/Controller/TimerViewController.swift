@@ -54,7 +54,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         case true:
             timerView.focusLabel.isHidden = false
             timerView.stopButtonPressed()
-            timerView.timerLabel.text = "FOCUSED"
+            timerView.timerLabel.text = "FOCUSED".localized()
             timerView.timerLabel.textColor = pinkyWhiteColor
             timerView.focusTextField.text = ""
         default:
@@ -100,7 +100,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
                 timerView.focusLabel.isHidden = false
             case false:
                 timerView.focusTextField.isHidden = false
-                timerView.focusLabel.text = "tap to focus on activity"
+                timerView.focusLabel.text = "tap to focus on activity".localized()
                 timerView.focusLabel.textColor = .systemGray
                 timerView.focusLabel.layer.opacity = 0.3
                 stopActionDidPressed()
@@ -143,7 +143,7 @@ final class TimerViewController: UIViewController, TimerViewDelegate {
         if focusTextLabelDidTapped != true {
             timerView.focusTextField.isHidden = true
             timerView.focusLabel.isHidden = false
-            timerView.focusLabel.text = "tap to focus on activity"
+            timerView.focusLabel.text = "tap to focus on activity".localized()
             timerView.focusLabel.textColor = .systemGray
             timerView.focusLabel.layer.opacity = 0.3
         } else {

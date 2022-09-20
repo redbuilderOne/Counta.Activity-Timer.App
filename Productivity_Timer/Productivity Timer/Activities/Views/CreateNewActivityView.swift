@@ -11,7 +11,7 @@ class CreateNewActivityView: UIView {
 
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "Your activity is..."
+        titleLabel.text = "Your activity is...".localized()
         titleLabel.textColor = pinkyWhiteColor
         titleLabel.font = .systemFont(ofSize: 24)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +20,7 @@ class CreateNewActivityView: UIView {
 
     lazy var textField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "here"
+        textField.placeholder = "here".localized()
         textField.textColor = sandyYellowColor
         textField.backgroundColor = blueMoonlight
         textField.font = .systemFont(ofSize: 24)
@@ -31,7 +31,7 @@ class CreateNewActivityView: UIView {
 
     lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Add description"
+        descriptionLabel.text = "Add description".localized()
         descriptionLabel.textColor = pinkyWhiteColor
         descriptionLabel.font = .systemFont(ofSize: 24)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false

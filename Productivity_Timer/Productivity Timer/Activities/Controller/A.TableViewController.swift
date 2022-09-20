@@ -39,7 +39,7 @@ class ActivityTableViewController: UITableViewController {
     }
 
     private func setupNavigationBar() {
-        self.title = "Activities"
+        self.title = "Activities".localized()
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.navigationItem.leftBarButtonItem?.tintColor = sandyYellowColor
         let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action:  #selector(addNewActivity))

@@ -51,7 +51,7 @@ class FocusRowEditAlert {
         
         timerViewController?.timerView.focusTextField.isHidden = false
         timerViewController?.timerView.focusLabel.isHidden = false
-        timerViewController?.timerView.focusLabel.text = "tap to focus on activity"
+        timerViewController?.timerView.focusLabel.text = "tap to focus on activity".localized()
         timerViewController?.timerView.focusLabel.textColor = .systemGray
         timerViewController?.timerView.focusLabel.layer.opacity = 0.3
         

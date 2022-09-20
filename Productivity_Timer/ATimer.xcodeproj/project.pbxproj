@@ -51,6 +51,8 @@
 		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
 		FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
 		FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */; };
+		FFD7CA9028DA1B8300ECBD06 /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD7CA8F28DA1B8300ECBD06 /* Localisation.swift */; };
+		FFD7CA9328DA1C9900ECBD06 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFD7CA9528DA1C9900ECBD06 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,9 @@
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "setTimer Defaults.swift"; sourceTree = "<group>"; };
+		FFD7CA8F28DA1B8300ECBD06 /* Localisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
+		FFD7CA9428DA1C9900ECBD06 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FFD7CA9628DA1CA100ECBD06 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +317,8 @@
 				FF71FB7D2805A56D00F2F455 /* Color Sets.swift */,
 				FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */,
 				FF2A6F03283E754900F13F4E /* Constraints IDs.swift */,
+				FFD7CA8F28DA1B8300ECBD06 /* Localisation.swift */,
+				FFD7CA9528DA1C9900ECBD06 /* Localizable.strings */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -465,13 +472,14 @@
 					};
 				};
 			};
-			buildConfigurationList = FF71FB3D2805A1CF00F2F455 /* Build configuration list for PBXProject "Productivity Timer" */;
+			buildConfigurationList = FF71FB3D2805A1CF00F2F455 /* Build configuration list for PBXProject "ATimer" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = FF71FB392805A1CF00F2F455;
 			productRefGroup = FF71FB432805A1CF00F2F455 /* Products */;
@@ -491,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */,
+				FFD7CA9328DA1C9900ECBD06 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +558,7 @@
 				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
 				FF077B6D28CA330D0046FA5F /* CoreDataTimeSaver.swift in Sources */,
 				FFD4B1E2280BF33F0046CE83 /* TimerVarsAndLets.swift in Sources */,
+				FFD7CA9028DA1B8300ECBD06 /* Localisation.swift in Sources */,
 				FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */,
 				FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */,
 				FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */,
@@ -589,6 +599,18 @@
 			targetProxy = FF71FB632805A1D100F2F455 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FFD7CA9528DA1C9900ECBD06 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFD7CA9428DA1C9900ECBD06 /* en */,
+				FFD7CA9628DA1CA100ECBD06 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FF71FB6A2805A1D100F2F455 /* Debug */ = {
@@ -717,7 +739,7 @@
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = ATimer;
+				INFOPLIST_KEY_CFBundleDisplayName = Counta;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -728,7 +750,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = aTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = ATimer.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -746,7 +768,7 @@
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = ATimer;
+				INFOPLIST_KEY_CFBundleDisplayName = Counta;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -757,7 +779,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = aTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = ATimer.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -844,7 +866,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF71FB3D2805A1CF00F2F455 /* Build configuration list for PBXProject "Productivity Timer" */ = {
+		FF71FB3D2805A1CF00F2F455 /* Build configuration list for PBXProject "ATimer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF71FB6A2805A1D100F2F455 /* Debug */,

@@ -7,7 +7,7 @@ extension UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         if let textToClear = textToClear {
-            textToClear.text = "tap to focus on activity"
+            textToClear.text = "tap to focus on activity".localized()
             view.setNeedsDisplay()
         }
     }
