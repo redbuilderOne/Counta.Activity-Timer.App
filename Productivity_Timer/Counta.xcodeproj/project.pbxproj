@@ -472,7 +472,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FF71FB3D2805A1CF00F2F455 /* Build configuration list for PBXProject "ATimer" */;
+			buildConfigurationList = FF71FB3D2805A1CF00F2F455 /* Build configuration list for PBXProject "Counta" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -866,7 +866,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FF71FB3D2805A1CF00F2F455 /* Build configuration list for PBXProject "ATimer" */ = {
+		FF71FB3D2805A1CF00F2F455 /* Build configuration list for PBXProject "Counta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF71FB6A2805A1D100F2F455 /* Debug */,
