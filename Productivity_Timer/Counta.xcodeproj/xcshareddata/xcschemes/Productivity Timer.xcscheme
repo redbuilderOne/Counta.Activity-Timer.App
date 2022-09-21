@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF71FB412805A1CF00F2F455"
                BuildableName = "Productivity Timer.app"
-               BlueprintName = "Productivity Timer"
-               ReferencedContainer = "container:Productivity Timer.xcodeproj">
+               BlueprintName = "Counta"
+               ReferencedContainer = "container:Counta.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF71FB572805A1D000F2F455"
                BuildableName = "Productivity TimerTests.xctest"
-               BlueprintName = "Productivity TimerTests"
-               ReferencedContainer = "container:Productivity Timer.xcodeproj">
+               BlueprintName = "CountaTests"
+               ReferencedContainer = "container:Counta.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -44,8 +44,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF71FB612805A1D100F2F455"
                BuildableName = "Productivity TimerUITests.xctest"
-               BlueprintName = "Productivity TimerUITests"
-               ReferencedContainer = "container:Productivity Timer.xcodeproj">
+               BlueprintName = "CountaUITests"
+               ReferencedContainer = "container:Counta.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -67,8 +67,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF71FB412805A1CF00F2F455"
             BuildableName = "Productivity Timer.app"
-            BlueprintName = "Productivity Timer"
-            ReferencedContainer = "container:Productivity Timer.xcodeproj">
+            BlueprintName = "Counta"
+            ReferencedContainer = "container:Counta.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -84,8 +84,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF71FB412805A1CF00F2F455"
             BuildableName = "Productivity Timer.app"
-            BlueprintName = "Productivity Timer"
-            ReferencedContainer = "container:Productivity Timer.xcodeproj">
+            BlueprintName = "Counta"
+            ReferencedContainer = "container:Counta.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
