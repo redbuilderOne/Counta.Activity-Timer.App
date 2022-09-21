@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  ATimer
+
+  Created by Дмитрий Скворцов on 20.09.2022.
+  
+*/
+
+"Hello" = "Привет";
+"Timer" = "Таймер";
+"FOCUSED" = "Готово";
+"Activities" = "Активности";
+"Your activity is..." = "Ваша новая активность";
+"here" = "напишите здесь";
+"Add description" = "Добавить описание";
+"Activities" = "Активности";
+"New Activity" = "Новая активность";
+"Nah" = "Ой";
+"The text field can't be empty" = "Поле не может быть пустым";
+"Sorry" = "Извините";
+"Activity already exists" = "Активность уже существует";
+"Oops" = "Упс";
+"Nothing to clear" = "Нечего удалять";
+"Are you sure?" = "Вы уверены?";
+"This will delete all the text" = "Это удалит весь текст";
+"Activity" = "Активность";
+"Description" = "Описание";
+"tap to add your description" = "коснитесь, чтобы добавить описание";
+"Tap to focus" = "Коснитесь для отслеживания";
+"Focused" = "Отслеживается";
+"Time info" = "Информация о времени";
+"Last session: 00:00:00" = "Последняя сессия: 00:00:00";
+"Last session: " = "Последняя сессия: ";
+"Total time spent: 00:00:00" = "Всего затрачено времени: 00:00:00";
+"Time spent in total: " = "Всего затрачено времени: ";
+"Yes" = "Да";
+"No" = "Нет";
+"Ok" = "Ок";
+"Edit Title" = "Редактирование названия";
+"Please edit the title" = "Измените название";
+"Cancel" = "Отмена";
+"Edit Description" = "Редактирование описания";
+"Please edit the description" = "Измените описание";
+"tap to focus on activity" = "сфокусироваться на активности";
+"Details" = "Подробности";
+"Are you sure?" = "Вы уверены?";
+"This will delete the activity forever" = "Это удалит активность навсегда";
