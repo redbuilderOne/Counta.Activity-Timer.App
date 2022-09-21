@@ -37,7 +37,7 @@ class TimerView: UIView {
 
     lazy var timerLabel: UILabel = {
         let timerLabel = UILabel()
-        timerLabel.text = "Hello"
+        timerLabel.text = "Hello".localized()
         timerLabel.textAlignment = .center
         timerLabel.textColor = pinkyWhiteColor
         timerLabel.font = .systemFont(ofSize: 45)

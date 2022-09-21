@@ -20,7 +20,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = "Activity"
+            cell.textLabel?.text = "Activity".localized()
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
             cell.textLabel?.textColor = sandyYellowColor
             cell.backgroundColor = darkMoonColor
@@ -50,7 +50,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
             cell.selectionStyle = .none
-            cell.textLabel?.text = "Description"
+            cell.textLabel?.text = "Description".localized()
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
             cell.imageView?.image = UIImage(systemName: "square.text.square")
             cell.imageView?.tintColor = .systemGray
@@ -70,7 +70,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.imageView?.image = UIImage(systemName: "")
 
             if activity.desc == "" {
-                    cell.textLabel?.text = "tap to add your description"
+                cell.textLabel?.text = "tap to add your description".localized()
                     cell.textLabel?.font = .boldSystemFont(ofSize: 10)
                     cell.textLabel?.textColor = .systemGray
                     cell.textLabel?.layer.opacity = 0.6
@@ -90,9 +90,9 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             if activity.isFocused {
                 cell.imageView?.image = UIImage(systemName: "timelapse")
                 cell.imageView?.tintColor = .systemRed
-                cell.textLabel?.text = "Focused"
+                cell.textLabel?.text = "Focused".localized()
             } else {
-                cell.textLabel?.text = "Tap to focus"
+                cell.textLabel?.text = "Tap to focus".localized()
                 cell.imageView?.image = UIImage(systemName: "timelapse")
                 cell.imageView?.tintColor = .systemGray
             }
@@ -101,7 +101,7 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.numberOfLines = 0
             cell.selectionStyle = .none
-            cell.textLabel?.text = "Time info"
+            cell.textLabel?.text = "Time info".localized()
             cell.textLabel?.font = .boldSystemFont(ofSize: 21)
             cell.imageView?.image = UIImage(systemName: "timer")
             cell.imageView?.tintColor = .systemGray
@@ -119,9 +119,9 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.imageView?.tintColor = .systemGray
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.imageView?.image = UIImage(systemName: "")
-            cell.textLabel?.text = "Last session: 00:00:00"
+            cell.textLabel?.text = "Last session: 00:00:00".localized()
             if let lastSession = activity.lastSession {
-                cell.textLabel?.text = "Last session: " + lastSession
+                cell.textLabel?.text = "Last session: ".localized() + lastSession
             }
             return cell
         case 7:
@@ -133,9 +133,9 @@ extension ActivityDetailedViewController: UITableViewDelegate, UITableViewDataSo
             cell.imageView?.tintColor = .systemGray
             cell.textLabel?.font = .boldSystemFont(ofSize: 16)
             cell.imageView?.image = UIImage(systemName: "")
-            cell.textLabel?.text = "Total time spent: 00:00:00"
+            cell.textLabel?.text = "Total time spent: 00:00:00".localized()
             if let timeSpentInTotal = activity.timeSpentInTotal {
-                cell.textLabel?.text = "Time spent in total: " + timeSpentInTotal
+                cell.textLabel?.text = "Time spent in total: ".localized() + timeSpentInTotal
             }
             return cell
         default:

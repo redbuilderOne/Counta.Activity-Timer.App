@@ -63,7 +63,7 @@ class CoreDataSaver {
                 print("Index \(String(describing: duplicateIndex)) cleared")
                 controller.focusTextLabelDidTapped = false
                 timerView.focusTextField.isHidden = false
-                timerView.focusLabel.text = "tap to focus on activity"
+                timerView.focusLabel.text = "tap to focus on activity".localized()
                 timerView.focusLabel.textColor = .systemGray
                 timerView.focusLabel.layer.opacity = 0.3
                 return

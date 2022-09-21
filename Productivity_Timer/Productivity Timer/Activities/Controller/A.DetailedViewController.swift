@@ -47,7 +47,7 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = darkMoonColor
-        title = "Details"
+        title = "Details".localized()
         SelectedActivity.shared.activity = activity
     }
 
@@ -71,7 +71,7 @@ class ActivityDetailedViewController: UITabBarController, DeleteAlertProtocol {
     }
 
     @objc func trashButtonDidTapped() {
-        conformDeleteAlert.deleteActivity(on: self, with: "Are you sure?", message: "This will delete the activity forever")
+        conformDeleteAlert.deleteActivity(on: self, with: "Are you sure?".localized(), message: "This will delete the activity forever".localized())
     }
 
     func deleteActivity() {

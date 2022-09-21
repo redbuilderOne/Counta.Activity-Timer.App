@@ -6,14 +6,14 @@ struct TitleRowEditAlert {
     let timerViewController: TimerViewController?
     
     func titleRowEditAction(on viewController: UIViewController, activity: Activity, tableView: UITableView) {
-        let titleRowEditAction = UIAlertController(title: "Edit Title", message: "Please edit the title", preferredStyle: .alert)
+        let titleRowEditAction = UIAlertController(title: "Edit Title".localized(), message: "Please edit the title".localized(), preferredStyle: .alert)
         titleRowEditAction.addTextField(configurationHandler: { (newTitle) -> Void in
             newTitle.text = activity.title
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: { (action) -> Void in
             viewController.presentingViewController?.dismiss(animated: true, completion: nil)
         })
-        let okayAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+        let okayAction = UIAlertAction(title: "Ok".localized(), style: .default, handler: { (action) -> Void in
             SelectedActivity.shared.activity = activity
             activity.title = (titleRowEditAction.textFields?.first?.text)!
 

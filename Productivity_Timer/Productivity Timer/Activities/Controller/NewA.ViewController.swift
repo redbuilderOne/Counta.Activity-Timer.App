@@ -24,7 +24,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "New Activity"
+        title = "New Activity".localized()
         newActivityView?.delegate = self
         newActivityView?.textField.delegate = self
         configureView()
@@ -44,7 +44,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
     @objc func saveData() {
         if newActivityView?.textField.text == "" {
-            conformAlert.isEmptyTextFields(on: self, with: "Nah", message: "The text field can't be empty")
+            conformAlert.isEmptyTextFields(on: self, with: "Nah".localized(), message: "The text field can't be empty".localized())
             return
 
         } else {
@@ -55,7 +55,7 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
 
             if duplicateIndex != nil {
                 duplicateIndex = nil
-                conformAlert.isEmptyTextFields(on: self, with: "Sorry", message: "Activity already exists")
+                conformAlert.isEmptyTextFields(on: self, with: "Sorry".localized(), message: "Activity already exists".localized())
                 print("Index \(String(describing: duplicateIndex)) cleared")
                 return
                 
@@ -80,10 +80,10 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
     //MARK: - Button actions
     func clearButtonDidPressed() {
         if newActivityView?.textField.text == "" {
-            conformAlert.isEmptyTextFields(on: self, with: "Oops", message: "Nothing to clear")
+            conformAlert.isEmptyTextFields(on: self, with: "Oops".localized(), message: "Nothing to clear".localized())
             return
         }
-        conformAlert.textClearAlert(on: self, with: "Are you sure?", message: "This will delete all the text")
+        conformAlert.textClearAlert(on: self, with: "Are you sure?".localized(), message: "This will delete all the text".localized())
     }
 
     func removeText() {

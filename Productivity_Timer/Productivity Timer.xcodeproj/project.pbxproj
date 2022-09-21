@@ -51,6 +51,8 @@
 		FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1FE280C74150046CE83 /* Keyboard.swift */; };
 		FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF71FB4E2805A1D000F2F455 /* Assets.xcassets */; };
 		FFD4B20E281334D50046CE83 /* setTimer Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */; };
+		FFD7CA9028DA1B8300ECBD06 /* Localisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD7CA8F28DA1B8300ECBD06 /* Localisation.swift */; };
+		FFD7CA9328DA1C9900ECBD06 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFD7CA9528DA1C9900ECBD06 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,14 +100,14 @@
 		FF36BE982852493600176FA0 /* KeyboardExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExt.swift; sourceTree = "<group>"; };
 		FF36BE9C2852578900176FA0 /* KeyboardDismissExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissExt.swift; sourceTree = "<group>"; };
 		FF4D523E2879BACD00470AE5 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		FF71FB422805A1CF00F2F455 /* Productivity Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF71FB422805A1CF00F2F455 /* Productivity Timerr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Productivity Timerr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB452805A1CF00F2F455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF71FB472805A1CF00F2F455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FF71FB4E2805A1D000F2F455 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF71FB532805A1D000F2F455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF71FB582805A1D000F2F455 /* Productivity TimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Productivity TimerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF71FB582805A1D000F2F455 /* Productivity TimerrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Productivity TimerrTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB5C2805A1D000F2F455 /* Productivity_TimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerTests.swift; sourceTree = "<group>"; };
-		FF71FB622805A1D100F2F455 /* Productivity TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Productivity TimerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF71FB622805A1D100F2F455 /* Productivity TimerrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Productivity TimerrUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF71FB662805A1D100F2F455 /* Productivity_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerUITests.swift; sourceTree = "<group>"; };
 		FF71FB682805A1D100F2F455 /* Productivity_TimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Productivity_TimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF71FB752805A3D200F2F455 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,9 @@
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "setTimer Defaults.swift"; sourceTree = "<group>"; };
+		FFD7CA8F28DA1B8300ECBD06 /* Localisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localisation.swift; sourceTree = "<group>"; };
+		FFD7CA9428DA1C9900ECBD06 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FFD7CA9628DA1CA100ECBD06 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,9 +274,9 @@
 		FF71FB432805A1CF00F2F455 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF71FB422805A1CF00F2F455 /* Productivity Timer.app */,
-				FF71FB582805A1D000F2F455 /* Productivity TimerTests.xctest */,
-				FF71FB622805A1D100F2F455 /* Productivity TimerUITests.xctest */,
+				FF71FB422805A1CF00F2F455 /* Productivity Timerr.app */,
+				FF71FB582805A1D000F2F455 /* Productivity TimerrTests.xctest */,
+				FF71FB622805A1D100F2F455 /* Productivity TimerrUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -312,6 +317,8 @@
 				FF71FB7D2805A56D00F2F455 /* Color Sets.swift */,
 				FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */,
 				FF2A6F03283E754900F13F4E /* Constraints IDs.swift */,
+				FFD7CA8F28DA1B8300ECBD06 /* Localisation.swift */,
+				FFD7CA9528DA1C9900ECBD06 /* Localizable.strings */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -389,9 +396,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FF71FB412805A1CF00F2F455 /* Productivity Timer */ = {
+		FF71FB412805A1CF00F2F455 /* Productivity Timerr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF71FB6C2805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity Timer" */;
+			buildConfigurationList = FF71FB6C2805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity Timerr" */;
 			buildPhases = (
 				FF71FB3E2805A1CF00F2F455 /* Sources */,
 				FF71FB3F2805A1CF00F2F455 /* Frameworks */,
@@ -401,14 +408,14 @@
 			);
 			dependencies = (
 			);
-			name = "Productivity Timer";
+			name = "Productivity Timerr";
 			productName = "Productivity Timer";
-			productReference = FF71FB422805A1CF00F2F455 /* Productivity Timer.app */;
+			productReference = FF71FB422805A1CF00F2F455 /* Productivity Timerr.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FF71FB572805A1D000F2F455 /* Productivity TimerTests */ = {
+		FF71FB572805A1D000F2F455 /* Productivity TimerrTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF71FB6F2805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity TimerTests" */;
+			buildConfigurationList = FF71FB6F2805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity TimerrTests" */;
 			buildPhases = (
 				FF71FB542805A1D000F2F455 /* Sources */,
 				FF71FB552805A1D000F2F455 /* Frameworks */,
@@ -419,14 +426,14 @@
 			dependencies = (
 				FF71FB5A2805A1D000F2F455 /* PBXTargetDependency */,
 			);
-			name = "Productivity TimerTests";
+			name = "Productivity TimerrTests";
 			productName = "Productivity TimerTests";
-			productReference = FF71FB582805A1D000F2F455 /* Productivity TimerTests.xctest */;
+			productReference = FF71FB582805A1D000F2F455 /* Productivity TimerrTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FF71FB612805A1D100F2F455 /* Productivity TimerUITests */ = {
+		FF71FB612805A1D100F2F455 /* Productivity TimerrUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF71FB722805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity TimerUITests" */;
+			buildConfigurationList = FF71FB722805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity TimerrUITests" */;
 			buildPhases = (
 				FF71FB5E2805A1D100F2F455 /* Sources */,
 				FF71FB5F2805A1D100F2F455 /* Frameworks */,
@@ -437,9 +444,9 @@
 			dependencies = (
 				FF71FB642805A1D100F2F455 /* PBXTargetDependency */,
 			);
-			name = "Productivity TimerUITests";
+			name = "Productivity TimerrUITests";
 			productName = "Productivity TimerUITests";
-			productReference = FF71FB622805A1D100F2F455 /* Productivity TimerUITests.xctest */;
+			productReference = FF71FB622805A1D100F2F455 /* Productivity TimerrUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -472,15 +479,16 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = FF71FB392805A1CF00F2F455;
 			productRefGroup = FF71FB432805A1CF00F2F455 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FF71FB412805A1CF00F2F455 /* Productivity Timer */,
-				FF71FB572805A1D000F2F455 /* Productivity TimerTests */,
-				FF71FB612805A1D100F2F455 /* Productivity TimerUITests */,
+				FF71FB412805A1CF00F2F455 /* Productivity Timerr */,
+				FF71FB572805A1D000F2F455 /* Productivity TimerrTests */,
+				FF71FB612805A1D100F2F455 /* Productivity TimerrUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -491,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFD4B2082810157E0046CE83 /* Assets.xcassets in Resources */,
+				FFD7CA9328DA1C9900ECBD06 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +558,7 @@
 				FFD4B1FF280C74150046CE83 /* Keyboard.swift in Sources */,
 				FF077B6D28CA330D0046FA5F /* CoreDataTimeSaver.swift in Sources */,
 				FFD4B1E2280BF33F0046CE83 /* TimerVarsAndLets.swift in Sources */,
+				FFD7CA9028DA1B8300ECBD06 /* Localisation.swift in Sources */,
 				FF36BE7C28423B2700176FA0 /* A.SelectedDetailsVCExt.swift in Sources */,
 				FF2A6F0228363C5C00F13F4E /* SelectedActivity.swift in Sources */,
 				FF229A94281C78E70080B89B /* TableViewCellsID.swift in Sources */,
@@ -580,15 +590,27 @@
 /* Begin PBXTargetDependency section */
 		FF71FB5A2805A1D000F2F455 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FF71FB412805A1CF00F2F455 /* Productivity Timer */;
+			target = FF71FB412805A1CF00F2F455 /* Productivity Timerr */;
 			targetProxy = FF71FB592805A1D000F2F455 /* PBXContainerItemProxy */;
 		};
 		FF71FB642805A1D100F2F455 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FF71FB412805A1CF00F2F455 /* Productivity Timer */;
+			target = FF71FB412805A1CF00F2F455 /* Productivity Timerr */;
 			targetProxy = FF71FB632805A1D100F2F455 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FFD7CA9528DA1C9900ECBD06 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFD7CA9428DA1C9900ECBD06 /* en */,
+				FFD7CA9628DA1CA100ECBD06 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FF71FB6A2805A1D100F2F455 /* Debug */ = {
@@ -717,7 +739,7 @@
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = ATimer;
+				INFOPLIST_KEY_CFBundleDisplayName = Counta;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -728,7 +750,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = aTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = ATimer.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -746,7 +768,7 @@
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = ATimer;
+				INFOPLIST_KEY_CFBundleDisplayName = Counta;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -757,7 +779,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = aTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = ATimer.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -781,7 +803,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Productivity Timer.app/Productivity Timer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Productivity Timerr.app/Productivity Timerr";
 			};
 			name = Debug;
 		};
@@ -801,7 +823,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Productivity Timer.app/Productivity Timer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Productivity Timerr.app/Productivity Timerr";
 			};
 			name = Release;
 		};
@@ -853,7 +875,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF71FB6C2805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity Timer" */ = {
+		FF71FB6C2805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity Timerr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF71FB6D2805A1D100F2F455 /* Debug */,
@@ -862,7 +884,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF71FB6F2805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity TimerTests" */ = {
+		FF71FB6F2805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity TimerrTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF71FB702805A1D100F2F455 /* Debug */,
@@ -871,7 +893,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF71FB722805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity TimerUITests" */ = {
+		FF71FB722805A1D100F2F455 /* Build configuration list for PBXNativeTarget "Productivity TimerrUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FF71FB732805A1D100F2F455 /* Debug */,
