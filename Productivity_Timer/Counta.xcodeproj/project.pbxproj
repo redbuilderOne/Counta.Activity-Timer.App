@@ -294,9 +294,10 @@
 			isa = PBXGroup;
 			children = (
 				FF06E88B2809A2A900907F1B /* Application */,
-				FF613D7A28CE2CBF00CAF28B /* CoreData */,
 				FF06E88D2809A30900907F1B /* Timer */,
 				FF06E8922809A8D600907F1B /* Activities */,
+				FF1DC2C128DB1F8D0012CEF3 /* Localisation */,
+				FF613D7A28CE2CBF00CAF28B /* CoreData */,
 				FF71FB832805B26000F2F455 /* Extensions */,
 				FF06E8912809A36500907F1B /* Supporting Files */,
 			);
@@ -323,7 +324,6 @@
 		FF71FB832805B26000F2F455 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FF1DC2C128DB1F8D0012CEF3 /* Localisation */,
 				FF71FB7D2805A56D00F2F455 /* Color Sets.swift */,
 				FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */,
 				FF2A6F03283E754900F13F4E /* Constraints IDs.swift */,
