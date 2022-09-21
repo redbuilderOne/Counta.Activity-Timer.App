@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF71FB412805A1CF00F2F455"
-               BuildableName = "Productivity Timer.app"
+               BuildableName = "Counta.app"
                BlueprintName = "Counta"
                ReferencedContainer = "container:Counta.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF71FB572805A1D000F2F455"
-               BuildableName = "Productivity TimerTests.xctest"
+               BuildableName = "CountaTests.xctest"
                BlueprintName = "CountaTests"
                ReferencedContainer = "container:Counta.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FF71FB612805A1D100F2F455"
-               BuildableName = "Productivity TimerUITests.xctest"
+               BuildableName = "CountaUITests.xctest"
                BlueprintName = "CountaUITests"
                ReferencedContainer = "container:Counta.xcodeproj">
             </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF71FB412805A1CF00F2F455"
-            BuildableName = "Productivity Timer.app"
+            BuildableName = "Counta.app"
             BlueprintName = "Counta"
             ReferencedContainer = "container:Counta.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FF71FB412805A1CF00F2F455"
-            BuildableName = "Productivity Timer.app"
+            BuildableName = "Counta.app"
             BlueprintName = "Counta"
             ReferencedContainer = "container:Counta.xcodeproj">
          </BuildableReference>
