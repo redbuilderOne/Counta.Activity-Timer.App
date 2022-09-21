@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  Productivity Timer
+
+  Created by Дмитрий Скворцов on 21.09.2022.
+  
+*/
+
+"Hello" = "Hallo";
+"Timer" = "Timer";
+"FOCUSED" = "Fokussiert";
+"Activities" = "Aktivitäten";
+"Your activity is..." = "Die Aktivität ist";
+"here" = "hier";
+"Add description" = "Bezeichnung";
+"Activities" = "Aktivitäten";
+"New Activity" = "Neue Aktivität";
+"Nah" = "Nö";
+"The text field can't be empty" = "Das Textfeld darf nicht leer sein";
+"Sorry" = "Verzeihung";
+"Activity already exists" = "Aktivität ist bereits vorhanden";
+"Oops" = "Hoppla";
+"Nothing to clear" = "Nichts zu löschen";
+"Are you sure?" = "Sind Sie sicher?";
+"This will delete all the text" = "Der Text wird gelöscht";
+"Activity" = "Aktivität";
+"Description" = "Bezeichnung";
+"tap to add your description" = "Beschreibung hinzufügen";
+"Tap to focus" = "Fokus";
+"Focused" = "Fokussiert";
+"Time info" = "Zeitinfo";
+"Last session: 00:00:00" = "Letzte Sitzung: 00:00:00";
+"Last session: " = "Letzte Sitzung: ";
+"Total time spent: 00:00:00" = "Gesamtzeit aufgewendet: 00:00:00";
+"Time spent in total: " = "Gesamtzeit aufgewendet: ";
+"Yes" = "Ja";
+"No" = "Nein";
+"Ok" = "Ok";
+"Edit Title" = "Titel bearbeiten";
+"Please edit the title" = "Bearbeiten Sie den Titel";
+"Cancel" = "Absagen";
+"Edit Description" = "Beschreibung bearbeiten";
+"Please edit the description" = "Bearbeiten Sie die Beschreibung";
+"tap to focus on activity" = "Fokus auf Aktivität";
+"Details" = "Einzelheiten";
+"Are you sure?" = "Sind Sie sicher?";
+"This will delete the activity forever" = "Dadurch wird die Aktivität für immer gelöscht";
+"your activity" = "Die Aktivität";
+" is now being focused" = " - wird jetzt fokussiert";
+"You can return to Timer" = "Sie können zum Timer zurückkehren";

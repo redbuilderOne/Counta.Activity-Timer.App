@@ -125,6 +125,8 @@
 		FFD4B1F6280C1F360046CE83 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		FFD4B1FE280C74150046CE83 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		FFD4B20D281334D50046CE83 /* setTimer Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "setTimer Defaults.swift"; sourceTree = "<group>"; };
+		FFEDD56728DB317300896203 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FFEDD56828DB343300896203 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +490,8 @@
 				en,
 				Base,
 				ru,
+				de,
+				es,
 			);
 			mainGroup = FF71FB392805A1CF00F2F455;
 			productRefGroup = FF71FB432805A1CF00F2F455 /* Products */;
@@ -614,6 +618,8 @@
 			children = (
 				FF1DC2CB28DB24FC0012CEF3 /* en */,
 				FF1DC2CD28DB24FE0012CEF3 /* ru */,
+				FFEDD56728DB317300896203 /* de */,
+				FFEDD56828DB343300896203 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

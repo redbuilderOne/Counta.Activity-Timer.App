@@ -45,4 +45,6 @@
 "Details" = "Подробности";
 "Are you sure?" = "Вы уверены?";
 "This will delete the activity forever" = "Это удалит активность навсегда";
-
+"your activity" = "Ваша активность";
+" is now being focused" = " - сейчас отслеживается";
+"You can return to Timer" = "Вы можете вернуться к таймеру";

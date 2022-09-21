@@ -28,7 +28,7 @@ extension ActivityDetailedViewController {
             if activity.isFocused == false {
                 print("Focused Activity before was \(activity.title ?? "")")
                 focusRowEditAlert.focusRowEditAction(on: self, activity: activity, tableView: tableView)
-                conformDeleteAlert.focusOnActivityConfirm(on: self, with: "\(activity.title ?? "your activity") is now being focused", message: "You can return to Timer")
+                conformDeleteAlert.focusOnActivityConfirm(on: self, with: "\(activity.title ?? "your activity".localized())" + " is now being focused".localized(), message: "You can return to Timer".localized())
                 print("Now Focused Activity is \(activity.title ?? "")")
 
             } else {
