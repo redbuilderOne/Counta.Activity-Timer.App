@@ -46,11 +46,9 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
         if newActivityView?.textField.text == "" {
             conformAlert.isEmptyTextFields(on: self, with: "Nah".localized(), message: "The text field can't be empty".localized())
             return
-
         } else {
             var duplicateIndex: Int?
             duplicateIndex = ActivitiesObject.arrayOfActivities.firstIndex(where: { $0.title == newActivityView?.textField.text })
-
             print("Found duplicate index: \(String(describing: duplicateIndex))")
 
             if duplicateIndex != nil {
@@ -58,7 +56,6 @@ class NewActivityViewController: UIViewController, NewActivityViewActions, Remov
                 conformAlert.isEmptyTextFields(on: self, with: "Sorry".localized(), message: "Activity already exists".localized())
                 print("Index \(String(describing: duplicateIndex)) cleared")
                 return
-                
             } else {
             coreDataSaver = CoreDataSaver()
                 if let coreDataSaver = coreDataSaver {

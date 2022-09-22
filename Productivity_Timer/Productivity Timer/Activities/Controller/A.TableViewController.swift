@@ -1,6 +1,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 class ActivityTableViewController: UITableViewController {
     var identifier = CellsID.activityTableViewID

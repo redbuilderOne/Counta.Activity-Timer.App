@@ -44,6 +44,8 @@
 		FF71FB762805A3D200F2F455 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB752805A3D200F2F455 /* TimerViewController.swift */; };
 		FF71FB7E2805A56D00F2F455 /* Color Sets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7D2805A56D00F2F455 /* Color Sets.swift */; };
 		FF71FB802805ABB700F2F455 /* UIView Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */; };
+		FFA211F728DC889200897991 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA211F628DC889200897991 /* CloudKit.framework */; };
+		FFA211F928DC8DA900897991 /* CloudKitDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA211F828DC8DA900897991 /* CloudKitDataSaver.swift */; };
 		FFD4B1D0280B548C0046CE83 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1CF280B548C0046CE83 /* TimerView.swift */; };
 		FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1DC280B61250046CE83 /* Control Buttons.swift */; };
 		FFD4B1E2280BF33F0046CE83 /* TimerVarsAndLets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD4B1E1280BF33F0046CE83 /* TimerVarsAndLets.swift */; };
@@ -116,6 +118,9 @@
 		FF71FB752805A3D200F2F455 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		FF71FB7D2805A56D00F2F455 /* Color Sets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Sets.swift"; sourceTree = "<group>"; };
 		FF71FB7F2805ABB700F2F455 /* UIView Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView Extension.swift"; sourceTree = "<group>"; };
+		FFA211F428DC888500897991 /* Counta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Counta.entitlements; sourceTree = "<group>"; };
+		FFA211F628DC889200897991 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FFA211F828DC8DA900897991 /* CloudKitDataSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitDataSaver.swift; sourceTree = "<group>"; };
 		FFA55F48289FFE3C00F375DB /* realm-swift-master */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "realm-swift-master"; path = "../../Downloads/realm-swift-master"; sourceTree = "<group>"; };
 		FFD4B1CF280B548C0046CE83 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		FFD4B1DC280B61250046CE83 /* Control Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Control Buttons.swift"; sourceTree = "<group>"; };
@@ -134,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA211F728DC889200897991 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,11 +280,13 @@
 		FF71FB392805A1CF00F2F455 = {
 			isa = PBXGroup;
 			children = (
+				FFA211F428DC888500897991 /* Counta.entitlements */,
 				FFA55F47289FFE3C00F375DB /* Packages */,
 				FF71FB442805A1CF00F2F455 /* Productivity Timer */,
 				FF71FB5B2805A1D000F2F455 /* Productivity TimerTests */,
 				FF71FB652805A1D100F2F455 /* Productivity TimerUITests */,
 				FF71FB432805A1CF00F2F455 /* Products */,
+				FFA211F528DC889200897991 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -333,6 +341,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FFA211F528DC889200897991 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFA211F628DC889200897991 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FFA55F47289FFE3C00F375DB /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +382,7 @@
 				FF229A8B281BF7F80080B89B /* NewA.ViewController.swift */,
 				FF229A95281C7B250080B89B /* A.TableViewController.swift */,
 				FF229AE92824F79A0080B89B /* A.DetailedViewController.swift */,
+				FFA211F828DC8DA900897991 /* CloudKitDataSaver.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -554,6 +571,7 @@
 				FFD4B1DD280B61250046CE83 /* Control Buttons.swift in Sources */,
 				FF229A9C2820217C0080B89B /* ActivitiesObjects.swift in Sources */,
 				FF2A6F04283E754900F13F4E /* Constraints IDs.swift in Sources */,
+				FFA211F928DC8DA900897991 /* CloudKitDataSaver.swift in Sources */,
 				FF36BE8028453E5C00176FA0 /* DeleteAlert.swift in Sources */,
 				FF2D557E2806ED7F007C3350 /* Elipse Images.swift in Sources */,
 				FFD4B1E6280BF8120046CE83 /* TimerFormat.swift in Sources */,
@@ -748,8 +766,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Counta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
@@ -777,8 +796,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Counta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8BB94GY59F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Productivity Timer/Supporting Files/Info.plist";
