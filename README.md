@@ -1,4 +1,4 @@
-# Productivity Timer
+# Counta - Activity Timer
 Portfolio Apps
 ###
 MVC
