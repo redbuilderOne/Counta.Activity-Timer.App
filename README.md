@@ -1,12 +1,13 @@
 # Counta - Activity Timer
-Portfolio Apps
 ###
 MVC
+CoreData
+UserDefaults
 
 This project is published on the App Store: https://apps.apple.com/ru/app/counta/id6443454017
 ------------------
 
-\[Eng\] This App is made to focus better on something necessary. Create your activity, focus it and press "Start" button. The amount of time passed is saved to device's memory.
+This App is made to focus better on something necessary. Create your activity, focus it and press "Start" button. The amount of time passed is saved to device's memory.
 ###
 
 Preview:
