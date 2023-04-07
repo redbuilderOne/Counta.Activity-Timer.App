@@ -1,8 +1,8 @@
 # Counta - Activity Timer
 ###
-MVC
-CoreData
-UserDefaults
+# MVC
+# CoreData
+# UserDefaults
 
 This project is published on the App Store: https://apps.apple.com/ru/app/counta/id6443454017
 ------------------
